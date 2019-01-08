@@ -15,31 +15,18 @@
 
 
 
-<meta name="description" content="title: SSR搭建属于自己的梯子date: 2019-01-08 16:33:54tags: [ssr，vps，vpn] categories: VpnSSR梯子切勿用于非法用途，主要是用来学习交流使用。 前言之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。 正文准备SSTAP：链接: https://pan.baidu.com/s/1tfu">
+<meta name="description" content="前言输入层次介绍1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。 2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。 3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。 模拟层次介绍1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。 其一：Java自带的Robo">
+<meta name="keywords" content="script,ddxoft,jIntellitype,dll">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zBlog">
-<meta property="og:url" content="http://yibierusi.github.io/2019/01/08/SSR/index.html">
+<meta property="og:title" content="基于ddxoft的驱动级外设模拟">
+<meta property="og:url" content="http://yibierusi.github.io/2017/01/21/java-ddxoft/index.html">
 <meta property="og:site_name" content="zBlog">
-<meta property="og:description" content="title: SSR搭建属于自己的梯子date: 2019-01-08 16:33:54tags: [ssr，vps，vpn] categories: VpnSSR梯子切勿用于非法用途，主要是用来学习交流使用。 前言之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。 正文准备SSTAP：链接: https://pan.baidu.com/s/1tfu">
+<meta property="og:description" content="前言输入层次介绍1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。 2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。 3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。 模拟层次介绍1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。 其一：Java自带的Robo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/1.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/2.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/3.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/4.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/5.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/6.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/7.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/8.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/9.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/10.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/11.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/12.png">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/08/SSR/13.png">
-<meta property="og:updated_time" content="2019-01-08T08:51:34.562Z">
+<meta property="og:updated_time" content="2019-01-08T09:33:03.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zBlog">
-<meta name="twitter:description" content="title: SSR搭建属于自己的梯子date: 2019-01-08 16:33:54tags: [ssr，vps，vpn] categories: VpnSSR梯子切勿用于非法用途，主要是用来学习交流使用。 前言之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。 正文准备SSTAP：链接: https://pan.baidu.com/s/1tfu">
-<meta name="twitter:image" content="http://yibierusi.github.io/2019/01/08/SSR/1.png">
+<meta name="twitter:title" content="基于ddxoft的驱动级外设模拟">
+<meta name="twitter:description" content="前言输入层次介绍1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。 2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。 3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。 模拟层次介绍1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。 其一：Java自带的Robo">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -71,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>zBlog</title>
+<title>基于ddxoft的驱动级外设模拟 | zBlog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +268,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-SSR" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java-ddxoft" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/08/SSR/" class="article-date">
-      <time datetime="2019-01-08T08:33:54.033Z" itemprop="datePublished">2019-01-08</time>
+      <a href="/2017/01/21/java-ddxoft/" class="article-date">
+      <time datetime="2017-01-21T09:05:20.000Z" itemprop="datePublished">2017-01-21</time>
 </a>
 
 
@@ -296,36 +283,89 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于ddxoft的驱动级外设模拟
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Dll/">Dll</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dll/">dll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jIntellitype/">jIntellitype</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<p>title: SSR搭建属于自己的梯子<br>date: 2019-01-08 16:33:54<br>tags: [ssr，vps，vpn]</p>
-<h2 id="categories-Vpn"><a href="#categories-Vpn" class="headerlink" title="categories: Vpn"></a>categories: Vpn</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
-<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2019/01/08/SSR/1.png" alt=""></p>
-<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
-<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2019/01/08/SSR/2.png" alt=""></p>
-<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
-<p>【Server Location】<br><img src="/2019/01/08/SSR/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2019/01/08/SSR/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2019/01/08/SSR/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
-<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
-<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
-<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2019/01/08/SSR/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2019/01/08/SSR/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2019/01/08/SSR/8.png" alt=""></p>
-<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
-<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
-</code></pre><p><img src="/2019/01/08/SSR/9.png" alt=""><br><img src="/2019/01/08/SSR/10.png" alt=""></p>
-<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
-<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
-</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
-<p>2.锐速安装脚本</p>
-<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
-</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
-<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
-</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2019/01/08/SSR/11.png" alt=""></p>
-<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
-<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2019/01/08/SSR/12.png" alt=""><br>最后给个Google一张<br><img src="/2019/01/08/SSR/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p>
+<p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p>
+<p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p>
+<h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p>
+<p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p>
+<p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p>
+<p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p>
+<p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p>
+<p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p>
+<p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p>
+<p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p>
+<h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;
+import com.sun.jna.Native;
+
+public interface DdXoft extends Library {
+    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);
+    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、
+    int DD_mov(int x, int y);//绝对移动
+    int DD_movR(int dx, int dy);//相对移动
+    int DD_btn(int btn);//鼠标
+    int DD_whl(int whl); //滑轮
+    int DD_key(int ddcode, int flag);//键盘
+    int DD_str(String s);//字符串
+}
+</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p>
+<pre><code>/**
+ * 判断某点颜色是否相同 相同则按下
+ *
+ * @return
+ */
+public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {
+    if (isEquals(robot, entry)) {
+        return pressKey(robot, entry, ddCode);
+    }
+    return false;
+}
+</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p>
+<pre><code>/**
+ * 直接按下某键
+ */
+public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
+    //robot.keyPress(keyCode);
+    DdXoft.INSTANCE.DD_key(ddCode, 1);
+    robot.delay(entry.press);
+    //robot.keyRelease(keyCode);
+    DdXoft.INSTANCE.DD_key(ddCode, 2);
+    robot.delay(entry.release);
+    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +
+            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +
+            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());
+    return true;
+}
+</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡到程序</a></p>
 
       
     </div>
@@ -334,13 +374,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/08/SSR/"></a></p>
+        <p><span>本文标题:</span><a href="/2017/01/21/java-ddxoft/">基于ddxoft的驱动级外设模拟</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2019-01-08, 16:33:54</p>
-        <p><span>最后更新:</span>2019-01-08, 16:51:34</p>
+        <p><span>发布时间:</span>2017-01-21, 17:05:20</p>
+        <p><span>最后更新:</span>2019-01-08, 17:33:03</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/08/SSR/" title="">http://yibierusi.github.io/2019/01/08/SSR/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2019/01/08/SSR/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/21/java-ddxoft/" title="基于ddxoft的驱动级外设模拟">http://yibierusi.github.io/2017/01/21/java-ddxoft/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2017/01/21/java-ddxoft/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -352,10 +392,16 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/01/08/SSR/">
+                    
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/21/java-ddxoft/">
-                    基于ddxoft的驱动级外设模拟
+                <a href="/2017/01/20/java-robot/">
+                    基于Java的软件级外设模拟
                 </a>
             </div>
         
@@ -367,7 +413,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#categories-Vpn"><span class="toc-number">1.</span> <span class="toc-text">categories: Vpn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">3.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">3.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器选购"><span class="toc-number">3.2.</span> <span class="toc-text">服务器选购</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR部署"><span class="toc-number">3.3.</span> <span class="toc-text">SSR部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR安装"><span class="toc-number">3.4.</span> <span class="toc-text">SSR安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锐速安装"><span class="toc-number">3.5.</span> <span class="toc-text">锐速安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SStap配置"><span class="toc-number">3.6.</span> <span class="toc-text">SStap配置</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入层次介绍"><span class="toc-number">1.1.</span> <span class="toc-text">输入层次介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟层次介绍"><span class="toc-number">1.2.</span> <span class="toc-text">模拟层次介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载Dll"><span class="toc-number">2.1.</span> <span class="toc-text">加载Dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定位"><span class="toc-number">2.2.</span> <span class="toc-text">定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">2.3.</span> <span class="toc-text">事件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -403,7 +449,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"基于ddxoft的驱动级外设模拟　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -445,13 +491,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/01/08/SSR/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/21/java-ddxoft/" title="下一篇: 基于ddxoft的驱动级外设模拟">
+            <a href="/2017/01/20/java-robot/" title="下一篇: 基于Java的软件级外设模拟">
                 <i class="fa fa-angle-right"></i>
             </a>
         
