@@ -383,7 +383,7 @@
 <p>因为创建的是个人网站，所以仓库的名称需要安装GitHub个人网站项目的规定来写。<br>规则就是：</p>
 <pre><code>username.github.io
 </code></pre><p>比如我的GitHub用户名是<code>yibierusi</code>，那我就要填写 <code>yibierusi.github.io</code>。然后选择<code>Public</code>模式，接着点击<code>创建仓库</code>按钮,因为我的已经创建了，所以这里会提示已经存在。<br><img src="/2017/01/12/hexo-two/2.jpg" alt=""></p>
-<h3 id="推送本地Hexo博客到Github"><a href="#推送本地Hexo博客到Github" class="headerlink" title="推送本地Hexo博客到Github"></a>推送本地Hexo博客到Github</h3><p>通过Git将本地创建的Hexo博客推送到Github。<br>在根目录下的<code>_config.yml</code>中添加git信息，之后在cmd下通过 <code>hexo d</code> 一键推送本地代码并部署。</p>
+<h3 id="推送部署"><a href="#推送部署" class="headerlink" title="推送部署"></a>推送部署</h3><p>在根目录下的<code>_config.yml</code>中添加git信息，之后在cmd下通过 <code>hexo d</code> 一键推送本地代码并部署。</p>
 <pre><code>deploy:
   type: git
   repository: git@github.com:yibierusi/yibierusi.github.io.git
