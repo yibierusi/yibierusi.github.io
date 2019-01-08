@@ -14,20 +14,21 @@
 <meta name="author" content="zhou">
 
 
-    
-    
 
-
-<meta name="description" content="网站描述">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zBlog">
-<meta property="og:url" content="http://yibierusi.github.io/index.html">
+<meta name="description" content="大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。 hexo个">
+<meta name="keywords" content="hexo,blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo个人博客搭建（一）">
+<meta property="og:url" content="http://yibierusi.github.io/2019/01/08/hexo-one/index.html">
 <meta property="og:site_name" content="zBlog">
-<meta property="og:description" content="网站描述">
+<meta property="og:description" content="大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。 hexo个">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://127.0.0.1/upload/photo/zhouhy/408a68a9dc854292aa981771e4eb087e/1536302323838.jpg">
+<meta property="og:updated_time" content="2019-01-08T07:01:13.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zBlog">
-<meta name="twitter:description" content="网站描述">
+<meta name="twitter:title" content="hexo个人博客搭建（一）">
+<meta name="twitter:description" content="大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。 hexo个">
+<meta name="twitter:image" content="http://127.0.0.1/upload/photo/zhouhy/408a68a9dc854292aa981771e4eb087e/1536302323838.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -55,13 +56,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>zBlog</title>
+<title>hexo个人博客搭建（一） | zBlog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -70,8 +69,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -192,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
                     </div>
                 </section>
                 
@@ -271,13 +270,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-hexo-two" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo-one" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/12/hexo-two/" class="article-date">
-      <time datetime="2017-01-12T07:30:31.000Z" itemprop="datePublished">2017-01-12</time>
+      <a href="/2019/01/08/hexo-one/" class="article-date">
+      <time datetime="2019-01-08T06:51:24.000Z" itemprop="datePublished">2019-01-08</time>
 </a>
 
 
@@ -291,99 +288,35 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/hexo-two/">Hexo：Github上发布博客（二）</a>
+    <h1 class="article-title" itemprop="name">
+      hexo个人博客搭建（一）
     </h1>
   
 
       </header>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <!-- # Hexo：Github上发布博客（二）-->
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇博客介绍了怎么搭建本地的静态博客，本文内容是将本地的博客通过GitHub Pages发布，使外网可以访问,coding上同理，本文只介绍Github。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>发布前的准备：</p>
-<ul>
-<li>注册Github账号</li>
-</ul>
-<h3 id="创建Github-仓库"><a href="#创建Github-仓库" class="headerlink" title="创建Github 仓库"></a>创建Github 仓库</h3><p>注册完成之后,点击头像左侧的<code>+</code>号, —&gt;<code>New repository</code>，创建新仓库<br><img src="/2017/01/12/hexo-two/1.jpg" alt=""></p>
-<p>因为创建的是个人网站，所以仓库的名称需要安装GitHub个人网站项目的规定来写。<br>规则就是：</p>
-<pre><code>username.github.io
-</code></pre><p>比如我的GitHub用户名是<code>yibierusi</code>，那我就要填写 <code>yibierusi.github.io</code>。然后选择<code>Public</code>模式，接着点击<code>创建仓库</code>按钮,因为我的已经创建了，所以这里会提示已经存在。<br><img src="/2017/01/12/hexo-two/2.jpg" alt=""></p>
-<h3 id="推送本地Hexo博客到Github"><a href="#推送本地Hexo博客到Github" class="headerlink" title="推送本地Hexo博客到Github"></a>推送本地Hexo博客到Github</h3><p>通过Git将本地创建的Hexo博客推送到Github。<br>在根目录下的<code>_config.yml</code>中添加git信息，之后在cmd下通过 <code>hexo d</code> 一键推送本地代码并部署。</p>
-<pre><code>deploy:
-  type: git
-  repository: git@github.com:yibierusi/yibierusi.github.io.git
-  branch: master
-</code></pre><h3 id="绑定自定义域名"><a href="#绑定自定义域名" class="headerlink" title="绑定自定义域名"></a>绑定自定义域名</h3><p>代码推送成功后，进入新仓库，点击<code>Settings</code>，找到<code>GitHub Pages</code> 设置主题，并且绑定自定义域名<br><img src="/2017/01/12/hexo-two/3.jpg" alt=""><br>第一个红框是选择分支<br>第二个红框是选择主题<br>第三个红框是自定义域名，没有就访问<code>username.github.io</code>，如果有域名需要在域名供应上处解析，并设置第三个红框，否则404，我用的是阿里云的域名。解析配置如下图：<br><img src="/2017/01/12/hexo-two/4.jpg" alt=""></p>
-<p>绑定自定义域名后会生成一个<code>CNAME</code>文件，文件内容就是刚刚绑定的域名<code>zhouhy.top</code>。到了这一步，我们已经完成了个人博客的创建，稍等一两分钟就可以通过域名访问自己的博客了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    <a class="article-category-link" href="/categories/blog/">blog</a>
     </div>
 
 
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-one" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/01/08/hexo-one/" class="article-date">
-      <time datetime="2017-01-08T06:51:24.000Z" itemprop="datePublished">2017-01-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/08/hexo-one/">Hexo：个人博客搭建（一）</a>
-    </h1>
-  
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
 
-      </header>
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
           
-        <!-- # Hexo：个人博客搭建（一）-->
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。</p>
+        <a id="more"></a>
+<p>大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。<br><!-- more --></p>
+<h1 id="hexo个人博客搭建（一）"><a href="#hexo个人博客搭建（一）" class="headerlink" title="hexo个人博客搭建（一）"></a>hexo个人博客搭建（一）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>操作系统：Windwos 10</p>
 <p>需要安装的软件：Node.js。用来创建hexo博客框架的，我当前安装版本为node-v5.6.0-x64。</p>
 <p>Node.js的安装配置教程参照：<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
@@ -392,7 +325,7 @@
 <pre><code>npm install -g hexo
 </code></pre><p>或者</p>
 <pre><code>npm install hexo-cli -g
-</code></pre><p>安装完成后，在你想要搭建的路径下（如D:\hexo），执行以下指令(在D:\hexo下调用CMD，或者CMD下cd到D:\hexo)，Hexo 即会自动在目标文件夹建立网站所需要的所有文件<br><img src="/2017/01/08/hexo-one/1.jpg" alt=""></p>
+</code></pre><p>安装完成后，在你想要搭建的路径下（如D:\hexo），执行以下指令(在D:\hexo下调用CMD，或者CMD下cd到D:\hexo)，Hexo 即会自动在目标文件夹建立网站所需要的所有文件<br><img src="http://127.0.0.1/upload/photo/zhouhy/408a68a9dc854292aa981771e4eb087e/1536302323838.jpg" alt=""></p>
 <pre><code>hexo init
 </code></pre><p>安装所需依赖包：</p>
 <pre><code>npm install
@@ -501,27 +434,74 @@ deploy:
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/01/08/hexo-one/">hexo个人博客搭建（一）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2019-01-08, 14:51:24</p>
+        <p><span>最后更新:</span>2019-01-08, 15:01:13</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/08/hexo-one/" title="hexo个人博客搭建（一）">http://yibierusi.github.io/2019/01/08/hexo-one/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2019/01/08/hexo-one/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
   
 </article>
 
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo个人博客搭建（一）"><span class="toc-number">1.</span> <span class="toc-text">hexo个人博客搭建（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">1.2.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo常用的命令"><span class="toc-number">1.2.3.</span> <span class="toc-text">Hexo常用的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo文目录"><span class="toc-number">1.2.4.</span> <span class="toc-text">hexo文目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo的-config-yml配置"><span class="toc-number">1.2.5.</span> <span class="toc-text">hexo的_config.yml配置</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"hexo个人博客搭建（一）　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
@@ -529,9 +509,53 @@ deploy:
 
 
 
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
 
-  
-  
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/08/hexo-one/">hexo个人博客搭建（一）</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -585,10 +609,6 @@ deploy:
         })
     </script>
 
-
-    
-
-     
 
 
 
