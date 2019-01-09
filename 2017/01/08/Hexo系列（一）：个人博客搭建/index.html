@@ -15,21 +15,20 @@
 
 
 
-<meta name="description" content="前言之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API 正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.git">
-<meta name="keywords" content="hexo,yelee,themes">
+<meta name="description" content="前言大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。 正文环">
+<meta name="keywords" content="hexo,blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo系列：（四）yelee主题下载以及配置">
-<meta property="og:url" content="http://yibierusi.github.io/2019/01/09/hexo-themes-yelee/index.html">
+<meta property="og:title" content="Hexo系列（一）：个人博客搭建">
+<meta property="og:url" content="http://yibierusi.github.io/2017/01/08/Hexo系列（一）：个人博客搭建/index.html">
 <meta property="og:site_name" content="zBlog">
-<meta property="og:description" content="前言之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API 正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.git">
+<meta property="og:description" content="前言大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。 正文环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/09/hexo-themes-yelee/1.jpg">
-<meta property="og:image" content="http://yibierusi.github.io/2019/01/09/hexo-themes-yelee/2.jpg">
-<meta property="og:updated_time" content="2019-01-09T02:04:33.010Z">
+<meta property="og:image" content="http://yibierusi.github.io/2017/01/08/Hexo系列（一）：个人博客搭建/1.jpg">
+<meta property="og:updated_time" content="2019-01-09T02:07:20.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo系列：（四）yelee主题下载以及配置">
-<meta name="twitter:description" content="前言之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API 正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.git">
-<meta name="twitter:image" content="http://yibierusi.github.io/2019/01/09/hexo-themes-yelee/1.jpg">
+<meta name="twitter:title" content="Hexo系列（一）：个人博客搭建">
+<meta name="twitter:description" content="前言大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。 正文环">
+<meta name="twitter:image" content="http://yibierusi.github.io/2017/01/08/Hexo系列（一）：个人博客搭建/1.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -61,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo系列：（四）yelee主题下载以及配置 | zBlog</title>
+<title>Hexo系列（一）：个人博客搭建 | zBlog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-hexo-themes-yelee" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Hexo系列（一）：个人博客搭建" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/09/hexo-themes-yelee/" class="article-date">
-      <time datetime="2019-01-09T01:33:33.000Z" itemprop="datePublished">2019-01-09</time>
+      <a href="/2017/01/08/Hexo系列（一）：个人博客搭建/" class="article-date">
+      <time datetime="2017-01-08T06:51:24.000Z" itemprop="datePublished">2017-01-08</time>
 </a>
 
 
@@ -297,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo系列：（四）yelee主题下载以及配置
+      Hexo系列（一）：个人博客搭建
     </h1>
   
 
@@ -312,7 +311,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/themes/">themes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yelee/">yelee</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -322,338 +321,122 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是<code>landscape</code>，略显简单，我的主题是基于<code>yelee</code>风格的，作者也是在<code>hexo-theme-yilia</code>的基础上进行的修改。具体的使用可以参考<a href="http://moxfive.coding.me/yelee/" target="_blank" rel="noopener">官方API</a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>CD到 <code>themes</code> 路径下执行clone命令下载主题</p>
-<pre><code>git clone https://github.com/MOxFIVE/hexo-theme-yelee.git
-</code></pre><h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>打开项目目录下的<code>_config.yml</code>文件</p>
-<p>主题更改，注意的是在<code>yelee</code>前面有个空格，主题<code>yml</code>格式可以自行百度</p>
-<pre><code>theme: yelee
-</code></pre><h3 id="更新主题"><a href="#更新主题" class="headerlink" title="更新主题"></a>更新主题</h3><pre><code>cd themes/yelee
-git pull
-</code></pre><p><strong>注意</strong>：请先备份你的<code>_config.yml</code>文件后再升级<br>更新好后，本地启动起来效果</p>
-<pre><code>hexo server -g  #生成加预览
-</code></pre><p><img src="/2019/01/09/hexo-themes-yelee/1.jpg" alt="主题预览效果"></p>
-<h3 id="主题的-config-yml配置"><a href="#主题的-config-yml配置" class="headerlink" title="主题的_config.yml配置"></a>主题的_config.yml配置</h3><p>配置文件<code>_config.yml</code>位于主题根目录下,下面贴出我的配置</p>
-<pre><code># Theme Version | 当前版本
-Yelee: &quot;3.5&quot;
+        <!-- # Hexo：个人博客搭建（一）-->
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大学的时候就有写技术博客的习惯，那时在CSDN。毕业后比较忙，没时间去审词酌句写一篇完整的博客，大部分心得体会都写在有道云笔记中。但记笔记的效果是完全不能跟写博客相比的。一直想写一个自己的个人博客项目，但是没找到满意的前段模板也不想写大量的CSS，再加上备案也麻烦，一直搁浅到现在。无意间发现Hexo这个优秀的静态博客框架，所以写个博客记录一下，也给想搭建Hexo博客的朋友多一点参考。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>操作系统：Windwos 10</p>
+<p>需要安装的软件：Node.js。用来创建hexo博客框架的，我当前安装版本为node-v5.6.0-x64。</p>
+<p>Node.js的安装配置教程参照：<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>在CMD下，利用 npm 命令即可安装。</p>
+<p>输入安装hexo命令：</p>
+<pre><code>npm install -g hexo
+</code></pre><p>或者</p>
+<pre><code>npm install hexo-cli -g
+</code></pre><p>安装完成后，在你想要搭建的路径下（如D:\hexo），执行以下指令(在D:\hexo下调用CMD，或者CMD下cd到D:\hexo)，Hexo 即会自动在目标文件夹建立网站所需要的所有文件<br><img src="/2017/01/08/Hexo系列（一）：个人博客搭建/1.jpg" alt=""></p>
+<pre><code>hexo init
+</code></pre><p>安装所需依赖包：</p>
+<pre><code>npm install
+</code></pre><p>安装后之后执行以下命令，#后为注释，不用输入</p>
+<pre><code>hexo g #用于生成静态文件
+hexo s #用于启动服务器，主要用来本地预览
+</code></pre><p>此时访问路径<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，就可以看到一个搭建完成的hexo博客了，当前博客为本地预览版，外网不能访问。</p>
+<h3 id="Hexo常用的命令"><a href="#Hexo常用的命令" class="headerlink" title="Hexo常用的命令"></a>Hexo常用的命令</h3><p>介绍几个hexo常用的命令,通过<code>hexo n</code>生成md（生成的md文件位置D:\hexo\source_posts\）。</p>
+<p>然后通过Markdown编辑器（这里推荐Markdownpad2编辑器）可以对博客进行编写，编写之后通过<code>hexo g</code>命令生成静态文件。</p>
+<p>执行<code>hexo s</code>用于启动服务器，主要用来本地预览。</p>
+<p>预览没问题之后通过<code>hexo d</code>将本地文件发布到你的github或者coding上。</p>
+<pre><code>hexo g #完整命令为hexo generate,用于生成静态文件
+hexo s #完整命令为hexo server,用于启动服务器，主要用来本地预览
+hexo d #完整命令为hexo deploy,用于将本地文件发布到github或者coding上
+hexo n #完整命令为hexo new,用于新建一篇文章
+</code></pre><h3 id="hexo文目录"><a href="#hexo文目录" class="headerlink" title="hexo文目录"></a>hexo文目录</h3><p>_<strong>config.yml</strong>:网站的 配置 信息，您可以在此配置大部分的参数。</p>
+<p><strong>package.json</strong>:应用程序的信息。</p>
+<p><strong>scaffolds</strong>:模版文件夹。当您新建文章时，Hexo会根据scaffold 来建立文件。</p>
+<p><strong>source</strong>:资源文件夹是存放用户资源的地方。除posts文件夹之外，开头命名为(下划线)的文件/文件夹和隐藏的文件将会被忽略。Markdown和HTML文件会被解析并放到public文件夹，而其他文件会被拷贝过去。</p>
+<p><strong>themes</strong>:主题 文件夹。Hexo会根据主题来生成静态页面。</p>
+<h3 id="hexo的-config-yml配置"><a href="#hexo的-config-yml配置" class="headerlink" title="hexo的_config.yml配置"></a>hexo的_config.yml配置</h3><pre><code># Hexo Configuration
+# Docs: https://hexo.io/docs/configuration.html
+# Source: https://github.com/hexojs/hexo/
 
-# &gt;&gt;&gt; Basic Setup | 基础设置 &lt;&lt;&lt;
+# Site  网站
+title: zhouhy                                                              #网站标题
+subtitle: 勤学如春起之苗，不见其增，日有所长；辍学如磨刀之石，不见其损，日有所亏。  #网站副标题
+description: description                                                   #网站描述
+keywords:
+author: zhouhy                                                             #名字
+language: zh_CN                                                            #网站使用的语言
+timezone:                                                                  #网站时区。Hexo 默认使用您电脑的时区
 
-# Header | 主菜单
-## About Page: `hexo new page about`
-## Tags Cloud Page: `hexo new page tags`
-menu:
-  主页: /
-  所有文章: /archives/
-  #随笔: /tags/随笔
-  标签云: /tags/
-  关于我: /about/
+# URL 网址
+## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。
+url: http://zhouhy.top
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
 
-# Link to your avatar | 填写头像地址
-avatar: /img/avatar.png
+# Directory 目录配置
+source_dir: source          #源文件夹，这个文件夹用来存放内容。
+public_dir: public         #公共文件夹，这个文件夹用于存放生成的站点文件。
+tag_dir: tags              #标签文件夹
+archive_dir: archives     #归档文件夹
+category_dir: categories #分类文件夹
+code_dir: downloads/code #nclude code 文件夹
+i18n_dir: :lang              #国际化（i18n）文件夹
+skip_render:              #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。
 
-# Small icon of Your site | 站点小图标地址
-favicon: /favicon.png
+# Writing 文章
+new_post_name: :title.md # 新建文章默认文件名
+default_layout: post     # 默认布局
+titlecase: false          # Transform title into titlecase
+external_link: true      # 在新标签中打开一个外部链接，默认为true
+filename_case: 0         #转换文件名，1代表小写；2代表大写；默认为0，意思就是创建文章的时候，是否自动帮你转换文件名，默认就行，意义不大。
+render_drafts: false       #是否渲染_drafts目录下的文章，默认为false
+post_asset_folder: false #启动 Asset 文件夹
+relative_link: false     #把链接改为与根目录的相对位址，默认false
+future: true             #显示未来的文章，默认false
+highlight:                 #代码块的设置
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
 
-# Internationalization | 主题语言
-## Change Language in SITE&apos;s _config.yml | 在站点配置中切换语言
-## https://hexo.io/docs/internationalization.html
-## Available Languages: en, zh-Hans, zh-Hant-TW, zh-Hant-HK
+# Category &amp; Tag 分类和标签的设置
+default_category: uncategorized        #默认分类
+category_map:                        #分类别名
+tag_map:                            #标签别名
 
-# Subdirectory | 子目录
-## If your site&apos; url is &apos;http://yoursite.com/blog&apos;, set root_url as &apos;/blog/&apos;
-## 网站若存放在子目录，请按上面格式填写
-## https://hexo.io/docs/configuration.html#URL
-root_url: 
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
 
-# Year of Site Creation | 网站成立年份
-since: 2016
+# Home page setting
+# path: Root path for your blogs index page. (default = &apos;&apos;)
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: &apos;&apos;
+  per_page: 10      
+  order_by: -date
 
-# Social info. Bar | 社交信息展示
-## Keep &quot;mailto:&quot; in Email | 设置 Email 时保留 &quot;mailto:&quot;
-## Encrypt email 加密邮件地址 http://ctrlq.org/encode/
-## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
-## https://github.com/hexojs/hexo-generator-feed
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10            #每页显示的文章量 (0 = 关闭分页功能)
+pagination_dir: page    #分页目录
 
-#社交
-subnav:
-  Email: &quot;mailto:zhouhy1205@aliyun.com&quot;
-  #新浪微博: &quot;sina weibo&quot;
-  GitHub: &quot;https://github.com/yibierusi&quot;
-  #V2EX: &quot;#&quot;
-  RSS: &quot;/atom.xml&quot;
-  #知乎: &quot;zhihu&quot;
-  #豆瓣: &quot;douban&quot;
-  #简书: &quot;jianshu&quot;
-  #SegmentFault: &quot;&quot;
-  #博客园: &quot;cnblogs&quot;
-  #CSDN: &quot;&quot;
-  #Coding: &quot;&quot;
-  网易云音乐: &quot;https://music.163.com/#/user/home?id=110939435&quot;
-  #虾米音乐: &quot;xiami&quot;
-  #bilibili: &quot;&quot;
-  #AcFun: &quot;&quot;
-  #niconico: &quot;&quot;
-  #Quora: &quot;&quot;
-  #Facebook: &quot;#&quot;
-  #Google: &quot;#&quot;
-  #Twitter: &quot;#&quot;
-  #LinkedIn: &quot;#&quot;
-  #QQ: &quot;4670049&quot;
-  #微信: &quot;zy4670049&quot;
-  #PayPal: &quot;#&quot;
-  #StackOverflow: &quot;#&quot;
-  #CodePen: &quot;&quot;
-  #Plunker: &quot;&quot;
-  #Instagram: &quot;#&quot;
-  #LOFTER: &quot;&quot;
-  #Flickr: &quot;#&quot;
-  #reddit: &quot;&quot;
-  #Medium: &quot;&quot;
-  #TiddlyWiki: &quot;&quot;
-  #Tumblr: &quot;&quot;
-  #_500px: &quot;&quot;
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: landscape        #主题（皮肤）
 
-# &gt;&gt;&gt; Conments 评论系统 &lt;&lt;&lt;
-# Chose ONE as your comment system and keep others disable.
-# 选一个作为网站评论系统，其他保持禁用。
-
-preload_comment: true
-## false: 当点击评论条等区域时再加载评论模块
-## false: load comment&apos;s section until u click/hover on the bar/icon
-
-show_count: true
-## 是否在主页文章标题旁显示评论数（多说、Disqus）
-## Add comment count after article title
-
-#来必力    
-livere:
-  on: true
-  livere_uid: MTAyMC80MjA0MC8xODU4Nw==
-
-disqus: 
-  #on: true
-  shortname: 
-  # https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
-  # It is unnecessary to enable disqus here if 
-  # you have set &quot;disqus_shortname&quot; in your site&apos;s &quot;_config.yml&quot; 
-
-duoshuo: 
-  #on: true
-  domain: 
-  # 是否开启多说评论，http://duoshuo.com/create-site/
-  # 使用上面网址登陆你的多说，然后创建站点，在 domain 中填入你设定的域名前半部分
-  # http://&lt;要填的部分&gt;.duoshuo.com (domain只填上&lt;&gt;里的内容，不要填整个网址)
-
-youyan:
-  #on: true
-  id: 
-  # 是否开启友言评论，http://www.uyan.cc/index.php
-  # id 中填写你的友言用户数字ID，注册后进入后台管理即可查看
-  # 友言服务在 Web 环境下运行，普通本地环境无法查看，请部署后在线上测试。
-
-
-# &gt;&gt;&gt; Style Customisation 样式自定义 &lt;&lt;&lt;
-
-# Background | 背景
-## &quot;5&quot;: show images form bg-1.jpg to bg-5.jpg in `/yelee/source/background/`
-## &quot;5&quot;: 显示`/yelee/source/background/`文件夹中 bg-1.jpg 到 bg-5.jpg 这5张图片
-## &quot;0&quot;: white-gray background | 淳朴灰白背景
-background_image: 5
-
-# Base Font Size | 字号调节
-base_font_size: 16  #px, 16 - 24
-
-## General Color Scheme | 主题配色方案 
-## 可用值 Value: yilia
-color_scheme: yilia
-
-highlight_style:
-  #on: true
-  inline_code: 1  # Value: 0 - 9 可选
-  code_block: 1  # Value: 0 - 4 
-  # Set inline_code to style highlight text
-  # Chose a highlight theme for code block
-  # 通过 inline_code 切换内置文本高亮样式
-  # 通过 code_block 切换内置代码高亮配色主题
-
-blockquote_style:
-  #on: true
-  blockquote: 1  # Value: 0 - 7 可选
-  # 自定义文章「引用部分」的样式
-
-# Headings Style | 标题风格
-## 0-Yelee, 1-Yilia, 2-GitHub
-heading_style: 0 # Value: 0 - 2
-
-## List style type (ul) | 无序列表项标记样式
-list_style: 0  # value: 0 - 12 可选
-
-# 左边栏宽度 px
-left_col_width: 300
-
-# Copyright info. of post | 文末版权信息
-copyright: true
-
-# Table of contents | 文章目录
-toc:
-  on: true
-  list_number: true # 目录序号
-  max_depth: 3  # 1 - 6 (h1-h6) 目录最大级数
-  nowrap: false # Keep title on same line | 目录标题不换行
-
-# 是否开启主页及加载头像时的动画效果
-# Animation in Homepage and Loading avatar
-animate: true
-
-# Load jQuery UI to style tooltips
-# 工具提示框样式美化
-jquery_ui: true
-
-# Max width of right cloumn | 限制右侧内容的宽带 
-limit_article_width: 
-  on: false
-  max_width: 60 # em
-
-# &gt;&gt;&gt; Small features | 小功能设置 &lt;&lt;&lt;
-
-# 是否开启边栏多标签切换
-# Birdhouse button in left column
-tagcloud: true
-
-# Blogroll, Link exchange | 友情链接
-friends:
-  Hexo: https://hexo.io
-  GitHub: https://pages.github.com/
-  MOxFIVE: http://moxfive.xyz/
-#friends: false
-
-#是否开启“关于我”。
-aboutme: 专注于前端
-#aboutme: false
-
-# Open link in a new tab | 是否在新窗口打开链接
-## `global` 0: Set separately, 1: Open all in new 2: Open all in current
-## `global` 0: 分开设置, 1: 全部在新标签打开, 2: 全部在&quot;当前&quot;标签打开
-open_in_new:
-  global: 0 # 0-2
-  title: false # article title in homepage 主页文章标题
-  post: false # link within post/page 正文中的链接
-  tags: false # 标签
-  categories: false # 分类
-  article_nav: false # 导航
-  archives: true # 归档
-  mini_archives: true # 迷你归档
-  menu: false # 边栏菜单
-  friends: true  # 友情链接
-  socail: true # 社交图标
-
-# Customize feed link 自定义订阅地址
-rss: /atom.xml
-
-# Update Reminder for IE6/7/8
-# 针对 IE6/7/8 的升级浏览器提示
-ie_updater:
-  on: true
-  link: //outdatedbrowser.com/
-  ## http://browsehappy.com/
-  ## http://outdatedbrowser.com/
-
-# Tab Title Change | 标签页标题切换
-tab_title_change: 
-  on: false
-  left_tab_title: &apos;(つェ⊂) 我藏好了哦~ &apos;
-  return_tab_title: &apos;(*´∇｀*) 被你发现啦~ &apos;
-
-
-# &gt;&gt;&gt; Vendors | 第三方工具 &amp; 服务 &lt;&lt;&lt;
-
-# Local Site Search | 本地站内搜索
-## Insatall below plugin to take effect | 使用搜索需先安装对应插件
-## https://github.com/PaicHyperionDev/hexo-generator-search
-search: 
-  #on: true
-  onload: true
-  ## true: get search.xml file when the page has loaded
-  ## false: get the file when search box gets focus
-
-# images viewer | 图片浏览器
-## http://www.fancyapps.com/fancybox/
-fancybox: true
-
-# Display Math(LaTeX, MathML...) | 数学公式支持
-## https://www.mathjax.org/
-mathjax: false
-
-# Socail Share | 是否开启分享
-share: 
-  on: true
-  baidu: true
-  addthis: false
-  addthis_pubid: &quot;ra-56ff76c972fc0cf9&quot;
-  ## Go to www.addthis.com/dashboard to get your pubid (in src of Code)
-  ## and customize AddThis share buttons
-
-# 百度、谷歌站长验证。填写 HTML 标签 content
-# Site Verification for Google and Baidu. HTML label content.
-baidu_site: 
-google_site: 
-
-# Fill in Google Analytics tracking ID, #e.g. UA-XXXXX-X
-google_analytics: 
-
-# 百度统计 http://sitecenter.baidu.com/sc-web/
-# 查看代码，填入 //hm.baidu.com/hm.js? 之后的内容
-baidu_tongji: 
-
-# 不蒜子网站计数设置
-# http://ibruce.info/2015/04/04/busuanzi/
-visit_counter:
-  on: true
-  site_visit: true
-  page_visit: true
-
-# GitHub Repo Widget
-# https://github.com/hustcc/GitHub-Repo-Widget.js
-github_widget: false
-
-# Progress Bar | 页面加载进度条
-# Demo: http://github.hubspot.com/pace/docs/welcome/
-# type: barber-shop|big-counter|bounce|center-atom|center-circle|
-#       center-radar|center-simple|corner-indicator|flash|flat-top|
-#       loading-bar|mac-osx|minimal
-# color: black|blue|green|orange|pink|purple|red|silver|white|yellow|
-progressBar:
-  on: true
-  type: &quot;minimal&quot;  # Keep Quotes | 保留引号避免出错
-  color: blue
-
-CDN:
-  jquery: //cdn.bootcss.com/jquery/2.2.4/jquery.min.js
-  require: //cdn.bootcss.com/require.js/2.2.0/require.min.js
-  fontawesome: //cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css
-  fancybox_js: //cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js
-  fancybox_css: //cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css
-  animate_css: //cdn.bootcss.com/animate.css/3.5.1/animate.min.css
-  jquery_ui_js: //cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js
-  jquery_ui_css: //cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css
-  pace_js: //cdn.bootcss.com/pace/1.0.2/pace.min.js
-  clipboard: //cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js
-  mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
-  scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
-</code></pre><p>说明:</p>
-<ul>
-<li>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</li>
-</ul>
-<p>因为配置中很多有注释，或者官网有详细的说明，本文中就说一下常用的。</p>
-<h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><p>使用搜索需先安装对应插件，用于生成索引数据<br>插件主页: <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></p>
-<p><code>#on: true</code> 改为 <code>on: true</code>即为启用搜索</p>
-<pre><code>search: 
-  on: true
-  onload: false
-</code></pre><p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 [效率优先]</p>
-<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2019/01/09/hexo-themes-yelee/2.jpg" alt="本地搜索效果"></p>
-
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: 
+        #github: git@github.com:yibierusi/zhou.github.io.git,master
+        coding: git@git.coding.net:zhouhy1205/blog.git,master
+</code></pre>
       
     </div>
     
@@ -661,13 +444,13 @@ CDN:
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/09/hexo-themes-yelee/">Hexo系列：（四）yelee主题下载以及配置</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2019-01-09, 09:33:33</p>
-        <p><span>最后更新:</span>2019-01-09, 10:04:33</p>
+        <p><span>发布时间:</span>2017-01-08, 14:51:24</p>
+        <p><span>最后更新:</span>2019-01-09, 10:07:20</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/09/hexo-themes-yelee/" title="Hexo系列：（四）yelee主题下载以及配置">http://yibierusi.github.io/2019/01/09/hexo-themes-yelee/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2019/01/09/hexo-themes-yelee/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/08/Hexo系列（一）：个人博客搭建/" title="Hexo系列（一）：个人博客搭建">http://yibierusi.github.io/2017/01/08/Hexo系列（一）：个人博客搭建/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2017/01/08/Hexo系列（一）：个人博客搭建/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -679,12 +462,12 @@ CDN:
 
     <nav id="article-nav">
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/01/08/SSR/">
-                    SSR搭建属于自己的梯子
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/12/hexo-two/">
+                    Hexo：Github上发布博客（二）
                 </a>
             </div>
+        
         
     </nav>
 
@@ -694,7 +477,7 @@ CDN:
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主题"><span class="toc-number">2.1.</span> <span class="toc-text">安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用主题"><span class="toc-number">2.2.</span> <span class="toc-text">启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新主题"><span class="toc-number">2.3.</span> <span class="toc-text">更新主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主题的-config-yml配置"><span class="toc-number">2.4.</span> <span class="toc-text">主题的_config.yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地搜索"><span class="toc-number">2.5.</span> <span class="toc-text">本地搜索</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">2.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo常用的命令"><span class="toc-number">2.3.</span> <span class="toc-text">Hexo常用的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo文目录"><span class="toc-number">2.4.</span> <span class="toc-text">hexo文目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo的-config-yml配置"><span class="toc-number">2.5.</span> <span class="toc-text">hexo的_config.yml配置</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -730,7 +513,7 @@ CDN:
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo系列：（四）yelee主题下载以及配置　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Hexo系列（一）：个人博客搭建　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -772,15 +555,15 @@ CDN:
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/01/12/hexo-two/" title="上一篇: Hexo：Github上发布博客（二）">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/01/08/SSR/" title="下一篇: SSR搭建属于自己的梯子">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
