@@ -199,7 +199,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jIntellitype/">jIntellitype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/robot/">robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/script/">script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/themes/">themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yelee/">yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/count/">count</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jIntellitype/">jIntellitype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/robot/">robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/script/">script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/themes/">themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yelee/">yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
                     </div>
                 </section>
                 
@@ -1117,6 +1117,142 @@ public class Main {
       
     <div class="article-tag tagcloud" style="margin-top:20px">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robot/">robot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Hexo系列（五）：站内搜索与文章统计" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/" class="article-date">
+      <time datetime="2017-02-16T04:31:23.000Z" itemprop="datePublished">2017-02-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a>
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  Word Count: </span>
+        <span class="post-count">536</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  Read Time: </span>
+        <span class="post-count">2m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本来想用百度站内搜索，但是没成功，然后改用swiftype，但是swiftype需要注册账号并且只能用30天所以也放弃了，本文就简单的介绍一些yelee自带的站内搜索以及文章字数与阅读时长统计。</p>
+</blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><p>使用搜索需先安装对应插件，用于生成索引数据</p>
+<blockquote>
+<p>插件主页: <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></p>
+</blockquote>
+<p><code>#on: true</code> 改为 <code>on: true</code>即为启用搜索</p>
+<pre><code>search: 
+  on: true
+  onload: false
+</code></pre><p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 [效率优先]</p>
+<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/站内搜索.jpg" alt="本地搜索效果"></p>
+<h3 id="文章统计"><a href="#文章统计" class="headerlink" title="文章统计"></a>文章统计</h3><p><code>next</code>主题是已经集成这个功能的，但是<code>yelee</code>就需要我们自己配置了，可以看下官网对<a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a>的介绍</p>
+<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><blockquote>
+<p>安装hexo-wordcount</p>
+</blockquote>
+<pre><code>npm i --save hexo-wordcount
+</code></pre><h4 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h4><blockquote>
+<p>在yelee/layout/_partial/post下创建word.ejs文件：</p>
+</blockquote>
+<pre><code>&lt;div style=&quot;margin-top:10px;&quot;&gt;
+    &lt;span class=&quot;post-time&quot;&gt;
+      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+        &lt;i class=&quot;fa fa-keyboard-o&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;post-meta-item-text&quot;&gt;  字数统计: &lt;/span&gt;
+        &lt;span class=&quot;post-count&quot;&gt;&lt;%= wordcount(post.content) %&gt;字&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+
+    &lt;span class=&quot;post-time&quot;&gt;
+      &amp;nbsp; | &amp;nbsp;
+      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+        &lt;i class=&quot;fa fa-hourglass-half&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;post-meta-item-text&quot;&gt;  阅读时长: &lt;/span&gt;
+        &lt;span class=&quot;post-count&quot;&gt;&lt;%= min2read(post.content) %&gt;分&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+</code></pre><blockquote>
+<p>然后添加逻辑判断</p>
+</blockquote>
+<p>打开 themes/yelee/layout/_partial/article.ejs</p>
+<pre><code>&lt;% if(theme.word_count &amp;&amp; !post.no_word_count){ %&gt;
+    &lt;%- partial(&apos;post/word&apos;) %&gt;
+&lt;% } %&gt;
+</code></pre><p>在下图位置添加<br><img src="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/插入位置.jpg" alt="插入位置"><br><code>word_count</code> 是主题<code>_config.yml</code>中配置是否需要添加字数统计功能控制 flag，</p>
+<p><code>no_word_count</code>即配置文章是否需要显示字数统计的功能。</p>
+<pre><code># 是否开启字数统计
+#不需要使用，直接设置值为false，或注释掉
+word_count: true
+no_word_count: true
+</code></pre><p>如果统计与标签重合或者位置不对，可以在<code>yelee/layout/_partial/post</code> 下面的的<code>word.ejs</code>与<code>tag.ejs</code> 设置<code>margin</code>属性</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud" style="margin-top:20px">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/count/">count</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/search/">search</a></li></ul>
     </div>
 
       
