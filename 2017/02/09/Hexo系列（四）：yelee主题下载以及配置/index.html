@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/3.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/4.jpg">
-<meta property="og:updated_time" content="2019-01-09T03:33:33.148Z">
+<meta property="og:updated_time" content="2019-01-09T04:27:20.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo系列（四）：yelee主题下载以及配置">
 <meta name="twitter:description" content="前言 之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API  正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.g">
@@ -225,7 +225,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">关于我</div>
                 </section>
                 
             </div>
@@ -305,6 +305,25 @@
   
 
 		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  Word Count: </span>
+        <span class="post-count">2.9k</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  Read Time: </span>
+        <span class="post-count">13m</span>
+      </span>
+    </span>
+</div>
+		
       </header>
       
       <div class="article-info article-info-post">
@@ -315,7 +334,7 @@
 
 
         
-    <div class="article-tag tagcloud">
+    <div class="article-tag tagcloud" style="margin-top:20px">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/themes/">themes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yelee/">yelee</a></li></ul>
     </div>
 
@@ -666,7 +685,7 @@ CDN:
 </blockquote>
 <pre><code>npm i --save hexo-wordcount
 </code></pre><h4 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h4><blockquote>
-<p>在yelee/layout/_partial/post/word.ejs下创建word.ejs文件：</p>
+<p>在yelee/layout/_partial/post下创建word.ejs文件：</p>
 </blockquote>
 <pre><code>&lt;div style=&quot;margin-top:10px;&quot;&gt;
     &lt;span class=&quot;post-time&quot;&gt;
@@ -693,7 +712,13 @@ CDN:
 <pre><code>&lt;% if(theme.word_count &amp;&amp; !post.no_word_count){ %&gt;
     &lt;%- partial(&apos;post/word&apos;) %&gt;
 &lt;% } %&gt;
-</code></pre><p>在下图位置添加<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg" alt="插入位置"></p>
+</code></pre><p>在下图位置添加<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg" alt="插入位置"><br><code>word_count</code> 是主题<code>_config.yml</code>中配置是否需要添加字数统计功能控制 flag，</p>
+<p><code>no_word_count</code>即配置文章是否需要显示字数统计的功能。</p>
+<pre><code># 是否开启字数统计
+#不需要使用，直接设置值为false，或注释掉
+word_count: true
+no_word_count: true
+</code></pre><p>如果统计与标签重合或者位置不对，可以在<code>yelee/layout/_partial/post</code> 下面的的<code>word.ejs</code>与<code>tag.ejs</code> 设置<code>margin</code>属性</p>
 <h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</p>
 <h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>默认头像存储于 <code>yelee/source/img/avatar.png</code></p>
 <p>配置中对应填写 <code>/img/avatar.png</code>，可替换图片或指定新地址</p>
@@ -754,7 +779,7 @@ aboutme: false
         <p><span>本文标题:</span><a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：yelee主题下载以及配置</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
         <p><span>发布时间:</span>2017-02-09, 09:33:33</p>
-        <p><span>最后更新:</span>2019-01-09, 11:33:33</p>
+        <p><span>最后更新:</span>2019-01-09, 12:27:20</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/" title="Hexo系列（四）：yelee主题下载以及配置">http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -890,6 +915,7 @@ aboutme: false
     <script>
         
     </script>
+
 </div>
       <footer id="footer">
     <div class="outer">
