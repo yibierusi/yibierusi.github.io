@@ -280,11 +280,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-hexo-themes-yelee" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-SSR" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/09/hexo-themes-yelee/" class="article-date">
-      <time datetime="2019-01-09T01:33:33.000Z" itemprop="datePublished">2019-01-09</time>
+      <a href="/2019/01/08/SSR/" class="article-date">
+      <time datetime="2019-01-08T08:33:54.000Z" itemprop="datePublished">2019-01-08</time>
 </a>
 
 
@@ -299,7 +299,763 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/09/hexo-themes-yelee/">Hexo系列：（四）yelee主题下载以及配置</a>
+      <a class="article-title" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。<br>之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
+<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2019/01/08/SSR/1.png" alt=""></p>
+<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
+<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2019/01/08/SSR/2.png" alt=""></p>
+<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
+<p>【Server Location】<br><img src="/2019/01/08/SSR/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2019/01/08/SSR/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2019/01/08/SSR/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
+<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
+<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
+<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2019/01/08/SSR/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2019/01/08/SSR/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2019/01/08/SSR/8.png" alt=""></p>
+<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
+<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
+</code></pre><p><img src="/2019/01/08/SSR/9.png" alt=""><br><img src="/2019/01/08/SSR/10.png" alt=""></p>
+<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
+<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
+<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
+</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
+<p>2.锐速安装脚本</p>
+<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
+</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
+<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
+</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2019/01/08/SSR/11.png" alt=""></p>
+<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
+<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2019/01/08/SSR/12.png" alt=""><br>最后给个Google一张<br><img src="/2019/01/08/SSR/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Vpn/">Vpn</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-用JavaScript写一个区块链" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/08/用JavaScript写一个区块链/" class="article-date">
+      <time datetime="2018-07-08T09:49:11.000Z" itemprop="datePublished">2018-07-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>本文是由Savjee.be发布，JeLewine翻译。版权归原作者所有，如有侵权，请与我联系删除</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>原文：<a href="https://link.zhihu.com/?target=https://www.savjee.be/2017/07/Writing-tiny-blockchain-in-JavaScript/" target="_blank" rel="noopener">Writing a tiny blockchain in JavaScript</a><br>作者：Savjee.be<br>译者：JeLewine</p>
+<p>几乎每个人都听说过像比特币和以太币这样的加密货币，但是只有极少数人懂得隐藏在它们背后的技术。在这篇博客中，我将会用JavaScript来创建一个简单的区块链来演示它们的内部究竟是如何工作的。我将会称之为SavjeeCoin！</p>
+<p>全文分为三个部分：<br>part1：实现一个基本的区块链<br>part2：实现POW<br>part3：交易与挖矿奖励</p>
+<h2 id="Part1：实现一个基本的区块链"><a href="#Part1：实现一个基本的区块链" class="headerlink" title="Part1：实现一个基本的区块链"></a>Part1：实现一个基本的区块链</h2><p>区块链</p>
+<p>区块链是由一个个任何人都可以访问的区块构成的公共数据库。这好像没什么特别的，不过它们有一个有趣的属性：它们是不可变的。一旦一个区块被添加到区块链中，除非让剩余的其余区块失效，否则它是不会再被改变的。</p>
+<p>这就是为什么加密货币是基于区块链的原因。你肯定不希望人们在交易完成后再变更交易！</p>
+<p>创造一个区块</p>
+<p>区块链是由许许多多的区块链接在一起的（这听上去好像没毛病..）。链上的区块通过某种方式允许我们检测到是否有人操纵了之前的任何区块。</p>
+<p>那么我们如何确保数据的完整性呢？每个区块都包含一个基于其内容计算出来的hash。同时也包含了前一个区块的hash。</p>
+<p>下面是一个区块类用JavaScript写出来大致的样子：</p>
+<pre><code>const SHA256 = require(&quot;crypto-js/sha256&quot;);  
+class Block {  
+  constructor(index, timestamp, data, previousHash = &apos;&apos;) {  
+    this.index = index;  
+    this.previousHash = previousHash;  
+    this.timestamp = timestamp;  
+    this.data = data;  
+    this.hash = this.calculateHash();  
+  }  
+  calculateHash() {  
+    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();  
+  }  
+}  
+</code></pre><p>因为JavaScript中并不支持sha256所以我引入了crypto-js库。然后我定义了一个构造函数来初始化我区块的属性。每一个区块上都被赋予了index属性来告知我们这个区块在整个链上的位置。我们同时也生成了一个时间戳，以及需要在区块里存储的一些数据。最后是前一个区块的hash。</p>
+<p>创造一个链</p>
+<p>现在我们可以在Blockchain类中将区块链接起来了！下面是用JavaScript实现的代码：</p>
+<pre><code>class Blockchain{  
+  constructor() {  
+        this.chain = [this.createGenesisBlock()];  
+  }  
+  createGenesisBlock() {  
+        return new Block(0, &quot;01/01/2017&quot;, &quot;Genesis block&quot;, &quot;0&quot;);  
+  }  
+  getLatestBlock() {  
+        return this.chain[this.chain.length - 1];  
+  }  
+  addBlock(newBlock) {  
+        newBlock.previousHash = this.getLatestBlock().hash;  
+        newBlock.hash = newBlock.calculateHash();  
+        this.chain.push(newBlock);  
+  }  
+  isChainValid() {  
+    for (let i = 1; i &lt; this.chain.length; i++){  
+          const currentBlock = this.chain[i];  
+          const previousBlock = this.chain[i - 1];  
+          if (currentBlock.hash !== currentBlock.calculateHash()) {  
+                    return false;  
+          }  
+          if (currentBlock.previousHash !== previousBlock.hash) {  
+                return false;  
+          }  
+    }  
+        return true;  
+  }  
+}  
+</code></pre><p>在构造函数里，我通过创建一个包含创世块的数组来初始化整个链。第一个区块是特殊的，因为它不能指向前一个区块。我还添加了下面两个方法：<br>getLatestBlock()返回我们区块链上最新的区块。<br>addBlock()负责将新的区块添加到我们的链上。为此，我们将前一个区块的hash添加到我们新的区块中。这样我们就可以保持整个链的完整性。因为只要我们变更了最新区块的内容，我们就需要重新计算它的hash。当计算完成后，我将把这个区块推进链里（一个数组）。<br>最后，我创建一个isChainValid()来确保没有人篡改过区块链。它会遍历所有的区块来检查每个区块的hash是否正确。它会通过比较previousHash来检查每个区块是否指向正确的上一个区块。如果一切都没有问题它会返回true否则会返回false。</p>
+<p>使用区块链</p>
+<p>我们的区块链类已经写完啦，可以真正的开始使用它了！</p>
+<pre><code>let savjeeCoin = new Blockchain();  
+savjeeCoin.addBlock(new Block(1, &quot;20/07/2017&quot;, { amount: 4 }));  
+savjeeCoin.addBlock(new Block(2, &quot;20/07/2017&quot;, { amount: 8 }));  
+</code></pre><p>在这里我仅仅是创建了一个区块链的实例，并且命名它为SavjeeCoin！之后我在链上添加了一些区块。区块里可以包含任何你想要放的数据，不过在上面的代码里，我选择添加了一个带有amount属性的对象。</p>
+<p>试着操作吧！</p>
+<p>在介绍里我曾说过区块链是不可变的。一旦添加，区块就不可能再变更了。让我们试一下！</p>
+<pre><code>// 检查是否有效(将会返回true)  
+console.log(&apos;Blockchain valid? &apos; + savjeeCoin.isChainValid());  
+// 现在尝试操作变更数据  
+savjeeCoin.chain[1].data = { amount: 100 };  
+// 再次检查是否有效 (将会返回false)  
+console.log(&quot;Blockchain valid? &quot; + savjeeCoin.isChainValid());  
+</code></pre><p>我会在一开始通过运行isChainValid()来验证整个链的完整性。我们操作过任何区块，所以它会返回true。</p>
+<p>之后我将链上的第一个（索引为1）区块的数据进行了变更。之后我再次检查整个链的完整性，发现它返回了false。我们的整个链不再有效了。</p>
+<p>结论</p>
+<p>这个小栗子还远未达到完成的程度。它还没有实现POW（工作量证明机制）或P2P网络来与其它矿工来进行交流。</p>
+<p>但他确实证明了区块链的工作原理。许多人认为原理会非常复杂，但这篇文章证明了区块链的基本概念是非常容易理解和实现的。</p>
+<h2 id="Part2：实现POW-proof-of-work-工作量证明"><a href="#Part2：实现POW-proof-of-work-工作量证明" class="headerlink" title="Part2：实现POW(proof-of-work:工作量证明)"></a>Part2：实现POW(proof-of-work:工作量证明)</h2><p>在part1中我们用JavaScript创建了一个简单的区块链来演示区块链的工作原理。不过这个实现并不完整，很多人发现依旧可以篡改该系统。没错！我们的区块链需要另一种机制来抵御攻击。那么让我们来看看我们该如何做到这一点！</p>
+<p>问题</p>
+<p>现在我们可以很快的创造区块然后非常迅速的将它们添加进我们的区块链中。不过这导致了三个问题：<br>第一：人们可以快速创建区块然后在我们的链里塞满垃圾。大量的区块会导致我们区块链过载并让其无法使用。<br>第二：因为创建一个有效的区块太容易了，人们可以篡改链中的某一个区块，然后重新计算所有区块的hash。即使它们已经篡改了区块，他们仍然可以以有效的区块来作为结束。<br>第三：你可以通过结合上述两个破绽来有效控制区块链。区块链由p2p网络驱动，其中节点会将区块添加到可用的最长链中。所以你可以篡改区块，然后计算所有其他的区块，最后添加多任意你想要添加的区块。你最后会得到一个最长的链，所有的其它节点都会接受它然后往上添加自己的区块。<br>显然我们需要一个方案来解决这些问题：POW。</p>
+<p>什么是POW</p>
+<p>POW是在第一个区块链被创造之前就已经存在的一种机制。这是一项简单的技术，通过一定数量的计算来防止滥用。工作量是防止垃圾填充和篡改的关键。如果它需要大量的算力，那么填充垃圾就不再值得。</p>
+<p>比特币通过要求hash以特定0的数目来实现POW。这也被称之为难度</p>
+<p>不过等一下！一个区块的hash怎么可以改变呢？在比特币的场景下，一个区块包含有各种金融交易信息。我们肯定不希望为了获取正确的hash而混淆了那些数据。</p>
+<p>为了解决这个问题，区块链添加了一个nonce值。Nonce是用来查找一个有效Hash的次数。而且，因为无法预测hash函数的输出，因此在获得满足难度条件的hash之前，只能大量组合尝试。寻找到一个有效的hash（创建一个新的区块）在圈内称之为挖矿。</p>
+<p>在比特币的场景下，POW确保每10分钟只能添加一个区块。你可以想象垃圾填充者需要多大的算力来创造一个新区块，他们很难欺骗网络，更不要说篡改整个链。</p>
+<p>实现POW</p>
+<p>我们该如何实现呢？我们先来修改我们区块类并在其构造函数中添加Nonce变量。我会初始化它并将其值设置为0。</p>
+<pre><code>constructor(index, timestamp, data, previousHash = &apos;&apos;) {  
+  this.index = index;  
+  this.previousHash = previousHash;  
+  this.timestamp = timestamp;  
+  this.data = data;  
+  this.hash = this.calculateHash();  
+  this.nonce = 0;  
+}  
+</code></pre><p>我们还需要一个新的方法来增加Nonce，直到我们获得一个有效hash。强调一下，这是由难度决定的。所以我们会收到作为参数的难度。</p>
+<pre><code>mineBlock(difficulty) {  
+    while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join(&quot;0&quot;)) {  
+        this.nonce++;  
+        this.hash = this.calculateHash();  
+    }  
+    console.log(&quot;BLOCK MINED: &quot; + this.hash);  
+}  
+</code></pre><p>最后，我们还需要更改一下calculateHash()函数。因为目前他还没有使用Nonce来计算hash。</p>
+<pre><code>calculateHash() {  
+  return SHA256(this.index +  
+    this.previousHash +  
+    this.timestamp +  
+    JSON.stringify(this.data) +  
+    this.nonce  
+  ).toString();  
+}  
+</code></pre><p>将它们结合在一起，你会得到如下所示的区块类：</p>
+<pre><code>class Block {  
+  constructor(index, timestamp, data, previousHash = &apos;&apos;) {  
+    this.index = index;  
+    this.previousHash = previousHash;  
+    this.timestamp = timestamp;  
+    this.data = data;  
+    this.hash = this.calculateHash();  
+    this.nonce = 0;  
+  }  
+  calculateHash() {  
+    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString();  
+  }  
+  mineBlock(difficulty) {  
+    while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join(&quot;0&quot;)) {  
+      this.nonce++;  
+      this.hash = this.calculateHash();  
+    }  
+    console.log(&quot;BLOCK MINED: &quot; + this.hash);  
+  }  
+} 
+</code></pre><p>修改区块链</p>
+<p>现在，我们的区块已经拥有Nonce并且可以被开采了，我们还需要确保我们的区块链支持这种新的行为。让我们先在区块链中添加一个新的属性来跟踪整条链的难度。我会将它设置为2（这意味着区块的hash必须以2个0开头）。</p>
+<pre><code>constructor() {  
+  this.chain = [this.createGenesisBlock()];  
+  this.difficulty = 2;  
+}  
+</code></pre><p>现在剩下要做的就是改变addBlock()方法，以便在将其添加到链中之前确保实际挖到该区块。下面我们将难度传给区块。</p>
+<pre><code>addBlock(newBlock) {  
+  newBlock.previousHash = this.getLatestBlock().hash;  
+  newBlock.mineBlock(this.difficulty);  
+  this.chain.push(newBlock);  
+}  
+</code></pre><p>大功告成！我们的区块链现在拥有了POW来抵御攻击了。</p>
+<p>测试</p>
+<p>现在让我们来测试一下我们的区块链，看看在POW下添加一个新区块会有什么效果。我将会使用之前的代码。我们将创建一个新的区块链实例然后往里添加2个区块。</p>
+<pre><code>let savjeeCoin = new Blockchain();  
+console.log(&apos;Mining block 1&apos;);  
+savjeeCoin.addBlock(new Block(1, &quot;20/07/2017&quot;, { amount: 4 }));  
+console.log(&apos;Mining block 2&apos;);  
+savjeeCoin.addBlock(new Block(2, &quot;20/07/2017&quot;, { amount: 8 }));  
+</code></pre><p>如果你运行了上面的代码，你会发现添加新区块依旧非常快。这是因为目前的难度只有2（或者你的电脑性能非常好）。</p>
+<p>如果你创建了一个难度为5的区块链实例，你会发现你的电脑会花费大概十秒钟来挖矿。随着难度的提升，你的防御攻击的保护程度越高。</p>
+<p>免责声明</p>
+<p>就像之前说的：这绝不是一个完整的区块链。它仍然缺少很多功能（像P2P网路）。这只是为了说明区块链的工作原理。</p>
+<p>并且：由于单线程的原因，用JavaScript来挖矿并不快。</p>
+<h2 id="Part3：交易与挖矿奖励"><a href="#Part3：交易与挖矿奖励" class="headerlink" title="Part3：交易与挖矿奖励"></a>Part3：交易与挖矿奖励</h2><p>在前面两部分我们创建了一个简单的区块链，并且加入了POW来抵御攻击。然而我们在途中也偷了懒：我们的区块链只能在一个区块中存储一笔交易，而且矿工没有奖励。现在，让我们解决这个问题！</p>
+<p>重构区块类</p>
+<p>现在一个区块拥有index,previousHash,timestamp,data,hash和nonce属性。这个index属性并不是很有用，事实上我甚至不知道为什么开始我要将它添加进去。所以我把它移除了，同时将data改名为transactions来更语义化。</p>
+<pre><code>class Block{  
+  constructor(timestamp, transactions, previousHash = &apos;&apos;) {  
+    this.previousHash = previousHash;  
+    this.timestamp = timestamp;  
+    this.transactions = transactions;  
+    this.hash = this.calculateHash();  
+    this.nonce = 0;  
+  }  
+} 
+</code></pre><p>当我们改变区块类时，我们也必须更改calculateHash()函数。现在它还在使用老旧的index和data属性。</p>
+<pre><code>calculateHash() {  
+  return SHA256(this.previousHash + this.timestamp + JSON.stringify(this.transactions) + this.nonce).toString();  
+}  
+</code></pre><p>交易类</p>
+<p>在区块内，我们将可以存储多笔交易。因此我们还需要定义一个交易类，一边我们可以锁定交易应当具有的属性：<br>代码</p>
+<pre><code>class Transaction{  
+  constructor(fromAddress, toAddress, amount){  
+    this.fromAddress = fromAddress;  
+    this.toAddress = toAddress;  
+    this.amount = amount;  
+  }  
+}  
+</code></pre><p>这个交易例子非常的简单，仅仅包含了发起方（fromAddress）和接受方（toAddress）以及数量。如果有需求，你也可以在里面加入更多字段，不过这个只是为了最小实现。</p>
+<p>调整我们的区块链</p>
+<p>当前的最大任务：调整我们的区块链来适应这些新变化。我们需要做的第一件事就是存储待处理交易的地方。</p>
+<p>正如你所知道的，由于POW，区块链可以稳定的创建区块。在比特币的场景下，难度被设置成大约每10分钟创建一个新区块。但是，是可以在创造两个区块之间提交新的交易。</p>
+<p>为了做到这一点，首先需要改变我们区块链的构造函数，以便他可以存储待处理的交易。我们还将创造一个新的属性，用于定义矿工获得多少钱作为奖励：</p>
+<pre><code>class Blockchain{  
+  constructor() {  
+    this.chain = [this.createGenesisBlock()];  
+    this.difficulty = 5;  
+    // 在区块产生之间存储交易的地方  
+    this.pendingTransactions = [];  
+    // 挖矿回报  
+    this.miningReward = 100;  
+  }  
+} 
+</code></pre><p>下一步，我们将调整我们的addBlock()方法。不过我的调整是指删掉并重写它！我们将不再允许人们直接为链上添加区块。相反，他们必须将交易添加至下一个区块中。而且我们将addBlock()更名为createTransaction()，这看起来更语义化：</p>
+<pre><code>createTransaction(transaction) {  
+  // 这里应该有一些校验!  
+  // 推入待处理交易数组  
+  this.pendingTransactions.push(transaction);  
+}  
+</code></pre><p>挖矿</p>
+<p>人们现在可以将新的交易添加到待处理交易的列表中。但无论如何，我们需要将他们清理掉并移入实际的区块中。为此，我们来创建一个minePendingTransactions()方法。这个方法不仅会挖掘所有待交易的新区块，而且还会向采矿者发送奖励。</p>
+<pre><code>minePendingTransactions(miningRewardAddress) {  
+  // 用所有待交易来创建新的区块并且开挖..  
+  let block = new Block(Date.now(), this.pendingTransactions);  
+  block.mineBlock(this.difficulty);  
+  // 将新挖的看矿加入到链上  
+  this.chain.push(block);  
+  // 重置待处理交易列表并且发送奖励  
+  this.pendingTransactions = [  
+      new Transaction(null, miningRewardAddress, this.miningReward)  
+  ];  
+}  
+</code></pre><p>请注意，该方法采用了参数miningRewardAddress。如果你开始挖矿，你可以将你的钱包地址传递给此方法。一旦成功挖到矿，系统将创建一个新的交易来给你挖矿奖励（在这个栗子里是100枚币）。</p>
+<p>有一点需要注意的是，在这个栗子中，我们将所有待处理交易一并添加到一个区块中。但实际上，由于区块的大小是有限制的，所以这是行不通的。在比特币里，一个区块的大小大概是2Mb。如果有更多的交易能够挤进一个区块，那么矿工可以选择哪些交易达成哪些交易不达成（通常情况下费用更高的交易容易获胜）。</p>
+<p>地址的余额</p>
+<p>在测试我们的代码钱让我们再做一件事！如果能够检查我们区块链上地址的余额将会更好。</p>
+<pre><code>getBalanceOfAddress(address){  
+  let balance = 0; // you start at zero!  
+  // 遍历每个区块以及每个区块内的交易  
+  for(const block of this.chain){  
+    for(const trans of block.transactions){  
+      // 如果地址是发起方 -&gt; 减少余额  
+      if(trans.fromAddress === address){  
+        balance -= trans.amount;  
+      }  
+      // 如果地址是接收方 -&gt; 增加余额  
+      if(trans.toAddress === address){  
+        balance += trans.amount;  
+      }  
+    }  
+  }  
+  return balance;  
+}  
+</code></pre><p>测试</p>
+<p>好吧，我们已经完成并可以最终一切是否可以正常工作！为此，我们创建了一些交易：</p>
+<pre><code>let savjeeCoin = new Blockchain();  
+console.log(&apos;Creating some transactions...&apos;);  
+savjeeCoin.createTransaction(new Transaction(&apos;address1&apos;, &apos;address2&apos;, 100));  
+savjeeCoin.createTransaction(new Transaction(&apos;address2&apos;, &apos;address1&apos;, 50));  
+</code></pre><p>这些交易目前都处于等待状态，为了让他们得到证实，我们必须开始挖矿：</p>
+<pre><code>console.log(&apos;Starting the miner...&apos;);  
+savjeeCoin.minePendingTransactions(&apos;xaviers-address&apos;);  
+</code></pre><p>当我们开始挖矿，我们也会传递一个我们想要获得挖矿奖励的地址。在这种情况下，我的地址是xaviers-address（非常复杂！）。</p>
+<p>之后，让我们检查一下xaviers-address的账户余额：</p>
+<pre><code>console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAddress(&apos;xaviers-address&apos;));  
+// 输出: 0
+</code></pre><p>我的账户输出竟然是0？！等等，为什么？难道我不应该得到我的挖矿奖励么？那么，如果你仔细观察代码，你会看到系统会创建一个交易，然后将您的挖矿奖励添加为新的待处理交易。这笔交易将会包含在下一个区块中。所以如果我们再次开始挖矿，我们将收到我们的100枚硬币奖励！</p>
+<pre><code>console.log(&apos;Starting the miner again!&apos;);  
+savjeeCoin.minePendingTransactions(&quot;xaviers-address&quot;);  
+console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAddress(&apos;xaviers-address&apos;));  
+// 输出: 100
+</code></pre><p>局限性与结论</p>
+<p>现在我们的区块链已经可以在一个区块上存储多笔交易，并且可以为矿工带来回报。</p>
+<p>不过，还是有一些不足：发送货币是，我们不检查发起人是否有足够的余额来实际进行交易。然而，这其实是一件容易解决的事情。我们也没有创建一个新的钱包和签名交易（传统上用公钥/私钥加密完成）。</p>
+<p>免责声明 &amp; 源代码</p>
+<p>我想指出的是，这绝不是一个完整的区块链实现！它仍然缺少很多功能。这只是为了验证一些概念来帮助您来了解区块链的工作原理。</p>
+<p>该项目的源代码就放在我的<a href="https://link.zhihu.com/?target=https://github.com/SavjeeTutorials/SavjeeCoin" target="_blank" rel="noopener">GitHub</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/区块链/">区块链</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SSR搭建属于自己的梯子" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/08/SSR搭建属于自己的梯子/" class="article-date">
+      <time datetime="2017-04-08T08:33:54.000Z" itemprop="datePublished">2017-04-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。<br>之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
+<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2017/04/08/SSR搭建属于自己的梯子/1.png" alt=""></p>
+<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
+<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2017/04/08/SSR搭建属于自己的梯子/2.png" alt=""></p>
+<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
+<p>【Server Location】<br><img src="/2017/04/08/SSR搭建属于自己的梯子/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2017/04/08/SSR搭建属于自己的梯子/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2017/04/08/SSR搭建属于自己的梯子/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
+<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
+<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
+<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2017/04/08/SSR搭建属于自己的梯子/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2017/04/08/SSR搭建属于自己的梯子/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2017/04/08/SSR搭建属于自己的梯子/8.png" alt=""></p>
+<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
+<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
+</code></pre><p><img src="/2017/04/08/SSR搭建属于自己的梯子/9.png" alt=""><br><img src="/2017/04/08/SSR搭建属于自己的梯子/10.png" alt=""></p>
+<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
+<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
+<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
+</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
+<p>2.锐速安装脚本</p>
+<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
+</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
+<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
+</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2017/04/08/SSR搭建属于自己的梯子/11.png" alt=""></p>
+<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
+<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2017/04/08/SSR搭建属于自己的梯子/12.png" alt=""><br>最后给个Google一张<br><img src="/2017/04/08/SSR搭建属于自己的梯子/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Vpn/">Vpn</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-基于ddxoft的驱动级外设模拟" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/11/基于ddxoft的驱动级外设模拟/" class="article-date">
+      <time datetime="2017-03-11T09:05:20.000Z" itemprop="datePublished">2017-03-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/11/基于ddxoft的驱动级外设模拟/">基于ddxoft的驱动级外设模拟</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p>
+<p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p>
+<p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p>
+<h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p>
+<p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p>
+<p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p>
+<p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p>
+<p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p>
+<p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p>
+<p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p>
+<p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p>
+<h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;
+import com.sun.jna.Native;
+
+public interface DdXoft extends Library {
+    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);
+    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、
+    int DD_mov(int x, int y);//绝对移动
+    int DD_movR(int dx, int dy);//相对移动
+    int DD_btn(int btn);//鼠标
+    int DD_whl(int whl); //滑轮
+    int DD_key(int ddcode, int flag);//键盘
+    int DD_str(String s);//字符串
+}
+</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p>
+<pre><code>/**
+ * 判断某点颜色是否相同 相同则按下
+ *
+ * @return
+ */
+public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {
+    if (isEquals(robot, entry)) {
+        return pressKey(robot, entry, ddCode);
+    }
+    return false;
+}
+</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p>
+<pre><code>/**
+ * 直接按下某键
+ */
+public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
+    //robot.keyPress(keyCode);
+    DdXoft.INSTANCE.DD_key(ddCode, 1);
+    robot.delay(entry.press);
+    //robot.keyRelease(keyCode);
+    DdXoft.INSTANCE.DD_key(ddCode, 2);
+    robot.delay(entry.release);
+    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +
+            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +
+            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());
+    return true;
+}
+</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡到程序</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Dll/">Dll</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dll/">dll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jIntellitype/">jIntellitype</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-基于Java的软件级外设模拟" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/05/基于Java的软件级外设模拟/" class="article-date">
+      <time datetime="2017-03-05T09:06:30.000Z" itemprop="datePublished">2017-03-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/基于Java的软件级外设模拟/">基于Java的软件级外设模拟</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。</p>
+<p>本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检测出来，下一篇博客会介绍驱动级的键盘模拟。</p>
+<p>官方JavaDocsApi: j<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html" target="_blank" rel="noopener">ava.awt.Robot</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Robot，机器人。此类用于为测试自动化、自运行演示程序和其他需要控制鼠标和键盘的应用程序生成本机系统输入事件。Robot 的主要目的是便于 Java 平台实现自动测试。</p>
+<p>Robot 可以模拟鼠标和键盘的输入，相当于 Java 版的按键精灵。</p>
+<h3 id="Robot-构造方法"><a href="#Robot-构造方法" class="headerlink" title="Robot 构造方法"></a>Robot 构造方法</h3><pre><code>// 在基本屏幕坐标系中构造一个 Robot 对象, 如果平台不支持 Robot, 将抛出异常
+Robot()
+
+// 为给定屏幕设备创建一个 Robot（用于同时使用多个显示设备的情况）
+Robot(GraphicsDevice screen)
+</code></pre><h3 id="模拟鼠标"><a href="#模拟鼠标" class="headerlink" title="模拟鼠标"></a>模拟鼠标</h3><pre><code>// 将鼠标指针移动到指定屏幕坐标
+void mouseMove(int x, int y)
+
+/**
+ * 按下/释放一个或多个鼠标按钮, 参数说明:
+ *     buttons: 鼠标按钮掩码, 一个或多个以下标志的组合:
+ *     InputEvent.BUTTON1_MASK 鼠标左键
+ *     InputEvent.BUTTON2_MASK 鼠标中键
+ *     InputEvent.BUTTON3_MASK 鼠标右键
+ */
+    void mousePress(int buttons)
+    void mouseRelease(int buttons)
+
+    // 在配有滚轮的鼠标上旋转滚轮
+    void mouseWheel(int wheelAmt)
+</code></pre><h3 id="模拟键盘"><a href="#模拟键盘" class="headerlink" title="模拟键盘"></a>模拟键盘</h3><pre><code>/**
+ * 按下/释放键盘按键, 参数说明:
+ *     keycode: 键盘键值常量, 定义在 KeyEvent.VK_XXX 中
+ */
+    void keyPress(int keycode)
+    void keyRelease(int keycode)
+</code></pre><h3 id="屏幕相关"><a href="#屏幕相关" class="headerlink" title="屏幕相关"></a>屏幕相关</h3><pre><code>// 获取指定屏幕坐标处的像素颜色
+Color getPixelColor(int x, int y)
+
+// 截屏, 截取指定的矩形区域
+BufferedImage createScreenCapture(Rectangle screenRect)
+</code></pre><h3 id="控制类"><a href="#控制类" class="headerlink" title="控制类"></a>控制类</h3><pre><code>// 睡眠指定的时间, 相当于 Thread.sleep(long ms)
+void delay(int ms)
+
+// 在处理完当前事件队列中的所有事件之前, 一直等待
+void waitForIdle()
+
+// 设置此 Robot 在生成一个事件后是否自动调用 waitForIdle()
+// 设置为 true, 表示添加的事件逐个按顺序执行（执行完一个再执行下一个）
+void setAutoWaitForIdle(boolean isOn)
+boolean isAutoWaitForIdle()
+
+// 设置此 Robot 每在生成一个事件后自动睡眠的毫秒数
+void setAutoDelay(int ms)
+int getAutoDelay()
+</code></pre><h3 id="模拟鼠标事件"><a href="#模拟鼠标事件" class="headerlink" title="模拟鼠标事件"></a>模拟鼠标事件</h3><pre><code>package com.xiets.robot;
+
+import java.awt.*;
+import java.awt.event.InputEvent;
+
+public class Main {
+
+    public static void main(String[] args) throws AWTException {
+        // 创建 Robot 实例
+        Robot robot = new Robot();
+
+        // 执行完一个事件后再执行下一个
+        robot.setAutoWaitForIdle(true);
+
+        // 移动鼠标到指定屏幕坐标
+        robot.mouseMove(100, 100);
+
+        // 按下鼠标左键
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+
+        // 延时100毫秒
+        robot.delay(100);
+
+        // 释放鼠标左键（按下后必须要释放, 一次点击操作包含了按下和释放）
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robot/">robot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Hexo系列（四）：yelee主题下载以及配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/" class="article-date">
+      <time datetime="2017-02-09T01:33:33.000Z" itemprop="datePublished">2017-02-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：yelee主题下载以及配置</a>
     </h1>
   
 
@@ -319,7 +1075,7 @@
 git pull
 </code></pre><p><strong>注意</strong>：请先备份你的<code>_config.yml</code>文件后再升级<br>更新好后，本地启动起来效果</p>
 <pre><code>hexo server -g  #生成加预览
-</code></pre><p><img src="/2019/01/09/hexo-themes-yelee/1.jpg" alt="主题预览效果"></p>
+</code></pre><p><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/1.jpg" alt="主题预览效果"></p>
 <h3 id="主题的-config-yml配置"><a href="#主题的-config-yml配置" class="headerlink" title="主题的_config.yml配置"></a>主题的_config.yml配置</h3><p>配置文件<code>_config.yml</code>位于主题根目录下,下面贴出我的配置</p>
 <pre><code># Theme Version | 当前版本
 Yelee: &quot;3.5&quot;
@@ -639,7 +1395,7 @@ CDN:
   on: true
   onload: false
 </code></pre><p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 [效率优先]</p>
-<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2019/01/09/hexo-themes-yelee/2.jpg" alt="本地搜索效果"></p>
+<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/2.jpg" alt="本地搜索效果"></p>
 
       
     </div>
@@ -674,509 +1430,10 @@ CDN:
 
 
   
-    <article id="post-SSR" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Hexo系列（三）：上传资源到博客" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/08/SSR/" class="article-date">
-      <time datetime="2019-01-08T08:33:54.000Z" itemprop="datePublished">2019-01-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。<br>之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
-<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2019/01/08/SSR/1.png" alt=""></p>
-<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
-<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2019/01/08/SSR/2.png" alt=""></p>
-<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
-<p>【Server Location】<br><img src="/2019/01/08/SSR/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2019/01/08/SSR/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2019/01/08/SSR/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
-<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
-<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
-<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2019/01/08/SSR/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2019/01/08/SSR/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2019/01/08/SSR/8.png" alt=""></p>
-<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
-<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
-</code></pre><p><img src="/2019/01/08/SSR/9.png" alt=""><br><img src="/2019/01/08/SSR/10.png" alt=""></p>
-<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
-<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
-</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
-<p>2.锐速安装脚本</p>
-<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
-</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
-<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
-</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2019/01/08/SSR/11.png" alt=""></p>
-<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
-<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2019/01/08/SSR/12.png" alt=""><br>最后给个Google一张<br><img src="/2019/01/08/SSR/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Vpn/">Vpn</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-java-script-block-chain" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/08/java-script-block-chain/" class="article-date">
-      <time datetime="2018-07-08T09:49:11.000Z" itemprop="datePublished">2018-07-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/08/java-script-block-chain/">用JavaScript写一个区块链</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>本文是由Savjee.be发布，JeLewine翻译。版权归原作者所有，如有侵权，请与我联系删除</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>原文：<a href="https://link.zhihu.com/?target=https://www.savjee.be/2017/07/Writing-tiny-blockchain-in-JavaScript/" target="_blank" rel="noopener">Writing a tiny blockchain in JavaScript</a><br>作者：Savjee.be<br>译者：JeLewine</p>
-<p>几乎每个人都听说过像比特币和以太币这样的加密货币，但是只有极少数人懂得隐藏在它们背后的技术。在这篇博客中，我将会用JavaScript来创建一个简单的区块链来演示它们的内部究竟是如何工作的。我将会称之为SavjeeCoin！</p>
-<p>全文分为三个部分：<br>part1：实现一个基本的区块链<br>part2：实现POW<br>part3：交易与挖矿奖励</p>
-<h2 id="Part1：实现一个基本的区块链"><a href="#Part1：实现一个基本的区块链" class="headerlink" title="Part1：实现一个基本的区块链"></a>Part1：实现一个基本的区块链</h2><p>区块链</p>
-<p>区块链是由一个个任何人都可以访问的区块构成的公共数据库。这好像没什么特别的，不过它们有一个有趣的属性：它们是不可变的。一旦一个区块被添加到区块链中，除非让剩余的其余区块失效，否则它是不会再被改变的。</p>
-<p>这就是为什么加密货币是基于区块链的原因。你肯定不希望人们在交易完成后再变更交易！</p>
-<p>创造一个区块</p>
-<p>区块链是由许许多多的区块链接在一起的（这听上去好像没毛病..）。链上的区块通过某种方式允许我们检测到是否有人操纵了之前的任何区块。</p>
-<p>那么我们如何确保数据的完整性呢？每个区块都包含一个基于其内容计算出来的hash。同时也包含了前一个区块的hash。</p>
-<p>下面是一个区块类用JavaScript写出来大致的样子：</p>
-<pre><code>const SHA256 = require(&quot;crypto-js/sha256&quot;);  
-class Block {  
-  constructor(index, timestamp, data, previousHash = &apos;&apos;) {  
-    this.index = index;  
-    this.previousHash = previousHash;  
-    this.timestamp = timestamp;  
-    this.data = data;  
-    this.hash = this.calculateHash();  
-  }  
-  calculateHash() {  
-    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();  
-  }  
-}  
-</code></pre><p>因为JavaScript中并不支持sha256所以我引入了crypto-js库。然后我定义了一个构造函数来初始化我区块的属性。每一个区块上都被赋予了index属性来告知我们这个区块在整个链上的位置。我们同时也生成了一个时间戳，以及需要在区块里存储的一些数据。最后是前一个区块的hash。</p>
-<p>创造一个链</p>
-<p>现在我们可以在Blockchain类中将区块链接起来了！下面是用JavaScript实现的代码：</p>
-<pre><code>class Blockchain{  
-  constructor() {  
-        this.chain = [this.createGenesisBlock()];  
-  }  
-  createGenesisBlock() {  
-        return new Block(0, &quot;01/01/2017&quot;, &quot;Genesis block&quot;, &quot;0&quot;);  
-  }  
-  getLatestBlock() {  
-        return this.chain[this.chain.length - 1];  
-  }  
-  addBlock(newBlock) {  
-        newBlock.previousHash = this.getLatestBlock().hash;  
-        newBlock.hash = newBlock.calculateHash();  
-        this.chain.push(newBlock);  
-  }  
-  isChainValid() {  
-    for (let i = 1; i &lt; this.chain.length; i++){  
-          const currentBlock = this.chain[i];  
-          const previousBlock = this.chain[i - 1];  
-          if (currentBlock.hash !== currentBlock.calculateHash()) {  
-                    return false;  
-          }  
-          if (currentBlock.previousHash !== previousBlock.hash) {  
-                return false;  
-          }  
-    }  
-        return true;  
-  }  
-}  
-</code></pre><p>在构造函数里，我通过创建一个包含创世块的数组来初始化整个链。第一个区块是特殊的，因为它不能指向前一个区块。我还添加了下面两个方法：<br>getLatestBlock()返回我们区块链上最新的区块。<br>addBlock()负责将新的区块添加到我们的链上。为此，我们将前一个区块的hash添加到我们新的区块中。这样我们就可以保持整个链的完整性。因为只要我们变更了最新区块的内容，我们就需要重新计算它的hash。当计算完成后，我将把这个区块推进链里（一个数组）。<br>最后，我创建一个isChainValid()来确保没有人篡改过区块链。它会遍历所有的区块来检查每个区块的hash是否正确。它会通过比较previousHash来检查每个区块是否指向正确的上一个区块。如果一切都没有问题它会返回true否则会返回false。</p>
-<p>使用区块链</p>
-<p>我们的区块链类已经写完啦，可以真正的开始使用它了！</p>
-<pre><code>let savjeeCoin = new Blockchain();  
-savjeeCoin.addBlock(new Block(1, &quot;20/07/2017&quot;, { amount: 4 }));  
-savjeeCoin.addBlock(new Block(2, &quot;20/07/2017&quot;, { amount: 8 }));  
-</code></pre><p>在这里我仅仅是创建了一个区块链的实例，并且命名它为SavjeeCoin！之后我在链上添加了一些区块。区块里可以包含任何你想要放的数据，不过在上面的代码里，我选择添加了一个带有amount属性的对象。</p>
-<p>试着操作吧！</p>
-<p>在介绍里我曾说过区块链是不可变的。一旦添加，区块就不可能再变更了。让我们试一下！</p>
-<pre><code>// 检查是否有效(将会返回true)  
-console.log(&apos;Blockchain valid? &apos; + savjeeCoin.isChainValid());  
-// 现在尝试操作变更数据  
-savjeeCoin.chain[1].data = { amount: 100 };  
-// 再次检查是否有效 (将会返回false)  
-console.log(&quot;Blockchain valid? &quot; + savjeeCoin.isChainValid());  
-</code></pre><p>我会在一开始通过运行isChainValid()来验证整个链的完整性。我们操作过任何区块，所以它会返回true。</p>
-<p>之后我将链上的第一个（索引为1）区块的数据进行了变更。之后我再次检查整个链的完整性，发现它返回了false。我们的整个链不再有效了。</p>
-<p>结论</p>
-<p>这个小栗子还远未达到完成的程度。它还没有实现POW（工作量证明机制）或P2P网络来与其它矿工来进行交流。</p>
-<p>但他确实证明了区块链的工作原理。许多人认为原理会非常复杂，但这篇文章证明了区块链的基本概念是非常容易理解和实现的。</p>
-<h2 id="Part2：实现POW-proof-of-work-工作量证明"><a href="#Part2：实现POW-proof-of-work-工作量证明" class="headerlink" title="Part2：实现POW(proof-of-work:工作量证明)"></a>Part2：实现POW(proof-of-work:工作量证明)</h2><p>在part1中我们用JavaScript创建了一个简单的区块链来演示区块链的工作原理。不过这个实现并不完整，很多人发现依旧可以篡改该系统。没错！我们的区块链需要另一种机制来抵御攻击。那么让我们来看看我们该如何做到这一点！</p>
-<p>问题</p>
-<p>现在我们可以很快的创造区块然后非常迅速的将它们添加进我们的区块链中。不过这导致了三个问题：<br>第一：人们可以快速创建区块然后在我们的链里塞满垃圾。大量的区块会导致我们区块链过载并让其无法使用。<br>第二：因为创建一个有效的区块太容易了，人们可以篡改链中的某一个区块，然后重新计算所有区块的hash。即使它们已经篡改了区块，他们仍然可以以有效的区块来作为结束。<br>第三：你可以通过结合上述两个破绽来有效控制区块链。区块链由p2p网络驱动，其中节点会将区块添加到可用的最长链中。所以你可以篡改区块，然后计算所有其他的区块，最后添加多任意你想要添加的区块。你最后会得到一个最长的链，所有的其它节点都会接受它然后往上添加自己的区块。<br>显然我们需要一个方案来解决这些问题：POW。</p>
-<p>什么是POW</p>
-<p>POW是在第一个区块链被创造之前就已经存在的一种机制。这是一项简单的技术，通过一定数量的计算来防止滥用。工作量是防止垃圾填充和篡改的关键。如果它需要大量的算力，那么填充垃圾就不再值得。</p>
-<p>比特币通过要求hash以特定0的数目来实现POW。这也被称之为难度</p>
-<p>不过等一下！一个区块的hash怎么可以改变呢？在比特币的场景下，一个区块包含有各种金融交易信息。我们肯定不希望为了获取正确的hash而混淆了那些数据。</p>
-<p>为了解决这个问题，区块链添加了一个nonce值。Nonce是用来查找一个有效Hash的次数。而且，因为无法预测hash函数的输出，因此在获得满足难度条件的hash之前，只能大量组合尝试。寻找到一个有效的hash（创建一个新的区块）在圈内称之为挖矿。</p>
-<p>在比特币的场景下，POW确保每10分钟只能添加一个区块。你可以想象垃圾填充者需要多大的算力来创造一个新区块，他们很难欺骗网络，更不要说篡改整个链。</p>
-<p>实现POW</p>
-<p>我们该如何实现呢？我们先来修改我们区块类并在其构造函数中添加Nonce变量。我会初始化它并将其值设置为0。</p>
-<pre><code>constructor(index, timestamp, data, previousHash = &apos;&apos;) {  
-  this.index = index;  
-  this.previousHash = previousHash;  
-  this.timestamp = timestamp;  
-  this.data = data;  
-  this.hash = this.calculateHash();  
-  this.nonce = 0;  
-}  
-</code></pre><p>我们还需要一个新的方法来增加Nonce，直到我们获得一个有效hash。强调一下，这是由难度决定的。所以我们会收到作为参数的难度。</p>
-<pre><code>mineBlock(difficulty) {  
-    while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join(&quot;0&quot;)) {  
-        this.nonce++;  
-        this.hash = this.calculateHash();  
-    }  
-    console.log(&quot;BLOCK MINED: &quot; + this.hash);  
-}  
-</code></pre><p>最后，我们还需要更改一下calculateHash()函数。因为目前他还没有使用Nonce来计算hash。</p>
-<pre><code>calculateHash() {  
-  return SHA256(this.index +  
-    this.previousHash +  
-    this.timestamp +  
-    JSON.stringify(this.data) +  
-    this.nonce  
-  ).toString();  
-}  
-</code></pre><p>将它们结合在一起，你会得到如下所示的区块类：</p>
-<pre><code>class Block {  
-  constructor(index, timestamp, data, previousHash = &apos;&apos;) {  
-    this.index = index;  
-    this.previousHash = previousHash;  
-    this.timestamp = timestamp;  
-    this.data = data;  
-    this.hash = this.calculateHash();  
-    this.nonce = 0;  
-  }  
-  calculateHash() {  
-    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString();  
-  }  
-  mineBlock(difficulty) {  
-    while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join(&quot;0&quot;)) {  
-      this.nonce++;  
-      this.hash = this.calculateHash();  
-    }  
-    console.log(&quot;BLOCK MINED: &quot; + this.hash);  
-  }  
-} 
-</code></pre><p>修改区块链</p>
-<p>现在，我们的区块已经拥有Nonce并且可以被开采了，我们还需要确保我们的区块链支持这种新的行为。让我们先在区块链中添加一个新的属性来跟踪整条链的难度。我会将它设置为2（这意味着区块的hash必须以2个0开头）。</p>
-<pre><code>constructor() {  
-  this.chain = [this.createGenesisBlock()];  
-  this.difficulty = 2;  
-}  
-</code></pre><p>现在剩下要做的就是改变addBlock()方法，以便在将其添加到链中之前确保实际挖到该区块。下面我们将难度传给区块。</p>
-<pre><code>addBlock(newBlock) {  
-  newBlock.previousHash = this.getLatestBlock().hash;  
-  newBlock.mineBlock(this.difficulty);  
-  this.chain.push(newBlock);  
-}  
-</code></pre><p>大功告成！我们的区块链现在拥有了POW来抵御攻击了。</p>
-<p>测试</p>
-<p>现在让我们来测试一下我们的区块链，看看在POW下添加一个新区块会有什么效果。我将会使用之前的代码。我们将创建一个新的区块链实例然后往里添加2个区块。</p>
-<pre><code>let savjeeCoin = new Blockchain();  
-console.log(&apos;Mining block 1&apos;);  
-savjeeCoin.addBlock(new Block(1, &quot;20/07/2017&quot;, { amount: 4 }));  
-console.log(&apos;Mining block 2&apos;);  
-savjeeCoin.addBlock(new Block(2, &quot;20/07/2017&quot;, { amount: 8 }));  
-</code></pre><p>如果你运行了上面的代码，你会发现添加新区块依旧非常快。这是因为目前的难度只有2（或者你的电脑性能非常好）。</p>
-<p>如果你创建了一个难度为5的区块链实例，你会发现你的电脑会花费大概十秒钟来挖矿。随着难度的提升，你的防御攻击的保护程度越高。</p>
-<p>免责声明</p>
-<p>就像之前说的：这绝不是一个完整的区块链。它仍然缺少很多功能（像P2P网路）。这只是为了说明区块链的工作原理。</p>
-<p>并且：由于单线程的原因，用JavaScript来挖矿并不快。</p>
-<h2 id="Part3：交易与挖矿奖励"><a href="#Part3：交易与挖矿奖励" class="headerlink" title="Part3：交易与挖矿奖励"></a>Part3：交易与挖矿奖励</h2><p>在前面两部分我们创建了一个简单的区块链，并且加入了POW来抵御攻击。然而我们在途中也偷了懒：我们的区块链只能在一个区块中存储一笔交易，而且矿工没有奖励。现在，让我们解决这个问题！</p>
-<p>重构区块类</p>
-<p>现在一个区块拥有index,previousHash,timestamp,data,hash和nonce属性。这个index属性并不是很有用，事实上我甚至不知道为什么开始我要将它添加进去。所以我把它移除了，同时将data改名为transactions来更语义化。</p>
-<pre><code>class Block{  
-  constructor(timestamp, transactions, previousHash = &apos;&apos;) {  
-    this.previousHash = previousHash;  
-    this.timestamp = timestamp;  
-    this.transactions = transactions;  
-    this.hash = this.calculateHash();  
-    this.nonce = 0;  
-  }  
-} 
-</code></pre><p>当我们改变区块类时，我们也必须更改calculateHash()函数。现在它还在使用老旧的index和data属性。</p>
-<pre><code>calculateHash() {  
-  return SHA256(this.previousHash + this.timestamp + JSON.stringify(this.transactions) + this.nonce).toString();  
-}  
-</code></pre><p>交易类</p>
-<p>在区块内，我们将可以存储多笔交易。因此我们还需要定义一个交易类，一边我们可以锁定交易应当具有的属性：<br>代码</p>
-<pre><code>class Transaction{  
-  constructor(fromAddress, toAddress, amount){  
-    this.fromAddress = fromAddress;  
-    this.toAddress = toAddress;  
-    this.amount = amount;  
-  }  
-}  
-</code></pre><p>这个交易例子非常的简单，仅仅包含了发起方（fromAddress）和接受方（toAddress）以及数量。如果有需求，你也可以在里面加入更多字段，不过这个只是为了最小实现。</p>
-<p>调整我们的区块链</p>
-<p>当前的最大任务：调整我们的区块链来适应这些新变化。我们需要做的第一件事就是存储待处理交易的地方。</p>
-<p>正如你所知道的，由于POW，区块链可以稳定的创建区块。在比特币的场景下，难度被设置成大约每10分钟创建一个新区块。但是，是可以在创造两个区块之间提交新的交易。</p>
-<p>为了做到这一点，首先需要改变我们区块链的构造函数，以便他可以存储待处理的交易。我们还将创造一个新的属性，用于定义矿工获得多少钱作为奖励：</p>
-<pre><code>class Blockchain{  
-  constructor() {  
-    this.chain = [this.createGenesisBlock()];  
-    this.difficulty = 5;  
-    // 在区块产生之间存储交易的地方  
-    this.pendingTransactions = [];  
-    // 挖矿回报  
-    this.miningReward = 100;  
-  }  
-} 
-</code></pre><p>下一步，我们将调整我们的addBlock()方法。不过我的调整是指删掉并重写它！我们将不再允许人们直接为链上添加区块。相反，他们必须将交易添加至下一个区块中。而且我们将addBlock()更名为createTransaction()，这看起来更语义化：</p>
-<pre><code>createTransaction(transaction) {  
-  // 这里应该有一些校验!  
-  // 推入待处理交易数组  
-  this.pendingTransactions.push(transaction);  
-}  
-</code></pre><p>挖矿</p>
-<p>人们现在可以将新的交易添加到待处理交易的列表中。但无论如何，我们需要将他们清理掉并移入实际的区块中。为此，我们来创建一个minePendingTransactions()方法。这个方法不仅会挖掘所有待交易的新区块，而且还会向采矿者发送奖励。</p>
-<pre><code>minePendingTransactions(miningRewardAddress) {  
-  // 用所有待交易来创建新的区块并且开挖..  
-  let block = new Block(Date.now(), this.pendingTransactions);  
-  block.mineBlock(this.difficulty);  
-  // 将新挖的看矿加入到链上  
-  this.chain.push(block);  
-  // 重置待处理交易列表并且发送奖励  
-  this.pendingTransactions = [  
-      new Transaction(null, miningRewardAddress, this.miningReward)  
-  ];  
-}  
-</code></pre><p>请注意，该方法采用了参数miningRewardAddress。如果你开始挖矿，你可以将你的钱包地址传递给此方法。一旦成功挖到矿，系统将创建一个新的交易来给你挖矿奖励（在这个栗子里是100枚币）。</p>
-<p>有一点需要注意的是，在这个栗子中，我们将所有待处理交易一并添加到一个区块中。但实际上，由于区块的大小是有限制的，所以这是行不通的。在比特币里，一个区块的大小大概是2Mb。如果有更多的交易能够挤进一个区块，那么矿工可以选择哪些交易达成哪些交易不达成（通常情况下费用更高的交易容易获胜）。</p>
-<p>地址的余额</p>
-<p>在测试我们的代码钱让我们再做一件事！如果能够检查我们区块链上地址的余额将会更好。</p>
-<pre><code>getBalanceOfAddress(address){  
-  let balance = 0; // you start at zero!  
-  // 遍历每个区块以及每个区块内的交易  
-  for(const block of this.chain){  
-    for(const trans of block.transactions){  
-      // 如果地址是发起方 -&gt; 减少余额  
-      if(trans.fromAddress === address){  
-        balance -= trans.amount;  
-      }  
-      // 如果地址是接收方 -&gt; 增加余额  
-      if(trans.toAddress === address){  
-        balance += trans.amount;  
-      }  
-    }  
-  }  
-  return balance;  
-}  
-</code></pre><p>测试</p>
-<p>好吧，我们已经完成并可以最终一切是否可以正常工作！为此，我们创建了一些交易：</p>
-<pre><code>let savjeeCoin = new Blockchain();  
-console.log(&apos;Creating some transactions...&apos;);  
-savjeeCoin.createTransaction(new Transaction(&apos;address1&apos;, &apos;address2&apos;, 100));  
-savjeeCoin.createTransaction(new Transaction(&apos;address2&apos;, &apos;address1&apos;, 50));  
-</code></pre><p>这些交易目前都处于等待状态，为了让他们得到证实，我们必须开始挖矿：</p>
-<pre><code>console.log(&apos;Starting the miner...&apos;);  
-savjeeCoin.minePendingTransactions(&apos;xaviers-address&apos;);  
-</code></pre><p>当我们开始挖矿，我们也会传递一个我们想要获得挖矿奖励的地址。在这种情况下，我的地址是xaviers-address（非常复杂！）。</p>
-<p>之后，让我们检查一下xaviers-address的账户余额：</p>
-<pre><code>console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAddress(&apos;xaviers-address&apos;));  
-// 输出: 0
-</code></pre><p>我的账户输出竟然是0？！等等，为什么？难道我不应该得到我的挖矿奖励么？那么，如果你仔细观察代码，你会看到系统会创建一个交易，然后将您的挖矿奖励添加为新的待处理交易。这笔交易将会包含在下一个区块中。所以如果我们再次开始挖矿，我们将收到我们的100枚硬币奖励！</p>
-<pre><code>console.log(&apos;Starting the miner again!&apos;);  
-savjeeCoin.minePendingTransactions(&quot;xaviers-address&quot;);  
-console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAddress(&apos;xaviers-address&apos;));  
-// 输出: 100
-</code></pre><p>局限性与结论</p>
-<p>现在我们的区块链已经可以在一个区块上存储多笔交易，并且可以为矿工带来回报。</p>
-<p>不过，还是有一些不足：发送货币是，我们不检查发起人是否有足够的余额来实际进行交易。然而，这其实是一件容易解决的事情。我们也没有创建一个新的钱包和签名交易（传统上用公钥/私钥加密完成）。</p>
-<p>免责声明 &amp; 源代码</p>
-<p>我想指出的是，这绝不是一个完整的区块链实现！它仍然缺少很多功能。这只是为了验证一些概念来帮助您来了解区块链的工作原理。</p>
-<p>该项目的源代码就放在我的<a href="https://link.zhihu.com/?target=https://github.com/SavjeeTutorials/SavjeeCoin" target="_blank" rel="noopener">GitHub</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/区块链/">区块链</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-my-ssr" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/08/my-ssr/" class="article-date">
-      <time datetime="2017-04-08T08:33:54.000Z" itemprop="datePublished">2017-04-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/my-ssr/">SSR搭建属于自己的梯子</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。<br>之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
-<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2017/04/08/my-ssr/1.png" alt=""></p>
-<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
-<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2017/04/08/my-ssr/2.png" alt=""></p>
-<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
-<p>【Server Location】<br><img src="/2017/04/08/my-ssr/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2017/04/08/my-ssr/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2017/04/08/my-ssr/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
-<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
-<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
-<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2017/04/08/my-ssr/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2017/04/08/my-ssr/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2017/04/08/my-ssr/8.png" alt=""></p>
-<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
-<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
-</code></pre><p><img src="/2017/04/08/my-ssr/9.png" alt=""><br><img src="/2017/04/08/my-ssr/10.png" alt=""></p>
-<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
-<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
-</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
-<p>2.锐速安装脚本</p>
-<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
-</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
-<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
-</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2017/04/08/my-ssr/11.png" alt=""></p>
-<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
-<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2017/04/08/my-ssr/12.png" alt=""><br>最后给个Google一张<br><img src="/2017/04/08/my-ssr/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Vpn/">Vpn</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-static-resource" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/01/hexo-static-resource/" class="article-date">
+      <a href="/2017/02/01/Hexo系列（三）：上传资源到博客/" class="article-date">
       <time datetime="2017-02-01T01:18:54.000Z" itemprop="datePublished">2017-02-01</time>
 </a>
 
@@ -1192,7 +1449,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/01/hexo-static-resource/">hexo+github上传静态资源到博客(三)</a>
+      <a class="article-title" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a>
     </h1>
   
 
@@ -1206,9 +1463,9 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>cd到博客根目录下 查看<code>_config.yml</code>文件 查找 <code>post_asset_folder</code> 字段，将post_asset_folder 设置为true ， <code>post_asset_folder:true</code>。</p>
 <p>当设置 <code>post_asset_folder</code> 参数为<code>true</code>，在建立文件时，Hexo 会自动建立一个与文章同名的文件夹，可以把与该文章相关的所有资源都放到此文件夹内，这样就可以更方便的使用资源。</p>
 <h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p>到博客的根目录下执行 <code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code> 命令来进行插件的安装。</p>
-<h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><p>然后创建一文章 <code>hexo new &quot;test&quot;</code> 然后查看博客的 ../source/_posts 目录下的文件，会看到存在一个test 文件夹 和 test.md 文件<br><img src="/2017/02/01/hexo-static-resource/1.jpg" alt=""></p>
-<h3 id="添加资源"><a href="#添加资源" class="headerlink" title="添加资源"></a>添加资源</h3><p>将所需要的图片资源放到test 文件夹 内 目录结构如下：<br><img src="/2017/02/01/hexo-static-resource/2.jpg" alt=""></p>
-<h3 id="使用资源"><a href="#使用资源" class="headerlink" title="使用资源"></a>使用资源</h3><p>书写文章使用test文件内 的图片<br><img src="/2017/02/01/hexo-static-resource/3.jpg" alt=""></p>
+<h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><p>然后创建一文章 <code>hexo new &quot;test&quot;</code> 然后查看博客的 ../source/_posts 目录下的文件，会看到存在一个test 文件夹 和 test.md 文件<br><img src="/2017/02/01/Hexo系列（三）：上传资源到博客/1.jpg" alt=""></p>
+<h3 id="添加资源"><a href="#添加资源" class="headerlink" title="添加资源"></a>添加资源</h3><p>将所需要的图片资源放到test 文件夹 内 目录结构如下：<br><img src="/2017/02/01/Hexo系列（三）：上传资源到博客/2.jpg" alt=""></p>
+<h3 id="使用资源"><a href="#使用资源" class="headerlink" title="使用资源"></a>使用资源</h3><p>书写文章使用test文件内 的图片<br><img src="/2017/02/01/Hexo系列（三）：上传资源到博客/3.jpg" alt=""></p>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>1.使用<code>hexo s</code> 命令运行本地博客即可看到效果</p>
 <p>2.使用<code>hexo clean</code> <code>，hexo g</code> ，<code>hexo d</code>将本地博客推送到远程，即可看到文章中的图片</p>
 
@@ -1225,7 +1482,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static/">static</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static/">static</a></li></ul>
     </div>
 
       
@@ -1245,267 +1502,10 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
 
 
   
-    <article id="post-java-ddxoft" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Hexo系列（二）：Github上发布博客" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/21/java-ddxoft/" class="article-date">
-      <time datetime="2017-01-21T09:05:20.000Z" itemprop="datePublished">2017-01-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/21/java-ddxoft/">基于ddxoft的驱动级外设模拟</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p>
-<p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p>
-<p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p>
-<h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p>
-<p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p>
-<p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p>
-<p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p>
-<p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p>
-<p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p>
-<p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p>
-<p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p>
-<h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;
-import com.sun.jna.Native;
-
-public interface DdXoft extends Library {
-    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);
-    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、
-    int DD_mov(int x, int y);//绝对移动
-    int DD_movR(int dx, int dy);//相对移动
-    int DD_btn(int btn);//鼠标
-    int DD_whl(int whl); //滑轮
-    int DD_key(int ddcode, int flag);//键盘
-    int DD_str(String s);//字符串
-}
-</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p>
-<pre><code>/**
- * 判断某点颜色是否相同 相同则按下
- *
- * @return
- */
-public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {
-    if (isEquals(robot, entry)) {
-        return pressKey(robot, entry, ddCode);
-    }
-    return false;
-}
-</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p>
-<pre><code>/**
- * 直接按下某键
- */
-public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
-    //robot.keyPress(keyCode);
-    DdXoft.INSTANCE.DD_key(ddCode, 1);
-    robot.delay(entry.press);
-    //robot.keyRelease(keyCode);
-    DdXoft.INSTANCE.DD_key(ddCode, 2);
-    robot.delay(entry.release);
-    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +
-            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +
-            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());
-    return true;
-}
-</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡到程序</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Dll/">Dll</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dll/">dll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jIntellitype/">jIntellitype</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-java-robot" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/01/20/java-robot/" class="article-date">
-      <time datetime="2017-01-20T09:06:30.000Z" itemprop="datePublished">2017-01-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/java-robot/">基于Java的软件级外设模拟</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。</p>
-<p>本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检测出来，下一篇博客会介绍驱动级的键盘模拟。</p>
-<p>官方JavaDocsApi: j<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html" target="_blank" rel="noopener">ava.awt.Robot</a></p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Robot，机器人。此类用于为测试自动化、自运行演示程序和其他需要控制鼠标和键盘的应用程序生成本机系统输入事件。Robot 的主要目的是便于 Java 平台实现自动测试。</p>
-<p>Robot 可以模拟鼠标和键盘的输入，相当于 Java 版的按键精灵。</p>
-<h3 id="Robot-构造方法"><a href="#Robot-构造方法" class="headerlink" title="Robot 构造方法"></a>Robot 构造方法</h3><pre><code>// 在基本屏幕坐标系中构造一个 Robot 对象, 如果平台不支持 Robot, 将抛出异常
-Robot()
-
-// 为给定屏幕设备创建一个 Robot（用于同时使用多个显示设备的情况）
-Robot(GraphicsDevice screen)
-</code></pre><h3 id="模拟鼠标"><a href="#模拟鼠标" class="headerlink" title="模拟鼠标"></a>模拟鼠标</h3><pre><code>// 将鼠标指针移动到指定屏幕坐标
-void mouseMove(int x, int y)
-
-/**
- * 按下/释放一个或多个鼠标按钮, 参数说明:
- *     buttons: 鼠标按钮掩码, 一个或多个以下标志的组合:
- *     InputEvent.BUTTON1_MASK 鼠标左键
- *     InputEvent.BUTTON2_MASK 鼠标中键
- *     InputEvent.BUTTON3_MASK 鼠标右键
- */
-    void mousePress(int buttons)
-    void mouseRelease(int buttons)
-
-    // 在配有滚轮的鼠标上旋转滚轮
-    void mouseWheel(int wheelAmt)
-</code></pre><h3 id="模拟键盘"><a href="#模拟键盘" class="headerlink" title="模拟键盘"></a>模拟键盘</h3><pre><code>/**
- * 按下/释放键盘按键, 参数说明:
- *     keycode: 键盘键值常量, 定义在 KeyEvent.VK_XXX 中
- */
-    void keyPress(int keycode)
-    void keyRelease(int keycode)
-</code></pre><h3 id="屏幕相关"><a href="#屏幕相关" class="headerlink" title="屏幕相关"></a>屏幕相关</h3><pre><code>// 获取指定屏幕坐标处的像素颜色
-Color getPixelColor(int x, int y)
-
-// 截屏, 截取指定的矩形区域
-BufferedImage createScreenCapture(Rectangle screenRect)
-</code></pre><h3 id="控制类"><a href="#控制类" class="headerlink" title="控制类"></a>控制类</h3><pre><code>// 睡眠指定的时间, 相当于 Thread.sleep(long ms)
-void delay(int ms)
-
-// 在处理完当前事件队列中的所有事件之前, 一直等待
-void waitForIdle()
-
-// 设置此 Robot 在生成一个事件后是否自动调用 waitForIdle()
-// 设置为 true, 表示添加的事件逐个按顺序执行（执行完一个再执行下一个）
-void setAutoWaitForIdle(boolean isOn)
-boolean isAutoWaitForIdle()
-
-// 设置此 Robot 每在生成一个事件后自动睡眠的毫秒数
-void setAutoDelay(int ms)
-int getAutoDelay()
-</code></pre><h3 id="模拟鼠标事件"><a href="#模拟鼠标事件" class="headerlink" title="模拟鼠标事件"></a>模拟鼠标事件</h3><pre><code>package com.xiets.robot;
-
-import java.awt.*;
-import java.awt.event.InputEvent;
-
-public class Main {
-
-    public static void main(String[] args) throws AWTException {
-        // 创建 Robot 实例
-        Robot robot = new Robot();
-
-        // 执行完一个事件后再执行下一个
-        robot.setAutoWaitForIdle(true);
-
-        // 移动鼠标到指定屏幕坐标
-        robot.mouseMove(100, 100);
-
-        // 按下鼠标左键
-        robot.mousePress(InputEvent.BUTTON1_MASK);
-
-        // 延时100毫秒
-        robot.delay(100);
-
-        // 释放鼠标左键（按下后必须要释放, 一次点击操作包含了按下和释放）
-        robot.mouseRelease(InputEvent.BUTTON1_MASK);
-    }
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/robot/">robot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-two" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/01/12/hexo-two/" class="article-date">
+      <a href="/2017/01/12/Hexo系列（二）：Github上发布博客/" class="article-date">
       <time datetime="2017-01-12T07:30:31.000Z" itemprop="datePublished">2017-01-12</time>
 </a>
 
@@ -1521,7 +1521,7 @@ public class Main {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/hexo-two/">Hexo：Github上发布博客（二）</a>
+      <a class="article-title" href="/2017/01/12/Hexo系列（二）：Github上发布博客/">Hexo系列（二）：Github上发布博客</a>
     </h1>
   
 
@@ -1537,16 +1537,16 @@ public class Main {
 <ul>
 <li>注册Github账号</li>
 </ul>
-<h3 id="创建Github-仓库"><a href="#创建Github-仓库" class="headerlink" title="创建Github 仓库"></a>创建Github 仓库</h3><p>注册完成之后,点击头像左侧的<code>+</code>号, —&gt;<code>New repository</code>，创建新仓库<br><img src="/2017/01/12/hexo-two/1.jpg" alt=""></p>
+<h3 id="创建Github-仓库"><a href="#创建Github-仓库" class="headerlink" title="创建Github 仓库"></a>创建Github 仓库</h3><p>注册完成之后,点击头像左侧的<code>+</code>号, —&gt;<code>New repository</code>，创建新仓库<br><img src="/2017/01/12/Hexo系列（二）：Github上发布博客/1.jpg" alt=""></p>
 <p>因为创建的是个人网站，所以仓库的名称需要安装GitHub个人网站项目的规定来写。<br>规则就是：</p>
 <pre><code>username.github.io
-</code></pre><p>比如我的GitHub用户名是<code>yibierusi</code>，那我就要填写 <code>yibierusi.github.io</code>。然后选择<code>Public</code>模式，接着点击<code>创建仓库</code>按钮,因为我的已经创建了，所以这里会提示已经存在。<br><img src="/2017/01/12/hexo-two/2.jpg" alt=""></p>
+</code></pre><p>比如我的GitHub用户名是<code>yibierusi</code>，那我就要填写 <code>yibierusi.github.io</code>。然后选择<code>Public</code>模式，接着点击<code>创建仓库</code>按钮,因为我的已经创建了，所以这里会提示已经存在。<br><img src="/2017/01/12/Hexo系列（二）：Github上发布博客/2.jpg" alt=""></p>
 <h3 id="推送部署"><a href="#推送部署" class="headerlink" title="推送部署"></a>推送部署</h3><p>在根目录下的<code>_config.yml</code>中添加git信息，之后在cmd下通过 <code>hexo d</code> 一键推送本地代码并部署。</p>
 <pre><code>deploy:
   type: git
   repository: git@github.com:yibierusi/yibierusi.github.io.git
   branch: master
-</code></pre><h3 id="绑定自定义域名"><a href="#绑定自定义域名" class="headerlink" title="绑定自定义域名"></a>绑定自定义域名</h3><p>代码推送成功后，进入新仓库，点击<code>Settings</code>，找到<code>GitHub Pages</code> 设置主题，并且绑定自定义域名<br><img src="/2017/01/12/hexo-two/3.jpg" alt=""><br>第一个红框是选择分支<br>第二个红框是选择主题<br>第三个红框是自定义域名，没有就访问<code>username.github.io</code>，如果有域名需要在域名供应上处解析，并设置第三个红框，否则404，我用的是阿里云的域名。解析配置如下图：<br><img src="/2017/01/12/hexo-two/4.jpg" alt=""></p>
+</code></pre><h3 id="绑定自定义域名"><a href="#绑定自定义域名" class="headerlink" title="绑定自定义域名"></a>绑定自定义域名</h3><p>代码推送成功后，进入新仓库，点击<code>Settings</code>，找到<code>GitHub Pages</code> 设置主题，并且绑定自定义域名<br><img src="/2017/01/12/Hexo系列（二）：Github上发布博客/3.jpg" alt=""><br>第一个红框是选择分支<br>第二个红框是选择主题<br>第三个红框是自定义域名，没有就访问<code>username.github.io</code>，如果有域名需要在域名供应上处解析，并设置第三个红框，否则404，我用的是阿里云的域名。解析配置如下图：<br><img src="/2017/01/12/Hexo系列（二）：Github上发布博客/4.jpg" alt=""></p>
 <p>绑定自定义域名后会生成一个<code>CNAME</code>文件，文件内容就是刚刚绑定的域名<code>zhouhy.top</code>。到了这一步，我们已经完成了个人博客的创建，稍等一两分钟就可以通过域名访问自己的博客了。</p>
 
       
