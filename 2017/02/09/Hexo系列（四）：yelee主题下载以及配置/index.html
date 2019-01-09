@@ -18,17 +18,19 @@
 <meta name="description" content="前言 之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API  正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.g">
 <meta name="keywords" content="hexo,yelee,themes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo系列（四）：yelee主题下载以及配置">
+<meta property="og:title" content="Hexo系列（四）：主题下载以及配置">
 <meta property="og:url" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/index.html">
 <meta property="og:site_name" content="zBlog">
 <meta property="og:description" content="前言 之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API  正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.g">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/1.jpg">
+<meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/2.jpg">
+<meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/3.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/4.jpg">
-<meta property="og:updated_time" content="2019-01-09T04:41:00.130Z">
+<meta property="og:updated_time" content="2019-01-09T05:24:57.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo系列（四）：yelee主题下载以及配置">
+<meta name="twitter:title" content="Hexo系列（四）：主题下载以及配置">
 <meta name="twitter:description" content="前言 之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API  正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.g">
 <meta name="twitter:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/1.jpg">
 
@@ -62,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo系列（四）：yelee主题下载以及配置 | zBlog</title>
+<title>Hexo系列（四）：主题下载以及配置 | zBlog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -209,11 +211,9 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
                     
                     </div>
                 </section>
@@ -298,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo系列（四）：yelee主题下载以及配置
+      Hexo系列（四）：主题下载以及配置
     </h1>
   
 
@@ -308,7 +308,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  Word Count: </span>
-        <span class="post-count">2.4k</span>
+        <span class="post-count">3k</span>
       </span>
     </span>
 
@@ -317,7 +317,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  Read Time: </span>
-        <span class="post-count">11m</span>
+        <span class="post-count">13m</span>
       </span>
     </span>
 </div>
@@ -667,7 +667,32 @@ CDN:
   clipboard: //cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js
   mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
   scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
-</code></pre><h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</p>
+</code></pre><h3 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h3><blockquote>
+<p>草稿相当于很多博客都有的“私密文章”功能。</p>
+</blockquote>
+<p>会在source/_drafts目录下生成一个<code>new-draft.md</code>文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到<code>_drafts</code>目录之中。</p>
+<pre><code>$ hexo new draft &quot;new draft&quot;
+</code></pre><p>如果你希望强行预览草稿，更改配置文件：</p>
+<pre><code>render_drafts: true
+</code></pre><p>或者，如下方式启动server：</p>
+<pre><code>$ hexo server --drafts
+</code></pre><p>下面这条命令可以把草稿变成文章，或者页面：</p>
+<pre><code>$ hexo publish [layout] &lt;filename&gt;
+</code></pre><h3 id="md模板"><a href="#md模板" class="headerlink" title="md模板"></a>md模板</h3><blockquote>
+<p>新建md文章时候会有默认的模板。修改默认的模板</p>
+</blockquote>
+<p>其中<code>layout</code>是可选参数，默认值为<code>post</code>。有哪些<code>layout</code>呢，请到<code>scaffolds</code>目录下查看，这些文件名称就是<code>layout</code>名称。当然你可以添加自己的<code>layout</code>，方法就是添加一个文件即可，同时你也可以编辑现有的<code>layout</code>，比如post的<code>layout</code>默认是<code>hexo\scaffolds\post.md</code></p>
+<pre><code>title: { { title } }
+date: { { date } }
+tags:
+</code></pre><p>修改为：</p>
+<pre><code>title: json520博客001 #文章标题
+date: 2015-02-05 12:47:44 #文章生成时间
+categories: 必须写 #文章分类目录 可以省略
+tags: 必须写 #文章标签 可以省略
+description: 问题描述必须写 #你对本页的描述 可以省略
+</code></pre><p>这样每次新建都不用手动添加属性了</p>
+<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</p>
 <h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>默认头像存储于 <code>yelee/source/img/avatar.png</code></p>
 <p>配置中对应填写 <code>/img/avatar.png</code>，可替换图片或指定新地址</p>
 <p><code>themes/yelee/_config.yml</code> 背景参数:</p>
@@ -688,6 +713,29 @@ description: &quot;Welcome to Hexo! This is your very first post.&quot;
 &lt;Contents&gt;
 </code></pre><p>通过 <code>description</code> 添加的摘要只能为纯文本；</p>
 <p><code>description</code> 中的内容加引号，可以避免一些程序错误，例如当内容里包含英文冒号时。</p>
+<h3 id="网页背景图"><a href="#网页背景图" class="headerlink" title="网页背景图"></a>网页背景图</h3><p>背景图文件所在路径:</p>
+<pre><code>/yelee/source/background/
+</code></pre><p><code>themes/yelee/_config.yml</code> 背景参数:</p>
+<pre><code>background_image: 5
+</code></pre><p>默认值为5，可按需修改</p>
+<p>“5”: 设置/yelee/source/background/文件夹中 bg-1.jpg 到 bg-5.jpg 这5张图片为背景</p>
+<p>“0”: 取消网页背景图，使用淳朴的灰白主题</p>
+<h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><p>通过 <code>code_block</code> 切换内置代码高亮配色主题，目前额外提供 4 种搭配</p>
+<pre><code>## 移除 `#` 后自定义样式生效
+highlight_style:
+  #on: true
+  code_block: 1  # Value: 0 - 4
+</code></pre><h3 id="文本高亮"><a href="#文本高亮" class="headerlink" title="文本高亮"></a>文本高亮</h3><p>通过 <code>inline_code</code> 切换内置文本高亮样式，目前额外提供 9 种样式</p>
+<pre><code>## 移除 `#` 后自定义样式生效
+highlight_style:
+  #on: true
+  inline_code: 1  # Value: 0 - 9
+</code></pre><p>部分样式图示：<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/2.jpg" alt="文本高亮"></p>
+<h3 id="引用区"><a href="#引用区" class="headerlink" title="引用区"></a>引用区</h3><p>可自定义文章「引用部分」的样式，目前额外提供 7 种样式</p>
+<pre><code>blockquote_style:
+  on: true
+  blockquote: 1  # Value: 0 - 7 可选
+</code></pre><p>部分样式图示：<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg" alt="引用"></p>
 <h3 id="404-页面"><a href="#404-页面" class="headerlink" title="404 页面"></a>404 页面</h3><p>使用 Hexo 命令新建一个名为 404 的页面</p>
 <pre><code>hexo new page 404
 </code></pre><p>/source/404/index.md 文件中添加 <code>permalink: /404</code></p>
@@ -724,12 +772,12 @@ aboutme: false
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：yelee主题下载以及配置</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
         <p><span>发布时间:</span>2017-02-09, 09:33:33</p>
-        <p><span>最后更新:</span>2019-01-09, 12:41:00</p>
+        <p><span>最后更新:</span>2019-01-09, 13:24:57</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/" title="Hexo系列（四）：yelee主题下载以及配置">http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/</a>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/" title="Hexo系列（四）：主题下载以及配置">http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -763,7 +811,7 @@ aboutme: false
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主题"><span class="toc-number">2.1.</span> <span class="toc-text">安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用主题"><span class="toc-number">2.2.</span> <span class="toc-text">启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新主题"><span class="toc-number">2.3.</span> <span class="toc-text">更新主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主题的-config-yml配置"><span class="toc-number">2.4.</span> <span class="toc-text">主题的_config.yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签云"><span class="toc-number">2.5.</span> <span class="toc-text">标签云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人头像"><span class="toc-number">2.6.</span> <span class="toc-text">个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章摘要"><span class="toc-number">2.7.</span> <span class="toc-text">文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#404-页面"><span class="toc-number">2.8.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#左边栏鸟屋"><span class="toc-number">2.9.</span> <span class="toc-text">左边栏鸟屋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#友情链接"><span class="toc-number">2.10.</span> <span class="toc-text">友情链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我"><span class="toc-number">2.11.</span> <span class="toc-text">关于我</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主题"><span class="toc-number">2.1.</span> <span class="toc-text">安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用主题"><span class="toc-number">2.2.</span> <span class="toc-text">启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新主题"><span class="toc-number">2.3.</span> <span class="toc-text">更新主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主题的-config-yml配置"><span class="toc-number">2.4.</span> <span class="toc-text">主题的_config.yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#草稿"><span class="toc-number">2.5.</span> <span class="toc-text">草稿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md模板"><span class="toc-number">2.6.</span> <span class="toc-text">md模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签云"><span class="toc-number">2.7.</span> <span class="toc-text">标签云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人头像"><span class="toc-number">2.8.</span> <span class="toc-text">个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章摘要"><span class="toc-number">2.9.</span> <span class="toc-text">文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网页背景图"><span class="toc-number">2.10.</span> <span class="toc-text">网页背景图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码风格"><span class="toc-number">2.11.</span> <span class="toc-text">代码风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本高亮"><span class="toc-number">2.12.</span> <span class="toc-text">文本高亮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用区"><span class="toc-number">2.13.</span> <span class="toc-text">引用区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#404-页面"><span class="toc-number">2.14.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#左边栏鸟屋"><span class="toc-number">2.15.</span> <span class="toc-text">左边栏鸟屋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#友情链接"><span class="toc-number">2.16.</span> <span class="toc-text">友情链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我"><span class="toc-number">2.17.</span> <span class="toc-text">关于我</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -799,7 +847,7 @@ aboutme: false
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo系列（四）：yelee主题下载以及配置　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Hexo系列（四）：主题下载以及配置　| zBlog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -855,7 +903,7 @@ aboutme: false
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/基于ddxoft的驱动级外设模拟/">基于ddxoft的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/基于Java的软件级外设模拟/">基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：yelee主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：Github上托管博客/">Hexo系列（二）：Github上托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/基于ddxoft的驱动级外设模拟/">基于ddxoft的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/基于Java的软件级外设模拟/">基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Hexo系列（六）：添加评论功能/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：Github上托管博客/">Hexo系列（二）：Github上托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
 
 
 
