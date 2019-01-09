@@ -25,9 +25,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/1.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/2.jpg">
+<meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/3.jpg">
 <meta property="og:image" content="http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/4.jpg">
-<meta property="og:updated_time" content="2019-01-09T02:42:17.976Z">
+<meta property="og:updated_time" content="2019-01-09T03:33:33.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo系列（四）：yelee主题下载以及配置">
 <meta name="twitter:description" content="前言 之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。具体的使用可以参考官方API  正文安装主题CD到 themes 路径下执行clone命令下载主题 git clone https://github.com/MOxFIVE/hexo-theme-yelee.g">
@@ -303,6 +304,7 @@
     </h1>
   
 
+		
       </header>
       
       <div class="article-info article-info-post">
@@ -658,6 +660,40 @@ CDN:
   onload: false
 </code></pre><p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 [效率优先]</p>
 <p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/2.jpg" alt="本地搜索效果"></p>
+<h3 id="文章字数统计以及阅读时长"><a href="#文章字数统计以及阅读时长" class="headerlink" title="文章字数统计以及阅读时长"></a>文章字数统计以及阅读时长</h3><p><code>next</code>主题是已经集成这个功能的，但是<code>yelee</code>就需要我们自己配置了，可以看下官网对<a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a>的介绍</p>
+<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><blockquote>
+<p>安装hexo-wordcount</p>
+</blockquote>
+<pre><code>npm i --save hexo-wordcount
+</code></pre><h4 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h4><blockquote>
+<p>在yelee/layout/_partial/post/word.ejs下创建word.ejs文件：</p>
+</blockquote>
+<pre><code>&lt;div style=&quot;margin-top:10px;&quot;&gt;
+    &lt;span class=&quot;post-time&quot;&gt;
+      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+        &lt;i class=&quot;fa fa-keyboard-o&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;post-meta-item-text&quot;&gt;  字数统计: &lt;/span&gt;
+        &lt;span class=&quot;post-count&quot;&gt;&lt;%= wordcount(post.content) %&gt;字&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+
+    &lt;span class=&quot;post-time&quot;&gt;
+      &amp;nbsp; | &amp;nbsp;
+      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+        &lt;i class=&quot;fa fa-hourglass-half&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;post-meta-item-text&quot;&gt;  阅读时长: &lt;/span&gt;
+        &lt;span class=&quot;post-count&quot;&gt;&lt;%= min2read(post.content) %&gt;分&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+</code></pre><blockquote>
+<p>然后添加逻辑判断</p>
+</blockquote>
+<p>打开 themes/yelee/layout/_partial/article.ejs</p>
+<pre><code>&lt;% if(theme.word_count &amp;&amp; !post.no_word_count){ %&gt;
+    &lt;%- partial(&apos;post/word&apos;) %&gt;
+&lt;% } %&gt;
+</code></pre><p>在下图位置添加<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg" alt="插入位置"></p>
 <h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</p>
 <h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>默认头像存储于 <code>yelee/source/img/avatar.png</code></p>
 <p>配置中对应填写 <code>/img/avatar.png</code>，可替换图片或指定新地址</p>
@@ -718,7 +754,7 @@ aboutme: false
         <p><span>本文标题:</span><a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：yelee主题下载以及配置</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
         <p><span>发布时间:</span>2017-02-09, 09:33:33</p>
-        <p><span>最后更新:</span>2019-01-09, 10:42:17</p>
+        <p><span>最后更新:</span>2019-01-09, 11:33:33</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/" title="Hexo系列（四）：yelee主题下载以及配置">http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yibierusi.github.io/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -754,7 +790,7 @@ aboutme: false
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主题"><span class="toc-number">2.1.</span> <span class="toc-text">安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用主题"><span class="toc-number">2.2.</span> <span class="toc-text">启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新主题"><span class="toc-number">2.3.</span> <span class="toc-text">更新主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主题的-config-yml配置"><span class="toc-number">2.4.</span> <span class="toc-text">主题的_config.yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地搜索"><span class="toc-number">2.5.</span> <span class="toc-text">本地搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签云"><span class="toc-number">2.6.</span> <span class="toc-text">标签云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人头像"><span class="toc-number">2.7.</span> <span class="toc-text">个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章摘要"><span class="toc-number">2.8.</span> <span class="toc-text">文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#404-页面"><span class="toc-number">2.9.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#左边栏鸟屋"><span class="toc-number">2.10.</span> <span class="toc-text">左边栏鸟屋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#友情链接"><span class="toc-number">2.11.</span> <span class="toc-text">友情链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我"><span class="toc-number">2.12.</span> <span class="toc-text">关于我</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主题"><span class="toc-number">2.1.</span> <span class="toc-text">安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用主题"><span class="toc-number">2.2.</span> <span class="toc-text">启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新主题"><span class="toc-number">2.3.</span> <span class="toc-text">更新主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主题的-config-yml配置"><span class="toc-number">2.4.</span> <span class="toc-text">主题的_config.yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地搜索"><span class="toc-number">2.5.</span> <span class="toc-text">本地搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章字数统计以及阅读时长"><span class="toc-number">2.6.</span> <span class="toc-text">文章字数统计以及阅读时长</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集成"><span class="toc-number">2.6.1.</span> <span class="toc-text">集成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件配置"><span class="toc-number">2.6.2.</span> <span class="toc-text">文件配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签云"><span class="toc-number">2.7.</span> <span class="toc-text">标签云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人头像"><span class="toc-number">2.8.</span> <span class="toc-text">个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章摘要"><span class="toc-number">2.9.</span> <span class="toc-text">文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#404-页面"><span class="toc-number">2.10.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#左边栏鸟屋"><span class="toc-number">2.11.</span> <span class="toc-text">左边栏鸟屋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#友情链接"><span class="toc-number">2.12.</span> <span class="toc-text">友情链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我"><span class="toc-number">2.13.</span> <span class="toc-text">关于我</span></a></li></ol></li></ol>
         
     </div>
     <style>

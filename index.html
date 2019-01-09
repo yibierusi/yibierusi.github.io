@@ -303,6 +303,7 @@
     </h1>
   
 
+		
       </header>
       
     
@@ -390,6 +391,7 @@
     </h1>
   
 
+		
       </header>
       
     
@@ -715,6 +717,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
     </h1>
   
 
+		
       </header>
       
     
@@ -802,6 +805,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
     </h1>
   
 
+		
       </header>
       
     
@@ -919,6 +923,7 @@ public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
     </h1>
   
 
+		
       </header>
       
     
@@ -1059,6 +1064,7 @@ public class Main {
     </h1>
   
 
+		
       </header>
       
     
@@ -1399,6 +1405,40 @@ CDN:
   onload: false
 </code></pre><p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 [效率优先]</p>
 <p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/2.jpg" alt="本地搜索效果"></p>
+<h3 id="文章字数统计以及阅读时长"><a href="#文章字数统计以及阅读时长" class="headerlink" title="文章字数统计以及阅读时长"></a>文章字数统计以及阅读时长</h3><p><code>next</code>主题是已经集成这个功能的，但是<code>yelee</code>就需要我们自己配置了，可以看下官网对<a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a>的介绍</p>
+<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><blockquote>
+<p>安装hexo-wordcount</p>
+</blockquote>
+<pre><code>npm i --save hexo-wordcount
+</code></pre><h4 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h4><blockquote>
+<p>在yelee/layout/_partial/post/word.ejs下创建word.ejs文件：</p>
+</blockquote>
+<pre><code>&lt;div style=&quot;margin-top:10px;&quot;&gt;
+    &lt;span class=&quot;post-time&quot;&gt;
+      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+        &lt;i class=&quot;fa fa-keyboard-o&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;post-meta-item-text&quot;&gt;  字数统计: &lt;/span&gt;
+        &lt;span class=&quot;post-count&quot;&gt;&lt;%= wordcount(post.content) %&gt;字&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+
+    &lt;span class=&quot;post-time&quot;&gt;
+      &amp;nbsp; | &amp;nbsp;
+      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
+        &lt;i class=&quot;fa fa-hourglass-half&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;post-meta-item-text&quot;&gt;  阅读时长: &lt;/span&gt;
+        &lt;span class=&quot;post-count&quot;&gt;&lt;%= min2read(post.content) %&gt;分&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+</code></pre><blockquote>
+<p>然后添加逻辑判断</p>
+</blockquote>
+<p>打开 themes/yelee/layout/_partial/article.ejs</p>
+<pre><code>&lt;% if(theme.word_count &amp;&amp; !post.no_word_count){ %&gt;
+    &lt;%- partial(&apos;post/word&apos;) %&gt;
+&lt;% } %&gt;
+</code></pre><p>在下图位置添加<br><img src="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/5.jpg" alt="插入位置"></p>
 <h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</p>
 <h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>默认头像存储于 <code>yelee/source/img/avatar.png</code></p>
 <p>配置中对应填写 <code>/img/avatar.png</code>，可替换图片或指定新地址</p>
@@ -1505,6 +1545,7 @@ aboutme: false
     </h1>
   
 
+		
       </header>
       
     
@@ -1577,6 +1618,7 @@ aboutme: false
     </h1>
   
 
+		
       </header>
       
     
@@ -1657,6 +1699,7 @@ aboutme: false
     </h1>
   
 
+		
       </header>
       
     
