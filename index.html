@@ -77,7 +77,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: true
     }
 </script>
 
@@ -113,6 +113,13 @@
         <p class="header-subtitle">莫问收获,但求耕耘</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -273,11 +280,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-test/test" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-hexo-themes-yelee" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/09/test/test/" class="article-date">
-      <time datetime="2019-01-09T01:20:00.324Z" itemprop="datePublished">2019-01-09</time>
+      <a href="/2019/01/09/hexo-themes-yelee/" class="article-date">
+      <time datetime="2019-01-09T01:33:33.000Z" itemprop="datePublished">2019-01-09</time>
 </a>
 
 
@@ -287,6 +294,17 @@
     
       <input type="hidden" class="isFancy">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/09/hexo-themes-yelee/">hexo themes yelee</a>
+    </h1>
+  
+
+      </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       

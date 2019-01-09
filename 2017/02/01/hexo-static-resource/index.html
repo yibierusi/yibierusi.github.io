@@ -78,7 +78,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: true
     }
 </script>
 
@@ -114,6 +114,13 @@
         <p class="header-subtitle">莫问收获,但求耕耘</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -464,7 +471,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/09/test/test/">test/test</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/java-script-block-chain/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/my-ssr/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-static-resource/">hexo+github上传静态资源到博客(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/java-ddxoft/">基于ddxoft的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/java-robot/">基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two/">Hexo：Github上发布博客（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one/">Hexo：个人博客搭建（一）</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/09/hexo-themes-yelee/">hexo themes yelee</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/java-script-block-chain/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/my-ssr/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-static-resource/">hexo+github上传静态资源到博客(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/java-ddxoft/">基于ddxoft的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/java-robot/">基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two/">Hexo：Github上发布博客（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one/">Hexo：个人博客搭建（一）</a></li></ul>
 
 
 
