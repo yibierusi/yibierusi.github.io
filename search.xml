@@ -116,6 +116,37 @@
     
     
     <entry>
+      <title>远程调试(一)：在IDEA中远程调试Jar包</title>
+      <link href="/2017/04/21/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9C%A8IDEA%E4%B8%AD%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95Jar%E5%8C%85/"/>
+      <url>/2017/04/21/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9C%A8IDEA%E4%B8%AD%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95Jar%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr><p>因为现在用Spring Boot 的工程多了起来，有时候用Spring Boot写的小脚本部署在服务器上出现独有的错误（开发环境正常）时，并不是那么好定位，所以用了一下远程调试Jar包，发现意外的好用，所以记录一下过程。</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="配置IDEA"><a href="#配置IDEA" class="headerlink" title="配置IDEA"></a>配置IDEA</h3><p>点击<code>+</code> —&gt;选择<code>Remote</code><br><img src="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/new-remote.jpg" alt="新建Remote配置"><br>配置远程服务器的ip与端口号，因为我的Jar是在本地启动的，所以是localhost<br><img src="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/config.jpg" alt="配置"></p><h3 id="启动Jar"><a href="#启动Jar" class="headerlink" title="启动Jar"></a>启动Jar</h3><p><code>address</code> 是远程服务的端口，也就是刚才配置的8081，<code>xxxxxx.jar</code> Jar包名字</p><pre><code>java -Xdebug -Xrunjdwp:transport=dt_socket,address=8081,server=y,suspend=y -jar xxxxxx.jar</code></pre><p>启动后，会在以下界面卡住，此时正在监听8081端口，等待IDEA启动调试。</p><pre><code>E:\Run&gt;java -Xdebug -Xrunjdwp:transport=dt_socket,address=8081,server=y,suspend=y -jar gateway.jar --spring.profiles.active=proListening for transport dt_socket at address: 8081</code></pre><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p><img src="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/start-debug.jpg" alt="启动调试"><br>启动调试后，服务器启动Jar界面会出现 ，项目启动日志，如果没有，说明没有监听到。</p><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>请求一下接口，发现打的断点生效了。<br><img src="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/res.jpg" alt="效果"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 远程调试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Remote </tag>
+            
+            <tag> IEAD </tag>
+            
+            <tag> DEBUG </tag>
+            
+            <tag> Jar </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SSR搭建属于自己的梯子</title>
       <link href="/2017/04/08/SSR%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A2%AF%E5%AD%90/"/>
       <url>/2017/04/08/SSR%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A2%AF%E5%AD%90/</url>
@@ -161,11 +192,11 @@
       
         <tags>
             
+            <tag> 脚本 </tag>
+            
             <tag> ddxoft </tag>
             
             <tag> C </tag>
-            
-            <tag> 脚本 </tag>
             
             <tag> dll </tag>
             
@@ -192,9 +223,9 @@
       
         <tags>
             
-            <tag> 脚本 </tag>
-            
             <tag> Robot </tag>
+            
+            <tag> 脚本 </tag>
             
             <tag> JavaFX </tag>
             
