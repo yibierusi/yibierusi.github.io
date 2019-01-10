@@ -297,7 +297,7 @@
       
           
         <hr>
-<p>title: Hexo系列（七）：提交搜索引擎<br>date: 2017-02-28 15:27:46<br>tags: [hexo,baidu,google,seo]</p>
+<p>title: Hexo系列（七）：提交搜索引擎<br>date: 2017-02-28 15:27:46<br>tags: [baidu,google,seo]</p>
 <h2 id="categories-Hexo"><a href="#categories-Hexo" class="headerlink" title="categories: Hexo"></a>categories: Hexo</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
 <p>到了这一步，就博客的搭建基本已经完成了，细心的人就会发现一个问题，搭建的博客在<code>baidu</code>和<code>google</code>上搜索不到，这个问题真的是忍不了啊，完全不能愉快的装逼了，本文教大家做一下简单的SEO。</p>
 <h2 id="查看收录情况"><a href="#查看收录情况" class="headerlink" title="查看收录情况"></a>查看收录情况</h2><hr>
@@ -373,113 +373,6 @@ path: sitemap.xml
 
 
   
-    <article id="post-SSR" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/08/SSR/" class="article-date">
-      <time datetime="2019-01-08T08:33:54.000Z" itemprop="datePublished">2019-01-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/08/SSR/">SSR搭建属于自己的梯子</a>
-    </h1>
-  
-
-		
-			<div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">834&#23383;</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">3m</span>
-      </span>
-    </span>
-</div>
-		
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。<br>之前一直在google的蓝灯翻墙，但是后来因为部分原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
-<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2019/01/08/SSR/1.png" alt=""></p>
-<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
-<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2019/01/08/SSR/2.png" alt=""></p>
-<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
-<p>【Server Location】<br><img src="/2019/01/08/SSR/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2019/01/08/SSR/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2019/01/08/SSR/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
-<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
-<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
-<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2019/01/08/SSR/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2019/01/08/SSR/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2019/01/08/SSR/8.png" alt=""></p>
-<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
-<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
-</code></pre><p><img src="/2019/01/08/SSR/9.png" alt=""><br><img src="/2019/01/08/SSR/10.png" alt=""></p>
-<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
-<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
-</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
-<p>2.锐速安装脚本</p>
-<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
-</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
-<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
-</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2019/01/08/SSR/11.png" alt=""></p>
-<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
-<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2019/01/08/SSR/12.png" alt=""><br>最后给个Google一张<br><img src="/2019/01/08/SSR/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Vpn/">Vpn</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud" style="margin-top:20px">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Hexo系列（二）：远程仓库托管博客" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -499,7 +392,7 @@ path: sitemap.xml
       
           
         <hr>
-<p>title: Hexo系列（二）：远程仓库托管博客<br>date: 2017-01-12 15:30:31<br>tags: [hexo,blog,github]</p>
+<p>title: Hexo系列（二）：远程仓库托管博客<br>date: 2017-01-12 15:30:31<br>tags: [github,coding]</p>
 <h2 id="categories-Hexo"><a href="#categories-Hexo" class="headerlink" title="categories: Hexo"></a>categories: Hexo</h2><!-- # Hexo：Github上发布博客（二）-->
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇博客介绍了怎么搭建本地的静态博客，本文内容是将本地的博客通过GitHub Pages发布，使外网可以访问,coding上同理，本文只介绍Github。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>发布前的准备：</p>
@@ -2040,6 +1933,98 @@ aboutme: false
       
     <div class="article-tag tagcloud" style="margin-top:20px">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/themes/">themes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yelee/">yelee</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Hexo系列（三）：上传资源到博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/01/Hexo系列（三）：上传资源到博客/" class="article-date">
+      <time datetime="2017-02-01T01:18:54.000Z" itemprop="datePublished">2017-02-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a>
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">338&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">1m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用Hexo+Github搭建博客的初衷就是不想去购买服务器，备案，搭建服务等，所以也不存在文件上传的问题。那么博客中有时需要用到的图片，这里的图片就是静态图片。</p>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>cd到博客根目录下 查看<code>_config.yml</code>文件 查找 <code>post_asset_folder</code> 字段，将post_asset_folder 设置为true ， <code>post_asset_folder:true</code>。</p>
+<p>当设置 <code>post_asset_folder</code> 参数为<code>true</code>，在建立文件时，Hexo 会自动建立一个与文章同名的文件夹，可以把与该文章相关的所有资源都放到此文件夹内，这样就可以更方便的使用资源。</p>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p>到博客的根目录下执行 <code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code> 命令来进行插件的安装。</p>
+<h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><p>然后创建一文章 <code>hexo new &quot;test&quot;</code> 然后查看博客的 ../source/_posts 目录下的文件，会看到存在一个test 文件夹 和 test.md 文件<br><img src="/2017/02/01/Hexo系列（三）：上传资源到博客/1.jpg" alt=""></p>
+<h3 id="添加资源"><a href="#添加资源" class="headerlink" title="添加资源"></a>添加资源</h3><p>将所需要的图片资源放到test 文件夹 内 目录结构如下：<br><img src="/2017/02/01/Hexo系列（三）：上传资源到博客/2.jpg" alt=""></p>
+<h3 id="使用资源"><a href="#使用资源" class="headerlink" title="使用资源"></a>使用资源</h3><p>书写文章使用test文件内 的图片<br><img src="/2017/02/01/Hexo系列（三）：上传资源到博客/3.jpg" alt=""></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>1.使用<code>hexo s</code> 命令运行本地博客即可看到效果</p>
+<p>2.使用<code>hexo clean</code> <code>，hexo g</code> ，<code>hexo d</code>将本地博客推送到远程，即可看到文章中的图片</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud" style="margin-top:20px">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static/">static</a></li></ul>
     </div>
 
       
