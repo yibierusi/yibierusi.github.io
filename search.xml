@@ -145,16 +145,16 @@
     
     
     <entry>
-      <title>基于C的驱动级外设模拟</title>
-      <link href="/2017/03/11/%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/"/>
-      <url>/2017/03/11/%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/</url>
+      <title>游戏辅助（二）：基于C的驱动级外设模拟</title>
+      <link href="/2017/03/11/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/"/>
+      <url>/2017/03/11/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/</url>
       
         <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p><p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p><p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p><h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p><p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p><p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p><p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p><p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p><p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p><p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p><p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p><h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;import com.sun.jna.Native;public interface DdXoft extends Library {    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、    int DD_mov(int x, int y);//绝对移动    int DD_movR(int dx, int dy);//相对移动    int DD_btn(int btn);//鼠标    int DD_whl(int whl); //滑轮    int DD_key(int ddcode, int flag);//键盘    int DD_str(String s);//字符串}</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p><pre><code>/** * 判断某点颜色是否相同 相同则按下 * * @return */public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {    if (isEquals(robot, entry)) {        return pressKey(robot, entry, ddCode);    }    return false;}</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p><pre><code>/** * 直接按下某键 */public static boolean pressKey(Robot robot, Entry entry, int ddCode) {    //robot.keyPress(keyCode);    DdXoft.INSTANCE.DD_key(ddCode, 1);    robot.delay(entry.press);    //robot.keyRelease(keyCode);    DdXoft.INSTANCE.DD_key(ddCode, 2);    robot.delay(entry.release);    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());    return true;}</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡到程序</a></p>]]></content>
       
       
       <categories>
           
-          <category> Dll </category>
+          <category> 游戏辅助 </category>
           
       </categories>
       
@@ -176,16 +176,16 @@
     
     
     <entry>
-      <title>基于Java的软件级外设模拟</title>
-      <link href="/2017/03/05/%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/"/>
-      <url>/2017/03/05/%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/</url>
+      <title>游戏辅助（一）：基于Java的软件级外设模拟</title>
+      <link href="/2017/03/05/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/"/>
+      <url>/2017/03/05/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E8%BD%AF%E4%BB%B6%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/</url>
       
         <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。</p><p>本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检测出来，下一篇博客会介绍驱动级的键盘模拟。</p><p>官方JavaDocsApi: j<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html" target="_blank" rel="noopener">ava.awt.Robot</a></p><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Robot，机器人。此类用于为测试自动化、自运行演示程序和其他需要控制鼠标和键盘的应用程序生成本机系统输入事件。Robot 的主要目的是便于 Java 平台实现自动测试。</p><p>Robot 可以模拟鼠标和键盘的输入，相当于 Java 版的按键精灵。</p><h3 id="Robot-构造方法"><a href="#Robot-构造方法" class="headerlink" title="Robot 构造方法"></a>Robot 构造方法</h3><pre><code>// 在基本屏幕坐标系中构造一个 Robot 对象, 如果平台不支持 Robot, 将抛出异常Robot()// 为给定屏幕设备创建一个 Robot（用于同时使用多个显示设备的情况）Robot(GraphicsDevice screen)</code></pre><h3 id="模拟鼠标"><a href="#模拟鼠标" class="headerlink" title="模拟鼠标"></a>模拟鼠标</h3><pre><code>// 将鼠标指针移动到指定屏幕坐标void mouseMove(int x, int y)/** * 按下/释放一个或多个鼠标按钮, 参数说明: *     buttons: 鼠标按钮掩码, 一个或多个以下标志的组合: *     InputEvent.BUTTON1_MASK 鼠标左键 *     InputEvent.BUTTON2_MASK 鼠标中键 *     InputEvent.BUTTON3_MASK 鼠标右键 */    void mousePress(int buttons)    void mouseRelease(int buttons)    // 在配有滚轮的鼠标上旋转滚轮    void mouseWheel(int wheelAmt)</code></pre><h3 id="模拟键盘"><a href="#模拟键盘" class="headerlink" title="模拟键盘"></a>模拟键盘</h3><pre><code>/** * 按下/释放键盘按键, 参数说明: *     keycode: 键盘键值常量, 定义在 KeyEvent.VK_XXX 中 */    void keyPress(int keycode)    void keyRelease(int keycode)</code></pre><h3 id="屏幕相关"><a href="#屏幕相关" class="headerlink" title="屏幕相关"></a>屏幕相关</h3><pre><code>// 获取指定屏幕坐标处的像素颜色Color getPixelColor(int x, int y)// 截屏, 截取指定的矩形区域BufferedImage createScreenCapture(Rectangle screenRect)</code></pre><h3 id="控制类"><a href="#控制类" class="headerlink" title="控制类"></a>控制类</h3><pre><code>// 睡眠指定的时间, 相当于 Thread.sleep(long ms)void delay(int ms)// 在处理完当前事件队列中的所有事件之前, 一直等待void waitForIdle()// 设置此 Robot 在生成一个事件后是否自动调用 waitForIdle()// 设置为 true, 表示添加的事件逐个按顺序执行（执行完一个再执行下一个）void setAutoWaitForIdle(boolean isOn)boolean isAutoWaitForIdle()// 设置此 Robot 每在生成一个事件后自动睡眠的毫秒数void setAutoDelay(int ms)int getAutoDelay()</code></pre><h3 id="模拟鼠标事件"><a href="#模拟鼠标事件" class="headerlink" title="模拟鼠标事件"></a>模拟鼠标事件</h3><pre><code>package com.xiets.robot;import java.awt.*;import java.awt.event.InputEvent;public class Main {    public static void main(String[] args) throws AWTException {        // 创建 Robot 实例        Robot robot = new Robot();        // 执行完一个事件后再执行下一个        robot.setAutoWaitForIdle(true);        // 移动鼠标到指定屏幕坐标        robot.mouseMove(100, 100);        // 按下鼠标左键        robot.mousePress(InputEvent.BUTTON1_MASK);        // 延时100毫秒        robot.delay(100);        // 释放鼠标左键（按下后必须要释放, 一次点击操作包含了按下和释放）        robot.mouseRelease(InputEvent.BUTTON1_MASK);    }}</code></pre>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> 游戏辅助 </category>
           
       </categories>
       

@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="漫漫求学路上，彳亍独行的脚印。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://zhouhy.top/tags/index.html">
+<meta name="description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
+<meta name="keywords" content="脚本,Robot,JavaFX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏辅助（一）：基于Java的软件级外设模拟">
+<meta property="og:url" content="http://zhouhy.top/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="漫漫求学路上，彳亍独行的脚印。">
+<meta property="og:description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-09T06:53:02.947Z">
+<meta property="og:updated_time" content="2019-01-10T07:38:57.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="漫漫求学路上，彳亍独行的脚印。">
+<meta name="twitter:title" content="游戏辅助（一）：基于Java的软件级外设模拟">
+<meta name="twitter:description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tags | ZHOU&#39;s Blog</title>
+<title>游戏辅助（一）：基于Java的软件级外设模拟 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,7 +68,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -272,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-游戏辅助（一）：基于Java的软件级外设模拟" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2019-01-08T06:58:05.000Z" itemprop="datePublished">2019-01-08</time>
+      <a href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/" class="article-date">
+      <time datetime="2017-03-05T09:06:30.000Z" itemprop="datePublished">2017-03-05</time>
 </a>
 
 
@@ -291,17 +292,44 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      游戏辅助（一）：基于Java的软件级外设模拟
     </h1>
   
 
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">777&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">2m</span>
+      </span>
+    </span>
+</div>
 		
       </header>
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/游戏辅助/">游戏辅助</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud" style="margin-top:20px">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaFX/">JavaFX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robot/">Robot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -309,96 +337,149 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。</p>
+<p>本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检测出来，下一篇博客会介绍驱动级的键盘模拟。</p>
+<p>官方JavaDocsApi: j<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html" target="_blank" rel="noopener">ava.awt.Robot</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Robot，机器人。此类用于为测试自动化、自运行演示程序和其他需要控制鼠标和键盘的应用程序生成本机系统输入事件。Robot 的主要目的是便于 Java 平台实现自动测试。</p>
+<p>Robot 可以模拟鼠标和键盘的输入，相当于 Java 版的按键精灵。</p>
+<h3 id="Robot-构造方法"><a href="#Robot-构造方法" class="headerlink" title="Robot 构造方法"></a>Robot 构造方法</h3><pre><code>// 在基本屏幕坐标系中构造一个 Robot 对象, 如果平台不支持 Robot, 将抛出异常
+Robot()
 
+// 为给定屏幕设备创建一个 Robot（用于同时使用多个显示设备的情况）
+Robot(GraphicsDevice screen)
+</code></pre><h3 id="模拟鼠标"><a href="#模拟鼠标" class="headerlink" title="模拟鼠标"></a>模拟鼠标</h3><pre><code>// 将鼠标指针移动到指定屏幕坐标
+void mouseMove(int x, int y)
 
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vpn/">Vpn</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/区块链/">区块链</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏辅助/">游戏辅助</a><span class="category-list-count">2</span></li></ul>
+/**
+ * 按下/释放一个或多个鼠标按钮, 参数说明:
+ *     buttons: 鼠标按钮掩码, 一个或多个以下标志的组合:
+ *     InputEvent.BUTTON1_MASK 鼠标左键
+ *     InputEvent.BUTTON2_MASK 鼠标中键
+ *     InputEvent.BUTTON3_MASK 鼠标右键
+ */
+    void mousePress(int buttons)
+    void mouseRelease(int buttons)
 
-<p class="count"></p>
+    // 在配有滚轮的鼠标上旋转滚轮
+    void mouseWheel(int wheelAmt)
+</code></pre><h3 id="模拟键盘"><a href="#模拟键盘" class="headerlink" title="模拟键盘"></a>模拟键盘</h3><pre><code>/**
+ * 按下/释放键盘按键, 参数说明:
+ *     keycode: 键盘键值常量, 定义在 KeyEvent.VK_XXX 中
+ */
+    void keyPress(int keycode)
+    void keyRelease(int keycode)
+</code></pre><h3 id="屏幕相关"><a href="#屏幕相关" class="headerlink" title="屏幕相关"></a>屏幕相关</h3><pre><code>// 获取指定屏幕坐标处的像素颜色
+Color getPixelColor(int x, int y)
 
-<div class="tags">
-    <a href="/tags/AsyncHandlerInterceptor/" style="font-size: 16px; color: #808080">AsyncHandlerInterceptor</a> <a href="/tags/C/" style="font-size: 16px; color: #808080">C</a> <a href="/tags/Disqus/" style="font-size: 16px; color: #808080">Disqus</a> <a href="/tags/HandlerInterceptor/" style="font-size: 16px; color: #808080">HandlerInterceptor</a> <a href="/tags/HttpServletRequestWrapper/" style="font-size: 16px; color: #808080">HttpServletRequestWrapper</a> <a href="/tags/HttpServletResponseWrapper/" style="font-size: 16px; color: #808080">HttpServletResponseWrapper</a> <a href="/tags/JavaFX/" style="font-size: 16px; color: #808080">JavaFX</a> <a href="/tags/POW/" style="font-size: 16px; color: #808080">POW</a> <a href="/tags/Request/" style="font-size: 16px; color: #808080">Request</a> <a href="/tags/Resources/" style="font-size: 16px; color: #808080">Resources</a> <a href="/tags/Response/" style="font-size: 16px; color: #808080">Response</a> <a href="/tags/Robot/" style="font-size: 16px; color: #808080">Robot</a> <a href="/tags/baidu/" style="font-size: 16px; color: #808080">baidu</a> <a href="/tags/blog/" style="font-size: 16px; color: #808080">blog</a> <a href="/tags/body/" style="font-size: 35px; color: #000">body</a> <a href="/tags/coding/" style="font-size: 16px; color: #808080">coding</a> <a href="/tags/count/" style="font-size: 16px; color: #808080">count</a> <a href="/tags/ddxoft/" style="font-size: 16px; color: #808080">ddxoft</a> <a href="/tags/dll/" style="font-size: 16px; color: #808080">dll</a> <a href="/tags/github/" style="font-size: 16px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 16px; color: #808080">google</a> <a href="/tags/js/" style="font-size: 16px; color: #808080">js</a> <a href="/tags/node-js/" style="font-size: 16px; color: #808080">node.js</a> <a href="/tags/search/" style="font-size: 16px; color: #808080">search</a> <a href="/tags/seo/" style="font-size: 16px; color: #808080">seo</a> <a href="/tags/ssr/" style="font-size: 16px; color: #808080">ssr</a> <a href="/tags/static-pages/" style="font-size: 16px; color: #808080">static pages</a> <a href="/tags/themes/" style="font-size: 16px; color: #808080">themes</a> <a href="/tags/vpn/" style="font-size: 16px; color: #808080">vpn</a> <a href="/tags/vps/" style="font-size: 16px; color: #808080">vps</a> <a href="/tags/yelee/" style="font-size: 16px; color: #808080">yelee</a> <a href="/tags/友言/" style="font-size: 16px; color: #808080">友言</a> <a href="/tags/多说/" style="font-size: 16px; color: #808080">多说</a> <a href="/tags/来必力/" style="font-size: 16px; color: #808080">来必力</a> <a href="/tags/脚本/" style="font-size: 35px; color: #000">脚本</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
+// 截屏, 截取指定的矩形区域
+BufferedImage createScreenCapture(Rectangle screenRect)
+</code></pre><h3 id="控制类"><a href="#控制类" class="headerlink" title="控制类"></a>控制类</h3><pre><code>// 睡眠指定的时间, 相当于 Thread.sleep(long ms)
+void delay(int ms)
 
-<!-- Count tags and categories -->
-<p id="count">
-        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
+// 在处理完当前事件队列中的所有事件之前, 一直等待
+void waitForIdle()
 
-          
-        
+// 设置此 Robot 在生成一个事件后是否自动调用 waitForIdle()
+// 设置为 true, 表示添加的事件逐个按顺序执行（执行完一个再执行下一个）
+void setAutoWaitForIdle(boolean isOn)
+boolean isAutoWaitForIdle()
+
+// 设置此 Robot 每在生成一个事件后自动睡眠的毫秒数
+void setAutoDelay(int ms)
+int getAutoDelay()
+</code></pre><h3 id="模拟鼠标事件"><a href="#模拟鼠标事件" class="headerlink" title="模拟鼠标事件"></a>模拟鼠标事件</h3><pre><code>package com.xiets.robot;
+
+import java.awt.*;
+import java.awt.event.InputEvent;
+
+public class Main {
+
+    public static void main(String[] args) throws AWTException {
+        // 创建 Robot 实例
+        Robot robot = new Robot();
+
+        // 执行完一个事件后再执行下一个
+        robot.setAutoWaitForIdle(true);
+
+        // 移动鼠标到指定屏幕坐标
+        robot.mouseMove(100, 100);
+
+        // 按下鼠标左键
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+
+        // 延时100毫秒
+        robot.delay(100);
+
+        // 释放鼠标左键（按下后必须要释放, 一次点击操作包含了按下和释放）
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+    }
+}
+</code></pre>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/">游戏辅助（一）：基于Java的软件级外设模拟</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2017-03-05, 17:06:30</p>
+        <p><span>最后更新:</span>2019-01-10, 15:38:57</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/" title="游戏辅助（一）：基于Java的软件级外设模拟">http://zhouhy.top/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/03/11/游戏辅助（二）：基于C的驱动级外设模拟/">
+                    游戏辅助（二）：基于C的驱动级外设模拟
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/28/Hexo系列（七）：提交搜索引擎/">
+                    Hexo系列（七）：提交搜索引擎
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Robot-构造方法"><span class="toc-number">1.2.</span> <span class="toc-text">Robot 构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟鼠标"><span class="toc-number">1.3.</span> <span class="toc-text">模拟鼠标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟键盘"><span class="toc-number">1.4.</span> <span class="toc-text">模拟键盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#屏幕相关"><span class="toc-number">1.5.</span> <span class="toc-text">屏幕相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制类"><span class="toc-number">1.6.</span> <span class="toc-text">控制类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟鼠标事件"><span class="toc-number">1.7.</span> <span class="toc-text">模拟鼠标事件</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -416,7 +497,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tags　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"游戏辅助（一）：基于Java的软件级外设模拟　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -456,10 +537,31 @@
 
 
 
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/03/11/游戏辅助（二）：基于C的驱动级外设模拟/" title="上一篇: 游戏辅助（二）：基于C的驱动级外设模拟">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/28/Hexo系列（七）：提交搜索引擎/" title="下一篇: Hexo系列（七）：提交搜索引擎">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/Response获取Body问题/">Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/Request获取Body问题/">Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/HandlerInterceptor流程/">HandlerInterceptor流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/游戏辅助（二）：基于C的驱动级外设模拟/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/Hexo系列（七）：提交搜索引擎/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Hexo系列（六）：添加评论功能/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：远程仓库托管博客/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
 
     <script>
         
     </script>
+
 </div>
       <footer id="footer">
     <div class="outer">
