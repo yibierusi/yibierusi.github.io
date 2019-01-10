@@ -15,21 +15,18 @@
 
 
 
-<meta name="description" content="前言 本来想用百度站内搜索，但是没成功，然后改用swiftype，但是swiftype需要注册账号并且只能用30天所以也放弃了，本文就简单的介绍一些yelee自带的站内搜索以及文章字数与阅读时长统计。  正文本地搜索使用搜索需先安装对应插件，用于生成索引数据  插件主页: hexo-generator-search  #on: true 改为 on: true即为启用搜索 search:    o">
-<meta name="keywords" content="hexo,search,count">
+<meta name="description" content="前言输入层次介绍1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。 2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。 3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。 模拟层次介绍1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。 其一：Java自带的Robo">
+<meta name="keywords" content="ddxoft,jIntellitype,script,dll">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo系列（五）：站内搜索与文章统计">
-<meta property="og:url" content="http://zhouhy.top/2017/02/16/Hexo系列（五）：站内搜索与文章统计/index.html">
+<meta property="og:title" content="基于C的驱动级外设模拟">
+<meta property="og:url" content="http://zhouhy.top/2017/03/11/基于C的驱动级外设模拟/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="前言 本来想用百度站内搜索，但是没成功，然后改用swiftype，但是swiftype需要注册账号并且只能用30天所以也放弃了，本文就简单的介绍一些yelee自带的站内搜索以及文章字数与阅读时长统计。  正文本地搜索使用搜索需先安装对应插件，用于生成索引数据  插件主页: hexo-generator-search  #on: true 改为 on: true即为启用搜索 search:    o">
+<meta property="og:description" content="前言输入层次介绍1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。 2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。 3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。 模拟层次介绍1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。 其一：Java自带的Robo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://zhouhy.top/2017/02/16/Hexo系列（五）：站内搜索与文章统计/站内搜索.jpg">
-<meta property="og:image" content="http://zhouhy.top/2017/02/16/Hexo系列（五）：站内搜索与文章统计/插入位置.jpg">
-<meta property="og:updated_time" content="2019-01-09T04:39:00.472Z">
+<meta property="og:updated_time" content="2019-01-10T06:59:35.352Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo系列（五）：站内搜索与文章统计">
-<meta name="twitter:description" content="前言 本来想用百度站内搜索，但是没成功，然后改用swiftype，但是swiftype需要注册账号并且只能用30天所以也放弃了，本文就简单的介绍一些yelee自带的站内搜索以及文章字数与阅读时长统计。  正文本地搜索使用搜索需先安装对应插件，用于生成索引数据  插件主页: hexo-generator-search  #on: true 改为 on: true即为启用搜索 search:    o">
-<meta name="twitter:image" content="http://zhouhy.top/2017/02/16/Hexo系列（五）：站内搜索与文章统计/站内搜索.jpg">
+<meta name="twitter:title" content="基于C的驱动级外设模拟">
+<meta name="twitter:description" content="前言输入层次介绍1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。 2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。 3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。 模拟层次介绍1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。 其一：Java自带的Robo">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -61,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo系列（五）：站内搜索与文章统计 | ZHOU&#39;s Blog</title>
+<title>基于C的驱动级外设模拟 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -276,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Hexo系列（五）：站内搜索与文章统计" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-基于C的驱动级外设模拟" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/" class="article-date">
-      <time datetime="2017-02-16T04:31:23.000Z" itemprop="datePublished">2017-02-16</time>
+      <a href="/2017/03/11/基于C的驱动级外设模拟/" class="article-date">
+      <time datetime="2017-03-11T09:05:20.000Z" itemprop="datePublished">2017-03-11</time>
 </a>
 
 
@@ -295,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo系列（五）：站内搜索与文章统计
+      基于C的驱动级外设模拟
     </h1>
   
 
@@ -305,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">536&#23383;</span>
+        <span class="post-count">693&#23383;</span>
       </span>
     </span>
 
@@ -324,13 +321,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    <a class="article-category-link" href="/categories/Dll/">Dll</a>
     </div>
 
 
         
     <div class="article-tag tagcloud" style="margin-top:20px">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/count/">count</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/search/">search</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dll/">dll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jIntellitype/">jIntellitype</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -340,59 +337,60 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>本来想用百度站内搜索，但是没成功，然后改用swiftype，但是swiftype需要注册账号并且只能用30天所以也放弃了，本文就简单的介绍一些yelee自带的站内搜索以及文章字数与阅读时长统计。</p>
-</blockquote>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><p>使用搜索需先安装对应插件，用于生成索引数据</p>
-<blockquote>
-<p>插件主页: <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></p>
-</blockquote>
-<p><code>#on: true</code> 改为 <code>on: true</code>即为启用搜索</p>
-<pre><code>search: 
-  on: true
-  onload: false
-</code></pre><p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 [效率优先]</p>
-<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 [按需加载]<br><img src="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/站内搜索.jpg" alt="本地搜索效果"></p>
-<h3 id="文章统计"><a href="#文章统计" class="headerlink" title="文章统计"></a>文章统计</h3><p><code>next</code>主题是已经集成这个功能的，但是<code>yelee</code>就需要我们自己配置了，可以看下官网对<a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a>的介绍</p>
-<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><blockquote>
-<p>安装hexo-wordcount</p>
-</blockquote>
-<pre><code>npm i --save hexo-wordcount
-</code></pre><h4 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h4><blockquote>
-<p>在yelee/layout/_partial/post下创建word.ejs文件：</p>
-</blockquote>
-<pre><code>&lt;div style=&quot;margin-top:10px;&quot;&gt;
-    &lt;span class=&quot;post-time&quot;&gt;
-      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
-        &lt;i class=&quot;fa fa-keyboard-o&quot;&gt;&lt;/i&gt;
-        &lt;span class=&quot;post-meta-item-text&quot;&gt;  字数统计: &lt;/span&gt;
-        &lt;span class=&quot;post-count&quot;&gt;&lt;%= wordcount(post.content) %&gt;字&lt;/span&gt;
-      &lt;/span&gt;
-    &lt;/span&gt;
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p>
+<p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p>
+<p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p>
+<h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p>
+<p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p>
+<p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p>
+<p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p>
+<p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p>
+<p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p>
+<p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p>
+<p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p>
+<h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;
+import com.sun.jna.Native;
 
-    &lt;span class=&quot;post-time&quot;&gt;
-      &amp;nbsp; | &amp;nbsp;
-      &lt;span class=&quot;post-meta-item-icon&quot;&gt;
-        &lt;i class=&quot;fa fa-hourglass-half&quot;&gt;&lt;/i&gt;
-        &lt;span class=&quot;post-meta-item-text&quot;&gt;  阅读时长: &lt;/span&gt;
-        &lt;span class=&quot;post-count&quot;&gt;&lt;%= min2read(post.content) %&gt;分&lt;/span&gt;
-      &lt;/span&gt;
-    &lt;/span&gt;
-&lt;/div&gt;
-</code></pre><blockquote>
-<p>然后添加逻辑判断</p>
-</blockquote>
-<p>打开 themes/yelee/layout/_partial/article.ejs</p>
-<pre><code>&lt;% if(theme.word_count &amp;&amp; !post.no_word_count){ %&gt;
-    &lt;%- partial(&apos;post/word&apos;) %&gt;
-&lt;% } %&gt;
-</code></pre><p>在下图位置添加<br><img src="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/插入位置.jpg" alt="插入位置"><br><code>word_count</code> 是主题<code>_config.yml</code>中配置是否需要添加字数统计功能控制 flag，</p>
-<p><code>no_word_count</code>即配置文章是否需要显示字数统计的功能。</p>
-<pre><code># 是否开启字数统计
-#不需要使用，直接设置值为false，或注释掉
-word_count: true
-no_word_count: true
-</code></pre><p>如果统计与标签重合或者位置不对，可以在<code>yelee/layout/_partial/post</code> 下面的的<code>word.ejs</code>与<code>tag.ejs</code> 设置<code>margin</code>属性</p>
+public interface DdXoft extends Library {
+    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);
+    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、
+    int DD_mov(int x, int y);//绝对移动
+    int DD_movR(int dx, int dy);//相对移动
+    int DD_btn(int btn);//鼠标
+    int DD_whl(int whl); //滑轮
+    int DD_key(int ddcode, int flag);//键盘
+    int DD_str(String s);//字符串
+}
+</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p>
+<pre><code>/**
+ * 判断某点颜色是否相同 相同则按下
+ *
+ * @return
+ */
+public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {
+    if (isEquals(robot, entry)) {
+        return pressKey(robot, entry, ddCode);
+    }
+    return false;
+}
+</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p>
+<pre><code>/**
+ * 直接按下某键
+ */
+public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
+    //robot.keyPress(keyCode);
+    DdXoft.INSTANCE.DD_key(ddCode, 1);
+    robot.delay(entry.press);
+    //robot.keyRelease(keyCode);
+    DdXoft.INSTANCE.DD_key(ddCode, 2);
+    robot.delay(entry.release);
+    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +
+            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +
+            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());
+    return true;
+}
+</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡到程序</a></p>
 
       
     </div>
@@ -401,13 +399,13 @@ no_word_count: true
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/11/基于C的驱动级外设模拟/">基于C的驱动级外设模拟</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-02-16, 12:31:23</p>
-        <p><span>最后更新:</span>2019-01-09, 12:39:00</p>
+        <p><span>发布时间:</span>2017-03-11, 17:05:20</p>
+        <p><span>最后更新:</span>2019-01-10, 14:59:35</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/" title="Hexo系列（五）：站内搜索与文章统计">http://zhouhy.top/2017/02/16/Hexo系列（五）：站内搜索与文章统计/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2017/02/16/Hexo系列（五）：站内搜索与文章统计/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/11/基于C的驱动级外设模拟/" title="基于C的驱动级外设模拟">http://zhouhy.top/2017/03/11/基于C的驱动级外设模拟/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2017/03/11/基于C的驱动级外设模拟/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -420,15 +418,15 @@ no_word_count: true
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/22/Hexo系列（六）：添加评论功能/">
-                    Hexo系列（六）：添加评论功能
+                <a href="/2017/04/08/SSR搭建属于自己的梯子/">
+                    SSR搭建属于自己的梯子
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">
-                    Hexo系列（四）：主题下载以及配置
+                <a href="/2017/03/05/基于Java的软件级外设模拟/">
+                    基于Java的软件级外设模拟
                 </a>
             </div>
         
@@ -440,7 +438,7 @@ no_word_count: true
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本地搜索"><span class="toc-number">2.1.</span> <span class="toc-text">本地搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章统计"><span class="toc-number">2.2.</span> <span class="toc-text">文章统计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集成"><span class="toc-number">2.2.1.</span> <span class="toc-text">集成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件配置"><span class="toc-number">2.2.2.</span> <span class="toc-text">文件配置</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入层次介绍"><span class="toc-number">1.1.</span> <span class="toc-text">输入层次介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟层次介绍"><span class="toc-number">1.2.</span> <span class="toc-text">模拟层次介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载Dll"><span class="toc-number">2.1.</span> <span class="toc-text">加载Dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定位"><span class="toc-number">2.2.</span> <span class="toc-text">定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">2.3.</span> <span class="toc-text">事件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -476,7 +474,7 @@ no_word_count: true
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo系列（五）：站内搜索与文章统计　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"基于C的驱动级外设模拟　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -518,7 +516,7 @@ no_word_count: true
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/22/Hexo系列（六）：添加评论功能/" title="上一篇: Hexo系列（六）：添加评论功能">
+            <a href="/2017/04/08/SSR搭建属于自己的梯子/" title="上一篇: SSR搭建属于自己的梯子">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -526,7 +524,7 @@ no_word_count: true
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/" title="下一篇: Hexo系列（四）：主题下载以及配置">
+            <a href="/2017/03/05/基于Java的软件级外设模拟/" title="下一篇: 基于Java的软件级外设模拟">
                 <i class="fa fa-angle-right"></i>
             </a>
         

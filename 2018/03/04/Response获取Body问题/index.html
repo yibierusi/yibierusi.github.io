@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="问题现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在afterCompletion中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。 原因这个问题跟requst 一模一样，情况在上篇博客中有详细的说明 方案IO流关闭只能读取一次，所以需要解决流只能读取一次">
+<meta name="description" content="问题 现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在afterCompletion中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。 原因 这个问题跟requst 一模一样，情况在上篇博客中有详细的说明 方案 IO流关闭只能读取一次，所以需要解决流只能读">
 <meta name="keywords" content="Response,body,HttpServletResponseWrapper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Response获取Body问题">
 <meta property="og:url" content="http://zhouhy.top/2018/03/04/Response获取Body问题/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="问题现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在afterCompletion中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。 原因这个问题跟requst 一模一样，情况在上篇博客中有详细的说明 方案IO流关闭只能读取一次，所以需要解决流只能读取一次">
+<meta property="og:description" content="问题 现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在afterCompletion中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。 原因 这个问题跟requst 一模一样，情况在上篇博客中有详细的说明 方案 IO流关闭只能读取一次，所以需要解决流只能读">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-10T06:57:51.336Z">
+<meta property="og:updated_time" content="2019-01-10T07:03:33.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Response获取Body问题">
-<meta name="twitter:description" content="问题现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在afterCompletion中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。 原因这个问题跟requst 一模一样，情况在上篇博客中有详细的说明 方案IO流关闭只能读取一次，所以需要解决流只能读取一次">
+<meta name="twitter:description" content="问题 现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在afterCompletion中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。 原因 这个问题跟requst 一模一样，情况在上篇博客中有详细的说明 方案 IO流关闭只能读取一次，所以需要解决流只能读">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -337,9 +337,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在开发的项目是基于<code>SpringBoot</code>的<code>maven</code>项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在<code>afterCompletion</code>中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>这个问题跟requst 一模一样，情况在<a href="http://127.0.0.1:4000/2018/03/02/Request%E8%8E%B7%E5%8F%96Body%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">上篇博客</a>中有详细的说明</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>IO流关闭只能读取一次，所以需要解决流只能读取一次的问题，让它可以被多次重复读取，这里只需要重写Response缓存一下流中的数据就好了。</p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><hr>
+<p>现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在<code>afterCompletion</code>中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><hr>
+<p>这个问题跟requst 一模一样，情况在<a href="http://zhouhy.top/2018/03/02/Request%E8%8E%B7%E5%8F%96Body%E9%97%AE%E9%A2%98/">上篇博客</a>中有详细的说明</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><hr>
+<p>IO流关闭只能读取一次，所以需要解决流只能读取一次的问题，让它可以被多次重复读取，这里只需要重写Response缓存一下流中的数据就好了。</p>
 <h3 id="引包"><a href="#引包" class="headerlink" title="引包"></a>引包</h3><pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
     &lt;artifactId&gt;tomcat-embed-core&lt;/artifactId&gt;
@@ -457,17 +460,19 @@ public class HttpServletRequestReplacedFilter implements Filter {
 
     }
 }
-</code></pre><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>如下代码即可在拦截其中获取body且保证了controller中依旧可以再次获取</p>
+</code></pre><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><hr>
+<p>如下代码即可在拦截其中获取body且保证了controller中依旧可以再次获取</p>
 <pre><code>byte[] body = ((BodyCachingHttpServletResponseWrapper) res).getBody();
 java.lang.String string = new java.lang.String(body);
-</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在拦截器的<code>preHandle</code>方法中返回<code>true</code>的请求，会进入到对应的<code>Controller</code>，在Controller中返回的对象有<code>Spring Boot</code>框架自动转换为<code>JSON</code>，放入<code>response</code>的<code>body</code>中，这个步骤是没有问题的。</p>
-<p>但是当在拦截器中<code>preHandle</code>方法中返回<code>false</code>的请求,不会经由<code>Controller</code>赋予返回值，应该由程序员手动赋值。<br>常用的方法如下：</p>
+</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><hr>
+<p>在拦截器的<code>preHandle</code>方法中返回true的请求，会进入到对应的Controller，在Controller中返回的对象有Spring Boot框架自动转换为JSON，放入response的body中，这个步骤是没有问题的。</p>
+<p>但是当在拦截器中<code>preHandle</code>方法中返回false的请求,不会经由Controller赋予返回值，应该由程序员手动赋值。<br>常用的方法如下：</p>
 <pre><code>PrintWriter writer = response.getWriter();
 writer.print(JSON.toJSONString(Result.create(MsgConstant.NOT_LOGIN)));
 writer.flush();
 writer.close();
-</code></pre><p>实际上，此时的<code>response</code>是经过包装后的，它的实际类型还是<code>BodyCachingHttpServletResponseWrapper</code>，这个方式前端是接收不到值的。需要把<code>BodyCachingHttpServletResponseWrapper</code> 转化为<code>HttpServletResponse</code>，<strong>而不是父类引用指向子类对象</strong>。</p>
-<p>我在<code>BodyCachingHttpServletResponseWrapper</code>中写了如下方法，目的就是获取HttpServletResponse类型的<code>response</code></p>
+</code></pre><p>实际上，此时的response是经过包装后的，它的实际类型还是<code>BodyCachingHttpServletResponseWrapper</code>，这个方式前端是接收不到值的。需要把BodyCachingHttpServletResponseWrapper 转化为HttpServletResponse，<strong>而不是父类引用指向子类对象</strong>。</p>
+<p>我在<code>BodyCachingHttpServletResponseWrapper</code>中写了如下方法，目的就是获取HttpServletResponse类型的response</p>
 <pre><code>//获取包装前的response
 public HttpServletResponse getNativeResponse(){
     return this.response;
@@ -489,7 +494,7 @@ writer.close();
         <p><span>本文标题:</span><a href="/2018/03/04/Response获取Body问题/">Response获取Body问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
         <p><span>发布时间:</span>2018-03-04, 13:42:38</p>
-        <p><span>最后更新:</span>2019-01-10, 14:57:51</p>
+        <p><span>最后更新:</span>2019-01-10, 15:03:33</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/03/04/Response获取Body问题/" title="Response获取Body问题">http://zhouhy.top/2018/03/04/Response获取Body问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2018/03/04/Response获取Body问题/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -617,7 +622,7 @@ writer.close();
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/Response获取Body问题/">Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/Request获取Body问题/">Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/基于ddxoft的驱动级外设模拟/">基于ddxoft的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/基于Java的软件级外设模拟/">基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/Hexo系列（七）：提交搜索引擎/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Hexo系列（六）：添加评论功能/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：远程仓库托管博客/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/Response获取Body问题/">Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/Request获取Body问题/">Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/基于C的驱动级外设模拟/">基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/基于Java的软件级外设模拟/">基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/Hexo系列（七）：提交搜索引擎/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Hexo系列（六）：添加评论功能/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：远程仓库托管博客/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
 
 
 
