@@ -652,7 +652,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">598&#23383;</span>
+        <span class="post-count">836&#23383;</span>
       </span>
     </span>
 
@@ -661,7 +661,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">2m</span>
+        <span class="post-count">3m</span>
       </span>
     </span>
 </div>
@@ -672,7 +672,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在开发的项目是基于<code>SpringBoot</code>的<code>maven</code>项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。</p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在开发的项目是基于<code>SpringBoot</code>的<code>maven</code>项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，在<code>afterCompletion</code>中从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。</p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>这个问题跟requst 一模一样，情况在<a href="http://127.0.0.1:4000/2018/03/02/Request%E8%8E%B7%E5%8F%96Body%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">上篇博客</a>中有详细的说明</p>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>IO流关闭只能读取一次，所以需要解决流只能读取一次的问题，让它可以被多次重复读取，这里只需要重写Response缓存一下流中的数据就好了。</p>
 <h3 id="引包"><a href="#引包" class="headerlink" title="引包"></a>引包</h3><pre><code>&lt;dependency&gt;
@@ -795,6 +795,24 @@ public class HttpServletRequestReplacedFilter implements Filter {
 </code></pre><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>如下代码即可在拦截其中获取body且保证了controller中依旧可以再次获取</p>
 <pre><code>byte[] body = ((BodyCachingHttpServletResponseWrapper) res).getBody();
 java.lang.String string = new java.lang.String(body);
+</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在拦截器的<code>preHandle</code>方法中返回<code>true</code>的请求，会进入到对应的<code>Controller</code>，在Controller中返回的对象有<code>Spring Boot</code>框架自动转换为<code>JSON</code>，放入<code>response</code>的<code>body</code>中，这个步骤是没有问题的。</p>
+<p>但是当在拦截器中<code>preHandle</code>方法中返回<code>false</code>的请求,不会经由<code>Controller</code>赋予返回值，应该由程序员手动赋值。<br>常用的方法如下：</p>
+<pre><code>PrintWriter writer = response.getWriter();
+writer.print(JSON.toJSONString(Result.create(MsgConstant.NOT_LOGIN)));
+writer.flush();
+writer.close();
+</code></pre><p>实际上，此时的<code>response</code>是经过包装后的，它的实际类型还是<code>BodyCachingHttpServletResponseWrapper</code>，这个方式前端是接收不到值的。需要把<code>BodyCachingHttpServletResponseWrapper</code> 转化为<code>HttpServletResponse</code>，<strong>而不是父类引用指向子类对象</strong>。</p>
+<p>我在<code>BodyCachingHttpServletResponseWrapper</code>中写了如下方法，目的就是获取HttpServletResponse类型的<code>response</code></p>
+<pre><code>//获取包装前的response
+public HttpServletResponse getNativeResponse(){
+    return this.response;
+}
+</code></pre><p>此处返回值的代码如下：</p>
+<pre><code>response = ((BodyCachingHttpServletResponseWrapper)response).getNativeResponse();
+PrintWriter writer = response.getWriter();
+writer.print(JSON.toJSONString(Result.create(MsgConstant.JSON_INVALID_FORMAT)));
+writer.flush();
+writer.close();
 </code></pre>
       
     </div>
