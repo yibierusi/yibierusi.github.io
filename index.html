@@ -652,7 +652,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">0&#23383;</span>
+        <span class="post-count">598&#23383;</span>
       </span>
     </span>
 
@@ -661,7 +661,7 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">1m</span>
+        <span class="post-count">2m</span>
       </span>
     </span>
 </div>
@@ -672,7 +672,130 @@ console.log(&apos;Balance of Xaviers address is&apos;, savjeeCoin.getBalanceOfAd
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在开发的项目是基于<code>SpringBoot</code>的<code>maven</code>项目，拦截器的使用很多时候是必不可少的，当你需要对请求的body与返回的body进行记录的时候，从response中获取流，读取body入库后，你会发现前端获取不到后端传过去的body。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>这个问题跟requst 一模一样，情况在<a href="http://127.0.0.1:4000/2018/03/02/Request%E8%8E%B7%E5%8F%96Body%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">上篇博客</a>中有详细的说明</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>IO流关闭只能读取一次，所以需要解决流只能读取一次的问题，让它可以被多次重复读取，这里只需要重写Response缓存一下流中的数据就好了。</p>
+<h3 id="引包"><a href="#引包" class="headerlink" title="引包"></a>引包</h3><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+    &lt;artifactId&gt;tomcat-embed-core&lt;/artifactId&gt;
+    &lt;version&gt;8.5.15&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="新建类Response包装类"><a href="#新建类Response包装类" class="headerlink" title="新建类Response包装类"></a>新建类Response包装类</h3><p>新建BodyCachingHttpServletResponseWrapper（防止流丢失）</p>
+<pre><code>import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.WriteListener;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+
+/**
+ * @author
+ * @date 2018/10/1
+ */
+public class BodyCachingHttpServletResponseWrapper extends HttpServletResponseWrapper {
+
+    private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    private HttpServletResponse response;
+
+    public BodyCachingHttpServletResponseWrapper(HttpServletResponse response) {
+        super(response);
+        this.response = response;
+    }
+    //获取包装前的response
+    public HttpServletResponse getNativeResponse(){
+        return this.response;
+    }
+    public byte[] getBody() {
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    @Override
+    public ServletOutputStream getOutputStream() {
+        return new ServletOutputStreamWrapper(this.byteArrayOutputStream , this.response);
+    }
+
+    @Override
+    public PrintWriter getWriter() throws IOException {
+        return new PrintWriter(new OutputStreamWriter(this.byteArrayOutputStream , this.response.getCharacterEncoding()));
+    }
+
+
+    @Data
+    @AllArgsConstructor
+    private static class ServletOutputStreamWrapper extends ServletOutputStream {
+
+        private ByteArrayOutputStream outputStream;
+        private HttpServletResponse response;
+
+        @Override
+        public boolean isReady() {
+            return true;
+        }
+
+        @Override
+        public void setWriteListener(WriteListener listener) {
+
+        }
+
+        @Override
+        public void write(int b) throws IOException {
+            this.outputStream.write(b);
+        }
+
+        @Override
+        public void flush() throws IOException {
+            if (! this.response.isCommitted()) {
+                byte[] body = this.outputStream.toByteArray();
+                ServletOutputStream outputStream = this.response.getOutputStream();
+                outputStream.write(body);
+                outputStream.flush();
+            }
+        }
+    }
+}
+</code></pre><h3 id="新建过滤器"><a href="#新建过滤器" class="headerlink" title="新建过滤器"></a>新建过滤器</h3><p>新建HttpServletResponseReplacedFilter(过滤器)</p>
+<pre><code>import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebFilter(urlPatterns = &quot;/*&quot;, filterName = &quot;channelFilter&quot;)
+public class HttpServletRequestReplacedFilter implements Filter {
+    @Override
+    public void destroy() {
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
+        BodyCachingHttpServletResponseWrapper responseWrapper = null;
+        if (response instanceof HttpServletResponse){
+            responseWrapper  = new BodyCachingHttpServletResponseWrapper((HttpServletResponse) response);
+        }
+
+        //获取请求中的流如何，将取出来的字符串，再次转换成流，然后把它放入到新request对象中。
+        // 在chain.doFiler方法中传递新的request对象
+        //此处response包装为responseWrapper 后 通过response.getWriter().print(str);传值是 前台无法接收
+        if (requestWrapper == null &amp;&amp; responseWrapper != null){
+            chain.doFilter(request, responseWrapper);
+        }
+    }
+
+    @Override
+    public void init(FilterConfig arg0) throws ServletException {
+
+    }
+}
+</code></pre><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>如下代码即可在拦截其中获取body且保证了controller中依旧可以再次获取</p>
+<pre><code>byte[] body = ((BodyCachingHttpServletResponseWrapper) res).getBody();
+java.lang.String string = new java.lang.String(body);
+</code></pre>
       
     </div>
     
@@ -911,26 +1034,15 @@ public class HttpServletRequestReplacedFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
-        ServletRequest requestWrapper = null;
-        BodyCachingHttpServletResponseWrapper responseWrapper = null;
+        ServletRequest requestWrapper = null;          
         if (request instanceof HttpServletRequest) {
             requestWrapper = new RequestReaderHttpServletRequestWrapper((HttpServletRequest) request);
-        }
-        if (response instanceof HttpServletResponse){
-            responseWrapper  = new BodyCachingHttpServletResponseWrapper((HttpServletResponse) response);
         }
 
         //获取请求中的流如何，将取出来的字符串，再次转换成流，然后把它放入到新request对象中。
         // 在chain.doFiler方法中传递新的request对象
 
-        //此处response包装为responseWrapper 后 通过response.getWriter().print(str);传值是 前台无法接收
-        if (requestWrapper == null &amp;&amp; responseWrapper == null) {
-            chain.doFilter(request, response);
-        } else if (requestWrapper != null &amp;&amp; responseWrapper != null){
-            chain.doFilter(requestWrapper, responseWrapper);
-        } else if (requestWrapper == null &amp;&amp; responseWrapper != null){
-            chain.doFilter(request, responseWrapper);
-        }else if (requestWrapper != null &amp;&amp; responseWrapper == null){
+        if (requestWrapper != null &amp;&amp; responseWrapper == null){
             chain.doFilter(requestWrapper, response);
         }
     }

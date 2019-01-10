@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
 <meta property="og:description" content="问题现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当有需要你对请求体（request.body）中的值进行校验，例如加密验签、防重复提交、内容校验等等。当你开开心心的在拦截器中通过request.getInputStream();获取到body中的信息后，你会发现你在controller中使用了@RequestBody注解获取参数报如下错误: I/O">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-10T06:36:11.431Z">
+<meta property="og:updated_time" content="2019-01-10T06:46:10.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Request获取Body问题">
 <meta name="twitter:description" content="问题现在开发的项目是基于SpringBoot的maven项目，拦截器的使用很多时候是必不可少的，当有需要你对请求体（request.body）中的值进行校验，例如加密验签、防重复提交、内容校验等等。当你开开心心的在拦截器中通过request.getInputStream();获取到body中的信息后，你会发现你在controller中使用了@RequestBody注解获取参数报如下错误: I/O">
@@ -493,26 +493,15 @@ public class HttpServletRequestReplacedFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
-        ServletRequest requestWrapper = null;
-        BodyCachingHttpServletResponseWrapper responseWrapper = null;
+        ServletRequest requestWrapper = null;          
         if (request instanceof HttpServletRequest) {
             requestWrapper = new RequestReaderHttpServletRequestWrapper((HttpServletRequest) request);
-        }
-        if (response instanceof HttpServletResponse){
-            responseWrapper  = new BodyCachingHttpServletResponseWrapper((HttpServletResponse) response);
         }
 
         //获取请求中的流如何，将取出来的字符串，再次转换成流，然后把它放入到新request对象中。
         // 在chain.doFiler方法中传递新的request对象
 
-        //此处response包装为responseWrapper 后 通过response.getWriter().print(str);传值是 前台无法接收
-        if (requestWrapper == null &amp;&amp; responseWrapper == null) {
-            chain.doFilter(request, response);
-        } else if (requestWrapper != null &amp;&amp; responseWrapper != null){
-            chain.doFilter(requestWrapper, responseWrapper);
-        } else if (requestWrapper == null &amp;&amp; responseWrapper != null){
-            chain.doFilter(request, responseWrapper);
-        }else if (requestWrapper != null &amp;&amp; responseWrapper == null){
+        if (requestWrapper != null &amp;&amp; responseWrapper == null){
             chain.doFilter(requestWrapper, response);
         }
     }
@@ -535,7 +524,7 @@ public class HttpServletRequestReplacedFilter implements Filter {
         <p><span>本文标题:</span><a href="/2018/03/02/Request获取Body问题/">Request获取Body问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
         <p><span>发布时间:</span>2018-03-02, 13:42:38</p>
-        <p><span>最后更新:</span>2019-01-10, 14:36:11</p>
+        <p><span>最后更新:</span>2019-01-10, 14:46:10</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/03/02/Request获取Body问题/" title="Request获取Body问题">http://zhouhy.top/2018/03/02/Request获取Body问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2018/03/02/Request获取Body问题/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
