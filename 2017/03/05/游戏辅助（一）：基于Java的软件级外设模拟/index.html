@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
+<meta name="description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键事件就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
 <meta name="keywords" content="Robot,JavaFX,脚本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="游戏辅助（一）：基于Java的软件级外设模拟">
 <meta property="og:url" content="http://zhouhy.top/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
+<meta property="og:description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键事件就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-10T08:27:49.872Z">
+<meta property="og:updated_time" content="2019-01-10T08:55:42.642Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="游戏辅助（一）：基于Java的软件级外设模拟">
-<meta name="twitter:description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
+<meta name="twitter:description" content="前言今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键事件就失效了。 本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -337,7 +337,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键时间就失效了。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键事件就失效了。</p>
 <p>本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检测出来，下一篇博客会介绍驱动级的键盘模拟。</p>
 <p>官方JavaDocsApi: j<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html" target="_blank" rel="noopener">ava.awt.Robot</a></p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Robot，机器人。此类用于为测试自动化、自运行演示程序和其他需要控制鼠标和键盘的应用程序生成本机系统输入事件。Robot 的主要目的是便于 Java 平台实现自动测试。</p>
@@ -425,7 +425,7 @@ public class Main {
         <p><span>本文标题:</span><a href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/">游戏辅助（一）：基于Java的软件级外设模拟</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
         <p><span>发布时间:</span>2017-03-05, 17:06:30</p>
-        <p><span>最后更新:</span>2019-01-10, 16:27:49</p>
+        <p><span>最后更新:</span>2019-01-10, 16:55:42</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/" title="游戏辅助（一）：基于Java的软件级外设模拟">http://zhouhy.top/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
