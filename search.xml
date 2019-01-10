@@ -170,11 +170,11 @@
     
     
     <entry>
-      <title>游戏辅助（二）：基于C的驱动级外设模拟</title>
-      <link href="/2017/03/11/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/"/>
-      <url>/2017/03/11/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/</url>
+      <title>游戏辅助（四）：基于Java的内存修改器（CE）</title>
+      <link href="/2017/03/21/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E5%86%85%E5%AD%98%E4%BF%AE%E6%94%B9%E5%99%A8%EF%BC%88CE%EF%BC%89/"/>
+      <url>/2017/03/21/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E5%86%85%E5%AD%98%E4%BF%AE%E6%94%B9%E5%99%A8%EF%BC%88CE%EF%BC%89/</url>
       
-        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p><p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p><p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p><h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p><p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p><p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p><p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p><p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p><p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p><p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p><p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p><h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;import com.sun.jna.Native;public interface DdXoft extends Library {    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、    int DD_mov(int x, int y);//绝对移动    int DD_movR(int dx, int dy);//相对移动    int DD_btn(int btn);//鼠标    int DD_whl(int whl); //滑轮    int DD_key(int ddcode, int flag);//键盘    int DD_str(String s);//字符串}</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p><pre><code>/** * 判断某点颜色是否相同 相同则按下 * * @return */public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {    if (isEquals(robot, entry)) {        return pressKey(robot, entry, ddCode);    }    return false;}</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p><pre><code>/** * 直接按下某键 */public static boolean pressKey(Robot robot, Entry entry, int ddCode) {    //robot.keyPress(keyCode);    DdXoft.INSTANCE.DD_key(ddCode, 1);    robot.delay(entry.press);    //robot.keyRelease(keyCode);    DdXoft.INSTANCE.DD_key(ddCode, 2);    robot.delay(entry.release);    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());    return true;}</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡到程序</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记得初中玩游戏作弊就是用的<code>八门神器</code>，大学玩天天跑酷用<code>烧饼修改器</code>，毕业玩荒野之息用的是<code>CE</code>，这些工具说白的就是内存修改器，通过内存中的值不断的变化，不断的搜索，不断的定位到内存中的值对应的游戏属性，通过修改它达到作弊的效果。前面几篇博客主要是讲外设的模拟，窗口的绑定，都是属于辅助的范围，本文讲的内存修改器应该算是达到了外挂的范畴。</p><h2 id="嗯？"><a href="#嗯？" class="headerlink" title="嗯？"></a>嗯？</h2><hr><p>先挖个坑，有时间再填。</p>]]></content>
       
       
       <categories>
@@ -186,11 +186,65 @@
       
         <tags>
             
+            <tag> CE </tag>
+            
+            <tag> 内存 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>游戏辅助（三）：基于C绑定句柄</title>
+      <link href="/2017/03/20/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%BB%91%E5%AE%9A%E5%8F%A5%E6%9F%84/"/>
+      <url>/2017/03/20/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%BB%91%E5%AE%9A%E5%8F%A5%E6%9F%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面几篇介绍了用Java调用第三方插件去进行驱动级别的外设模拟，至于基于Java的以图找图，以色定位就不多说了，Robot就可以满足，本文讲的是通过Java操作句柄（实际上还是通过C），Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>首先导入xnx3.jar</strong>,以寻仙窗口句柄为例。</p><pre><code>import com.xnx3.microsoft.Com;import com.xnx3.microsoft.Mouse;import com.xnx3.microsoft.Press;import com.xnx3.microsoft.Sleep;import com.xnx3.microsoft.Window;    /**     * 寻仙游戏模拟操作     */    public class XunXianTest {        public static void main(String[] args) {            //所有辅助的，模拟进行某种操作(键盘、鼠标、..)要先创建此类,在new Com()时，会自动检测运行环境是否符合、部署、注册Dll            Com com=new Com();            //返回创建Com()的结果，如果自检过程中发现异常，创建Com失败，则调用此会返回false            if(!com.isCreateSuccess()){                return;            }            //创建window窗口操作对象            Window window=new Window(com.getActiveXComponent());            //查找当前运行的程序中标题包含“寻仙 -”三个字的窗口句柄，            int hwnd=window.findWindow(0, null, &quot;寻仙 -&quot;);            //如果找到了寻仙这个游戏窗口了，确定是有这个程序存在，那么可以继续以下操作            if(hwnd&gt;0){                        /*                         * 对找到的寻仙这个窗口进行绑定，绑定完毕后，那么所有的鼠标、键盘、图色等操作就是都是对这个窗口（寻仙游戏）操作的，完全后台的~~，窗口可以被遮挡、点击葫芦隐藏，但是不可以最小化                         * 寻仙的就是这种模式绑定，只需要传入窗口句柄就可                         * 其他游戏的请自行组合测试绑定模式,使用： com.bind(hwnd, display, mouse, key, mode) 自行测试                         */                if(com.bind(hwnd)){                    /**                     * 绑定完毕，对游戏的操作全在这里                     */                    Press press=new Press(com.getActiveXComponent());        //创建模拟按键对象                    Mouse mouse=new Mouse(com.getActiveXComponent());        //创建模拟鼠标对象                    Sleep sleep=new Sleep();                                                        //创建延迟等待对象                    /***************以下来模拟按wasd四个方向键转三圈，然后结束软件退出运行***************/                    int i=0;                    while(i++&lt;3){                        press.keyPressTime(Press.W, 300);        //模拟按下W键0.3秒钟                        press.keyPressTime(Press.A, 300);                        press.keyPressTime(Press.S, 300);                        press.keyPressTime(Press.D, 300);                    }                    System.out.println(&quot;执行完毕&quot;);                }else{                    System.out.println(&quot;窗口绑定失败&quot;);                }            }else{                System.out.println(&quot;没有发现寻仙窗口&quot;);            }            //用完后一定要记得释放，释放内存，无论是否绑定了窗口、绑定是否成功，都可以直接调用此函数释放            com.unbind();        }    }</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏辅助 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> xnx3 </tag>
+            
+            <tag> 句柄 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>游戏辅助（二）：基于C的驱动级外设模拟</title>
+      <link href="/2017/03/11/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/"/>
+      <url>/2017/03/11/%E6%B8%B8%E6%88%8F%E8%BE%85%E5%8A%A9%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E4%BA%8EC%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%BA%A7%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p><p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p><p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p><h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p><p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p><p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p><p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p><p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p><p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p><p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p><p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p><h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;import com.sun.jna.Native;public interface DdXoft extends Library {    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、    int DD_mov(int x, int y);//绝对移动    int DD_movR(int dx, int dy);//相对移动    int DD_btn(int btn);//鼠标    int DD_whl(int whl); //滑轮    int DD_key(int ddcode, int flag);//键盘    int DD_str(String s);//字符串}</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p><pre><code>/** * 判断某点颜色是否相同 相同则按下 * * @return */public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {    if (isEquals(robot, entry)) {        return pressKey(robot, entry, ddCode);    }    return false;}</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p><pre><code>/** * 直接按下某键 */public static boolean pressKey(Robot robot, Entry entry, int ddCode) {    //robot.keyPress(keyCode);    DdXoft.INSTANCE.DD_key(ddCode, 1);    robot.delay(entry.press);    //robot.keyRelease(keyCode);    DdXoft.INSTANCE.DD_key(ddCode, 2);    robot.delay(entry.release);    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());    return true;}</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡刀脚本</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏辅助 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 脚本 </tag>
+            
             <tag> ddxoft </tag>
             
             <tag> dll </tag>
-            
-            <tag> 脚本 </tag>
             
         </tags>
       
@@ -215,11 +269,11 @@
       
         <tags>
             
-            <tag> 脚本 </tag>
-            
             <tag> Robot </tag>
             
             <tag> JavaFX </tag>
+            
+            <tag> 脚本 </tag>
             
         </tags>
       
