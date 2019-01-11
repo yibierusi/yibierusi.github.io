@@ -77,7 +77,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
+        search: false
     }
 </script>
 
@@ -173,9 +173,9 @@
                         
                             <li><a href="/">主页</a></li>
                         
-                            <li><a href="/archives/">所有文章</a></li>
+                            <li><a href="/archives/">文章</a></li>
                         
-                            <li><a href="/tags/">标签云</a></li>
+                            <li><a href="/tags/">标签</a></li>
                         
                             <li><a href="/about/">关于我</a></li>
                         
@@ -250,9 +250,9 @@
                 
                     <li><a href="/">主页</a></li>
                 
-                    <li><a href="/archives/">所有文章</a></li>
+                    <li><a href="/archives/">文章</a></li>
                 
-                    <li><a href="/tags/">标签云</a></li>
+                    <li><a href="/tags/">标签</a></li>
                 
                     <li><a href="/about/">关于我</a></li>
                 
@@ -277,6 +277,166 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-游戏辅助（一）：基于Java的软件级外设模拟" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/" class="article-date">
+      <time datetime="2017-03-05T09:06:30.000Z" itemprop="datePublished">2017-03-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/">游戏辅助（一）：基于Java的软件级外设模拟</a>
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">777&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">2m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在打副本的时候发现长时间大量重复的操作，非常影响游戏体验，并且达不到卡刀效果，无法有效的解除技能衔接之间的前后摇，使输出无法最大化，于是决定写一个脚本优化这一现象。前后试了很多方法，比如按键精灵，易语言，AHK，不是刚一登陆游戏就被检测出来了，就是一登陆游戏按键事件就失效了。</p>
+<p>本文介绍的是Java的Robot 相比之前Java版本的按键模拟更加强大,但仍然属于软件级模拟，部分游戏仍然会被检测出来，下一篇博客会介绍驱动级的键盘模拟。</p>
+<p>官方JavaDocsApi: j<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html" target="_blank" rel="noopener">ava.awt.Robot</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Robot，机器人。此类用于为测试自动化、自运行演示程序和其他需要控制鼠标和键盘的应用程序生成本机系统输入事件。Robot 的主要目的是便于 Java 平台实现自动测试。</p>
+<p>Robot 可以模拟鼠标和键盘的输入，相当于 Java 版的按键精灵。</p>
+<h3 id="Robot-构造方法"><a href="#Robot-构造方法" class="headerlink" title="Robot 构造方法"></a>Robot 构造方法</h3><pre><code>// 在基本屏幕坐标系中构造一个 Robot 对象, 如果平台不支持 Robot, 将抛出异常
+Robot()
+
+// 为给定屏幕设备创建一个 Robot（用于同时使用多个显示设备的情况）
+Robot(GraphicsDevice screen)
+</code></pre><h3 id="模拟鼠标"><a href="#模拟鼠标" class="headerlink" title="模拟鼠标"></a>模拟鼠标</h3><pre><code>// 将鼠标指针移动到指定屏幕坐标
+void mouseMove(int x, int y)
+
+/**
+ * 按下/释放一个或多个鼠标按钮, 参数说明:
+ *     buttons: 鼠标按钮掩码, 一个或多个以下标志的组合:
+ *     InputEvent.BUTTON1_MASK 鼠标左键
+ *     InputEvent.BUTTON2_MASK 鼠标中键
+ *     InputEvent.BUTTON3_MASK 鼠标右键
+ */
+    void mousePress(int buttons)
+    void mouseRelease(int buttons)
+
+    // 在配有滚轮的鼠标上旋转滚轮
+    void mouseWheel(int wheelAmt)
+</code></pre><h3 id="模拟键盘"><a href="#模拟键盘" class="headerlink" title="模拟键盘"></a>模拟键盘</h3><pre><code>/**
+ * 按下/释放键盘按键, 参数说明:
+ *     keycode: 键盘键值常量, 定义在 KeyEvent.VK_XXX 中
+ */
+    void keyPress(int keycode)
+    void keyRelease(int keycode)
+</code></pre><h3 id="屏幕相关"><a href="#屏幕相关" class="headerlink" title="屏幕相关"></a>屏幕相关</h3><pre><code>// 获取指定屏幕坐标处的像素颜色
+Color getPixelColor(int x, int y)
+
+// 截屏, 截取指定的矩形区域
+BufferedImage createScreenCapture(Rectangle screenRect)
+</code></pre><h3 id="控制类"><a href="#控制类" class="headerlink" title="控制类"></a>控制类</h3><pre><code>// 睡眠指定的时间, 相当于 Thread.sleep(long ms)
+void delay(int ms)
+
+// 在处理完当前事件队列中的所有事件之前, 一直等待
+void waitForIdle()
+
+// 设置此 Robot 在生成一个事件后是否自动调用 waitForIdle()
+// 设置为 true, 表示添加的事件逐个按顺序执行（执行完一个再执行下一个）
+void setAutoWaitForIdle(boolean isOn)
+boolean isAutoWaitForIdle()
+
+// 设置此 Robot 每在生成一个事件后自动睡眠的毫秒数
+void setAutoDelay(int ms)
+int getAutoDelay()
+</code></pre><h3 id="模拟鼠标事件"><a href="#模拟鼠标事件" class="headerlink" title="模拟鼠标事件"></a>模拟鼠标事件</h3><pre><code>package com.xiets.robot;
+
+import java.awt.*;
+import java.awt.event.InputEvent;
+
+public class Main {
+
+    public static void main(String[] args) throws AWTException {
+        // 创建 Robot 实例
+        Robot robot = new Robot();
+
+        // 执行完一个事件后再执行下一个
+        robot.setAutoWaitForIdle(true);
+
+        // 移动鼠标到指定屏幕坐标
+        robot.mouseMove(100, 100);
+
+        // 按下鼠标左键
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+
+        // 延时100毫秒
+        robot.delay(100);
+
+        // 释放鼠标左键（按下后必须要释放, 一次点击操作包含了按下和释放）
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/游戏辅助/">游戏辅助</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud" style="margin-top:20px">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaFX/">JavaFX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robot/">Robot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Hexo系列（七）：提交搜索引擎" class="article article-type-post" itemscope="" itemprop="blogPost">
   
