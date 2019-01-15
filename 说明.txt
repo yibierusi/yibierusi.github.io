@@ -1,0 +1,2 @@
+Staticfile：coding.net需要Staticfile文件来作为以静态文件部署的标志
+CNAME:github 绑定域名用的

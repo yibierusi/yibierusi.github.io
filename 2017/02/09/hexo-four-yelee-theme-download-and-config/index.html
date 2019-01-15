@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zhou">
+
+
+
+<meta name="description" content="之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。">
+<meta name="keywords" content="yelee,themes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo系列（四）：主题下载以及配置">
+<meta property="og:url" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/index.html">
+<meta property="og:site_name" content="ZHOU&#39;s Blog">
+<meta property="og:description" content="之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/1.jpg">
+<meta property="og:image" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/2.jpg">
+<meta property="og:image" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/5.jpg">
+<meta property="og:image" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/3.jpg">
+<meta property="og:image" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/4.jpg">
+<meta property="og:updated_time" content="2017-02-09T01:33:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo系列（四）：主题下载以及配置">
+<meta name="twitter:description" content="之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是landscape，略显简单，我的主题是基于yelee风格的，作者也是在hexo-theme-yilia的基础上进行的修改。">
+<meta name="twitter:image" content="http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/1.jpg">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ZHOU&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Hexo系列（四）：主题下载以及配置 | ZHOU&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zhou</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">莫问收获,但求耕耘</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CE/">CE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEBUG/">DEBUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEAD/">IEAD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFX/">JavaFX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POW/">POW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baidu/">baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/">coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comment/">comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/">seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-pages/">static pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/themes/">themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yelee/">yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句柄/">句柄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拦截器/">拦截器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器/">过滤器</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">life is so short, do something to make yourself happy, such as coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">莫问收获,但求耕耘</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-hexo-four-yelee-theme-download-and-config" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/09/hexo-four-yelee-theme-download-and-config/" class="article-date">
+      <time datetime="2017-02-09T01:33:33.000Z" itemprop="datePublished">2017-02-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo系列（四）：主题下载以及配置
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">3k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">13m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+      <div class="article-info article-info-post" style="margin-top:-5px">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/themes/">themes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yelee/">yelee</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>之前搭建的博客基本功能已经实现了，新搭建的博客的默认主题都是<code>landscape</code>，略显简单，我的主题是基于<code>yelee</code>风格的，作者也是在<code>hexo-theme-yilia</code>的基础上进行的修改。具体的使用可以参考<a href="http://moxfive.coding.me/yelee/" target="_blank" rel="noopener">官方API</a></p>
+</blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>CD到 <code>themes</code> 路径下执行clone命令下载主题</p>
+<pre><code>git clone https://github.com/MOxFIVE/hexo-theme-yelee.git
+</code></pre><h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>打开项目目录下的<code>_config.yml</code>文件</p>
+<p>主题更改，注意的是在<code>yelee</code>前面有个空格，主题<code>yml</code>格式可以自行百度</p>
+<pre><code>theme: yelee
+</code></pre><h3 id="更新主题"><a href="#更新主题" class="headerlink" title="更新主题"></a>更新主题</h3><pre><code>cd themes/yelee
+git pull
+</code></pre><blockquote>
+<p><strong>注意</strong>：请先备份你的<code>_config.yml</code>文件后再升级</p>
+</blockquote>
+<p>更新好后，本地启动起来效果</p>
+<pre><code>hexo server -g  #生成加预览
+</code></pre><p><img src="/2017/02/09/hexo-four-yelee-theme-download-and-config/1.jpg" alt="主题预览效果"></p>
+<h3 id="主题的-config-yml配置"><a href="#主题的-config-yml配置" class="headerlink" title="主题的_config.yml配置"></a>主题的_config.yml配置</h3><p>配置文件<code>_config.yml</code>位于主题根目录下,下面贴出我的配置</p>
+<pre><code># Theme Version | 当前版本
+Yelee: &quot;3.5&quot;
+
+# &gt;&gt;&gt; Basic Setup | 基础设置 &lt;&lt;&lt;
+
+# Header | 主菜单
+## About Page: `hexo new page about`
+## Tags Cloud Page: `hexo new page tags`
+menu:
+  主页: /
+  所有文章: /archives/
+  #随笔: /tags/随笔
+  标签云: /tags/
+  关于我: /about/
+
+# Link to your avatar | 填写头像地址
+avatar: /img/avatar.png
+
+# Small icon of Your site | 站点小图标地址
+favicon: /favicon.png
+
+# Internationalization | 主题语言
+## Change Language in SITE&apos;s _config.yml | 在站点配置中切换语言
+## https://hexo.io/docs/internationalization.html
+## Available Languages: en, zh-Hans, zh-Hant-TW, zh-Hant-HK
+
+# Subdirectory | 子目录
+## If your site&apos; url is &apos;http://yoursite.com/blog&apos;, set root_url as &apos;/blog/&apos;
+## 网站若存放在子目录，请按上面格式填写
+## https://hexo.io/docs/configuration.html#URL
+root_url: 
+
+# Year of Site Creation | 网站成立年份
+since: 2016
+
+# Social info. Bar | 社交信息展示
+## Keep &quot;mailto:&quot; in Email | 设置 Email 时保留 &quot;mailto:&quot;
+## Encrypt email 加密邮件地址 http://ctrlq.org/encode/
+## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
+## https://github.com/hexojs/hexo-generator-feed
+
+#社交
+subnav:
+  Email: &quot;mailto:zhouhy1205@aliyun.com&quot;
+  #新浪微博: &quot;sina weibo&quot;
+  GitHub: &quot;https://github.com/yibierusi&quot;
+  #V2EX: &quot;#&quot;
+  RSS: &quot;/atom.xml&quot;
+  #知乎: &quot;zhihu&quot;
+  #豆瓣: &quot;douban&quot;
+  #简书: &quot;jianshu&quot;
+  #SegmentFault: &quot;&quot;
+  #博客园: &quot;cnblogs&quot;
+  #CSDN: &quot;&quot;
+  #Coding: &quot;&quot;
+  网易云音乐: &quot;https://music.163.com/#/user/home?id=110939435&quot;
+  #虾米音乐: &quot;xiami&quot;
+  #bilibili: &quot;&quot;
+  #AcFun: &quot;&quot;
+  #niconico: &quot;&quot;
+  #Quora: &quot;&quot;
+  #Facebook: &quot;#&quot;
+  #Google: &quot;#&quot;
+  #Twitter: &quot;#&quot;
+  #LinkedIn: &quot;#&quot;
+  #QQ: &quot;4670049&quot;
+  #微信: &quot;zy4670049&quot;
+  #PayPal: &quot;#&quot;
+  #StackOverflow: &quot;#&quot;
+  #CodePen: &quot;&quot;
+  #Plunker: &quot;&quot;
+  #Instagram: &quot;#&quot;
+  #LOFTER: &quot;&quot;
+  #Flickr: &quot;#&quot;
+  #reddit: &quot;&quot;
+  #Medium: &quot;&quot;
+  #TiddlyWiki: &quot;&quot;
+  #Tumblr: &quot;&quot;
+  #_500px: &quot;&quot;
+
+# &gt;&gt;&gt; Conments 评论系统 &lt;&lt;&lt;
+# Chose ONE as your comment system and keep others disable.
+# 选一个作为网站评论系统，其他保持禁用。
+
+preload_comment: true
+## false: 当点击评论条等区域时再加载评论模块
+## false: load comment&apos;s section until u click/hover on the bar/icon
+
+show_count: true
+## 是否在主页文章标题旁显示评论数（多说、Disqus）
+## Add comment count after article title
+
+#来必力    
+livere:
+  on: true
+  livere_uid: MTAyMC80MjA0MC8xODU4Nw==
+
+disqus: 
+  #on: true
+  shortname: 
+  # https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
+  # It is unnecessary to enable disqus here if 
+  # you have set &quot;disqus_shortname&quot; in your site&apos;s &quot;_config.yml&quot; 
+
+duoshuo: 
+  #on: true
+  domain: 
+  # 是否开启多说评论，http://duoshuo.com/create-site/
+  # 使用上面网址登陆你的多说，然后创建站点，在 domain 中填入你设定的域名前半部分
+  # http://&lt;要填的部分&gt;.duoshuo.com (domain只填上&lt;&gt;里的内容，不要填整个网址)
+
+youyan:
+  #on: true
+  id: 
+  # 是否开启友言评论，http://www.uyan.cc/index.php
+  # id 中填写你的友言用户数字ID，注册后进入后台管理即可查看
+  # 友言服务在 Web 环境下运行，普通本地环境无法查看，请部署后在线上测试。
+
+
+# &gt;&gt;&gt; Style Customisation 样式自定义 &lt;&lt;&lt;
+
+# Background | 背景
+## &quot;5&quot;: show images form bg-1.jpg to bg-5.jpg in `/yelee/source/background/`
+## &quot;5&quot;: 显示`/yelee/source/background/`文件夹中 bg-1.jpg 到 bg-5.jpg 这5张图片
+## &quot;0&quot;: white-gray background | 淳朴灰白背景
+background_image: 5
+
+# Base Font Size | 字号调节
+base_font_size: 16  #px, 16 - 24
+
+## General Color Scheme | 主题配色方案 
+## 可用值 Value: yilia
+color_scheme: yilia
+
+highlight_style:
+  #on: true
+  inline_code: 1  # Value: 0 - 9 可选
+  code_block: 1  # Value: 0 - 4 
+  # Set inline_code to style highlight text
+  # Chose a highlight theme for code block
+  # 通过 inline_code 切换内置文本高亮样式
+  # 通过 code_block 切换内置代码高亮配色主题
+
+blockquote_style:
+  #on: true
+  blockquote: 1  # Value: 0 - 7 可选
+  # 自定义文章「引用部分」的样式
+
+# Headings Style | 标题风格
+## 0-Yelee, 1-Yilia, 2-GitHub
+heading_style: 0 # Value: 0 - 2
+
+## List style type (ul) | 无序列表项标记样式
+list_style: 0  # value: 0 - 12 可选
+
+# 左边栏宽度 px
+left_col_width: 300
+
+# Copyright info. of post | 文末版权信息
+copyright: true
+
+# Table of contents | 文章目录
+toc:
+  on: true
+  list_number: true # 目录序号
+  max_depth: 3  # 1 - 6 (h1-h6) 目录最大级数
+  nowrap: false # Keep title on same line | 目录标题不换行
+
+# 是否开启主页及加载头像时的动画效果
+# Animation in Homepage and Loading avatar
+animate: true
+
+# Load jQuery UI to style tooltips
+# 工具提示框样式美化
+jquery_ui: true
+
+# Max width of right cloumn | 限制右侧内容的宽带 
+limit_article_width: 
+  on: false
+  max_width: 60 # em
+
+# &gt;&gt;&gt; Small features | 小功能设置 &lt;&lt;&lt;
+
+# 是否开启边栏多标签切换
+# Birdhouse button in left column
+tagcloud: true
+
+# Blogroll, Link exchange | 友情链接
+friends:
+  Hexo: https://hexo.io
+  GitHub: https://pages.github.com/
+  MOxFIVE: http://moxfive.xyz/
+#friends: false
+
+#是否开启“关于我”。
+aboutme: 专注于前端
+#aboutme: false
+
+# Open link in a new tab | 是否在新窗口打开链接
+## `global` 0: Set separately, 1: Open all in new 2: Open all in current
+## `global` 0: 分开设置, 1: 全部在新标签打开, 2: 全部在&quot;当前&quot;标签打开
+open_in_new:
+  global: 0 # 0-2
+  title: false # article title in homepage 主页文章标题
+  post: false # link within post/page 正文中的链接
+  tags: false # 标签
+  categories: false # 分类
+  article_nav: false # 导航
+  archives: true # 归档
+  mini_archives: true # 迷你归档
+  menu: false # 边栏菜单
+  friends: true  # 友情链接
+  socail: true # 社交图标
+
+# Customize feed link 自定义订阅地址
+rss: /atom.xml
+
+# Update Reminder for IE6/7/8
+# 针对 IE6/7/8 的升级浏览器提示
+ie_updater:
+  on: true
+  link: //outdatedbrowser.com/
+  ## http://browsehappy.com/
+  ## http://outdatedbrowser.com/
+
+# Tab Title Change | 标签页标题切换
+tab_title_change: 
+  on: false
+  left_tab_title: &apos;(つェ⊂) 我藏好了哦~ &apos;
+  return_tab_title: &apos;(*´∇｀*) 被你发现啦~ &apos;
+
+
+# &gt;&gt;&gt; Vendors | 第三方工具 &amp; 服务 &lt;&lt;&lt;
+
+# Local Site Search | 本地站内搜索
+## Insatall below plugin to take effect | 使用搜索需先安装对应插件
+## https://github.com/PaicHyperionDev/hexo-generator-search
+search: 
+  #on: true
+  onload: true
+  ## true: get search.xml file when the page has loaded
+  ## false: get the file when search box gets focus
+
+# images viewer | 图片浏览器
+## http://www.fancyapps.com/fancybox/
+fancybox: true
+
+# Display Math(LaTeX, MathML...) | 数学公式支持
+## https://www.mathjax.org/
+mathjax: false
+
+# Socail Share | 是否开启分享
+share: 
+  on: true
+  baidu: true
+  addthis: false
+  addthis_pubid: &quot;ra-56ff76c972fc0cf9&quot;
+  ## Go to www.addthis.com/dashboard to get your pubid (in src of Code)
+  ## and customize AddThis share buttons
+
+# 百度、谷歌站长验证。填写 HTML 标签 content
+# Site Verification for Google and Baidu. HTML label content.
+baidu_site: 
+google_site: 
+
+# Fill in Google Analytics tracking ID, #e.g. UA-XXXXX-X
+google_analytics: 
+
+# 百度统计 http://sitecenter.baidu.com/sc-web/
+# 查看代码，填入 //hm.baidu.com/hm.js? 之后的内容
+baidu_tongji: 
+
+# 不蒜子网站计数设置
+# http://ibruce.info/2015/04/04/busuanzi/
+visit_counter:
+  on: true
+  site_visit: true
+  page_visit: true
+
+# GitHub Repo Widget
+# https://github.com/hustcc/GitHub-Repo-Widget.js
+github_widget: false
+
+# Progress Bar | 页面加载进度条
+# Demo: http://github.hubspot.com/pace/docs/welcome/
+# type: barber-shop|big-counter|bounce|center-atom|center-circle|
+#       center-radar|center-simple|corner-indicator|flash|flat-top|
+#       loading-bar|mac-osx|minimal
+# color: black|blue|green|orange|pink|purple|red|silver|white|yellow|
+progressBar:
+  on: true
+  type: &quot;minimal&quot;  # Keep Quotes | 保留引号避免出错
+  color: blue
+
+CDN:
+  jquery: //cdn.bootcss.com/jquery/2.2.4/jquery.min.js
+  require: //cdn.bootcss.com/require.js/2.2.0/require.min.js
+  fontawesome: //cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css
+  fancybox_js: //cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js
+  fancybox_css: //cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css
+  animate_css: //cdn.bootcss.com/animate.css/3.5.1/animate.min.css
+  jquery_ui_js: //cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js
+  jquery_ui_css: //cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css
+  pace_js: //cdn.bootcss.com/pace/1.0.2/pace.min.js
+  clipboard: //cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js
+  mathjax: //cdn.bootcss.com/mathjax/2.6.1/MathJax.js
+  scrollreveal: //cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js
+</code></pre><h3 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h3><blockquote>
+<p>草稿相当于很多博客都有的“私密文章”功能。</p>
+</blockquote>
+<p>会在source/_drafts目录下生成一个<code>new-draft.md</code>文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到<code>_drafts</code>目录之中。</p>
+<pre><code>$ hexo new draft &quot;new draft&quot;
+</code></pre><p>如果你希望强行预览草稿，更改配置文件：</p>
+<pre><code>render_drafts: true
+</code></pre><p>或者，如下方式启动server：</p>
+<pre><code>$ hexo server --drafts
+</code></pre><p>下面这条命令可以把草稿变成文章，或者页面：</p>
+<pre><code>$ hexo publish [layout] &lt;filename&gt;
+</code></pre><h3 id="md模板"><a href="#md模板" class="headerlink" title="md模板"></a>md模板</h3><blockquote>
+<p>新建md文章时候会有默认的模板。修改默认的模板</p>
+</blockquote>
+<p>其中<code>layout</code>是可选参数，默认值为<code>post</code>。有哪些<code>layout</code>呢，请到<code>scaffolds</code>目录下查看，这些文件名称就是<code>layout</code>名称。当然你可以添加自己的<code>layout</code>，方法就是添加一个文件即可，同时你也可以编辑现有的<code>layout</code>，比如post的<code>layout</code>默认是<code>hexo\scaffolds\post.md</code></p>
+<pre><code>title: { { title } }
+date: { { date } }
+tags:
+</code></pre><p>修改为：</p>
+<pre><code>title: json520博客001 #文章标题
+date: 2015-02-05 12:47:44 #文章生成时间
+categories: 必须写 #文章分类目录 可以省略
+tags: 必须写 #文章标签 可以省略
+description: 问题描述必须写 #你对本页的描述 可以省略
+</code></pre><p>这样每次新建都不用手动添加属性了</p>
+<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>menu 默认没有启用 /tags 和 /categories页面，如果需要使用 Hexo 命令新建一个名为 <code>tags</code>，<code>categories</code> 的页面即可<code>hexo new page tags</code>，<code>hexo new page categories</code> 因为主题中已经内置了这两个页面的模板，所以他们会被正确的解析出来。</p>
+<h3 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h3><p>默认头像存储于 <code>yelee/source/img/avatar.png</code></p>
+<p>配置中对应填写 <code>/img/avatar.png</code>，可替换图片或指定新地址</p>
+<p><code>themes/yelee/_config.yml</code> 背景参数:</p>
+<pre><code>avatar: /img/avatar.png
+</code></pre><h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>目前主题可使用两种方式在首页显示文章摘要而不是全文。</p>
+<p><strong>方法一</strong>: <code>&lt;!-- more --&gt;</code><br>注：之前最好不要有空格等字符；</p>
+<pre><code>title: Hello World
+date: 2017-12-03 00:00:00
+---
+&lt;Excerpt in index | 首页摘要&gt; 
+&lt;!-- more --&gt;
+&lt;The rest of contents | 余下全文&gt;
+</code></pre><p><strong>方法二</strong>: <code>description</code> in <strong>Front-matter</strong></p>
+<pre><code>title: Hello World
+date: 2015-12-03 00:00:00
+description: &quot;Welcome to Hexo! This is your very first post.&quot;
+---
+&lt;Contents&gt;
+</code></pre><p>通过 <code>description</code> 添加的摘要只能为纯文本；</p>
+<p><code>description</code> 中的内容加引号，可以避免一些程序错误，例如当内容里包含英文冒号时。</p>
+<h3 id="网页背景图"><a href="#网页背景图" class="headerlink" title="网页背景图"></a>网页背景图</h3><p>背景图文件所在路径:</p>
+<pre><code>/yelee/source/background/
+</code></pre><p><code>themes/yelee/_config.yml</code> 背景参数:</p>
+<pre><code>background_image: 5
+</code></pre><p>默认值为5，可按需修改</p>
+<p>“5”: 设置/yelee/source/background/文件夹中 bg-1.jpg 到 bg-5.jpg 这5张图片为背景</p>
+<p>“0”: 取消网页背景图，使用淳朴的灰白主题</p>
+<h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><p>通过 <code>code_block</code> 切换内置代码高亮配色主题，目前额外提供 4 种搭配</p>
+<pre><code>## 移除 `#` 后自定义样式生效
+highlight_style:
+  #on: true
+  code_block: 1  # Value: 0 - 4
+</code></pre><h3 id="文本高亮"><a href="#文本高亮" class="headerlink" title="文本高亮"></a>文本高亮</h3><p>通过 <code>inline_code</code> 切换内置文本高亮样式，目前额外提供 9 种样式</p>
+<pre><code>## 移除 `#` 后自定义样式生效
+highlight_style:
+  #on: true
+  inline_code: 1  # Value: 0 - 9
+</code></pre><p>部分样式图示：<br><img src="/2017/02/09/hexo-four-yelee-theme-download-and-config/2.jpg" alt="文本高亮"></p>
+<h3 id="引用区"><a href="#引用区" class="headerlink" title="引用区"></a>引用区</h3><p>可自定义文章「引用部分」的样式，目前额外提供 7 种样式</p>
+<pre><code>blockquote_style:
+  on: true
+  blockquote: 1  # Value: 0 - 7 可选
+</code></pre><p>部分样式图示：<br><img src="/2017/02/09/hexo-four-yelee-theme-download-and-config/5.jpg" alt="引用"></p>
+<h3 id="404-页面"><a href="#404-页面" class="headerlink" title="404 页面"></a>404 页面</h3><p>使用 Hexo 命令新建一个名为 404 的页面</p>
+<pre><code>hexo new page 404
+</code></pre><p>/source/404/index.md 文件中添加 <code>permalink: /404</code></p>
+<pre><code>title: 404 Not Found：该页无法显示
+toc: false
+comments: false
+permalink: /404
+---
+</code></pre><p> 404 页面显示效果可以在本地查看 <a href="http://localhost:4000/404.html" target="_blank" rel="noopener">http://localhost:4000/404.html</a></p>
+<p> 无效网址自动跳转 404 页面则必须在线上测试</p>
+<p> <a href="http://moxfive.xyz/2015/10/16/hexo-404-page/" target="_blank" rel="noopener">在 Hexo 中创建匹配主题的404页面</a><br><img src="/2017/02/09/hexo-four-yelee-theme-download-and-config/3.jpg" alt="404"></p>
+<h3 id="左边栏鸟屋"><a href="#左边栏鸟屋" class="headerlink" title="左边栏鸟屋"></a>左边栏鸟屋</h3><p><img src="/2017/02/09/hexo-four-yelee-theme-download-and-config/4.jpg" alt="边栏鸟屋"><br>关闭鸟屋</p>
+<pre><code># 边栏多标签切换
+tagcloud: false
+</code></pre><h3 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h3><pre><code>## 编辑友链
+
+friends:
+  Hexo: https://hexo.io
+  GitHub: https://pages.github.com/
+  MOxFIVE: http://moxfive.xyz/
+
+## 关闭友链
+friends: false
+</code></pre><h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><pre><code># 是否开启“关于我”。
+aboutme: 专注于前端
+
+# 关闭“关于我”
+aboutme: false
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2017-02-09, 09:33:33</p>
+        <p><span>最后更新:</span>2017-02-09, 09:33:33</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/09/hexo-four-yelee-theme-download-and-config/" title="Hexo系列（四）：主题下载以及配置">http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2017/02/09/hexo-four-yelee-theme-download-and-config/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/02/16/hexo-five-site-search-and-article-statistics/">
+                    Hexo系列（五）：站内搜索与文章统计
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/01/hexo-three-uploading-resources-to-blog/">
+                    Hexo系列（三）：上传资源到博客
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+  
+  
+    <div id="cy-reward-click" class="cy-reward-btn cy-reward-btn-red"></div> 
+<!-- 
+<div id="cyReward" style="text-align:center;margin-top:10px;">
+
+	<div id="cy-reward-click" class="cy-reward-btn cy-reward-btn-red"></div>    
+	<div style="display: none;">        
+		<div class="cy-close-btn"></div>        
+			<img class="cy-avatar" src="//0d077ef9e74d8.cdn.sohucs.com/qfxYEBY_jpg">        
+			<div class="cy-reward-title">�������л���һ����Ŭ��������</div>        
+			<div class="cy-reward-code">    
+						
+				<img style="display: none;" src="/img/Alipay.jpg" alt="֧��������">
+		 				
+				<img style="display: inline;" src="/img/WeChatPay.jpg" alt="΢�Ŵ���"> 
+			</div>       
+			<div class="cy-reward-txt">ɨ����ͣ�������1-10Ԫ</div>                 
+			<div class="platform-choice clearfix">       
+				<div class="platform-item">              
+					<span class="platform-radio-box"></span>        
+					<span class="platform-logo alipay"></span>          
+				</div>            
+				<div class="platform-item">        
+				<span class="platform-radio-box platform-checked"></span>   
+				<span class="platform-logo weichat"></span>        
+			</div>        
+		</div>                        
+		<p class="power-cy">            
+			<a href="http://changyan.kuaizhan.com" style="text-decoration:none;color:#d1d1d1;" target="_blank">Powered By ����</a>
+			<br> 
+				���ѣ����ͽ�ֱ�ӽ���Է��˺ţ��޷��˿��������������        
+		</p>    
+	</div>
+</div>
+-->
+
+  
+  
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装主题"><span class="toc-number">2.1.</span> <span class="toc-text">安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用主题"><span class="toc-number">2.2.</span> <span class="toc-text">启用主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新主题"><span class="toc-number">2.3.</span> <span class="toc-text">更新主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主题的-config-yml配置"><span class="toc-number">2.4.</span> <span class="toc-text">主题的_config.yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#草稿"><span class="toc-number">2.5.</span> <span class="toc-text">草稿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md模板"><span class="toc-number">2.6.</span> <span class="toc-text">md模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签云"><span class="toc-number">2.7.</span> <span class="toc-text">标签云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人头像"><span class="toc-number">2.8.</span> <span class="toc-text">个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章摘要"><span class="toc-number">2.9.</span> <span class="toc-text">文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网页背景图"><span class="toc-number">2.10.</span> <span class="toc-text">网页背景图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码风格"><span class="toc-number">2.11.</span> <span class="toc-text">代码风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本高亮"><span class="toc-number">2.12.</span> <span class="toc-text">文本高亮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用区"><span class="toc-number">2.13.</span> <span class="toc-text">引用区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#404-页面"><span class="toc-number">2.14.</span> <span class="toc-text">404 页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#左边栏鸟屋"><span class="toc-number">2.15.</span> <span class="toc-text">左边栏鸟屋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#友情链接"><span class="toc-number">2.16.</span> <span class="toc-text">友情链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我"><span class="toc-number">2.17.</span> <span class="toc-text">关于我</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Hexo系列（四）：主题下载以及配置　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
+
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/16/hexo-five-site-search-and-article-statistics/" title="上一篇: Hexo系列（五）：站内搜索与文章统计">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/01/hexo-three-uploading-resources-to-blog/" title="下一篇: Hexo系列（三）：上传资源到博客">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 zhou
+            </div>
+            <div class="footer-right">
+                Welcome to <a href="http://zhouhy.top/" target="_blank" title="zhou">My Blog</a><i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>
