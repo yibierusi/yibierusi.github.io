@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="漫漫求学路上，彳亍独行的脚印。">
+<meta name="description" content="拦截器和过滤器的区别">
+<meta name="keywords" content="拦截器,过滤器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC：拦截器和过滤器的区别">
-<meta property="og:url" content="http://zhouhy.top/2019/01/10/SpringMVC：拦截器和过滤器的区别/index.html">
+<meta property="og:url" content="http://zhouhy.top/2017/04/28/SpringMVC：拦截器和过滤器的区别/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="漫漫求学路上，彳亍独行的脚印。">
+<meta property="og:description" content="拦截器和过滤器的区别">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-10T10:05:59.000Z">
+<meta property="og:updated_time" content="2017-04-28T10:05:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC：拦截器和过滤器的区别">
-<meta name="twitter:description" content="漫漫求学路上，彳亍独行的脚印。">
+<meta name="twitter:description" content="拦截器和过滤器的区别">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -195,7 +196,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CE/">CE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEBUG/">DEBUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEAD/">IEAD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFX/">JavaFX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POW/">POW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baidu/">baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/">coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comment/">comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/">seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-pages/">static pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/themes/">themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yelee/">yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句柄/">句柄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拦截器/">拦截器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CE/">CE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEBUG/">DEBUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEAD/">IEAD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFX/">JavaFX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POW/">POW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baidu/">baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/">coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comment/">comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/">seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-pages/">static pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/themes/">themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yelee/">yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句柄/">句柄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拦截器/">拦截器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器/">过滤器</a></li></ul>
                     </div>
                 </section>
                 
@@ -275,8 +276,8 @@
       <div class="body-wrap"><article id="post-SpringMVC：拦截器和过滤器的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/10/SpringMVC：拦截器和过滤器的区别/" class="article-date">
-      <time datetime="2019-01-10T10:05:59.000Z" itemprop="datePublished">2019-01-10</time>
+      <a href="/2017/04/28/SpringMVC：拦截器和过滤器的区别/" class="article-date">
+      <time datetime="2017-04-28T10:05:59.000Z" itemprop="datePublished">2017-04-28</time>
 </a>
 
 
@@ -301,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">0&#23383;</span>
+        <span class="post-count">1&#23383;</span>
       </span>
     </span>
 
@@ -317,10 +318,18 @@
 		
       </header>
       
-      <div class="article-info article-info-post">
+      <div class="article-info article-info-post" style="margin-top:-5px">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/SpringMVC/">SpringMVC</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拦截器/">拦截器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/过滤器/">过滤器</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -328,7 +337,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>aaaaaaaaaaaaaa<br><a id="more"></a></p>
+
       
     </div>
     
@@ -336,13 +346,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/10/SpringMVC：拦截器和过滤器的区别/">SpringMVC：拦截器和过滤器的区别</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/28/SpringMVC：拦截器和过滤器的区别/">SpringMVC：拦截器和过滤器的区别</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2019-01-10, 18:05:59</p>
-        <p><span>最后更新:</span>2019-01-10, 18:05:59</p>
+        <p><span>发布时间:</span>2017-04-28, 18:05:59</p>
+        <p><span>最后更新:</span>2017-04-28, 18:05:59</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/10/SpringMVC：拦截器和过滤器的区别/" title="SpringMVC：拦截器和过滤器的区别">http://zhouhy.top/2019/01/10/SpringMVC：拦截器和过滤器的区别/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2019/01/10/SpringMVC：拦截器和过滤器的区别/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/28/SpringMVC：拦截器和过滤器的区别/" title="SpringMVC：拦截器和过滤器的区别">http://zhouhy.top/2017/04/28/SpringMVC：拦截器和过滤器的区别/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://zhouhy.top/2017/04/28/SpringMVC：拦截器和过滤器的区别/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -354,15 +364,62 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/08/SpringMVC：拦截器的工作流程/">
+                    SpringMVC：拦截器的工作流程
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/08/用JavaScript写一个区块链/">
-                    用JavaScript写一个区块链
+                <a href="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/">
+                    远程调试(一)：在IDEA中远程调试Jar包
                 </a>
             </div>
         
     </nav>
 
+  
+  
+  
+  
+    <div id="cy-reward-click" class="cy-reward-btn cy-reward-btn-red"></div> 
+<!-- 
+<div id="cyReward" style="text-align:center;margin-top:10px;">
+
+	<div id="cy-reward-click" class="cy-reward-btn cy-reward-btn-red"></div>    
+	<div style="display: none;">        
+		<div class="cy-close-btn"></div>        
+			<img class="cy-avatar" src="//0d077ef9e74d8.cdn.sohucs.com/qfxYEBY_jpg">        
+			<div class="cy-reward-title">�������л���һ����Ŭ��������</div>        
+			<div class="cy-reward-code">    
+						
+				<img style="display: none;" src="/img/Alipay.jpg" alt="֧��������">
+		 				
+				<img style="display: inline;" src="/img/WeChatPay.jpg" alt="΢�Ŵ���"> 
+			</div>       
+			<div class="cy-reward-txt">ɨ����ͣ�������1-10Ԫ</div>                 
+			<div class="platform-choice clearfix">       
+				<div class="platform-item">              
+					<span class="platform-radio-box"></span>        
+					<span class="platform-logo alipay"></span>          
+				</div>            
+				<div class="platform-item">        
+				<span class="platform-radio-box platform-checked"></span>   
+				<span class="platform-logo weichat"></span>        
+			</div>        
+		</div>                        
+		<p class="power-cy">            
+			<a href="http://changyan.kuaizhan.com" style="text-decoration:none;color:#d1d1d1;" target="_blank">Powered By ����</a>
+			<br> 
+				���ѣ����ͽ�ֱ�ӽ���Է��˺ţ��޷��˿��������������        
+		</p>    
+	</div>
+</div>
+-->
+
+  
+  
   
 </article>
 
@@ -447,19 +504,21 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/05/08/SpringMVC：拦截器的工作流程/" title="上一篇: SpringMVC：拦截器的工作流程">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/08/用JavaScript写一个区块链/" title="下一篇: 用JavaScript写一个区块链">
+            <a href="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/" title="下一篇: 远程调试(一)：在IDEA中远程调试Jar包">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/SpringMVC：拦截器和过滤器的区别/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC：Response获取Body问题/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC：Request获取Body问题/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC：拦截器的工作流程/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/游戏辅助（四）：基于Java的内存修改器（CE）/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/游戏辅助（三）：基于C绑定句柄/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/游戏辅助（二）：基于C的驱动级外设模拟/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/Hexo系列（七）：提交搜索引擎/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Hexo系列（六）：添加评论功能/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：远程仓库托管博客/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/用JavaScript写一个区块链/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC：Response获取Body问题/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC：Request获取Body问题/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC：拦截器的工作流程/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC：拦截器和过滤器的区别/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/远程调试（一）：在IDEA中远程调试Jar包/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR搭建属于自己的梯子/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/游戏辅助（四）：基于Java的内存修改器（CE）/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/游戏辅助（三）：基于C绑定句柄/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/游戏辅助（二）：基于C的驱动级外设模拟/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/游戏辅助（一）：基于Java的软件级外设模拟/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/Hexo系列（七）：提交搜索引擎/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Hexo系列（六）：添加评论功能/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Hexo系列（五）：站内搜索与文章统计/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Hexo系列（四）：yelee主题下载以及配置/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/Hexo系列（三）：上传资源到博客/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Hexo系列（二）：远程仓库托管博客/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/Hexo系列（一）：个人博客搭建/">Hexo系列（一）：个人博客搭建</a></li></ul>
 
 
 
