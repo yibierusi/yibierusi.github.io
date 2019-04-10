@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="前言因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。 正">
+<meta name="description" content="企业内部使用的app，是不会上架app store，那它们是如何升级的呢，本文主要介绍利用itms-services协议安装IPA安装包。">
 <meta name="keywords" content="IOS,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOS 系统通过plist方式安装App">
 <meta property="og:url" content="https://zhouhy.top/2019/02/14/iphone-install-through-plist/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="前言因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。 正">
+<meta property="og:description" content="企业内部使用的app，是不会上架app store，那它们是如何升级的呢，本文主要介绍利用itms-services协议安装IPA安装包。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-02-14T09:26:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS 系统通过plist方式安装App">
-<meta name="twitter:description" content="前言因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。 正">
+<meta name="twitter:description" content="企业内部使用的app，是不会上架app store，那它们是如何升级的呢，本文主要介绍利用itms-services协议安装IPA安装包。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">988&#23383;</span>
+        <span class="post-count">998&#23383;</span>
       </span>
     </span>
 
@@ -337,7 +337,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。<br>目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。<br>目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。企业内部使用的app，是不会上架app store，那它们是如何升级的呢，本文主要介绍利用itms-services协议安装IPA安装包。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li>SSL证书 </li>
 <li>对应的plist文件 </li>
