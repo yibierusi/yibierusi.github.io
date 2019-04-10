@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="主要对外设的输入层次、模拟层次的介绍，以及通过基于C的dll插件实现自动执行外设的输入，达到解放双手、提高（外设）输入速度、频率或者高操作的效果。">
-<meta name="keywords" content="ddxoft,dll,脚本">
+<meta name="description" content="前言因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。 正">
+<meta name="keywords" content="IOS,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="游戏辅助（二）：基于C的驱动级外设模拟">
-<meta property="og:url" content="https://zhouhy.top/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/index.html">
+<meta property="og:title" content="IOS 系统通过plist方式安装App">
+<meta property="og:url" content="https://zhouhy.top/2019/02/14/iphone-install-through-plist/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="主要对外设的输入层次、模拟层次的介绍，以及通过基于C的dll插件实现自动执行外设的输入，达到解放双手、提高（外设）输入速度、频率或者高操作的效果。">
+<meta property="og:description" content="前言因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。 正">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-11T09:05:20.000Z">
+<meta property="og:updated_time" content="2019-02-14T09:26:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游戏辅助（二）：基于C的驱动级外设模拟">
-<meta name="twitter:description" content="主要对外设的输入层次、模拟层次的介绍，以及通过基于C的dll插件实现自动执行外设的输入，达到解放双手、提高（外设）输入速度、频率或者高操作的效果。">
+<meta name="twitter:title" content="IOS 系统通过plist方式安装App">
+<meta name="twitter:description" content="前言因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。 正">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>游戏辅助（二）：基于C的驱动级外设模拟 | ZHOU&#39;s Blog</title>
+<title>IOS 系统通过plist方式安装App | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -273,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-game-assist-C-based-driver-level-peripheral-simulation" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iphone-install-through-plist" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/" class="article-date">
-      <time datetime="2017-03-11T09:05:20.000Z" itemprop="datePublished">2017-03-11</time>
+      <a href="/2019/02/14/iphone-install-through-plist/" class="article-date">
+      <time datetime="2019-02-14T09:26:46.000Z" itemprop="datePublished">2019-02-14</time>
 </a>
 
 
@@ -292,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      游戏辅助（二）：基于C的驱动级外设模拟
+      IOS 系统通过plist方式安装App
     </h1>
   
 
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">757&#23383;</span>
+        <span class="post-count">979&#23383;</span>
       </span>
     </span>
 
@@ -311,7 +311,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">3m</span>
+        <span class="post-count">4m</span>
       </span>
     </span>
 </div>
@@ -321,13 +321,13 @@
       <div class="article-info article-info-post" style="margin-top:-5px">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/游戏辅助/">游戏辅助</a>
+    <a class="article-category-link" href="/categories/APP/">APP</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dll/">dll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS/">IOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -337,62 +337,79 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要对外设的输入层次、模拟层次的介绍，以及通过基于C的dll插件实现自动执行外设的输入，达到解放双手、提高（外设）输入速度、频率或者高操作的效果。</p>
-<h3 id="输入层次介绍"><a href="#输入层次介绍" class="headerlink" title="输入层次介绍"></a>输入层次介绍</h3><p>1、当按下键后，键盘或鼠标产生扫描码（不同芯片的键盘产生扫描码不一样）。</p>
-<p>2、扫描码被送给相应硬件的驱动，驱动将扫描码转换成虚拟码（就是以  vk_  打头的，其实就是byte大小的数了，不同语言的虚拟码不全一样）。</p>
-<p>3、虚拟码插入消息队列，等待被传给相应程序。然后就是程序处理的事了。</p>
-<h3 id="模拟层次介绍"><a href="#模拟层次介绍" class="headerlink" title="模拟层次介绍"></a>模拟层次介绍</h3><p>1、局部模拟：用程序生成虚拟码，将虚拟码直接发给程序。</p>
-<p>其一：Java自带的Robot就是这么干的。处理普通程序还有效，游戏就不用想了。</p>
-<p>其二：jna的自带platform中，User32类 的sendMessage、postMessage方法。处理普通程序还有效，游戏就不用想了。</p>
-<p>2、全局模拟：将扫描码、虚拟码插入到消息队列，然后就不管了。</p>
-<p>其一：jna的自带platform中，User32类 的keybd_event方法。处理普通程序还有效，游戏就不用想了。</p>
-<p>其二：键盘钩子。没试过，C语言还停留在大学水平，听说改键是这么做的。</p>
-<p>3、驱动级模拟：用程序模仿键盘端口给系统发送扫描码。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>驱动级模拟，本来准备用jna + winio试一下的。后来发现网上不少说winio太出名了，游戏会针对性防范，再加上winio64位版还要签名，所以没试，然后因为种种原因DM插件也没能使用。</p>
-<p>后来万能的吧友提供了一个AHK的脚本可以使用，破解后发现底层还是调用的DLL。于是有了本文，用Java调用DDxoft实现驱动级模拟。</p>
-<h3 id="加载Dll"><a href="#加载Dll" class="headerlink" title="加载Dll"></a>加载Dll</h3><pre><code>import com.sun.jna.Library;
-import com.sun.jna.Native;
-
-public interface DdXoft extends Library {
-    DdXoft INSTANCE = (DdXoft) Native.loadLibrary(UnifyEnum.DDXOFT64.v(), DdXoft.class);
-    //64位JAVA调用*64.dll, 32位调用*32.dll 。与系统本身位数无关。、
-    int DD_mov(int x, int y);//绝对移动
-    int DD_movR(int dx, int dy);//相对移动
-    int DD_btn(int btn);//鼠标
-    int DD_whl(int whl); //滑轮
-    int DD_key(int ddcode, int flag);//键盘
-    int DD_str(String s);//字符串
-}
-</code></pre><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>位置判断还是用的Robot</p>
-<pre><code>/**
- * 判断某点颜色是否相同 相同则按下
- *
- * @return
- */
-public static boolean existPressKey(Robot robot, Entry entry, int ddCode) {
-    if (isEquals(robot, entry)) {
-        return pressKey(robot, entry, ddCode);
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为之前公司经营不善，几近破产，于是公司决定放弃互联网部门，然后我只能美滋滋的拿着违约补偿金，和平分手。<br>目前在新的公司做app后端开发，一期项目接近尾声，需要做一个App升级的功能，说穿了就是一个下载，这个东西90%的人大一就会吧，Android的本质就是下载，就不多做介绍。app是企业内部使用的，不会上架app store，本文主要介绍利用itms-services协议安装IPA安装包。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>SSL证书 </li>
+<li>对应的plist文件 </li>
+<li>IPA安装包一个</li>
+</ol>
+<p>在iOS开发中，Xcode 7.0也就是iOS9.0(以及以后)中开发中要求App内访问的网络必须使用HTTPS协议，以此来提高数据传输之间的安全性。所以我们需要支持Https的服务环境（也就是SSL证书）。</p>
+<p><strong>注意：个人名义发布的或者非权威机构发布的证书是无用的。</strong> </p>
+<p>当然如果没有有效的证书也可以使用别人的，比如<a href="https://www.jianshu.com" target="_blank" rel="noopener">七牛云</a>、<a href="https://www.jianshu.com" target="_blank" rel="noopener">github</a>、<a href="https://coding.net/" target="_blank" rel="noopener">coding</a>，把上面准备好的 plist 文件 与 IPA 安装包往上面一丢，完事。</p>
+<h3 id="plist文件"><a href="#plist文件" class="headerlink" title="plist文件"></a>plist文件</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+    &lt;key&gt;items&lt;/key&gt;
+    &lt;array&gt;
+        &lt;dict&gt;
+            &lt;key&gt;assets&lt;/key&gt;
+            &lt;array&gt;
+                &lt;dict&gt;
+                    &lt;key&gt;kind&lt;/key&gt;
+                    &lt;string&gt;software-package&lt;/string&gt;
+                    &lt;key&gt;url&lt;/key&gt;
+                    &lt;string&gt;https://.../xxx.ipa&lt;/string&gt; 
+                &lt;/dict&gt;
+            &lt;/array&gt;
+            &lt;key&gt;metadata&lt;/key&gt;
+            &lt;dict&gt;
+                &lt;key&gt;bundle-identifier&lt;/key&gt;
+                &lt;string&gt;xxx&lt;/string&gt;
+                &lt;key&gt;bundle-version&lt;/key&gt;
+                &lt;string&gt;1.1.0&lt;/string&gt;
+                &lt;key&gt;kind&lt;/key&gt;
+                &lt;string&gt;software&lt;/string&gt;
+                &lt;key&gt;title&lt;/key&gt;
+                &lt;string&gt;应用名称&lt;/string&gt;
+            &lt;/dict&gt;
+        &lt;/dict&gt;
+    &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre><p><strong>以下栏是必填项：</strong><br>URL：应用 (.ipa) 文件的完全限定 HTTPS URL<br>display-image：57 x 57 像素的 PNG 图像，在下载和安装过程中显示。指定图像的完全限定 URL<br>full-size-image：512 x 512 像素的 PNG 图像，表示 iTunes 中相应的应用<br>bundle-identifier：应用的包标识符，与 Xcode 项目中指定的完全一样<br>bundle-version：应用的包版本，在 Xcode 项目中指定<br>title：下载和安装过程中显示的应用的名称        </p>
+<p>样本清单文件还包含可选键。例如，如果应用文件太大，并且想要在执行错误检验（TCP 通信通常会执行该检验）的基础上确保下载的完整性，可以使用 MD5 键。通过指定项目数组的附加成员，您还可以使用一个清单文件安装多个应用。</p>
+<h3 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h3><p>后端代码就是普通的下载，强行贴上来。</p>
+<pre><code>@RequestMapping(&quot;/upgrade/{name}&quot;)
+    private HttpServletResponse downloadFile(HttpServletResponse response, @PathVariable String name) {
+        String fileName = name;//被下载的文件名，默认路径为/,
+        try {
+            // path是指欲下载的文件的路径。
+            File file = new File(fileName);
+            // 取得文件名。
+            String filename = file.getName();
+            // 以流的形式下载文件。
+            InputStream fis = new BufferedInputStream(new FileInputStream(fileName));
+            byte[] buffer = new byte[fis.available()];
+            fis.read(buffer);
+            fis.close();
+            // 清空response
+            response.reset();
+            // 设置response的Header
+            OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+            response.setHeader(&quot;Content-Type&quot;,&quot;text/plain;charset=utf-8&quot;);
+            toClient.write(buffer);
+            toClient.flush();
+            toClient.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return response;
     }
-    return false;
-}
-</code></pre><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>直接调用DDxoft,一些底层的东西还是C靠谱</p>
-<pre><code>/**
- * 直接按下某键
- */
-public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
-    //robot.keyPress(keyCode);
-    DdXoft.INSTANCE.DD_key(ddCode, 1);
-    robot.delay(entry.press);
-    //robot.keyRelease(keyCode);
-    DdXoft.INSTANCE.DD_key(ddCode, 2);
-    robot.delay(entry.release);
-    System.out.println(&quot;{&quot; + entry.skill + &quot;}&quot; +
-            SkillEnum.PRESS.v() + &quot;:&quot; + entry.press + SkillEnum.MS.v() +
-            SkillEnum.RELEASE.v() + &quot;:&quot; + entry.release + SkillEnum.MS.v());
-    return true;
-}
-</code></pre><p>完整的程序 在我的github上，界面使用JavaFx，<a href="https://github.com/yibierusi/blade-and-bns-macro" target="_blank" rel="noopener">剑灵灵剑卡刀脚本</a></p>
-
+</code></pre><p>所以我的plist里面的应用url是<code>http://127.0.0.1/upgrade/appname.ipa</code> (plist文件中的URL可以是https也可以是http)</p>
+<h3 id="下载应用"><a href="#下载应用" class="headerlink" title="下载应用"></a>下载应用</h3><p>确认通过浏览器能够直接访问到plist文件，及下载ipa文件后<br>用safari访问 以下链接即可下载应用(也可以通过此方法下载国区未上线的游戏)</p>
+<pre><code>itms-services:///?action=download-manifest&amp;url=https://127.0.0.1/upgrade/plistname.plist
+</code></pre>
       
     </div>
     
@@ -400,13 +417,13 @@ public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></p>
+        <p><span>本文标题:</span><a href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-03-11, 17:05:20</p>
-        <p><span>最后更新:</span>2017-03-11, 17:05:20</p>
+        <p><span>发布时间:</span>2019-02-14, 17:26:46</p>
+        <p><span>最后更新:</span>2019-02-14, 17:26:46</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/" title="游戏辅助（二）：基于C的驱动级外设模拟">https://zhouhy.top/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/02/14/iphone-install-through-plist/" title="IOS 系统通过plist方式安装App">https://zhouhy.top/2019/02/14/iphone-install-through-plist/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2019/02/14/iphone-install-through-plist/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -418,16 +435,10 @@ public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/20/game-assist-Based-on-C-binding-handle/">
-                    游戏辅助（三）：基于C绑定句柄
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">
-                    游戏辅助（一）：基于Java的软件级外设模拟
+                <a href="/2018/12/15/JiGuang-Push/">
+                    极光推送功能集成
                 </a>
             </div>
         
@@ -445,7 +456,7 @@ public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入层次介绍"><span class="toc-number">1.1.</span> <span class="toc-text">输入层次介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟层次介绍"><span class="toc-number">1.2.</span> <span class="toc-text">模拟层次介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载Dll"><span class="toc-number">2.1.</span> <span class="toc-text">加载Dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定位"><span class="toc-number">2.2.</span> <span class="toc-text">定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">2.3.</span> <span class="toc-text">事件</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">2.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plist文件"><span class="toc-number">2.2.</span> <span class="toc-text">plist文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后端代码"><span class="toc-number">2.3.</span> <span class="toc-text">后端代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载应用"><span class="toc-number">2.4.</span> <span class="toc-text">下载应用</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -481,7 +492,7 @@ public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"游戏辅助（二）：基于C的驱动级外设模拟　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"IOS 系统通过plist方式安装App　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -523,15 +534,13 @@ public static boolean pressKey(Robot robot, Entry entry, int ddCode) {
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/20/game-assist-Based-on-C-binding-handle/" title="上一篇: 游戏辅助（三）：基于C绑定句柄">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/" title="下一篇: 游戏辅助（一）：基于Java的软件级外设模拟">
+            <a href="/2018/12/15/JiGuang-Push/" title="下一篇: 极光推送功能集成">
                 <i class="fa fa-angle-right"></i>
             </a>
         
