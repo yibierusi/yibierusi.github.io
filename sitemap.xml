@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zhouhy.top/2019/02/14/iphone-install-through-plist/</loc>
+    <loc>https://zhouhy.top/2019/04/15/about-redis-one-redis-basics/</loc>
     
-    <lastmod>2019-02-14T09:26:46.000Z</lastmod>
+    <lastmod>2019-05-08T07:51:56.566Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhouhy.top/2019/04/10/iphone-install-through-plist/</loc>
+    
+    <lastmod>2019-04-11T08:26:51.936Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhouhy.top/2019/03/15/JiGuang-Push/</loc>
+    
+    <lastmod>2019-04-11T06:00:59.033Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>https://zhouhy.top//404.html</loc>
     
     <lastmod>2019-01-09T02:28:47.930Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhouhy.top/2018/12/15/JiGuang-Push/</loc>
-    
-    <lastmod>2018-12-15T08:44:21.000Z</lastmod>
     
   </url>
   
