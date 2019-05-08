@@ -15,18 +15,17 @@
 
 
 
-<meta name="description" content="修改器通过内存中值的变化规律不断搜索、定位到其对应的游戏属性，通过修改它达到更好的游戏体验。">
-<meta name="keywords" content="CE,内存">
+<meta name="description" content="title: 关于Redis（一）: Redis的简单介绍date: 2018-04-15 16:03:21updated: 2018-04-15 16:03:21tags: [redis,noSql]categories: redis description: “随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站">
 <meta property="og:type" content="article">
-<meta property="og:title" content="游戏辅助（四）：基于Java的内存修改器（CE）">
-<meta property="og:url" content="https://zhouhy.top/2017/03/21/game-assist-four-Java-based-memory-modifier/index.html">
+<meta property="og:title" content="ZHOU&#39;s Blog">
+<meta property="og:url" content="https://zhouhy.top/2019/04/15/about-redis-one-redis-basics/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="修改器通过内存中值的变化规律不断搜索、定位到其对应的游戏属性，通过修改它达到更好的游戏体验。">
+<meta property="og:description" content="title: 关于Redis（一）: Redis的简单介绍date: 2018-04-15 16:03:21updated: 2018-04-15 16:03:21tags: [redis,noSql]categories: redis description: “随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-21T08:46:59.000Z">
+<meta property="og:updated_time" content="2019-05-08T09:01:05.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游戏辅助（四）：基于Java的内存修改器（CE）">
-<meta name="twitter:description" content="修改器通过内存中值的变化规律不断搜索、定位到其对应的游戏属性，通过修改它达到更好的游戏体验。">
+<meta name="twitter:title" content="ZHOU&#39;s Blog">
+<meta name="twitter:description" content="title: 关于Redis（一）: Redis的简单介绍date: 2018-04-15 16:03:21updated: 2018-04-15 16:03:21tags: [redis,noSql]categories: redis description: “随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>游戏辅助（四）：基于Java的内存修改器（CE） | ZHOU&#39;s Blog</title>
+<title>ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -273,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-game-assist-four-Java-based-memory-modifier" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-about-redis-one-redis-basics" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/21/game-assist-four-Java-based-memory-modifier/" class="article-date">
-      <time datetime="2017-03-21T08:46:59.000Z" itemprop="datePublished">2017-03-21</time>
+      <a href="/2019/04/15/about-redis-one-redis-basics/" class="article-date">
+      <time datetime="2019-04-15T08:03:21.411Z" itemprop="datePublished">2019-04-15</time>
 </a>
 
 
@@ -288,57 +287,141 @@
       <input type="hidden" class="isFancy">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      游戏辅助（四）：基于Java的内存修改器（CE）
-    </h1>
-  
-
-		
-			<div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">164&#23383;</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">1m</span>
-      </span>
-    </span>
-</div>
-		
-      </header>
-      
-      <div class="article-info article-info-post" style="margin-top:-5px">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/游戏辅助/">游戏辅助</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CE/">CE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存/">内存</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记得初中玩游戏作弊就是用的<code>八门神器</code>，大学玩天天跑酷用<code>烧饼修改器</code>，毕业玩荒野之息用的是<code>CE</code>，这些工具说白的就是内存修改器，通过内存中的值不断的变化，不断的搜索，不断的定位到内存中的值对应的游戏属性，通过修改它达到作弊的效果。前面几篇博客主要是讲外设的模拟，窗口的绑定，都是属于辅助的范围，本文讲的内存修改器应该算是达到了外挂的范畴。</p>
-<h2 id="嗯？"><a href="#嗯？" class="headerlink" title="嗯？"></a>嗯？</h2><p>先挖个坑，有时间再填。</p>
+        <hr>
+<p>title: 关于Redis（一）: Redis的简单介绍<br>date: 2018-04-15 16:03:21<br>updated: 2018-04-15 16:03:21<br>tags: [redis,noSql]<br>categories: redis</p>
+<h2 id="description-“随着互联网web2-0网站的兴起，传统的关系数据库在应付web2-0网站，特别是超大规模和高并发的SNS类型的web2-0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库（本文主要讲Redis）的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。”"><a href="#description-“随着互联网web2-0网站的兴起，传统的关系数据库在应付web2-0网站，特别是超大规模和高并发的SNS类型的web2-0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库（本文主要讲Redis）的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。”" class="headerlink" title="description: “随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库（本文主要讲Redis）的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。”"></a>description: “随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库（本文主要讲Redis）的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。”</h2><h2 id="redis-基本概念"><a href="#redis-基本概念" class="headerlink" title="redis 基本概念"></a>redis 基本概念</h2><h3 id="redis-是什么"><a href="#redis-是什么" class="headerlink" title="redis 是什么"></a>redis 是什么</h3><p>redis是一种NoSql非关系型数据库，它支持Key-Value等多种数据结构的存储系统。可用于缓存，事件发布或订阅，高速队列等场景。该数据库使用ANSI C语言编写，支持网络，提供字符串，哈希，列表，队列，集合结构直接存取，基于内存，可持久化。</p>
+<h3 id="redis-有哪些优点"><a href="#redis-有哪些优点" class="headerlink" title="redis 有哪些优点"></a>redis 有哪些优点</h3><ol>
+<li><strong>速度快</strong>，因为数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)</li>
+<li><strong>支持丰富数据类型</strong>，支持string，list，set，sorted set，hash</li>
+<li><strong>支持事务</strong>，操作都是原子性，所谓的原子性就是对数据的更改要么全部执行，要么全部不执行</li>
+<li><strong>丰富的特性</strong>，可用于缓存，消息，按key设置过期时间，过期后将会自动删除</li>
+</ol>
+<h3 id="redis-支持哪些数据类型"><a href="#redis-支持哪些数据类型" class="headerlink" title="redis 支持哪些数据类型"></a>redis 支持哪些数据类型</h3><p><strong>Redis</strong>一共支持五种数据类：string（字符串），hash（哈希），list（列表），set（集合）和zset（sorted set有序集合）。</p>
+<h2 id="Redis与Memcached的区别"><a href="#Redis与Memcached的区别" class="headerlink" title="Redis与Memcached的区别"></a>Redis与Memcached的区别</h2><ol>
+<li>Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，hash等数据结构的存储。memcache支持简单的数据类型，String。</li>
+<li>Redis支持数据的备份，即master-slave模式的数据备份。</li>
+<li>Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用,而Memecache把数据全部存在内存之中</li>
+<li>redis的速度比memcached快很多</li>
+<li>Memcached是多线程，非阻塞IO复用的网络模型；Redis使用单线程的IO复用模型。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>对比参数</th>
+<th>Redis</th>
+<th>Memcached</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>1.支持内存 2.非关系型数据库</td>
+<td>1.支持内存 2.key-value键值对形式 3.缓存系统</td>
+</tr>
+<tr>
+<td>数据存储类型</td>
+<td>String、List、Set、Hash、Sort Set</td>
+<td>文本型、二进制</td>
+</tr>
+<tr>
+<td>查询操作</td>
+<td>1.批量 2.伪事务 3.CRUD</td>
+<td>1.CRUD 2.少量其他命令</td>
+</tr>
+<tr>
+<td>附加功能</td>
+<td>1.发布/订阅模式 2.主从分区 3.序列化支持 4,脚本支持（Lua）</td>
+<td>多线程服务支持</td>
+</tr>
+<tr>
+<td>网络IO模型</td>
+<td>单进程模式</td>
+<td>多线程非阻塞IO模式</td>
+</tr>
+<tr>
+<td>事件库</td>
+<td>自封装简易时间库AeEvent</td>
+<td>贵族血统的LibEvent事件库</td>
+</tr>
+<tr>
+<td>持久化支持</td>
+<td>1.RDB 2.AOF</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>Value大小</td>
+<td>1GB</td>
+<td>1MB</td>
+</tr>
+</tbody>
+</table>
+<p>如果想要更详细了解的话，可以查看慕课网上的这篇手记（非常推荐） ：<a href="https://www.imooc.com/article/23549" target="_blank" rel="noopener">《脚踏两只船的困惑 - Memcached与Redis》</a></p>
+<h2 id="Redis的持久化"><a href="#Redis的持久化" class="headerlink" title="Redis的持久化"></a>Redis的持久化</h2><p>redis持久有两种方式：快照（快照），仅附加文件（AOF）</p>
+<p>快照（快照）</p>
+<p>1，将存储在内存的数据以快照的方式写入二进制文件中，如默认dump.rdb中<br>2，保存900 1 </p>
+<p>＃900秒内如果超过1个Key被修改，则启动快照保存<br>3，保存300 10 </p>
+<p>＃300秒内如果超过10个Key被修改，则启动快照保存<br>4，保存60 10000 </p>
+<p>＃60秒内如果超过10000个重点被修改，则启动快照保存</p>
+<p>仅附加文件（AOF）</p>
+<p>1，使用AOF持久时，服务会将每个收到的写命令通过写函数追加到文件中（appendonly.aof）<br>2，AOF持久化存储方式参数说明</p>
+<pre><code>＃开启AOF持久化存储方式 
+appendonly yes  
+
+＃收到写命令后就立即写入磁盘，效率最差，效果最好
+appendfsync always 
+
+ ＃每秒写入磁盘一次，效率与效果居中  
+appendfsync everysec
+
+＃完全依赖操作系统，效率最佳，效果没法保证     
+appendfsync no 
+</code></pre><h2 id="redis-使用场景"><a href="#redis-使用场景" class="headerlink" title="redis 使用场景"></a>redis 使用场景</h2><h3 id="1-会话缓存（Session-Cache）"><a href="#1-会话缓存（Session-Cache）" class="headerlink" title="1.会话缓存（Session Cache）"></a>1.会话缓存（Session Cache）</h3><p>最常用的一种使用Redis的情景是会话缓存（session cache）。用Redis缓存会话比其他存储（如Memcached）的优势在于：Redis提供持久化。当维护一个不是严格要求一致性的缓存时，如果用户的购物车信息全部丢失，大部分人都会不高兴的，现在，他们还会这样吗？</p>
+<p>幸运的是，随着 Redis 这些年的改进，很容易找到怎么恰当的使用Redis来缓存会话的文档。甚至广为人知的商业平台Magento也提供Redis的插件。</p>
+<h3 id="2-全页缓存（FPC）"><a href="#2-全页缓存（FPC）" class="headerlink" title="2.全页缓存（FPC）"></a>2.全页缓存（FPC）</h3><p>除基本的会话token之外，Redis还提供很简便的FPC平台。回到一致性问题，即使重启了Redis实例，因为有磁盘的持久化，用户也不会看到页面加载速度的下降，这是一个极大改进，类似PHP本地FPC。</p>
+<p>再次以Magento为例，Magento提供一个插件来使用Redis作为全页缓存后端。</p>
+<p>此外，对WordPress的用户来说，Pantheon有一个非常好的插件  wp-redis，这个插件能帮助你以最快速度加载你曾浏览过的页面。</p>
+<h3 id="3-队列"><a href="#3-队列" class="headerlink" title="3.队列"></a>3.队列</h3><p>Reids在内存存储引擎领域的一大优点是提供 list 和 set 操作，这使得Redis能作为一个很好的消息队列平台来使用。Redis作为队列使用的操作，就类似于本地程序语言（如Python）对 list 的 push/pop 操作。</p>
+<p>如果你快速的在Google中搜索“Redis queues”，你马上就能找到大量的开源项目，这些项目的目的就是利用Redis创建非常好的后端工具，以满足各种队列需求。例如，Celery有一个后台就是使用Redis作为broker，你可以从这里去查看。</p>
+<h3 id="4-排行榜-计数器"><a href="#4-排行榜-计数器" class="headerlink" title="4.排行榜/计数器"></a>4.排行榜/计数器</h3><p>Redis在内存中对数字进行递增或递减的操作实现的非常好。集合（Set）和有序集合（Sorted Set）也使得我们在执行这些操作的时候变的非常简单，Redis只是正好提供了这两种数据结构。所以，我们要从排序集合中获取到排名最靠前的10个用户–我们称之为“user_scores”，我们只需要像下面一样执行即可：</p>
+<p>当然，这是假定你是根据你用户的分数做递增的排序。如果你想返回用户及用户的分数，你需要这样执行：</p>
+<p>ZRANGE user_scores 0 10 WITHSCORES</p>
+<p>Agora Games就是一个很好的例子，用Ruby实现的，它的排行榜就是使用Redis来存储数据的，你可以在这里看到。</p>
+<h3 id="5-发布-订阅"><a href="#5-发布-订阅" class="headerlink" title="5.发布/订阅"></a>5.发布/订阅</h3><p> 最后（但肯定不是最不重要的）是Redis的发布/订阅功能。发布/订阅的使用场景确实非常多。我已看见人们在社交网络连接中使用，还可作为基于发布/订阅的脚本触发器，甚至用Redis的发布/订阅功能来建立聊天系统！（不，这是真的，你可以去核实）。</p>
+<p>Redis提供的所有特性中，我感觉这个是喜欢的人最少的一个，虽然它为用户提供如果此多功能。</p>
+<h2 id="Redis-淘汰策略"><a href="#Redis-淘汰策略" class="headerlink" title="Redis 淘汰策略"></a>Redis 淘汰策略</h2><p> MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据<br> 相关知识：redis 内存数据集大小上升到一定大小的时候，就会施行数据淘汰策略。redis 提供 6种数据淘汰策略：</p>
+<ul>
+<li>voltile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰<ul>
+<li>volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰</li>
+<li>volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰</li>
+<li>allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰</li>
+<li>allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰</li>
+<li>no-enviction（驱逐）：禁止驱逐数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="Redis-性能的优化"><a href="#Redis-性能的优化" class="headerlink" title="Redis 性能的优化"></a>Redis 性能的优化</h2><ul>
+<li><p>Master写内存快照，save命令调度rdbSave函数，会阻塞主线程的工作，当快照比较大时对性能影响是非常大的，会间断性暂停服务，所以Master最好不要写内存快照。</p>
+</li>
+<li><p>Master AOF持久化，如果不重写AOF文件，这个持久化方式对性能的影响是最小的，但是AOF文件会不断增大，AOF文件过大会影响Master重启的恢复速度。Master最好不要做任何持久化工作，包括内存快照和AOF日志文件，特别是不要启用内存快照做持久化,如果数据比较关键，某个Slave开启AOF备份数据，策略为每秒同步一次。</p>
+</li>
+<li><p>Master调用BGREWRITEAOF重写AOF文件，AOF在重写的时候会占大量的CPU和内存资源，导致服务load过高，出现短暂服务暂停现象。</p>
+</li>
+<li><p>尽量避免在压力很大的主库上增加从库</p>
+</li>
+<li><p>Redis主从复制的性能问题，为了主从复制的速度和连接的稳定性，Slave和Master最好在同一个局域网内</p>
+</li>
+<li><p>主从复制不要用图状结构，用单向链表结构更为稳定，即：Master &lt;- Slave1 &lt;- Slave2 &lt;- Slave3…<br>这样的结构方便解决单点故障问题，实现Slave对Master的替换。如果Master挂了，可以立刻启用Slave1做Master，其他不变。</p>
+</li>
+</ul>
+<h2 id="Redis的并发竞争问题"><a href="#Redis的并发竞争问题" class="headerlink" title="Redis的并发竞争问题"></a>Redis的并发竞争问题</h2><p>Redis为单进程单线程模式，采用队列模式将并发访问变为串行访问。Redis本身没有锁的概念，Redis对于多个客户端连接并不存在竞争，但是在Jedis客户端对Redis进行并发访问时会发生连接超时、数据转换错误、阻塞、客户端关闭连接等问题，这些问题均是由于客户端连接混乱造成。对此有2种解决方法：</p>
+<ol>
+<li>客户端角度，为保证每个客户端间正常有序与Redis进行通信，对连接进行池化，同时对客户端读写Redis操作采用内部锁synchronized。</li>
+<li>服务器角度，利用setnx实现锁。</li>
+</ol>
+<p>注：对于第一种，需要应用程序自己处理资源的同步，可以使用的方法比较通俗，可以使用synchronized也可以使用lock；第二种需要用到Redis的setnx命令，但是需要注意一些问题。</p>
 
       
     </div>
@@ -347,13 +430,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></p>
+        <p><span>本文标题:</span><a href="/2019/04/15/about-redis-one-redis-basics/"></a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-03-21, 16:46:59</p>
-        <p><span>最后更新:</span>2017-03-21, 16:46:59</p>
+        <p><span>发布时间:</span>2019-04-15, 16:03:21</p>
+        <p><span>最后更新:</span>2019-05-08, 17:01:05</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/" title="游戏辅助（四）：基于Java的内存修改器（CE）">https://zhouhy.top/2017/03/21/game-assist-four-Java-based-memory-modifier/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/03/21/game-assist-four-Java-based-memory-modifier/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/15/about-redis-one-redis-basics/" title="">https://zhouhy.top/2019/04/15/about-redis-one-redis-basics/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2019/04/15/about-redis-one-redis-basics/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -365,16 +448,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/08/SSR-builds-its-own-ladder/">
-                    SSR搭建属于自己的梯子
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/20/game-assist-Based-on-C-binding-handle/">
-                    游戏辅助（三）：基于C绑定句柄
+                <a href="/2019/02/14/iphone-install-through-plist/">
+                    IOS 系统通过plist方式安装App
                 </a>
             </div>
         
@@ -392,7 +469,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#嗯？"><span class="toc-number">2.</span> <span class="toc-text">嗯？</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#description-“随着互联网web2-0网站的兴起，传统的关系数据库在应付web2-0网站，特别是超大规模和高并发的SNS类型的web2-0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库（本文主要讲Redis）的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。”"><span class="toc-number">1.</span> <span class="toc-text">description: “随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库（本文主要讲Redis）的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis-基本概念"><span class="toc-number">2.</span> <span class="toc-text">redis 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-是什么"><span class="toc-number">2.1.</span> <span class="toc-text">redis 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-有哪些优点"><span class="toc-number">2.2.</span> <span class="toc-text">redis 有哪些优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-支持哪些数据类型"><span class="toc-number">2.3.</span> <span class="toc-text">redis 支持哪些数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis与Memcached的区别"><span class="toc-number">3.</span> <span class="toc-text">Redis与Memcached的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis的持久化"><span class="toc-number">4.</span> <span class="toc-text">Redis的持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis-使用场景"><span class="toc-number">5.</span> <span class="toc-text">redis 使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-会话缓存（Session-Cache）"><span class="toc-number">5.1.</span> <span class="toc-text">1.会话缓存（Session Cache）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-全页缓存（FPC）"><span class="toc-number">5.2.</span> <span class="toc-text">2.全页缓存（FPC）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-队列"><span class="toc-number">5.3.</span> <span class="toc-text">3.队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-排行榜-计数器"><span class="toc-number">5.4.</span> <span class="toc-text">4.排行榜/计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-发布-订阅"><span class="toc-number">5.5.</span> <span class="toc-text">5.发布/订阅</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-淘汰策略"><span class="toc-number">6.</span> <span class="toc-text">Redis 淘汰策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-性能的优化"><span class="toc-number">7.</span> <span class="toc-text">Redis 性能的优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis的并发竞争问题"><span class="toc-number">8.</span> <span class="toc-text">Redis的并发竞争问题</span></a></li></ol>
         
     </div>
     <style>
@@ -428,7 +505,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"游戏辅助（四）：基于Java的内存修改器（CE）　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -470,15 +547,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/08/SSR-builds-its-own-ladder/" title="上一篇: SSR搭建属于自己的梯子">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/20/game-assist-Based-on-C-binding-handle/" title="下一篇: 游戏辅助（三）：基于C绑定句柄">
+            <a href="/2019/02/14/iphone-install-through-plist/" title="下一篇: IOS 系统通过plist方式安装App">
                 <i class="fa fa-angle-right"></i>
             </a>
         
