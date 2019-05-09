@@ -560,6 +560,100 @@
 
 
   
+    <article id="post-about-redis-three-Distributed-lock" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/15/about-redis-three-Distributed-lock/" class="article-date">
+      <time datetime="2018-06-15T08:03:21.000Z" itemprop="datePublished">2018-06-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a>
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">4k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">15m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              因为平时工作中，线上服务器是分布式多台部署的，经常会遇到解决分布式场景下数据一致性的问题，这种情况就需要利用分布式锁解决这些问题。网上部分相关文章有误人子弟嫌疑，本文结合网上资料和个人实践得出，特此记录方便以后自己查阅，同时也希望能帮助他人。
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noSql/">noSql</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/06/15/about-redis-three-Distributed-lock/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+  
+  
+
+  
+  
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-about-redis-two-Jedis-and-RedisTemplate" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -724,100 +818,6 @@
       
         <p class="article-more-link">
           <a href="/2018/04/15/about-redis-one-redis-basics/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-  
-
-  
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-about-redis-three-Distributed-lock" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/15/about-redis-three-Distributed-lock/" class="article-date">
-      <time datetime="2018-04-15T08:03:21.000Z" itemprop="datePublished">2018-04-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a>
-    </h1>
-  
-
-		
-			<div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">3.7k&#23383;</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">14m</span>
-      </span>
-    </span>
-</div>
-		
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              因为平时工作中，线上服务器是分布式多台部署的，经常会遇到解决分布式场景下数据一致性的问题，这种情况就需要利用分布式锁解决这些问题。网上部分相关文章有误人子弟嫌疑，本文结合网上资料和个人实践得出，特此记录方便以后自己查阅，同时也希望能帮助他人。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Redis/">Redis</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noSql/">noSql</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/04/15/about-redis-three-Distributed-lock/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -51,6 +51,13 @@
   </url>
   
   <url>
+    <loc>https://zhouhy.top/2018/06/15/about-redis-three-Distributed-lock/</loc>
+    
+    <lastmod>2018-06-15T08:03:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhouhy.top/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/</loc>
     
     <lastmod>2018-05-08T09:19:41.000Z</lastmod>
@@ -59,13 +66,6 @@
   
   <url>
     <loc>https://zhouhy.top/2018/04/15/about-redis-one-redis-basics/</loc>
-    
-    <lastmod>2018-04-15T08:03:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhouhy.top/2018/04/15/about-redis-three-Distributed-lock/</loc>
     
     <lastmod>2018-04-15T08:03:21.000Z</lastmod>
     

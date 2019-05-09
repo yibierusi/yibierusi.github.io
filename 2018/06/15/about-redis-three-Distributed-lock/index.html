@@ -19,11 +19,11 @@
 <meta name="keywords" content="Redis,noSql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Redis(三)：分布式锁的应用">
-<meta property="og:url" content="https://zhouhy.top/2018/04/15/about-redis-three-Distributed-lock/index.html">
+<meta property="og:url" content="https://zhouhy.top/2018/06/15/about-redis-three-Distributed-lock/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
 <meta property="og:description" content="因为平时工作中，线上服务器是分布式多台部署的，经常会遇到解决分布式场景下数据一致性的问题，这种情况就需要利用分布式锁解决这些问题。网上部分相关文章有误人子弟嫌疑，本文结合网上资料和个人实践得出，特此记录方便以后自己查阅，同时也希望能帮助他人。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-15T08:03:21.000Z">
+<meta property="og:updated_time" content="2018-06-15T08:03:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Redis(三)：分布式锁的应用">
 <meta name="twitter:description" content="因为平时工作中，线上服务器是分布式多台部署的，经常会遇到解决分布式场景下数据一致性的问题，这种情况就需要利用分布式锁解决这些问题。网上部分相关文章有误人子弟嫌疑，本文结合网上资料和个人实践得出，特此记录方便以后自己查阅，同时也希望能帮助他人。">
@@ -276,8 +276,8 @@
       <div class="body-wrap"><article id="post-about-redis-three-Distributed-lock" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/15/about-redis-three-Distributed-lock/" class="article-date">
-      <time datetime="2018-04-15T08:03:21.000Z" itemprop="datePublished">2018-04-15</time>
+      <a href="/2018/06/15/about-redis-three-Distributed-lock/" class="article-date">
+      <time datetime="2018-06-15T08:03:21.000Z" itemprop="datePublished">2018-06-15</time>
 </a>
 
 
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">3.7k&#23383;</span>
+        <span class="post-count">4k&#23383;</span>
       </span>
     </span>
 
@@ -311,7 +311,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">14m</span>
+        <span class="post-count">15m</span>
       </span>
     </span>
 </div>
@@ -352,13 +352,15 @@
 <li>锁失效机制：网络中断或宕机无法释放锁时，锁必须被删除，防止死锁。</li>
 <li>可重入特性：一个线程中可以多次获取同一把锁，比如一个线程在执行一个带锁的方法，该方法中又调用了另一个需要相同锁的方法，则该线程可以直接执行调用的方法，而无需重新获得锁。</li>
 </ol>
+<p>注意：不管加锁还是解锁都要保证原子性。</p>
 <h3 id="分布式锁有哪些实现方法"><a href="#分布式锁有哪些实现方法" class="headerlink" title="分布式锁有哪些实现方法"></a>分布式锁有哪些实现方法</h3><p>目前主流的有三种，从实现的复杂度上来看，从上往下难度依次增加：</p>
 <ol>
 <li>基于数据库实现（乐观锁 、悲观锁）</li>
 <li>基于缓存实现（本文只讲非集群Redis）</li>
 <li>基于ZooKeeper实现</li>
 </ol>
-<h2 id="分布式锁实现"><a href="#分布式锁实现" class="headerlink" title="分布式锁实现"></a>分布式锁实现</h2><h3 id="方法一：数据库（乐观锁）"><a href="#方法一：数据库（乐观锁）" class="headerlink" title="方法一：数据库（乐观锁）"></a>方法一：数据库（乐观锁）</h3><blockquote>
+<h2 id="分布式锁实现"><a href="#分布式锁实现" class="headerlink" title="分布式锁实现"></a>分布式锁实现</h2><h3 id="方法一：数据库（乐观锁）"><a href="#方法一：数据库（乐观锁）" class="headerlink" title="方法一：数据库（乐观锁）"></a>方法一：数据库（乐观锁）</h3><p>这个策略源于 mysql 的 mvcc 机制，使用这个策略其实本身没有什么问题，唯一的问题就是对数据表侵入较大，我们要为每个表设计一个版本号字段，然后写一条判断 sql 每次进行判断，增加了数据库操作的次数，在高并发的要求下，对数据库连接的开销也是无法忍受的。</p>
+<blockquote>
 <p>乐观锁通常实现基于数据版本(version)的记录机制实现的，比如有一张红包表（t_bonus），有一个字段(left_count)记录礼物的剩余个数，用户每领取一个奖品，对应的left_count减1，在并发的情况下如何要保证left_count不为负数，乐观锁的实现方式为在红包表上添加一个版本号字段（version），默认为0。</p>
 </blockquote>
 <p>异常实现流程</p>
@@ -452,7 +454,8 @@ update t_bonus set version = 1235, left_count = left_count-1 where id = 10001 an
 <li>第五个为time，与第四个参数相呼应，代表key的过期时间。</li>
 </ol>
 <p>总的来说，执行上面的set()方法就只会导致两种结果：1. 当前没有锁（key不存在），那么就进行加锁操作，并对锁设置个有效期，同时value表示加锁的客户端。2. 已有锁存在，不做任何操作。</p>
-<p>首先，set()加入了NX参数，可以保证如果已有key存在，则函数不会调用成功，也就是只有一个客户端能持有锁，满足互斥性。其次，由于我们对锁设置了过期时间，即使锁的持有者后续发生崩溃而没有解锁，锁也会因为到了过期时间而自动解锁（即key被删除），不会发生死锁，也满足了锁失效机制。最后，因为我们将value赋值为requestId，代表加锁的客户端请求标识，那么在客户端在解锁的时候就可以进行校验是否是同一个客户端。由于我们只考虑Redis单机部署的场景，所以容错性我们暂不考虑。但是这里可能会出现另外一个问题，在后面会讲解。</p>
+<p>首先，set()加入了NX参数，可以保证如果已有key存在，则函数不会调用成功，也就是只有一个客户端能持有锁，满足互斥性。<br>其次，由于我们对锁设置了过期时间，即使锁的持有者后续发生崩溃而没有解锁，锁也会因为到了过期时间而自动解锁（即key被删除），不会发生死锁，也满足了锁失效机制。<br>最后，因为我们将value赋值为requestId，代表加锁的客户端请求标识，那么在客户端在解锁的时候就可以进行校验是否是同一个客户端。<br><strong>但是这里还是会有一个问题就是，网上很多文章都没有讲到，如果某些原因导致线程A执行的很慢很慢，过了30秒（过期时间）都没执行完，这时候锁过期自动释放，线程B得到了锁。怎么办呢？我们可以让获得锁的线程开启一个守护线程，用来给快要过期的锁“续航”，当过去了29秒，线程A还没执行完，这时候守护线程会执行expire指令，为这把锁“续命”20秒。守护线程从第29秒开始执行，每20秒执行一次。如果节点1 忽然断电，由于线程A和守护线程在同一个进程，守护线程也会停下。这把锁到了超时的时候，没人给它续命，也就自动释放了。</strong></p>
+<p>由于我们只考虑Redis单机部署的场景，所以容错性我们暂不考虑。</p>
 <p>错误示例1<br>比较常见的错误示例就是使用jedis.setnx()和jedis.expire()组合实现加锁，代码如下：</p>
 <pre><code>public static void wrongGetLock1(Jedis jedis, String lockKey, String requestId, int expireTime) {
 
@@ -546,13 +549,13 @@ update t_bonus set version = 1235, left_count = left_count-1 where id = 10001 an
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/04/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2018-04-15, 16:03:21</p>
-        <p><span>最后更新:</span>2018-04-15, 16:03:21</p>
+        <p><span>发布时间:</span>2018-06-15, 16:03:21</p>
+        <p><span>最后更新:</span>2018-06-15, 16:03:21</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/15/about-redis-three-Distributed-lock/" title="关于Redis(三)：分布式锁的应用">https://zhouhy.top/2018/04/15/about-redis-three-Distributed-lock/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2018/04/15/about-redis-three-Distributed-lock/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/15/about-redis-three-Distributed-lock/" title="关于Redis(三)：分布式锁的应用">https://zhouhy.top/2018/06/15/about-redis-three-Distributed-lock/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2018/06/15/about-redis-three-Distributed-lock/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -565,15 +568,15 @@ update t_bonus set version = 1235, left_count = left_count-1 where id = 10001 an
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/04/15/about-redis-one-redis-basics/">
-                    关于Redis(一)：基本概念与常见问题
+                <a href="/2018/07/08/write-a-blockchain-in-JavaScript/">
+                    用JavaScript写一个区块链
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/03/04/SpringMVC-Response-get-Body/">
-                    SpringMVC：Response获取Body问题
+                <a href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">
+                    关于Redis(二)：Jedis与RedisTemplate
                 </a>
             </div>
         
@@ -669,7 +672,7 @@ update t_bonus set version = 1235, left_count = left_count-1 where id = 10001 an
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/04/15/about-redis-one-redis-basics/" title="上一篇: 关于Redis(一)：基本概念与常见问题">
+            <a href="/2018/07/08/write-a-blockchain-in-JavaScript/" title="上一篇: 用JavaScript写一个区块链">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -677,13 +680,13 @@ update t_bonus set version = 1235, left_count = left_count-1 where id = 10001 an
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/03/04/SpringMVC-Response-get-Body/" title="下一篇: SpringMVC：Response获取Body问题">
+            <a href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/" title="下一篇: 关于Redis(二)：Jedis与RedisTemplate">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
 
 
 
