@@ -337,7 +337,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Jedis与RedisTemplate的出身"><a href="#Jedis与RedisTemplate的出身" class="headerlink" title="Jedis与RedisTemplate的出身"></a>Jedis与RedisTemplate的出身</h2><p>Jedis是Redis官方推荐的面向Java的操作Redis的客户端，而RedisTemplate是SpringDataRedis中对JedisApi的高度封装。<br>SpringDataRedis相对于Jedis来说可以方便地更换Redis的Java客户端，比Jedis多了自动管理连接池的特性，方便与其他Spring框架进行搭配使用如：SpringCache。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Jedis与RedisTemplate都是面向Java操作Redis的客户端，刚开始一直傻傻分不清，特此记录一下。</p>
+<h2 id="Jedis与RedisTemplate的出身"><a href="#Jedis与RedisTemplate的出身" class="headerlink" title="Jedis与RedisTemplate的出身"></a>Jedis与RedisTemplate的出身</h2><p>Jedis是Redis官方推荐的面向Java的操作Redis的客户端，而RedisTemplate是SpringDataRedis中对JedisApi的高度封装。<br>SpringDataRedis相对于Jedis来说可以方便地更换Redis的Java客户端，比Jedis多了自动管理连接池的特性，方便与其他Spring框架进行搭配使用如：SpringCache。</p>
 <h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><h3 id="引入pom依赖"><a href="#引入pom依赖" class="headerlink" title="引入pom依赖"></a>引入pom依赖</h3><p>RedisTemplate 的依赖</p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
@@ -398,7 +399,7 @@ public RedisTemplate&lt;String, Object&gt; redisTemplate(RedisConnectionFactory 
     template.afterPropertiesSet();
     return template;
 }
-</code></pre><p>Jedis 注入</p>
+</code></pre><p>JedisPool 注入</p>
 <pre><code>@Value(&quot;${spring.redis.host}&quot;)
    private String host;
 
@@ -1237,7 +1238,7 @@ public class RedisUtils {
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jedis与RedisTemplate的出身"><span class="toc-number">1.</span> <span class="toc-text">Jedis与RedisTemplate的出身</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作流程"><span class="toc-number">2.</span> <span class="toc-text">操作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入pom依赖"><span class="toc-number">2.1.</span> <span class="toc-text">引入pom依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-number">2.2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bean注入"><span class="toc-number">2.3.</span> <span class="toc-text">bean注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#帮助类"><span class="toc-number">2.4.</span> <span class="toc-text">帮助类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jedis与RedisTemplate的出身"><span class="toc-number">2.</span> <span class="toc-text">Jedis与RedisTemplate的出身</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作流程"><span class="toc-number">3.</span> <span class="toc-text">操作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入pom依赖"><span class="toc-number">3.1.</span> <span class="toc-text">引入pom依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-number">3.2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bean注入"><span class="toc-number">3.3.</span> <span class="toc-text">bean注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#帮助类"><span class="toc-number">3.4.</span> <span class="toc-text">帮助类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
         
     </div>
     <style>
