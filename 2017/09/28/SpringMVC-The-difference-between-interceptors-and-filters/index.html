@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="主要记录一下通过Java去操作窗口句柄（实际上还是通过C）的效果验证，Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。">
-<meta name="keywords" content="xnx3,句柄">
+<meta name="description" content="拦截器和过滤器的区别">
+<meta name="keywords" content="拦截器,过滤器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="游戏辅助（三）：基于C绑定句柄">
-<meta property="og:url" content="https://zhouhy.top/2017/03/20/game-assist-Based-on-C-binding-handle/index.html">
+<meta property="og:title" content="SpringMVC：拦截器和过滤器的区别">
+<meta property="og:url" content="https://zhouhy.top/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="主要记录一下通过Java去操作窗口句柄（实际上还是通过C）的效果验证，Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。">
+<meta property="og:description" content="拦截器和过滤器的区别">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-20T08:33:08.000Z">
+<meta property="og:updated_time" content="2017-09-28T10:05:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游戏辅助（三）：基于C绑定句柄">
-<meta name="twitter:description" content="主要记录一下通过Java去操作窗口句柄（实际上还是通过C）的效果验证，Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。">
+<meta name="twitter:title" content="SpringMVC：拦截器和过滤器的区别">
+<meta name="twitter:description" content="拦截器和过滤器的区别">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>游戏辅助（三）：基于C绑定句柄 | ZHOU&#39;s Blog</title>
+<title>SpringMVC：拦截器和过滤器的区别 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -273,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-game-assist-Based-on-C-binding-handle" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SpringMVC-The-difference-between-interceptors-and-filters" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/20/game-assist-Based-on-C-binding-handle/" class="article-date">
-      <time datetime="2017-03-20T08:33:08.000Z" itemprop="datePublished">2017-03-20</time>
+      <a href="/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/" class="article-date">
+      <time datetime="2017-09-28T10:05:59.000Z" itemprop="datePublished">2017-09-28</time>
 </a>
 
 
@@ -292,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      游戏辅助（三）：基于C绑定句柄
+      SpringMVC：拦截器和过滤器的区别
     </h1>
   
 
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">656&#23383;</span>
+        <span class="post-count">1&#23383;</span>
       </span>
     </span>
 
@@ -311,7 +311,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">2m</span>
+        <span class="post-count">1m</span>
       </span>
     </span>
 </div>
@@ -321,13 +321,13 @@
       <div class="article-info article-info-post" style="margin-top:-5px">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/游戏辅助/">游戏辅助</a>
+    <a class="article-category-link" href="/categories/SpringMVC/">SpringMVC</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xnx3/">xnx3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/句柄/">句柄</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拦截器/">拦截器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/过滤器/">过滤器</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -337,73 +337,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面几篇介绍了用Java调用第三方插件去进行驱动级别的外设模拟，至于基于Java的以图找图，以色定位就不多说了，Robot就可以满足，本文讲的是通过Java操作句柄（实际上还是通过C），Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>首先导入xnx3.jar</strong>,以寻仙窗口句柄为例。</p>
-<pre><code>import com.xnx3.microsoft.Com;
-import com.xnx3.microsoft.Mouse;
-import com.xnx3.microsoft.Press;
-import com.xnx3.microsoft.Sleep;
-import com.xnx3.microsoft.Window;
+        <p>aaaaaaaaaaaaaa<br><a id="more"></a></p>
 
-    /**
-     * 寻仙游戏模拟操作
-     */
-    public class XunXianTest {
-        public static void main(String[] args) {
-
-            //所有辅助的，模拟进行某种操作(键盘、鼠标、..)要先创建此类,在new Com()时，会自动检测运行环境是否符合、部署、注册Dll
-            Com com=new Com();
-
-            //返回创建Com()的结果，如果自检过程中发现异常，创建Com失败，则调用此会返回false
-            if(!com.isCreateSuccess()){
-                return;
-            }
-
-            //创建window窗口操作对象
-            Window window=new Window(com.getActiveXComponent());
-
-            //查找当前运行的程序中标题包含“寻仙 -”三个字的窗口句柄，
-            int hwnd=window.findWindow(0, null, &quot;寻仙 -&quot;);
-            //如果找到了寻仙这个游戏窗口了，确定是有这个程序存在，那么可以继续以下操作
-            if(hwnd&gt;0){
-
-                        /*
-                         * 对找到的寻仙这个窗口进行绑定，绑定完毕后，那么所有的鼠标、键盘、图色等操作就是都是对这个窗口（寻仙游戏）操作的，完全后台的~~，窗口可以被遮挡、点击葫芦隐藏，但是不可以最小化
-                         * 寻仙的就是这种模式绑定，只需要传入窗口句柄就可
-                         * 其他游戏的请自行组合测试绑定模式,使用： com.bind(hwnd, display, mouse, key, mode) 自行测试
-                         */
-                if(com.bind(hwnd)){
-
-                    /**
-                     * 绑定完毕，对游戏的操作全在这里
-                     */
-                    Press press=new Press(com.getActiveXComponent());        //创建模拟按键对象
-                    Mouse mouse=new Mouse(com.getActiveXComponent());        //创建模拟鼠标对象
-                    Sleep sleep=new Sleep();                                                        //创建延迟等待对象
-
-                    /***************以下来模拟按wasd四个方向键转三圈，然后结束软件退出运行***************/
-                    int i=0;
-                    while(i++&lt;3){
-                        press.keyPressTime(Press.W, 300);        //模拟按下W键0.3秒钟
-                        press.keyPressTime(Press.A, 300);
-                        press.keyPressTime(Press.S, 300);
-                        press.keyPressTime(Press.D, 300);
-                    }
-
-                    System.out.println(&quot;执行完毕&quot;);
-
-                }else{
-                    System.out.println(&quot;窗口绑定失败&quot;);
-                }
-            }else{
-                System.out.println(&quot;没有发现寻仙窗口&quot;);
-            }
-
-            //用完后一定要记得释放，释放内存，无论是否绑定了窗口、绑定是否成功，都可以直接调用此函数释放
-            com.unbind();
-        }
-    }
-</code></pre>
       
     </div>
     
@@ -411,13 +346,13 @@ import com.xnx3.microsoft.Window;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></p>
+        <p><span>本文标题:</span><a href="/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-03-20, 16:33:08</p>
-        <p><span>最后更新:</span>2017-03-20, 16:33:08</p>
+        <p><span>发布时间:</span>2017-09-28, 18:05:59</p>
+        <p><span>最后更新:</span>2017-09-28, 18:05:59</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/20/game-assist-Based-on-C-binding-handle/" title="游戏辅助（三）：基于C绑定句柄">https://zhouhy.top/2017/03/20/game-assist-Based-on-C-binding-handle/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/03/20/game-assist-Based-on-C-binding-handle/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/" title="SpringMVC：拦截器和过滤器的区别">https://zhouhy.top/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -430,15 +365,15 @@ import com.xnx3.microsoft.Window;
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">
-                    游戏辅助（四）：基于Java的内存修改器（CE）
+                <a href="/2017/10/08/SpringMVC-Interceptor-workflow/">
+                    SpringMVC：拦截器的工作流程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/12/hexo-two-remote-repository-hosting-blog/">
-                    Hexo系列（二）：远程仓库托管博客
+                <a href="/2017/08/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">
+                    远程调试(一)：在IDEA中远程调试Jar包
                 </a>
             </div>
         
@@ -456,7 +391,7 @@ import com.xnx3.microsoft.Window;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -492,7 +427,7 @@ import com.xnx3.microsoft.Window;
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"游戏辅助（三）：基于C绑定句柄　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SpringMVC：拦截器和过滤器的区别　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -534,7 +469,7 @@ import com.xnx3.microsoft.Window;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/21/game-assist-four-Java-based-memory-modifier/" title="上一篇: 游戏辅助（四）：基于Java的内存修改器（CE）">
+            <a href="/2017/10/08/SpringMVC-Interceptor-workflow/" title="上一篇: SpringMVC：拦截器的工作流程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -542,13 +477,13 @@ import com.xnx3.microsoft.Window;
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/12/hexo-two-remote-repository-hosting-blog/" title="下一篇: Hexo系列（二）：远程仓库托管博客">
+            <a href="/2017/08/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/" title="下一篇: 远程调试(一)：在IDEA中远程调试Jar包">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
 
 
 
