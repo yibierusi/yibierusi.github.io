@@ -15,32 +15,25 @@
 
 
 
-<meta name="description" content="这几天一直有小伙伴问我有没有免费的梯子，我之前一直在用google的蓝灯，但是后来因为国情原因时好时坏的所以决定自己研究一下梯子的搭建。">
-<meta name="keywords" content="ssr,vps">
+<meta name="description" content="到了这一步，就博客的搭建基本已经完成了，细心的人就会发现一个问题，搭建的博客在baidu和google上搜索不到，这个问题真的是忍不了啊，完全不能愉快的装逼了，本文教大家做一下简单的SEO。">
+<meta name="keywords" content="baidu,google,seo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSR搭建属于自己的梯子">
-<meta property="og:url" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/index.html">
+<meta property="og:title" content="Hexo系列（七）：提交搜索引擎">
+<meta property="og:url" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="这几天一直有小伙伴问我有没有免费的梯子，我之前一直在用google的蓝灯，但是后来因为国情原因时好时坏的所以决定自己研究一下梯子的搭建。">
+<meta property="og:description" content="到了这一步，就博客的搭建基本已经完成了，细心的人就会发现一个问题，搭建的博客在baidu和google上搜索不到，这个问题真的是忍不了啊，完全不能愉快的装逼了，本文教大家做一下简单的SEO。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/1.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/2.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/3.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/4.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/5.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/6.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/7.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/8.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/9.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/10.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/11.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/12.png">
-<meta property="og:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/13.png">
-<meta property="og:updated_time" content="2017-04-08T08:33:54.000Z">
+<meta property="og:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/baidu_site.png">
+<meta property="og:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/google_site.png">
+<meta property="og:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/google验证">
+<meta property="og:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/验证文件位置.jpg">
+<meta property="og:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/验证页面.jpg">
+<meta property="og:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/site_page.jpg">
+<meta property="og:updated_time" content="2017-05-28T07:27:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSR搭建属于自己的梯子">
-<meta name="twitter:description" content="这几天一直有小伙伴问我有没有免费的梯子，我之前一直在用google的蓝灯，但是后来因为国情原因时好时坏的所以决定自己研究一下梯子的搭建。">
-<meta name="twitter:image" content="https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/1.png">
+<meta name="twitter:title" content="Hexo系列（七）：提交搜索引擎">
+<meta name="twitter:description" content="到了这一步，就博客的搭建基本已经完成了，细心的人就会发现一个问题，搭建的博客在baidu和google上搜索不到，这个问题真的是忍不了啊，完全不能愉快的装逼了，本文教大家做一下简单的SEO。">
+<meta name="twitter:image" content="https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/baidu_site.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -72,7 +65,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SSR搭建属于自己的梯子 | ZHOU&#39;s Blog</title>
+<title>Hexo系列（七）：提交搜索引擎 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -287,11 +280,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-SSR-builds-its-own-ladder" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo-seven-submit-search-engine" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/08/SSR-builds-its-own-ladder/" class="article-date">
-      <time datetime="2017-04-08T08:33:54.000Z" itemprop="datePublished">2017-04-08</time>
+      <a href="/2017/05/28/hexo-seven-submit-search-engine/" class="article-date">
+      <time datetime="2017-05-28T07:27:46.000Z" itemprop="datePublished">2017-05-28</time>
 </a>
 
 
@@ -306,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SSR搭建属于自己的梯子
+      Hexo系列（七）：提交搜索引擎
     </h1>
   
 
@@ -316,7 +309,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">853&#23383;</span>
+        <span class="post-count">1.9k&#23383;</span>
       </span>
     </span>
 
@@ -325,7 +318,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">3m</span>
+        <span class="post-count">6m</span>
       </span>
     </span>
 </div>
@@ -335,13 +328,13 @@
       <div class="article-info article-info-post" style="margin-top:-5px">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/VPN/">VPN</a>
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/baidu/">baidu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/google/">google</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/seo/">seo</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -351,30 +344,55 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SSR梯子切勿用于非法用途，主要是用来学习交流使用。<br>这几天一直有小伙伴问我有没有免费的梯子，我之前一直在用google的蓝灯，但是后来因为国情原因时好时坏的所以决定自己研究一下梯子的搭建。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>SSTAP：链接: <a href="https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1tfuR5gsUnmTNxurvn_fFNA</a>  密码:67zb<br>Windows客户端代理工具：链接: <a href="https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1pqtpMnrHRk89lWDe-IOmFQ</a> 密码:fqkt<br>服务器一台：推荐使用vultr地址：<a href="http://www.vuvps.com/vultr.php" target="_blank" rel="noopener">http://www.vuvps.com/vultr.php</a><br>最后一个xShell远程终端，用来连接你的服务器，链接: <a href="https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ab2GYTH7YyLCl0qfAxp5Hg</a>  密码:meeu ，只需要用一次就行了，就是SSR搭建后之后，你就可以把它卸载了。<br>准备支付宝。</p>
-<h3 id="服务器选购"><a href="#服务器选购" class="headerlink" title="服务器选购"></a>服务器选购</h3><p>1.进入到Vultr首页，填写你的邮箱地址和登陆密码（密码需要数字+大写+小写字母），然后点击“CreateAccount”注册账号，注册成功之后,Service一栏里面，需要验证一下自己的邮箱。<br><img src="/2017/04/08/SSR-builds-its-own-ladder/1.png" alt=""></p>
-<p>2.购买服务器需要最低充值10美金，使用支付宝付款，服务器按小时计费。</p>
-<p>充值流程：【Billing】-【Alipay】-【Pay withAlipay】-【完成支付】<br><img src="/2017/04/08/SSR-builds-its-own-ladder/2.png" alt=""></p>
-<p>3.支付完成后，接着选择服务器，本着最便宜的原则来购买（一般纽约为2.5美元一个月）</p>
-<p>【Server Location】<br><img src="/2017/04/08/SSR-builds-its-own-ladder/3.png" alt=""><br>【ServerType】 选择Centos 6x64（默认是Centos 7，如果没选6也没关系）<br><img src="/2017/04/08/SSR-builds-its-own-ladder/4.png" alt=""><br>【ServerSize】反正选最便宜的。<br><img src="/2017/04/08/SSR-builds-its-own-ladder/5.png" alt=""><br>剩下的默认，最后点击右下角“DeployNow”完成购买。</p>
-<p>PS:主机创建的时候需要等两分钟再执行下一步SSR部署</p>
-<h3 id="SSR部署"><a href="#SSR部署" class="headerlink" title="SSR部署"></a>SSR部署</h3><p>1.下载xShell,上面有链接，vps信息在你刚刚购买的面板里面可以看到。</p>
-<p>打开xshell，新建链接，填写主机ip，端口号，钩选重新链接，然后点连接。<br><img src="/2017/04/08/SSR-builds-its-own-ladder/6.png" alt=""><br>弹出“SSR安全警告”，选择“接受并保存”，用户名root（记得钩选记住用户名），密码在你的vultr里面去看，<br><img src="/2017/04/08/SSR-builds-its-own-ladder/7.png" alt=""><br>出现下图（root@vultr）代表成功<br><img src="/2017/04/08/SSR-builds-its-own-ladder/8.png" alt=""></p>
-<h3 id="SSR安装"><a href="#SSR安装" class="headerlink" title="SSR安装"></a>SSR安装</h3><p>执行以下命令（密码建议修改，port可以默认）</p>
-<pre><code>wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh
-</code></pre><p><img src="/2017/04/08/SSR-builds-its-own-ladder/9.png" alt=""><br><img src="/2017/04/08/SSR-builds-its-own-ladder/10.png" alt=""></p>
-<p>出现提示“Shadowsocksr安装完成”就可以继续下一步，锐速安装（图片保存一下）。</p>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>1.执行更换内核脚本</p>
-<pre><code>wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh&amp;&amp; bash ruisu.sh
-</code></pre><p>执行之后，脚本会自动断开服务器，假如你钩选了记住用户名和密码，它会自动重连，如果没钩选也没关系，Xshel左上角【File】-【重新连接】，然后执行锐速安装脚本。</p>
-<p>2.锐速安装脚本</p>
-<pre><code>wget -N --no-check-certificatehttps://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh&amp;&amp; bash serverspeeder.sh
-</code></pre><p>备用脚本(一般是centos7系统需要用到，6系统不需要执行这个)</p>
-<pre><code>wget -N --no-check-certificatehttps://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh&amp;&amp; bash serverspeeder-all.sh
-</code></pre><p>如果出现版本不匹配，会出现一个选项，直接选个1就行了，直至出现下图，恭喜你，拥有了一个属于自己的SSR梯子。<br><img src="/2017/04/08/SSR-builds-its-own-ladder/11.png" alt=""></p>
-<h3 id="SStap配置"><a href="#SStap配置" class="headerlink" title="SStap配置"></a>SStap配置</h3><p>下载SStap,安装并填写SSR信息，下载链接在上面。</p>
-<p>你只需要填写服务器IP、端口号、密码，其他信息照着下图抄就行了。<br><img src="/2017/04/08/SSR-builds-its-own-ladder/12.png" alt=""><br>最后给个Google一张<br><img src="/2017/04/08/SSR-builds-its-own-ladder/13.png" alt=""><br>SSR各平台下载地址=》 <a href="http://www.vuvps.com/?p=112" target="_blank" rel="noopener">极光SSR各平台客户端操作软件</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>到了这一步，就博客的搭建基本已经完成了，细心的人就会发现一个问题，搭建的博客在<code>baidu</code>和<code>google</code>上搜索不到，这个问题真的是忍不了啊，完全不能愉快的装逼了，本文教大家做一下简单的SEO。</p>
+<h2 id="查看收录情况"><a href="#查看收录情况" class="headerlink" title="查看收录情况"></a>查看收录情况</h2><hr>
+<p>在站点前面输入<code>site:</code>可以查看搜索引擎对该站点的收录情况。<br><img src="/2017/05/28/hexo-seven-submit-search-engine/baidu_site.png" alt="百度收录情况"><br><img src="/2017/05/28/hexo-seven-submit-search-engine/google_site.png" alt="谷歌收录情况"><br>从图中可以看出<code>baidu</code>和<code>google</code>对我的网站没有收录任何一个路径。</p>
+<h2 id="验证网站"><a href="#验证网站" class="headerlink" title="验证网站"></a>验证网站</h2><p>首先要确认网站是你本人所有，可以通过一下方式验证</p>
+<blockquote>
+<p><a href="https://ziyuan.baidu.com/linksubmit/url" target="_blank" rel="noopener">百度搜索引擎入口</a><br><a href="https://ziyuan.baidu.com/college/courseinfo?id=267&amp;page=1#h2_article_title3" target="_blank" rel="noopener">为什么要验证网站</a>　　<br>站长平台推荐站长添加主站（您网站的链接也许会使用www 和非 www 两种网址，建议添加用户能够真实访问到的网址），添加并验证后，可证明您是该域名的拥有者，可以快捷批量添加子站点，查看所有子站数据，无需再一一验证您的子站点。<br><a href="https://ziyuan.baidu.com/college/courseinfo?id=267&amp;page=1#h2_article_title13" target="_blank" rel="noopener">如何验证网站</a><br>首先如果您的网站已使用了百度统计，您可以使用统计账号登录平台，或者绑定站长平台与百度统计账号，站长平台支持您批量导入百度统计中的站点，您不需要再对网站进行验证。<br>百度站长平台为未使用百度统计的站点提供三种验证方式：文件验证、html标签验证、CNAME验证。<br>　　1.文件验证：您需要下载验证文件，将文件上传至您的服务器，放置于域名根目录下。<br>　　2.html标签验证：将html标签添加至网站首页html代码的标签与标签之间。<br>　　3.CNAME验证：您需要登录域名提供商或托管服务提供商的网站，添加新的DNS记录。<br>验证完成后，我们将会认为您是网站的拥有者。为使您的网站一直保持验证通过的状态，请保留验证的文件、html标签或CNAME记录，我们会去定期检查验证记录。<br><img src="/2017/05/28/hexo-seven-submit-search-engine/google验证" alt="验证"></p>
+</blockquote>
+<p>不管谷歌还是百度都要先添加域名，然后验证网站，这里统一都使用文件验证，就是下载对应的html文件，放到域名根目录下，也就收博客根目录下的source下面，当执行<code>hexo g</code>后会自动打包到<code>public</code>下面<br><img src="/2017/05/28/hexo-seven-submit-search-engine/验证文件位置.jpg" alt="验证文件位置"></p>
+<p>然后部署到服务器,输入地址：<a href="https://zhouhy.top/baidu_verify_zn1b0ZTy80.html">https://zhouhy.top/baidu_verify_zn1b0ZTy80.html</a> 能访问到就可以点验证按钮。<br><img src="/2017/05/28/hexo-seven-submit-search-engine/验证页面.jpg" alt="验证页面"></p>
+<h2 id="站点地图"><a href="#站点地图" class="headerlink" title="站点地图"></a>站点地图</h2><blockquote>
+<p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。</p>
+</blockquote>
+<p>我们要先安装一下，打开hexo博客根目录，分别用下面两个命令来安装针对谷歌和百度的插件</p>
+<pre><code>npm install hexo-generator-sitemap --save
+npm install hexo-generator-baidu-sitemap --save
+</code></pre><p>在博客目录的_config.yml中添加如下代码</p>
+<pre><code># 自动生成sitemap
+sitemap:
+path: sitemap.xml
+</code></pre><p>编译你的博客</p>
+<pre><code>hexo g
+</code></pre><p>如果你在你的博客根目录的public下面发现生成了<code>sitemap.xml</code>就表示成功了。<br><strong>注意：</strong>github禁止了百度爬虫，提交了百度也是不会访问的。</p>
+<p>部署后访问<br><a href="http://zhouhy.top/sitemap.xml">http://zhouhy.top/sitemap.xml</a><br>效果如下图：<br><img src="/2017/05/28/hexo-seven-submit-search-engine/site_page.jpg" alt="sitemap.xml"><br>为了本地md文件容易阅读，我的md文件名字为中文，所以我的路径中也出现了中文（路径最好不要出现中文），类似：<code>http://yibierusi.github.io/2017/02/28/Hexo%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%8F%90%E4%BA%A4%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</code></p>
+<h2 id="网站提交方式"><a href="#网站提交方式" class="headerlink" title="网站提交方式"></a>网站提交方式</h2><blockquote>
+<p>如何选择链接提交方式<br>1、主动推送：最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录。<br>2、自动推送：最为便捷的提交方式，请将自动推送的JS代码部署在站点的每一个页面源代码中，部署代码的页面在每次被浏览时，链接会被自动推送给百度。可以与主动推送配合使用。<br>3、sitemap：您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送。<br>4、手动提交：一次性提交链接给百度，可以使用此种方式。</p>
+</blockquote>
+<p>一般主动提交比手动提交效果好。</p>
+<p>从效率上来说：</p>
+<blockquote>
+<p>主动推送 &gt; 自动推送 &gt; sitemap</p>
+</blockquote>
+<blockquote>
+<p>为什么自动推送可以更快的将页面推送给百度搜索？基于自动推送的实现原理问题，当新页面每次被浏览时，页面URL会自动推送给百度，无需站长汇总URL再进行主动推送操作。<br>借助用户的浏览行为来触发推送动作，省去了站长人工操作的时间。<br>自动推送和链接提交有什么区别？已经在使用链接提交的网站还需要再部署自动推送代码吗？<br>二者之间互不冲突，互为补充。已经使用主动推送的站点，依然可以部署自动推送的JS代码，二者一起使用。<br>什么样的网站更适合使用自动推送？自动推送由于实现便捷和后续维护成本低的特点，适合技术能力相对薄弱，无能力支持全天候实时主动推送程序的站长。<br>站长仅需一次部署自动推送JS代码的操作，就可以实现新页面被浏览即推送的效果，低成本实现链接自动提交。<br>同时，我们也支持主动推送和自动推送代码配合使用，二者互不影响。</p>
+</blockquote>
+<h2 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h2><h3 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h3><p>谷歌操作比较简单，就是向<a href="https://www.google.com/webmasters/tools" target="_blank" rel="noopener">Google站长工具</a>提交<code>sitemap</code></p>
+<p>登录Google账号，添加了站点验证通过后，选择站点，<code>抓取</code>—&gt;<code>站点地图</code>—&gt;<code>添加/测试站点地图</code>，提交自己的<code>sitemap</code>就可以了<br>谷歌收录网站的效率非常高，提交上去一天左右就能搜索到了。</p>
+<h2 id="百度收录"><a href="#百度收录" class="headerlink" title="百度收录"></a>百度收录</h2><p>谷歌很好搞定，百度就很麻烦了，流程复杂，耗时长，收录效果差。<br>正常情况，是要等百度爬虫来爬到网站，才会被收录。<br>但是github屏蔽了百度爬虫目前，所以不能被动的等着百度来爬取，我们自己把网站提交给百度。<br>这就要使用到<a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">百度站长平台</a></p>
+<h3 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h3><p>自动推送很简单，就是在你代码里面嵌入自动推送JS代码，在页面被访问时，页面URL将立即被推送给百度<br>代码如下：</p>
+<pre><code>&lt;script&gt;
+    (function(){
+        var bp = document.createElement(&apos;script&apos;);
+        bp.src = &apos;//push.zhanzhang.baidu.com/push.js&apos;;
+        var s = document.getElementsByTagName(&quot;script&quot;)[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+&lt;/script&gt;
+</code></pre><p>我是放在\themes\yelee\layout_partial\after_footer.ejs中，添加到下面就行。</p>
+<h3 id="sitemap-1"><a href="#sitemap-1" class="headerlink" title="sitemap"></a>sitemap</h3><p><code>sitemap</code>的提交流程跟上面<code>google</code>一样，直接提交<a href="http://zhouhy.top/sitemap.xml">http://zhouhy.top/sitemap.xml</a> 就行，注意sitemap中的路径，如果是github的路径百度是无法爬取的，需要改为zhouhy.top,这个就会自动跳转到coding的路径。</p>
 
       
     </div>
@@ -383,13 +401,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-04-08, 16:33:54</p>
-        <p><span>最后更新:</span>2017-04-08, 16:33:54</p>
+        <p><span>发布时间:</span>2017-05-28, 15:27:46</p>
+        <p><span>最后更新:</span>2017-05-28, 15:27:46</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/08/SSR-builds-its-own-ladder/" title="SSR搭建属于自己的梯子">https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/04/08/SSR-builds-its-own-ladder/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/28/hexo-seven-submit-search-engine/" title="Hexo系列（七）：提交搜索引擎">https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/05/28/hexo-seven-submit-search-engine/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -402,15 +420,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">
-                    远程调试(一)：在IDEA中远程调试Jar包
+                <a href="/2017/06/08/SSR-builds-its-own-ladder/">
+                    SSR搭建属于自己的梯子
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">
-                    游戏辅助（四）：基于Java的内存修改器（CE）
+                <a href="/2017/05/08/SpringMVC-Interceptor-workflow/">
+                    SpringMVC：拦截器的工作流程
                 </a>
             </div>
         
@@ -428,7 +446,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">2.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器选购"><span class="toc-number">2.2.</span> <span class="toc-text">服务器选购</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR部署"><span class="toc-number">2.3.</span> <span class="toc-text">SSR部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR安装"><span class="toc-number">2.4.</span> <span class="toc-text">SSR安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锐速安装"><span class="toc-number">2.5.</span> <span class="toc-text">锐速安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SStap配置"><span class="toc-number">2.6.</span> <span class="toc-text">SStap配置</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看收录情况"><span class="toc-number">2.</span> <span class="toc-text">查看收录情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证网站"><span class="toc-number">3.</span> <span class="toc-text">验证网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#站点地图"><span class="toc-number">4.</span> <span class="toc-text">站点地图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站提交方式"><span class="toc-number">5.</span> <span class="toc-text">网站提交方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谷歌收录"><span class="toc-number">6.</span> <span class="toc-text">谷歌收录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sitemap"><span class="toc-number">6.1.</span> <span class="toc-text">sitemap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度收录"><span class="toc-number">7.</span> <span class="toc-text">百度收录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自动推送"><span class="toc-number">7.1.</span> <span class="toc-text">自动推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sitemap-1"><span class="toc-number">7.2.</span> <span class="toc-text">sitemap</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -464,7 +482,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SSR搭建属于自己的梯子　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Hexo系列（七）：提交搜索引擎　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -506,7 +524,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/" title="上一篇: 远程调试(一)：在IDEA中远程调试Jar包">
+            <a href="/2017/06/08/SSR-builds-its-own-ladder/" title="上一篇: SSR搭建属于自己的梯子">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -514,13 +532,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/21/game-assist-four-Java-based-memory-modifier/" title="下一篇: 游戏辅助（四）：基于Java的内存修改器（CE）">
+            <a href="/2017/05/08/SpringMVC-Interceptor-workflow/" title="下一篇: SpringMVC：拦截器的工作流程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li></ul>
 
 
 

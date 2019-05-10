@@ -15,22 +15,24 @@
 
 
 
-<meta name="description" content="用Hexo+Github搭建博客的初衷就是不想去购买服务器，备案，搭建服务等，所以也不存在文件上传的问题。那么博客中有时需要用到的图片，这里的图片就是静态图片。">
-<meta name="keywords" content="static pages,Resources">
+<meta name="description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
+<meta name="keywords" content="comment">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo系列（三）：上传资源到博客">
-<meta property="og:url" content="https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/index.html">
+<meta property="og:title" content="Hexo系列（六）：添加评论功能">
+<meta property="og:url" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="用Hexo+Github搭建博客的初衷就是不想去购买服务器，备案，搭建服务等，所以也不存在文件上传的问题。那么博客中有时需要用到的图片，这里的图片就是静态图片。">
+<meta property="og:description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/1.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/2.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/3.jpg">
-<meta property="og:updated_time" content="2017-02-01T01:18:54.000Z">
+<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/来必力官网首页.jpg">
+<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/数据分析.jpg">
+<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/代码.jpg">
+<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/插入位置.jpg">
+<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/评论.jpg">
+<meta property="og:updated_time" content="2017-04-22T04:44:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo系列（三）：上传资源到博客">
-<meta name="twitter:description" content="用Hexo+Github搭建博客的初衷就是不想去购买服务器，备案，搭建服务等，所以也不存在文件上传的问题。那么博客中有时需要用到的图片，这里的图片就是静态图片。">
-<meta name="twitter:image" content="https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/1.jpg">
+<meta name="twitter:title" content="Hexo系列（六）：添加评论功能">
+<meta name="twitter:description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
+<meta name="twitter:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/来必力官网首页.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -62,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo系列（三）：上传资源到博客 | ZHOU&#39;s Blog</title>
+<title>Hexo系列（六）：添加评论功能 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -277,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-hexo-three-uploading-resources-to-blog" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo-six-add-comment-function" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/01/hexo-three-uploading-resources-to-blog/" class="article-date">
-      <time datetime="2017-02-01T01:18:54.000Z" itemprop="datePublished">2017-02-01</time>
+      <a href="/2017/04/22/hexo-six-add-comment-function/" class="article-date">
+      <time datetime="2017-04-22T04:44:27.000Z" itemprop="datePublished">2017-04-22</time>
 </a>
 
 
@@ -296,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo系列（三）：上传资源到博客
+      Hexo系列（六）：添加评论功能
     </h1>
   
 
@@ -306,7 +308,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">338&#23383;</span>
+        <span class="post-count">450&#23383;</span>
       </span>
     </span>
 
@@ -331,7 +333,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Resources/">Resources</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static-pages/">static pages</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/comment/">comment</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -341,15 +343,43 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用Hexo+Github搭建博客的初衷就是不想去购买服务器，备案，搭建服务等，所以也不存在文件上传的问题。那么博客中有时需要用到的图片，这里的图片就是静态图片。</p>
-<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>cd到博客根目录下 查看<code>_config.yml</code>文件 查找 <code>post_asset_folder</code> 字段，将post_asset_folder 设置为true ， <code>post_asset_folder:true</code>。</p>
-<p>当设置 <code>post_asset_folder</code> 参数为<code>true</code>，在建立文件时，Hexo 会自动建立一个与文章同名的文件夹，可以把与该文章相关的所有资源都放到此文件夹内，这样就可以更方便的使用资源。</p>
-<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p>到博客的根目录下执行 <code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code> 命令来进行插件的安装。</p>
-<h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><p>然后创建一文章 <code>hexo new &quot;test&quot;</code> 然后查看博客的 ../source/_posts 目录下的文件，会看到存在一个test 文件夹 和 test.md 文件<br><img src="/2017/02/01/hexo-three-uploading-resources-to-blog/1.jpg" alt=""></p>
-<h3 id="添加资源"><a href="#添加资源" class="headerlink" title="添加资源"></a>添加资源</h3><p>将所需要的图片资源放到test 文件夹 内 目录结构如下：<br><img src="/2017/02/01/hexo-three-uploading-resources-to-blog/2.jpg" alt=""></p>
-<h3 id="使用资源"><a href="#使用资源" class="headerlink" title="使用资源"></a>使用资源</h3><p>书写文章使用test文件内 的图片<br><img src="/2017/02/01/hexo-three-uploading-resources-to-blog/3.jpg" alt=""></p>
-<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>1.使用<code>hexo s</code> 命令运行本地博客即可看到效果</p>
-<p>2.使用<code>hexo clean</code> <code>，hexo g</code> ，<code>hexo d</code>将本地博客推送到远程，即可看到文章中的图片</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。</p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>yelee</code>主题目前支持 Disqus，多说 及 友言评论，把 <code>#on: true</code> 改为 <code>on: true</code> 即启用对应评论系统<br>但是多说已经关闭，友言是基于Web的，Disqus在手机上展示不出来，发现还需要翻墙，那实在对用户太不友好了，于是我选择使用<a href="https://www.livere.com/" target="_blank" rel="noopener">来必力</a>评论系统。<br><img src="/2017/04/22/hexo-six-add-comment-function/来必力官网首页.jpg" alt="来必力官网首页"></p>
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册后可以查看详细的评论数据分析。<br><img src="/2017/04/22/hexo-six-add-comment-function/数据分析.jpg" alt="数据分析"></p>
+<h3 id="获取data-uid"><a href="#获取data-uid" class="headerlink" title="获取data-uid"></a>获取data-uid</h3><p>代码管理，我们需要用到这个<code>data-uid</code><br><img src="/2017/04/22/hexo-six-add-comment-function/代码.jpg" alt="代码"></p>
+<h3 id="添加data-uid"><a href="#添加data-uid" class="headerlink" title="添加data-uid"></a>添加data-uid</h3><p>打开<code>theme/yelee/_config.yml</code>，添加配置信息</p>
+<pre><code>livere:
+    on: true
+    livere_uid: Your uid
+</code></pre><h3 id="创建ejs文件"><a href="#创建ejs文件" class="headerlink" title="创建ejs文件"></a>创建ejs文件</h3><p>在<code>themes/yelee/layout/_partial/comments</code>文件夹创建<code>livere.ejs</code>文件，将代码拷贝进去，将你注册后的代码拷贝到<code>&lt;section&gt;&lt;/section</code>&gt;里面。</p>
+<pre><code>&lt;section class=&quot;livere&quot; id=&quot;comments&quot;&gt;
+    &lt;!-- 来必力City版安装代码 --&gt;
+    &lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;Your uid&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === &apos;function&apos;) { return; }
+
+       j = d.createElement(s);
+       j.src = &apos;https://cdn-city.livere.com/js/embed.dist.js&apos;;
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, &apos;script&apos;);
+    &lt;/script&gt;
+    &lt;noscript&gt; 为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;
+    &lt;/div&gt;
+    &lt;!-- City版安装代码已完成 --&gt;
+&lt;/section&gt;
+</code></pre><h3 id="追加逻辑判断"><a href="#追加逻辑判断" class="headerlink" title="追加逻辑判断"></a>追加逻辑判断</h3><p>打开<code>themes/yelee/layout/_partial/article.ejs</code>，在下图位置插入下面的逻辑判断代码</p>
+<pre><code>else if (theme.livere.on) { %&gt;
+    &lt;%- partial(&apos;comments/livere&apos;) %&gt;
+&lt;% } 
+</code></pre><p><img src="/2017/04/22/hexo-six-add-comment-function/插入位置.jpg" alt="插入位置"></p>
+<p>到这一步就完成了，集成评论。<br><img src="/2017/04/22/hexo-six-add-comment-function/评论.jpg" alt="评论"></p>
 
       
     </div>
@@ -358,13 +388,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-02-01, 09:18:54</p>
-        <p><span>最后更新:</span>2017-02-01, 09:18:54</p>
+        <p><span>发布时间:</span>2017-04-22, 12:44:27</p>
+        <p><span>最后更新:</span>2017-04-22, 12:44:27</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/01/hexo-three-uploading-resources-to-blog/" title="Hexo系列（三）：上传资源到博客">https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/02/01/hexo-three-uploading-resources-to-blog/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/22/hexo-six-add-comment-function/" title="Hexo系列（六）：添加评论功能">https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -377,15 +407,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">
-                    Hexo系列（四）：主题下载以及配置
+                <a href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">
+                    SpringMVC：拦截器和过滤器的区别
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/12/hexo-two-remote-repository-hosting-blog/">
-                    Hexo系列（二）：远程仓库托管博客
+                <a href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">
+                    远程调试(一)：在IDEA中远程调试Jar包
                 </a>
             </div>
         
@@ -403,7 +433,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改配置"><span class="toc-number">1.1.</span> <span class="toc-text">修改配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插件安装"><span class="toc-number">1.2.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文章"><span class="toc-number">1.3.</span> <span class="toc-text">创建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加资源"><span class="toc-number">1.4.</span> <span class="toc-text">添加资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用资源"><span class="toc-number">1.5.</span> <span class="toc-text">使用资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果"><span class="toc-number">1.6.</span> <span class="toc-text">效果</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册"><span class="toc-number">2.1.</span> <span class="toc-text">注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取data-uid"><span class="toc-number">2.2.</span> <span class="toc-text">获取data-uid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加data-uid"><span class="toc-number">2.3.</span> <span class="toc-text">添加data-uid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建ejs文件"><span class="toc-number">2.4.</span> <span class="toc-text">创建ejs文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#追加逻辑判断"><span class="toc-number">2.5.</span> <span class="toc-text">追加逻辑判断</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -439,7 +469,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo系列（三）：上传资源到博客　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Hexo系列（六）：添加评论功能　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -481,7 +511,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/09/hexo-four-yelee-theme-download-and-config/" title="上一篇: Hexo系列（四）：主题下载以及配置">
+            <a href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/" title="上一篇: SpringMVC：拦截器和过滤器的区别">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -489,13 +519,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/12/hexo-two-remote-repository-hosting-blog/" title="下一篇: Hexo系列（二）：远程仓库托管博客">
+            <a href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/" title="下一篇: 远程调试(一)：在IDEA中远程调试Jar包">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/04/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/08/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li></ul>
 
 
 
