@@ -15,24 +15,17 @@
 
 
 
-<meta name="description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
-<meta name="keywords" content="comment">
+<meta name="description" content="目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。而Tomcat使用cookie中jsessionid来区分客户端session会话，跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo系列（六）：添加评论功能">
-<meta property="og:url" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/index.html">
+<meta property="og:title" content="关于跨域问题中Session会话丢失问题">
+<meta property="og:url" content="https://zhouhy.top/2017/12/13/about-cross-domain-session-missing/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
+<meta property="og:description" content="目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。而Tomcat使用cookie中jsessionid来区分客户端session会话，跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/来必力官网首页.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/数据分析.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/代码.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/插入位置.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/评论.jpg">
-<meta property="og:updated_time" content="2017-04-22T04:44:27.000Z">
+<meta property="og:updated_time" content="2017-12-13T05:58:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo系列（六）：添加评论功能">
-<meta name="twitter:description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
-<meta name="twitter:image" content="https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/来必力官网首页.jpg">
+<meta name="twitter:title" content="关于跨域问题中Session会话丢失问题">
+<meta name="twitter:description" content="目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。而Tomcat使用cookie中jsessionid来区分客户端session会话，跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -64,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo系列（六）：添加评论功能 | ZHOU&#39;s Blog</title>
+<title>关于跨域问题中Session会话丢失问题 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -279,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-hexo-six-add-comment-function" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-about-cross-domain-session-missing" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/22/hexo-six-add-comment-function/" class="article-date">
-      <time datetime="2017-04-22T04:44:27.000Z" itemprop="datePublished">2017-04-22</time>
+      <a href="/2017/12/13/about-cross-domain-session-missing/" class="article-date">
+      <time datetime="2017-12-13T05:58:42.000Z" itemprop="datePublished">2017-12-13</time>
 </a>
 
 
@@ -298,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo系列（六）：添加评论功能
+      关于跨域问题中Session会话丢失问题
     </h1>
   
 
@@ -308,7 +301,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">450&#23383;</span>
+        <span class="post-count">611&#23383;</span>
       </span>
     </span>
 
@@ -317,7 +310,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">1m</span>
+        <span class="post-count">2m</span>
       </span>
     </span>
 </div>
@@ -326,16 +319,8 @@
       
       <div class="article-info article-info-post" style="margin-top:-5px">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/comment/">comment</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -343,43 +328,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。</p>
-</blockquote>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>yelee</code>主题目前支持 Disqus，多说 及 友言评论，把 <code>#on: true</code> 改为 <code>on: true</code> 即启用对应评论系统<br>但是多说已经关闭，友言是基于Web的，Disqus在手机上展示不出来，发现还需要翻墙，那实在对用户太不友好了，于是我选择使用<a href="https://www.livere.com/" target="_blank" rel="noopener">来必力</a>评论系统。<br><img src="/2017/04/22/hexo-six-add-comment-function/来必力官网首页.jpg" alt="来必力官网首页"></p>
-<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册后可以查看详细的评论数据分析。<br><img src="/2017/04/22/hexo-six-add-comment-function/数据分析.jpg" alt="数据分析"></p>
-<h3 id="获取data-uid"><a href="#获取data-uid" class="headerlink" title="获取data-uid"></a>获取data-uid</h3><p>代码管理，我们需要用到这个<code>data-uid</code><br><img src="/2017/04/22/hexo-six-add-comment-function/代码.jpg" alt="代码"></p>
-<h3 id="添加data-uid"><a href="#添加data-uid" class="headerlink" title="添加data-uid"></a>添加data-uid</h3><p>打开<code>theme/yelee/_config.yml</code>，添加配置信息</p>
-<pre><code>livere:
-    on: true
-    livere_uid: Your uid
-</code></pre><h3 id="创建ejs文件"><a href="#创建ejs文件" class="headerlink" title="创建ejs文件"></a>创建ejs文件</h3><p>在<code>themes/yelee/layout/_partial/comments</code>文件夹创建<code>livere.ejs</code>文件，将代码拷贝进去，将你注册后的代码拷贝到<code>&lt;section&gt;&lt;/section</code>&gt;里面。</p>
-<pre><code>&lt;section class=&quot;livere&quot; id=&quot;comments&quot;&gt;
-    &lt;!-- 来必力City版安装代码 --&gt;
-    &lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;Your uid&quot;&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === &apos;function&apos;) { return; }
-
-       j = d.createElement(s);
-       j.src = &apos;https://cdn-city.livere.com/js/embed.dist.js&apos;;
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-       })(document, &apos;script&apos;);
-    &lt;/script&gt;
-    &lt;noscript&gt; 为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;
-    &lt;/div&gt;
-    &lt;!-- City版安装代码已完成 --&gt;
-&lt;/section&gt;
-</code></pre><h3 id="追加逻辑判断"><a href="#追加逻辑判断" class="headerlink" title="追加逻辑判断"></a>追加逻辑判断</h3><p>打开<code>themes/yelee/layout/_partial/article.ejs</code>，在下图位置插入下面的逻辑判断代码</p>
-<pre><code>else if (theme.livere.on) { %&gt;
-    &lt;%- partial(&apos;comments/livere&apos;) %&gt;
-&lt;% } 
-</code></pre><p><img src="/2017/04/22/hexo-six-add-comment-function/插入位置.jpg" alt="插入位置"></p>
-<p>到这一步就完成了，集成评论。<br><img src="/2017/04/22/hexo-six-add-comment-function/评论.jpg" alt="评论"></p>
+        <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。</p>
+<p>而Tomcat使用cookie中jsessionid来区分客户端session会话</p>
+<p>跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。</p>
+<p>所以就造成了后台每次接受到的都是一个新的Session,也就是标题说的Session丢失的问题。</p>
+<p>可以通过后台打印jsessionid或者网站F12看set-cookie直观的看出问题，这里就补贴图了。</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>一般在网站登录模块，用户登录后，服务器会在Session中设置相应的属性来记录用户的登录信息（比如此时的jsessionid是A），避免其他的接口重复登录。</p>
+<pre><code>//设置
+request.getSession().setAttribute(&quot;user&quot;, stageUser);
+</code></pre><p>当登录成功后调用下一个业务接口，会在过滤器或者拦截器从Session中取出用户的登录信息，进行跨域时，每一次请求都没有将sessinId带过去，服务器就认为是一个没有登录的新请求，都会在cookie里set一个新的sessionId，所以之前存的值永远也取不到,这就是所谓的Session丢失。</p>
+<pre><code>//获取登录信息
+StageUser user = (StageUser) request.getSession().getAttribute(&quot;user&quot;);
+</code></pre><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用的标准是CORS，即跨域资源共享。CORS是一个W3C标准，全称是”跨域资源共享”(Cross-origin resource sharing)。</p>
+<p>它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了只能同源使用的限制。</p>
+<p>ajax请求设置为如下：</p>
+<pre><code>$.ajax({
+        type:&apos;POST&apos;,
+        url:url,
+        async:isAsynchronous,
+        data:param,
+        dataType:&apos;json&apos;,
+        timeout:outTime,      // 超时45秒
+        contentType: &quot;application/json&quot;,
+        //加上 xhrFields及crossDomain
+        xhrFields: { 
+            withCredentials: true//允许带上凭据
+        },
+        crossDomain: true,
+        success:function(data){
+        }
+});
+</code></pre><p>后台统一添加</p>
+<pre><code>response.setHeader(&quot;Access-Control-Allow-Origin&quot;, request.getHeader(&quot;Origin&quot;));//处理跨域
+response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);//表示是否允许发送Cookie
+</code></pre><p>在一开始解决跨域时，我采用的是 response.setHeader(“Access-Control-Allow-Origin”, “<em>“) 处理跨域，表示接受任意域名的请求。但是设置了response.setHeader(“Access-Control-Allow-Credentials”, “true”)后，就不能使用“</em>”，不过要处理好跨域，可以直接设置允许请求的域名：response.setHeader(“Access-Control-Allow-Origin”, “域名名称”)，我在这里直接取出当前域名，又设置允许，同“*”作用相同。</p>
 
       
     </div>
@@ -388,13 +370,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></p>
+        <p><span>本文标题:</span><a href="/2017/12/13/about-cross-domain-session-missing/">关于跨域问题中Session会话丢失问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-04-22, 12:44:27</p>
-        <p><span>最后更新:</span>2017-04-22, 12:44:27</p>
+        <p><span>发布时间:</span>2017-12-13, 13:58:42</p>
+        <p><span>最后更新:</span>2017-12-13, 13:58:42</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/22/hexo-six-add-comment-function/" title="Hexo系列（六）：添加评论功能">https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/04/22/hexo-six-add-comment-function/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/13/about-cross-domain-session-missing/" title="关于跨域问题中Session会话丢失问题">https://zhouhy.top/2017/12/13/about-cross-domain-session-missing/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/12/13/about-cross-domain-session-missing/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -407,15 +389,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/05/28/hexo-seven-submit-search-engine/">
-                    Hexo系列（七）：提交搜索引擎
+                <a href="/2018/04/15/about-redis-one-redis-basics/">
+                    关于Redis(一)：基本概念与常见问题
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/16/hexo-five-site-search-and-article-statistics/">
-                    Hexo系列（五）：站内搜索与文章统计
+                <a href="/2017/11/03/SpringMVC-Response-get-Body/">
+                    SpringMVC：Response获取Body问题
                 </a>
             </div>
         
@@ -433,7 +415,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册"><span class="toc-number">2.1.</span> <span class="toc-text">注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取data-uid"><span class="toc-number">2.2.</span> <span class="toc-text">获取data-uid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加data-uid"><span class="toc-number">2.3.</span> <span class="toc-text">添加data-uid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建ejs文件"><span class="toc-number">2.4.</span> <span class="toc-text">创建ejs文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#追加逻辑判断"><span class="toc-number">2.5.</span> <span class="toc-text">追加逻辑判断</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">2.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决"><span class="toc-number">3.</span> <span class="toc-text">解决</span></a></li></ol>
         
     </div>
     <style>
@@ -469,7 +451,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo系列（六）：添加评论功能　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"关于跨域问题中Session会话丢失问题　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -511,7 +493,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/28/hexo-seven-submit-search-engine/" title="上一篇: Hexo系列（七）：提交搜索引擎">
+            <a href="/2018/04/15/about-redis-one-redis-basics/" title="上一篇: 关于Redis(一)：基本概念与常见问题">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -519,7 +501,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/16/hexo-five-site-search-and-article-statistics/" title="下一篇: Hexo系列（五）：站内搜索与文章统计">
+            <a href="/2017/11/03/SpringMVC-Response-get-Body/" title="下一篇: SpringMVC：Response获取Body问题">
                 <i class="fa fa-angle-right"></i>
             </a>
         
