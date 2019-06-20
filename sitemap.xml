@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhouhy.top/2019/05/14/deepen-understanding-HTTP-session-and-MITM/</loc>
+    
+    <lastmod>2019-05-14T09:22:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhouhy.top/2019/02/14/iphone-install-through-plist/</loc>
     
     <lastmod>2019-02-14T09:26:46.000Z</lastmod>
@@ -68,6 +75,13 @@
     <loc>https://zhouhy.top/2018/04/15/about-redis-one-redis-basics/</loc>
     
     <lastmod>2018-04-15T08:03:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhouhy.top/2019/06/20/linux-mysql-dump-script-cron-backup/</loc>
+    
+    <lastmod>2018-03-20T03:16:34.000Z</lastmod>
     
   </url>
   
