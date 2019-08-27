@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。而Tomcat使用cookie中jsessionid来区分客户端session会话，跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。">
-<meta name="keywords" content="Session,Cross-domain">
+<meta name="description" content="ZHOU&apos;s Blog。">
+<meta name="keywords" content="DL,Tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于跨域问题中Session会话丢失问题">
-<meta property="og:url" content="https://zhouhy.top/2017/12/13/about-cross-domain-session-missing/index.html">
+<meta property="og:title" content="人工智能(四)：TensorFlow基本操作">
+<meta property="og:url" content="https://zhouhy.top/2019/08/28/AI4-for-Tensorflow-base-operation/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。而Tomcat使用cookie中jsessionid来区分客户端session会话，跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。">
+<meta property="og:description" content="ZHOU&apos;s Blog。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T05:58:42.000Z">
+<meta property="og:updated_time" content="2019-08-28T12:22:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于跨域问题中Session会话丢失问题">
-<meta name="twitter:description" content="目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。而Tomcat使用cookie中jsessionid来区分客户端session会话，跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。">
+<meta name="twitter:title" content="人工智能(四)：TensorFlow基本操作">
+<meta name="twitter:description" content="ZHOU&apos;s Blog。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>关于跨域问题中Session会话丢失问题 | ZHOU&#39;s Blog</title>
+<title>人工智能(四)：TensorFlow基本操作 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -273,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-about-cross-domain-session-missing" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AI4-for-Tensorflow-base-operation" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/12/13/about-cross-domain-session-missing/" class="article-date">
-      <time datetime="2017-12-13T05:58:42.000Z" itemprop="datePublished">2017-12-13</time>
+      <a href="/2019/08/28/AI4-for-Tensorflow-base-operation/" class="article-date">
+      <time datetime="2019-08-28T12:22:28.000Z" itemprop="datePublished">2019-08-28</time>
 </a>
 
 
@@ -292,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于跨域问题中Session会话丢失问题
+      人工智能(四)：TensorFlow基本操作
     </h1>
   
 
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">743&#23383;</span>
+        <span class="post-count">0&#23383;</span>
       </span>
     </span>
 
@@ -311,7 +311,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">2m</span>
+        <span class="post-count">1m</span>
       </span>
     </span>
 </div>
@@ -321,13 +321,13 @@
       <div class="article-info article-info-post" style="margin-top:-5px">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Cross-domain/">Cross-domain</a>
+    <a class="article-category-link" href="/categories/DL/">DL</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cross-domain/">Cross-domain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Session/">Session</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DL/">DL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -337,43 +337,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>目前使用前后端分离的模式开发，后端提供跨域接口、前端json调用，绑定数据，以此解决跨域问题。</p>
-<p>而Tomcat使用cookie中jsessionid来区分客户端session会话</p>
-<p>跨域请求接口恰恰有时候响应回来会改变该站点下的jsessionid值，导致服务器每次判断都是一个新的会话。</p>
-<p>所以就造成了后台每次接受到的都是一个新的Session,也就是标题说的Session丢失的问题。</p>
-<p>可以通过后台打印jsessionid或者网站F12看set-cookie直观的看出问题，这里就补贴图了。</p>
-<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>一般在网站登录模块，用户登录后，服务器会在Session中设置相应的属性来记录用户的登录信息（比如此时的jsessionid是A），避免其他的接口重复登录。</p>
-<pre><code>//设置
-request.getSession().setAttribute(&quot;user&quot;, stageUser);
-</code></pre><p>当登录成功后调用下一个业务接口，会在过滤器或者拦截器从Session中取出用户的登录信息，进行跨域时，每一次请求都没有将sessinId带过去，服务器就认为是一个没有登录的新请求，都会在cookie里set一个新的sessionId，所以之前存的值永远也取不到,这就是所谓的Session丢失。</p>
-<pre><code>//获取登录信息
-StageUser user = (StageUser) request.getSession().getAttribute(&quot;user&quot;);
-</code></pre><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用的标准是CORS，即跨域资源共享。CORS是一个W3C标准，全称是”跨域资源共享”(Cross-origin resource sharing)。</p>
-<p>它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了只能同源使用的限制。</p>
-<p>ajax请求设置为如下：</p>
-<pre><code>$.ajax({
-        type:&apos;POST&apos;,
-        url:url,
-        async:isAsynchronous,
-        data:param,
-        dataType:&apos;json&apos;,
-        timeout:outTime,      // 超时45秒
-        contentType: &quot;application/json&quot;,
-        //加上 xhrFields及crossDomain
-        xhrFields: { 
-            withCredentials: true//允许带上凭据
-        },
-        crossDomain: true,
-        success:function(data){
-        }
-});
-</code></pre><p>默认情况下，跨源请求不提供凭据(cookie、HTTP认证及客户端SSL证明等)。通过将withCredentials属性设置为true，可以指定某个请求应该发送凭据。如果服务器接收带凭据的请求，会用下面的HTTP头部来响应。</p>
-<p>虽然设置了widthCredentials为true的请求中会包含远程域的所有cookie，但这些cookie仍然遵循同源策略，所以外域是访问不了这些cookie的，现在我们就可以安全地跨域访问啦。</p>
-<p>后台统一添加</p>
-<pre><code>response.setHeader(&quot;Access-Control-Allow-Origin&quot;, request.getHeader(&quot;Origin&quot;));//处理跨域
-response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);//表示是否允许发送Cookie
-</code></pre><p>在一开始解决跨域时，我采用的是 response.setHeader(“Access-Control-Allow-Origin”, “<em>“) 处理跨域，表示接受任意域名的请求。但是设置了response.setHeader(“Access-Control-Allow-Credentials”, “true”)后，就不能使用“</em>”，不过要处理好跨域，可以直接设置允许请求的域名：response.setHeader(“Access-Control-Allow-Origin”, “域名名称”)，我在这里直接取出当前域名，又设置允许，同“*”作用相同。</p>
-
+        
       
     </div>
     
@@ -381,13 +345,13 @@ response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/12/13/about-cross-domain-session-missing/">关于跨域问题中Session会话丢失问题</a></p>
+        <p><span>本文标题:</span><a href="/2019/08/28/AI4-for-Tensorflow-base-operation/">人工智能(四)：TensorFlow基本操作</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-12-13, 13:58:42</p>
-        <p><span>最后更新:</span>2017-12-13, 13:58:42</p>
+        <p><span>发布时间:</span>2019-08-28, 20:22:28</p>
+        <p><span>最后更新:</span>2019-08-28, 20:22:28</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/12/13/about-cross-domain-session-missing/" title="关于跨域问题中Session会话丢失问题">https://zhouhy.top/2017/12/13/about-cross-domain-session-missing/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/12/13/about-cross-domain-session-missing/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/08/28/AI4-for-Tensorflow-base-operation/" title="人工智能(四)：TensorFlow基本操作">https://zhouhy.top/2019/08/28/AI4-for-Tensorflow-base-operation/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2019/08/28/AI4-for-Tensorflow-base-operation/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -399,16 +363,10 @@ response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/03/20/linux-mysql-dump-script-cron-backup/">
-                    Linux环境MySQL数据库定时备份
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/11/03/SpringMVC-Response-get-Body/">
-                    SpringMVC：Response获取Body问题
+                <a href="/2019/08/27/AI3-for-Tensorflow-of-introduce-and-install/">
+                    人工智能(三)：TensorFlow的介绍与安装
                 </a>
             </div>
         
@@ -426,7 +384,7 @@ response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">2.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决"><span class="toc-number">3.</span> <span class="toc-text">解决</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -462,7 +420,7 @@ response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"关于跨域问题中Session会话丢失问题　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"人工智能(四)：TensorFlow基本操作　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -504,15 +462,13 @@ response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/20/linux-mysql-dump-script-cron-backup/" title="上一篇: Linux环境MySQL数据库定时备份">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/11/03/SpringMVC-Response-get-Body/" title="下一篇: SpringMVC：Response获取Body问题">
+            <a href="/2019/08/27/AI3-for-Tensorflow-of-introduce-and-install/" title="下一篇: 人工智能(三)：TensorFlow的介绍与安装">
                 <i class="fa fa-angle-right"></i>
             </a>
         
