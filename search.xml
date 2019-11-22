@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>linux-deepin下L2TP/IpSec的配置</title>
+      <link href="/2019/11/22/linux-deepin-l2tp-config/"/>
+      <url>/2019/11/22/linux-deepin-l2tp-config/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="http://zhouhy.top/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/">WIN10 篇跳转链接</a></p><p>最近开始使用Linux-Deepin系统了，所以WIN10上的VPN也需要移到LINUX下面，然后搜索了一下，看网上都是让安装各种东西。所以自己试下，发现可以不用安装任何东西的配置方法。</p><p>例如网上教程：<br><img src="/2019/11/22/linux-deepin-l2tp-config/1.png" alt=""></p><h2 id="第一步（最后一步）"><a href="#第一步（最后一步）" class="headerlink" title="第一步（最后一步）"></a>第一步（最后一步）</h2><p>Deepin中提供了多种VPN的配置方法，这里就只举例说一种。<br><img src="/2019/11/22/linux-deepin-l2tp-config/0.png" alt=""></p><p>控制中心 <code>-&gt;</code> 网络<code>-&gt;</code>  VPN <code>-&gt;</code> 创建<code>-&gt;</code>  L2TP</p><p><img src="/2019/11/22/linux-deepin-l2tp-config/2.png" alt=""></p><h2 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h2><p>Deepin中VPN的配置还可以导出，方便二次配置<br><img src="/2019/11/22/linux-deepin-l2tp-config/3.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> VPN </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> deepin </tag>
+            
+            <tag> vpn </tag>
+            
+            <tag> l2tp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>人工智能(四)：TensorFlow基本操作</title>
       <link href="/2019/08/28/AI4-for-Tensorflow-base-operation/"/>
       <url>/2019/08/28/AI4-for-Tensorflow-base-operation/</url>
@@ -176,9 +207,9 @@
       
         <tags>
             
-            <tag> IOS </tag>
-            
             <tag> Java </tag>
+            
+            <tag> IOS </tag>
             
         </tags>
       
@@ -438,7 +469,7 @@
     
     
     <entry>
-      <title>WIN10自带VPN配置</title>
+      <title>WIN10自带VPN——L2TP/IpSec</title>
       <link href="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/"/>
       <url>/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/</url>
       
@@ -562,9 +593,9 @@
       
         <tags>
             
-            <tag> 拦截器 </tag>
-            
             <tag> HandlerInterceptor </tag>
+            
+            <tag> 拦截器 </tag>
             
         </tags>
       
