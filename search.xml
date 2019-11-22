@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>linux-deepin下L2TP/IpSec的配置</title>
+      <title>linux-deepin自带VPN配置(L2TP/IpSec)</title>
       <link href="/2019/11/22/linux-deepin-l2tp-config/"/>
       <url>/2019/11/22/linux-deepin-l2tp-config/</url>
       
@@ -469,11 +469,11 @@
     
     
     <entry>
-      <title>WIN10自带VPN——L2TP/IpSec</title>
+      <title>Win10自带VPN配置(L2TP/IpSec)</title>
       <link href="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/"/>
       <url>/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/</url>
       
-        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>VPN(虚拟专用网)发展至今已经不在是一个单纯的经过加密的访问隧道了，它已经融合了访问控制、传输管理、加密、路由选择、可用性管理等多种功能，并在全球的信息安全体系中发挥着重要的作用。</p></blockquote><p>以前连接内网VPN时需要使用VPN厂家提供的软件，一般这种VPN软件极其古老，兼容性差，易掉线等各种问题，我以前用WIN10系统时会在VM中装一个WIN XP系统来配合使用，非常繁琐。本文介绍WIN 10自带的VPN的配置。</p><p>WIN10 自带的VPN 隧道协议：PPTP（点对点隧道协议）、L2TP（第2层隧道协议）、IPSec、SSLVPN。</p><h2 id="L2TP-IpSec-配置"><a href="#L2TP-IpSec-配置" class="headerlink" title="L2TP/IpSec 配置"></a>L2TP/IpSec 配置</h2><p>1.设置 <code>-&gt;</code> 网络和Internet <code>-&gt;</code> VPN <code>-&gt;</code> 添加VPN连接<br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/1.png" alt=""><br>2.1.设置 <code>-&gt;</code> 网络和Internet <code>-&gt;</code> VPN <code>-&gt;</code> 更改设配器选项<br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/2.png" alt=""><br>3.选择刚才新建的VPN右键 <code>-&gt;</code> 属性<br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/3.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/4.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/5.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/6.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/7.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/8.png" alt=""></p><p>###连接失败解决方法 ### </p><p>错误描述：“L2TP连接尝试失败，因为安全层在初始化与远程计算机的协商时遇到了一个处理错误”</p><p>解决办法：<br>    1、Windows + r（ 即开始运行） 在框中输入 regedit ， 打开注册表</p><pre><code>2、找到\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\Parameters位置3、新建  DWORD ，在键的位置输入ProhibitIpSec ，并修改其数值数据为14、修改 键 AllowL2TPWeakCrypto 的 数值数据 为 1 5、重启电脑</code></pre>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>VPN(虚拟专用网)发展至今已经不在是一个单纯的经过加密的访问隧道了，它已经融合了访问控制、传输管理、加密、路由选择、可用性管理等多种功能，并在全球的信息安全体系中发挥着重要的作用。</p></blockquote><p>以前连接内网VPN时需要使用VPN厂家提供的软件，一般这种VPN软件极其古老，兼容性差，易掉线等各种问题，我以前用Win10系统时会在VM中装一个Win XP系统来配合使用，非常繁琐。本文介绍Win 10自带的VPN的配置。</p><p>Win10 自带的VPN 隧道协议：PPTP（点对点隧道协议）、L2TP（第2层隧道协议）、IPSec、SSLVPN。</p><p><a href="http://zhouhy.top/2019/11/22/linux-deepin-l2tp-config/">Linux-Deepin篇跳转链接</a></p><h2 id="L2TP-IpSec-配置"><a href="#L2TP-IpSec-配置" class="headerlink" title="L2TP/IpSec 配置"></a>L2TP/IpSec 配置</h2><p>1.设置 <code>-&gt;</code> 网络和Internet <code>-&gt;</code> VPN <code>-&gt;</code> 添加VPN连接<br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/1.png" alt=""><br>2.1.设置 <code>-&gt;</code> 网络和Internet <code>-&gt;</code> VPN <code>-&gt;</code> 更改设配器选项<br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/2.png" alt=""><br>3.选择刚才新建的VPN右键 <code>-&gt;</code> 属性<br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/3.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/4.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/5.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/6.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/7.png" alt=""><br><img src="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/8.png" alt=""></p><p>###连接失败解决方法 ### </p><p>错误描述：“L2TP连接尝试失败，因为安全层在初始化与远程计算机的协商时遇到了一个处理错误”</p><p>解决办法：<br>    1、Windows + r（ 即开始运行） 在框中输入 regedit ， 打开注册表</p><pre><code>2、找到\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\Parameters位置3、新建  DWORD ，在键的位置输入ProhibitIpSec ，并修改其数值数据为14、修改 键 AllowL2TPWeakCrypto 的 数值数据 为 1 5、重启电脑</code></pre>]]></content>
       
       
       <categories>
@@ -487,7 +487,7 @@
             
             <tag> VPN </tag>
             
-            <tag> WIN10 </tag>
+            <tag> Win10 </tag>
             
         </tags>
       
