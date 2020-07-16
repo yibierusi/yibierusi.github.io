@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zhou">
+
+
+
+<meta name="description" content="Docker自2013年以来非常火热，无论是从 github 上的代码活跃度，还是Redhat在RHEL6.5中集成对Docker的支持, 就连 Google 的 Compute Engine 也支持 docker 在其之上运行。所以运维及后端开发还是非常有必要来了解一下的。">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker的介绍以及安装">
+<meta property="og:url" content="https://zhouhy.top/2020/04/09/DockerIntroduceAndInstall/index.html">
+<meta property="og:site_name" content="ZHOU&#39;s Blog">
+<meta property="og:description" content="Docker自2013年以来非常火热，无论是从 github 上的代码活跃度，还是Redhat在RHEL6.5中集成对Docker的支持, 就连 Google 的 Compute Engine 也支持 docker 在其之上运行。所以运维及后端开发还是非常有必要来了解一下的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zhouhy.top/2020/04/09/DockerIntroduceAndInstall/Docker安装成功图.png">
+<meta property="og:updated_time" content="2020-04-09T08:27:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker的介绍以及安装">
+<meta name="twitter:description" content="Docker自2013年以来非常火热，无论是从 github 上的代码活跃度，还是Redhat在RHEL6.5中集成对Docker的支持, 就连 Google 的 Compute Engine 也支持 docker 在其之上运行。所以运维及后端开发还是非常有必要来了解一下的。">
+<meta name="twitter:image" content="https://zhouhy.top/2020/04/09/DockerIntroduceAndInstall/Docker安装成功图.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ZHOU&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Docker的介绍以及安装 | ZHOU&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zhou</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">莫问收获,但求耕耘</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/App/">App</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Baidu/">Baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blockchain/">Blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ce/">Ce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cluster/">Cluster</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comment/">Comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crontab/">Crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filter/">Filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handle/">Handle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Idea/">Idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interceptor/">Interceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFx/">JavaFx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jedis/">Jedis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JiGuang/">JiGuang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp/">L2tp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp-IpSec/">L2tp/IpSec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logstash/">Logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Push/">Push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyenv/">Pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedisTemplate/">RedisTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scp/">Scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Script/">Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seo/">Seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sftp/">Sftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Soft/">Soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ssh/">Ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Themes/">Themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Upload/">Upload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vpn/">Vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpolar/">cpolar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/script/">script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soft/">soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">life is so short, do something to make yourself happy, such as coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">莫问收获,但求耕耘</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-DockerIntroduceAndInstall" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/09/DockerIntroduceAndInstall/" class="article-date">
+      <time datetime="2020-04-09T08:27:34.000Z" itemprop="datePublished">2020-04-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker的介绍以及安装
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">1.8k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">6m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+      <div class="article-info article-info-post" style="margin-top:-5px">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    Docker 是 <a href="https://baike.baidu.com/item/PaaS" target="_blank" rel="noopener">PaaS</a> 提供商 dotCloud 开源的一个基于 <a href="https://baike.baidu.com/item/LXC" target="_blank" rel="noopener">LXC</a> 的高级容器引擎，源代码托管在 <a href="https://baike.baidu.com/item/Github" target="_blank" rel="noopener">Github</a> 上, 基于<a href="https://baike.baidu.com/item/go%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">go语言</a>并遵从Apache2.0协议开源。</p>
+<p>​    Docker自2013年以来非常火热，无论是从 github 上的代码活跃度，还是Redhat在RHEL6.5中集成对Docker的支持, 就连 Google 的 Compute Engine 也支持 docker 在其之上运行。所以运维及后端开发还是非常有必要来了解一下的。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Docker 是一个开源的应用容器引擎，基于 <a href="https://www.runoob.com/go/go-tutorial.html" target="_blank" rel="noopener">Go 语言</a> 并遵从 Apache2.0 协议开源。 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。</p>
+<p>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。</p>
+<h3 id="Docker的应用场景"><a href="#Docker的应用场景" class="headerlink" title="Docker的应用场景"></a>Docker的应用场景</h3><ul>
+<li>Web 应用的自动化打包和发布。</li>
+<li>自动化测试和持续集成、发布。</li>
+<li>在服务型环境中部署和调整数据库或其他的后台应用。</li>
+<li>从头编译或者扩展现有的 OpenShift 或 Cloud Foundry 平台来搭建自己的 PaaS 环境。</li>
+</ul>
+<h3 id="Docker-的优点"><a href="#Docker-的优点" class="headerlink" title="Docker 的优点"></a>Docker 的优点</h3><p>Docker 是一个用于开发，交付和运行应用程序的开放平台。Docker 使您能够将应用程序与基础架构分开，从而可以快速交付软件。借助 Docker，您可以与管理应用程序相同的方式来管理基础架构。通过利用 Docker 的方法来快速交付，测试和部署代码，您可以大大减少编写代码和在生产环境中运行代码之间的延迟。</p>
+<h4 id="快速、一致地交付应用程序"><a href="#快速、一致地交付应用程序" class="headerlink" title="快速、一致地交付应用程序"></a>快速、一致地交付应用程序</h4><p>Docker 允许开发人员使用你提供的应用程序或服务的本地容器在标准化环境中工作，从而简化了开发的生命周期。</p>
+<p>容器非常适合持续集成和持续交付（CI / CD）工作流程，请考虑一下示例方案：</p>
+<ul>
+<li>开发人员在本地编写代码，并使用 Docker 容器与同事共享他们的工作。</li>
+<li>他们使用 Docker 将其应用程序推送到测试环境中，并执行自动或手动测试。</li>
+<li>当开发人员发现错误时，他们可以在开发环境中对其进行修复，然后将其重新部署到测试环境中，以进行测试和验证。</li>
+<li>测试完成后，将修补程序推送给生产环境，就像将更新的镜像推送到生产环境一样简单。</li>
+</ul>
+<h4 id="响应式部署和扩展"><a href="#响应式部署和扩展" class="headerlink" title="响应式部署和扩展"></a>响应式部署和扩展</h4><p>Docker 是基于容器的平台，允许高度可移植的工作负载。Docker 容器可以在开发人员的本机上，数据中心的物理或虚拟机上，云服务上或混合环境中运行。</p>
+<p>Docker 的可移植性和轻量级的特性，还可以使您轻松地完成动态管理的工作负担，并根据业务需求指示，实时扩展或拆除应用程序和服务。</p>
+<h4 id="在同一硬件上运行更多工作负载"><a href="#在同一硬件上运行更多工作负载" class="headerlink" title="在同一硬件上运行更多工作负载"></a>在同一硬件上运行更多工作负载</h4><p>Docker 轻巧快速。它为基于虚拟机管理程序的虚拟机提供了可行、经济、高效的替代方案，因此您可以利用更多的计算能力来实现业务目标。Docker 非常适合于高密度环境以及中小型部署，而您可以用更少的资源做更多的事情。</p>
+<h3 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h3><h4 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h4><p>操作系统：Deepin 15.11</p>
+<p>软件源：阿里云镜像（在阿里云镜像站上面可以找到docker-ce的软件源，使用国内的源速度比较快）</p>
+<h4 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h4><p>Docker的安装有三种安装方式分别是：</p>
+<ol>
+<li>使用存储库安装</li>
+<li>使用安装包安装</li>
+<li>使用便捷脚本安装</li>
+</ol>
+<p><strong>此处用的是第一种安装方式。</strong></p>
+<h4 id="设置Docker存储库"><a href="#设置Docker存储库" class="headerlink" title="设置Docker存储库"></a>设置Docker存储库</h4><p>使用以下命令更新apt包索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>安装以下包以允许apt通过HTTPS使用存储库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common</span><br></pre></td></tr></table></figure>
+<p>安装完成后，在输入一遍上面的命令，就出现都已经是最新版。</p>
+<p>添加Docker的官方GPG密钥并载入密钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+<p>设置稳定的存储库（添加软件源）</p>
+<p>在<code>/etc/apt/sources.list</code>文件中的文末添加官方源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb https://download.docker.com/linux/debian stretch stable</span><br></pre></td></tr></table></figure>
+<h4 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h4><p>更新apt包索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>安装最新版本的Docker CE和containerd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<p>现在我们来通过运行hello-world映像验证是否正确安装Docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+<p>运行时本地没有hello-world镜像时会自动下载，镜像名后可以追加版本号，用冒号分割，如果不追加，默认下载最新版本。</p>
+<p>出现下图所示提示，则安装成功。</p>
+<p><img src="/2020/04/09/DockerIntroduceAndInstall/Docker安装成功图.png" alt="Docker安装成功图"></p>
+<h3 id="Docker常用命令"><a href="#Docker常用命令" class="headerlink" title="Docker常用命令"></a>Docker常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#启动/停止/重启 </span><br><span class="line">systemctl start/stop/restart docker</span><br><span class="line"></span><br><span class="line">#版本</span><br><span class="line">docker -v</span><br><span class="line"></span><br><span class="line">#信息</span><br><span class="line">docker info</span><br><span class="line"></span><br><span class="line">#查看所有的容器</span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line">#启动一个已停止的容器</span><br><span class="line">docker start &lt;容器 ID/别名&gt; </span><br><span class="line"></span><br><span class="line">#停止/重启一个容器</span><br><span class="line">docker stop/restart &lt;容器 ID/别名&gt;</span><br><span class="line"></span><br><span class="line">#删除容器 -f 运行时强制删除</span><br><span class="line">docker rm -f &lt;容器 ID&gt;</span><br><span class="line"></span><br><span class="line">#查看镜像</span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line">#删除镜像</span><br><span class="line">docker rmi &lt;镜像ID/名字&gt;</span><br><span class="line"></span><br><span class="line">#后台运行容器 -d</span><br><span class="line">docker run -d --name &lt;容器别名&gt; &lt;镜像名字&gt;:&lt;版本号&gt;</span><br><span class="line"></span><br><span class="line">#在使用 -d 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入。</span><br><span class="line">#推荐使用 docker exec 命令，因为此退出容器终端，不会导致容器的停止。</span><br><span class="line">#docker attach</span><br><span class="line">docker attach &lt;容器ID/别名&gt; </span><br><span class="line">#docker exec</span><br><span class="line">docker exec -it &lt;容器 ID/别名&gt; /bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#导入导出容器</span><br><span class="line">docker export &lt;容器 ID/别名&gt; &gt; &lt;导出的容器名字 例如 ubuntu.tar&gt;</span><br><span class="line">cat docker/ubuntu.tar | docker import - test/ubuntu:v1</span><br><span class="line"></span><br><span class="line">#手动编译镜像 （注意最后面有个&quot;.&quot;点）</span><br><span class="line">#在服务器新建一个docker文件夹，将maven打包好的jar包和Dockerfile文件复制到服务器的docker文件夹下</span><br><span class="line">docker build -t 镜像名字 .</span><br><span class="line"></span><br><span class="line">#启动</span><br><span class="line">docker run -d -p 8080:8085 springbootdemo4docker</span><br><span class="line">#-d参数是让容器后台运行 </span><br><span class="line">#-p 是做端口映射，此时将服务器中的8080端口映射到容器中的8085(项目中端口配置的是8085)端口</span><br><span class="line"></span><br><span class="line">#宿主机挂载到容器。</span><br><span class="line">docker run -it -v &lt;宿主主机目录&gt;:&lt;容器对应目录&gt; &lt;镜像名字&gt; /bin/bash</span><br><span class="line"></span><br><span class="line">#将宿主主机目录和容器目录建立映射关系 &lt;有问题&gt;</span><br><span class="line">#docker run --name &lt;镜像别名&gt; -v &lt;宿主主机目录&gt;:&lt;容器对应目录&gt; &lt;镜像名字&gt;:&lt;版本号&gt;</span><br><span class="line"></span><br><span class="line">#查看启动日志 -f 实时查看</span><br><span class="line">docker logs -f &lt;容器ID/容器名字/容器别名&gt;</span><br><span class="line"></span><br><span class="line">#容器（必须绝对路径）-&gt;宿主机</span><br><span class="line">docker cp &lt;容器ID/名字/别名&gt;:&lt;容器主机文件或文件夹（绝对路径)&gt; &lt;宿主机路径&gt;</span><br><span class="line"></span><br><span class="line">#宿主机-&gt;容器（必须绝对路径）拷贝  </span><br><span class="line">docker cp &lt;宿主机文件或文件夹&gt; &lt;容器ID/名字/别名&gt;:&lt;容器主机文件夹&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2020-04-09, 16:27:34</p>
+        <p><span>最后更新:</span>2020-04-09, 16:27:34</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/04/09/DockerIntroduceAndInstall/" title="Docker的介绍以及安装">https://zhouhy.top/2020/04/09/DockerIntroduceAndInstall/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2020/04/09/DockerIntroduceAndInstall/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/04/11/DockerInsideInstallElk/">
+                    Docker中安装ELK
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/03/16/LinuxCommonSoft/">
+                    Linux常用软件
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+  
+
+  
+  
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker的应用场景"><span class="toc-number">2.2.</span> <span class="toc-text">Docker的应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-的优点"><span class="toc-number">2.3.</span> <span class="toc-text">Docker 的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#快速、一致地交付应用程序"><span class="toc-number">2.3.1.</span> <span class="toc-text">快速、一致地交付应用程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应式部署和扩展"><span class="toc-number">2.3.2.</span> <span class="toc-text">响应式部署和扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在同一硬件上运行更多工作负载"><span class="toc-number">2.3.3.</span> <span class="toc-text">在同一硬件上运行更多工作负载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker的安装"><span class="toc-number">2.4.</span> <span class="toc-text">Docker的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装环境"><span class="toc-number">2.4.1.</span> <span class="toc-text">安装环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装方式"><span class="toc-number">2.4.2.</span> <span class="toc-text">安装方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置Docker存储库"><span class="toc-number">2.4.3.</span> <span class="toc-text">设置Docker存储库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Docker"><span class="toc-number">2.4.4.</span> <span class="toc-text">安装Docker</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker常用命令"><span class="toc-number">2.5.</span> <span class="toc-text">Docker常用命令</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Docker的介绍以及安装　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
+
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/04/11/DockerInsideInstallElk/" title="上一篇: Docker中安装ELK">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/03/16/LinuxCommonSoft/" title="下一篇: Linux常用软件">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/DockerInsideInstallElk/">Docker中安装ELK</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/DeepinLinuxL2tpConfig/">DeepinLinux自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/Ai4TensorflowBaseOperation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai1DlAndMl/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/Raspberrypi1NotDisplayConfigWifiAndSsh/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/HttpSessionAndMitm/">HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/IphoneInstallThroughPlist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuangPush/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/Intranet-penetration/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SsrBuildsMyVpn/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/FileSynchronizationInClusterEnvironment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/BlockchainUseJavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/Redis3DistributedLock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/Redis2JedisAndRedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Redis1Basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/CrossDomainSessionMissing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVCResponseGetBody/">SpringMvc：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVCRequestGetBody/">SpringMvc：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVCInterceptorWorkflow/">SpringMvc：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVCDifferenceBetweenInterceptorsAndFilters/">SpringMvc：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/RemoteDebugging1JarPackageInIdea/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/GameAssist4JavaMemoryModifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/20/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/GameAssist1JavaSoftwareLevelPeripheralSimulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/Hexo7SubmitSearchEngine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Hexo4YeleeThemeDownloadAndConfig/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/Hexo3UploadingResourcesBlog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Hexo2RemoteRepositoryHostingBlog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/Hexo1BlogBuilding/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 zhou
+            </div>
+            <div class="footer-right">
+                Welcome to <a href="http://zhouhy.top/" target="_blank" title="zhou">My Blog</a><i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>

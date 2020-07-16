@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zhou">
+
+
+
+<meta name="description" content="备份是容灾的基础，是指为防止系统出现操作失误或系统故障导致数据丢失，而将全部或部分数据集合从应用主机的硬盘或阵列复制到其它的存储介质的过程。本文主要记录Linux下MySQL的自动备份">
+<meta name="keywords" content="Crontab,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux环境MySQL数据库定时备份">
+<meta property="og:url" content="https://zhouhy.top/2018/03/20/LinuxMmysqlDumpScriptCronBackup/index.html">
+<meta property="og:site_name" content="ZHOU&#39;s Blog">
+<meta property="og:description" content="备份是容灾的基础，是指为防止系统出现操作失误或系统故障导致数据丢失，而将全部或部分数据集合从应用主机的硬盘或阵列复制到其它的存储介质的过程。本文主要记录Linux下MySQL的自动备份">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-20T03:16:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux环境MySQL数据库定时备份">
+<meta name="twitter:description" content="备份是容灾的基础，是指为防止系统出现操作失误或系统故障导致数据丢失，而将全部或部分数据集合从应用主机的硬盘或阵列复制到其它的存储介质的过程。本文主要记录Linux下MySQL的自动备份">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ZHOU&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Linux环境MySQL数据库定时备份 | ZHOU&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zhou</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">莫问收获,但求耕耘</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/App/">App</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Baidu/">Baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blockchain/">Blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ce/">Ce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cluster/">Cluster</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comment/">Comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crontab/">Crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filter/">Filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handle/">Handle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Idea/">Idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interceptor/">Interceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFx/">JavaFx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jedis/">Jedis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JiGuang/">JiGuang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp/">L2tp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp-IpSec/">L2tp/IpSec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logstash/">Logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Push/">Push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyenv/">Pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedisTemplate/">RedisTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scp/">Scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Script/">Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seo/">Seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sftp/">Sftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Soft/">Soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ssh/">Ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Themes/">Themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Upload/">Upload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vpn/">Vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpolar/">cpolar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/script/">script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soft/">soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">life is so short, do something to make yourself happy, such as coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">莫问收获,但求耕耘</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-LinuxMmysqlDumpScriptCronBackup" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/" class="article-date">
+      <time datetime="2018-03-20T03:16:34.000Z" itemprop="datePublished">2018-03-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux环境MySQL数据库定时备份
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">2.2k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">8m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+      <div class="article-info article-info-post" style="margin-top:-5px">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crontab/">Crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>备份是容灾的基础，是指为防止系统出现操作失误或系统故障导致数据丢失，而将全部或部分数据集合从应用主机的硬盘或阵列复制到其它的存储介质的过程。而对于一些网站、系统来说，数据库就是一切，所以做好数据库的备份是至关重要的！</p>
+<h2 id="MySQL数据备份"><a href="#MySQL数据备份" class="headerlink" title="MySQL数据备份"></a>MySQL数据备份</h2><h3 id="mysqldump命令备份数据"><a href="#mysqldump命令备份数据" class="headerlink" title="mysqldump命令备份数据"></a>mysqldump命令备份数据</h3><p>在MySQL中提供了命令行导出数据库数据以及文件的一种方便的工具<code>mysqldump</code>,我们可以通过命令行直接实现数据库内容的导出dump,首先我们简单了解一下<code>mysqldump</code>命令用法:</p>
+<pre><code>#MySQLdump常用
+mysqldump -u root -p --databases 数据库1 数据库2 &gt; xxx.sql
+</code></pre><h3 id="mysqldump常用操作示例"><a href="#mysqldump常用操作示例" class="headerlink" title="mysqldump常用操作示例"></a>mysqldump常用操作示例</h3><p>1.备份全部数据库的数据和结构</p>
+<pre><code>mysqldump -uroot -p123456 -A &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>2.备份全部数据库的结构（加 -d 参数）</p>
+<pre><code>mysqldump -uroot -p123456 -A -d &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>3.备份全部数据库的数据(加 -t 参数)</p>
+<pre><code>mysqldump -uroot -p123456 -A -t &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>4.备份单个数据库的数据和结构(,数据库名mydb)</p>
+<pre><code>mysqldump -uroot-p123456 mydb &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>5.备份单个数据库的结构</p>
+<pre><code>mysqldump -uroot -p123456 mydb -d &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>6.备份单个数据库的数据</p>
+<pre><code>mysqldump -uroot -p123456 mydb -t &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>7.备份多个表的数据和结构（数据，结构的单独备份方法与上同）</p>
+<pre><code>mysqldump -uroot -p123456 mydb t1 t2 &gt; /data/mysqlDump/mydb.sql
+</code></pre><p>8.一次备份多个数据库</p>
+<pre><code>mysqldump -uroot -p123456 --databases db1 db2 &gt; /data/mysqlDump/mydb.sql
+</code></pre><h3 id="还原mysql备份内容"><a href="#还原mysql备份内容" class="headerlink" title="还原mysql备份内容"></a>还原mysql备份内容</h3><p>有两种方式还原，第一种是在MySQL命令行中，第二种是使用SHELL行完成还原</p>
+<p>1.在系统命令行中，输入如下实现还原：</p>
+<pre><code>mysql -uroot -p123456 &lt; /data/mysqlDump/mydb.sql
+</code></pre><p>2.在登录进入mysql系统中,通过source指令找到对应系统中的文件进行还原：</p>
+<pre><code>mysql&gt; source /data/mysqlDump/mydb.sql
+</code></pre><h2 id="编写脚本维护备份的数据库文件"><a href="#编写脚本维护备份的数据库文件" class="headerlink" title="编写脚本维护备份的数据库文件"></a>编写脚本维护备份的数据库文件</h2><p>在linux中，通常使用BASH脚本对需要执行的内容进行编写，加上定时执行命令crontab实现日志自动化生成。</p>
+<p>以下代码功能就是针对mysql进行备份，配合crontab，实现备份的内容为近一个月（31天）内的每天的mysql数据库记录。</p>
+<h3 id="编写BASH维护固定数量备份文件"><a href="#编写BASH维护固定数量备份文件" class="headerlink" title="编写BASH维护固定数量备份文件"></a>编写BASH维护固定数量备份文件</h3><p>在Linux中，使用vi或者vim编写脚本内容并命名为：mysql_dump_script.sh</p>
+<pre><code>#!/bin/bash
+#保存备份个数，备份31天数据
+number=31
+#备份保存路径
+backup_dir=/home/was/database/backup
+#日期
+dd=`date +%Y-%m-%d-%H-%M-%S`
+#备份工具
+tool=mysqldump
+#用户名
+username=root
+#密码
+password=1qaz2wsx
+#将要备份的数据库
+database_name=eab
+
+#如果文件夹不存在则创建
+if [ ! -d $backup_dir ]; 
+then     
+    mkdir -p $backup_dir; 
+fi
+echo &quot;导出数据库文件中...&quot;
+#简单写法  mysqldump -u root -p123456 users &gt; /root/mysqlbackup/users-$filename.sql
+$tool -u $username -p$password $database_name &gt; $backup_dir/$database_name-$dd.sql
+echo &quot;数据库文件导出完成&quot;
+
+echo &quot;写创建备份日志&quot;
+echo &quot;create $backup_dir/$database_name-$dd.dupm&quot; &gt;&gt; $backup_dir/log.txt
+
+#找出需要删除的备份
+delfile=`ls -l -crt  $backup_dir/*.sql | awk &apos;{print $9 }&apos; | head -1`
+
+#判断现在的备份数量是否大于$number
+count=`ls -l -crt  $backup_dir/*.sql | awk &apos;{print $9 }&apos; | wc -l`
+
+if [ $count -gt $number ]
+then
+  #删除最早生成的备份，只保留number数量的备份
+  rm $delfile
+  #写删除文件日志
+  echo &quot;delete $delfile&quot; &gt;&gt; $backup_dir/log.txt
+fi
+</code></pre><p>如果担心占用空间过多还可以同gzip压缩备份文件。</p>
+<p>如上代码主要含义如下：</p>
+<p>1.首先设置各项参数，例如number最多需要备份的数目，备份路径，用户名，密码等。</p>
+<p>2.执行mysqldump命令保存备份文件，并将操作打印至同目录下的log.txt中标记操作日志。</p>
+<p>3.定义需要删除的文件：通过ls命令获取第九列，即文件名列，再通过</p>
+<pre><code>head -1
+</code></pre><p>实现定义操作时间最晚的那个需要删除的文件。</p>
+<p>4.定义备份数量：通过ls命令加上</p>
+<pre><code>wc -l
+</code></pre><p>统计以sql结尾的文件的行数。</p>
+<p>5.如果文件超出限制大小，就删除最早创建的sql文件</p>
+<h2 id="使用crontab定期执行备份脚本"><a href="#使用crontab定期执行备份脚本" class="headerlink" title="使用crontab定期执行备份脚本"></a>使用crontab定期执行备份脚本</h2><p>在LINUX中，周期执行的任务一般由cron这个守护进程来处理<code>[ps -ef|grep cron]</code>。cron读取一个或多个配置文件，这些配置文件中包含了命令行及其调用时间。<br>cron的配置文件称为“crontab”，是“cron table”的简写。</p>
+<h3 id="cron服务"><a href="#cron服务" class="headerlink" title="cron服务"></a>cron服务</h3><p>cron是一个linux下 的定时执行工具，可以在无需人工干预的情况下运行作业。</p>
+<pre><code>service crond start    //启动服务
+service crond stop     //关闭服务
+service crond restart  //重启服务
+service crond reload   //重新载入配置
+service crond status   //查看服务状态 
+</code></pre><h3 id="crontab语法"><a href="#crontab语法" class="headerlink" title="crontab语法"></a>crontab语法</h3><p>crontab命令用于安装、删除或者列出用于驱动cron后台进程的表格。用户把需要执行的命令序列放到crontab文件中以获得执行。每个用户都可以有自己的crontab文件。/var/spool/cron下的crontab文件不可以直接创建或者直接修改。该crontab文件是通过crontab命令创建的。<br>在crontab文件中如何输入需要执行的命令和时间。该文件中每行都包括六个域，其中前五个域是指定命令被执行的时间，最后一个域是要被执行的命令。<br>每个域之间使用空格或者制表符分隔。格式如下： </p>
+<pre><code>minute hour day-of-month month-of-year day-of-week commands 
+#合法值 00-59 00-23 01-31 01-12 0-6 (0 is sunday) 
+</code></pre><p><strong>除了数字还有几个个特殊的符号就是”<em>“、”/“和”-“、”,”，</em>代表所有的取值范围内的数字，”/“代表每的意思,”/5”表示每5个单位，”-“代表从某个数字到某个数字,”,”分开几个离散的数字。</strong></p>
+<p><strong>-l 在标准输出上显示当前的crontab。<br>-r 删除当前的crontab文件。<br>-e 使用VISUAL或者EDITOR环境变量所指的编辑器编辑当前的crontab文件。当结束编辑离开时，编辑后的文件将自动安装。</strong> </p>
+<h3 id="创建cron脚本"><a href="#创建cron脚本" class="headerlink" title="创建cron脚本"></a>创建cron脚本</h3><p>第一步：写cron脚本文件,命名为mysqlRollBack.cron。</p>
+<pre><code>15,30,45,59 * * * * echo &quot;xgmtest.....&quot; &gt;&gt; xgmtest.txt  表示，每隔15分钟，执行打印一次命令 
+</code></pre><p>第二步：添加定时任务。执行命令 <code>“crontab crontest.cron”</code>。搞定<br>第三步：”<code>crontab -l</code>“ 查看定时任务是否成功或者检测/var/spool/cron下是否生成对应cron脚本</p>
+<p>注意：这操作是直接替换该用户下的crontab，而不是新增</p>
+<p>定期执行编写的定时任务脚本（记得先给shell脚本执行权限）</p>
+<pre><code>0 2 * * * /root/mysql_backup_script.sh
+</code></pre><p>随后使用crontab命令定期指令编写的定时脚本</p>
+<pre><code>crontab mysqlRollback.cron
+</code></pre><p>再通过命令检查定时任务是否已创建：</p>
+<pre><code>crontab -l
+</code></pre><p><strong>附crontab的使用示例：</strong></p>
+<p>1.每天早上6点 </p>
+<pre><code>0 6 * * * echo &quot;Good morning.&quot; &gt;&gt; /tmp/test.txt //注意单纯echo，从屏幕上看不到任何输出，因为cron把任何输出都email到root的信箱了。
+</code></pre><p>2.每两个小时 </p>
+<pre><code>0 */2 * * * echo &quot;Have a break now.&quot; &gt;&gt; /tmp/test.txt  
+</code></pre><p>3.晚上11点到早上8点之间每两个小时和早上八点 </p>
+<pre><code>0 23-7/2，8 * * * echo &quot;Have a good dream&quot; &gt;&gt; /tmp/test.txt
+</code></pre><p>4.每个月的4号和每个礼拜的礼拜一到礼拜三的早上11点 </p>
+<pre><code>0 11 4 * 1-3 command line
+</code></pre><p>5.1月1日早上4点 </p>
+<pre><code>0 4 1 1 * command line SHELL=/bin/bash PATH=/sbin:/bin:/usr/sbin:/usr/bin MAILTO=root //如果出现错误，或者有数据输出，数据作为邮件发给这个帐号 HOME=/ 
+</code></pre><p>6.每小时执行/etc/cron.hourly内的脚本</p>
+<pre><code>01 * * * * root run-parts /etc/cron.hourly
+</code></pre><p>7.每天执行/etc/cron.daily内的脚本</p>
+<pre><code>02 4 * * * root run-parts /etc/cron.daily 
+</code></pre><p>8.每星期执行/etc/cron.weekly内的脚本</p>
+<pre><code>22 4 * * 0 root run-parts /etc/cron.weekly 
+</code></pre><p>9.每月去执行/etc/cron.monthly内的脚本 </p>
+<pre><code>42 4 1 * * root run-parts /etc/cron.monthly 
+</code></pre><p>注意: “<strong>run-parts</strong>“这个参数了，如果去掉这个参数的话，后面就可以写要运行的某个脚本名，而不是文件夹名。 　 </p>
+<p>10.每天的下午4点、5点、6点的5 min、15 min、25 min、35 min、45 min、55 min时执行命令。 </p>
+<pre><code>5，15，25，35，45，55 16，17，18 * * * command
+</code></pre><p>11.每周一，三，五的下午3：00系统进入维护状态，重新启动系统。</p>
+<pre><code>00 15 * * 1，3，5 shutdown -r +5
+</code></pre><p>12.每小时的10分，40分执行用户目录下的innd/bbslin这个指令： </p>
+<pre><code>10，40 * * * * innd/bbslink
+</code></pre><p>13.每小时的1分执行用户目录下的bin/account这个指令： </p>
+<pre><code>1 * * * * bin/account
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2018-03-20, 11:16:34</p>
+        <p><span>最后更新:</span>2018-03-20, 11:16:34</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/" title="Linux环境MySQL数据库定时备份">https://zhouhy.top/2018/03/20/LinuxMmysqlDumpScriptCronBackup/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2018/03/20/LinuxMmysqlDumpScriptCronBackup/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/04/15/Redis1Basics/">
+                    关于Redis(一)：基本概念与常见问题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">
+                    Win10自带VPN配置(L2TP/IpSec)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+  
+
+  
+  
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL数据备份"><span class="toc-number">2.</span> <span class="toc-text">MySQL数据备份</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysqldump命令备份数据"><span class="toc-number">2.1.</span> <span class="toc-text">mysqldump命令备份数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysqldump常用操作示例"><span class="toc-number">2.2.</span> <span class="toc-text">mysqldump常用操作示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还原mysql备份内容"><span class="toc-number">2.3.</span> <span class="toc-text">还原mysql备份内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写脚本维护备份的数据库文件"><span class="toc-number">3.</span> <span class="toc-text">编写脚本维护备份的数据库文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编写BASH维护固定数量备份文件"><span class="toc-number">3.1.</span> <span class="toc-text">编写BASH维护固定数量备份文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用crontab定期执行备份脚本"><span class="toc-number">4.</span> <span class="toc-text">使用crontab定期执行备份脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cron服务"><span class="toc-number">4.1.</span> <span class="toc-text">cron服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crontab语法"><span class="toc-number">4.2.</span> <span class="toc-text">crontab语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建cron脚本"><span class="toc-number">4.3.</span> <span class="toc-text">创建cron脚本</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Linux环境MySQL数据库定时备份　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
+
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/04/15/Redis1Basics/" title="上一篇: 关于Redis(一)：基本概念与常见问题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/02/18/Win10ConfigL2tpORIpecVpn/" title="下一篇: Win10自带VPN配置(L2TP/IpSec)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/DockerInsideInstallElk/">Docker中安装ELK</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/DeepinLinuxL2tpConfig/">DeepinLinux自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/Ai4TensorflowBaseOperation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai1DlAndMl/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/Raspberrypi1NotDisplayConfigWifiAndSsh/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/HttpSessionAndMitm/">HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/IphoneInstallThroughPlist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuangPush/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/Intranet-penetration/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SsrBuildsMyVpn/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/FileSynchronizationInClusterEnvironment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/BlockchainUseJavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/Redis3DistributedLock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/Redis2JedisAndRedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Redis1Basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/CrossDomainSessionMissing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVCResponseGetBody/">SpringMvc：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVCRequestGetBody/">SpringMvc：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVCInterceptorWorkflow/">SpringMvc：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVCDifferenceBetweenInterceptorsAndFilters/">SpringMvc：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/RemoteDebugging1JarPackageInIdea/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/GameAssist4JavaMemoryModifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/20/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/GameAssist1JavaSoftwareLevelPeripheralSimulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/Hexo7SubmitSearchEngine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Hexo4YeleeThemeDownloadAndConfig/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/Hexo3UploadingResourcesBlog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Hexo2RemoteRepositoryHostingBlog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/Hexo1BlogBuilding/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 zhou
+            </div>
+            <div class="footer-right">
+                Welcome to <a href="http://zhouhy.top/" target="_blank" title="zhou">My Blog</a><i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>

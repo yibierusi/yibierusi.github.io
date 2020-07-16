@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zhou">
+
+
+
+<meta name="description" content="Tensorflow是目前最火的深度学习框架，广泛应用于自然语言处理、语音识别、图像处理等多个领域。不仅深受全球深度学习爱好者的广泛欢迎，Google、eBay、Uber、OPenAI等众多科技公司的研发团队也都在使用它。">
+<meta name="keywords" content="DeepLearning,Tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能(三)：TensorFlow的介绍与安装">
+<meta property="og:url" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/index.html">
+<meta property="og:site_name" content="ZHOU&#39;s Blog">
+<meta property="og:description" content="Tensorflow是目前最火的深度学习框架，广泛应用于自然语言处理、语音识别、图像处理等多个领域。不仅深受全球深度学习爱好者的广泛欢迎，Google、eBay、Uber、OPenAI等众多科技公司的研发团队也都在使用它。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/anaconda.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/environments.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/intro_tensorflow_01.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/intro_tensorflow_02.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/intro_tensorflow_03.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c1.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c1.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c2.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c3.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c4.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c5.png">
+<meta property="og:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c6.png">
+<meta property="og:updated_time" content="2019-08-27T12:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人工智能(三)：TensorFlow的介绍与安装">
+<meta name="twitter:description" content="Tensorflow是目前最火的深度学习框架，广泛应用于自然语言处理、语音识别、图像处理等多个领域。不仅深受全球深度学习爱好者的广泛欢迎，Google、eBay、Uber、OPenAI等众多科技公司的研发团队也都在使用它。">
+<meta name="twitter:image" content="https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/anaconda.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ZHOU&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>人工智能(三)：TensorFlow的介绍与安装 | ZHOU&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zhou</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">莫问收获,但求耕耘</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/App/">App</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Baidu/">Baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blockchain/">Blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ce/">Ce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cluster/">Cluster</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comment/">Comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crontab/">Crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filter/">Filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handle/">Handle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Idea/">Idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interceptor/">Interceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFx/">JavaFx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jedis/">Jedis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JiGuang/">JiGuang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp/">L2tp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp-IpSec/">L2tp/IpSec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logstash/">Logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Push/">Push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyenv/">Pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedisTemplate/">RedisTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scp/">Scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Script/">Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seo/">Seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sftp/">Sftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Soft/">Soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ssh/">Ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Themes/">Themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Upload/">Upload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vpn/">Vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpolar/">cpolar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/script/">script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/soft/">soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">life is so short, do something to make yourself happy, such as coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">莫问收获,但求耕耘</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-Ai3ForTensorflowOfIntroduceAndInstall" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/" class="article-date">
+      <time datetime="2019-08-27T12:11:28.000Z" itemprop="datePublished">2019-08-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      人工智能(三)：TensorFlow的介绍与安装
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">2.5k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">8m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+      <div class="article-info article-info-post" style="margin-top:-5px">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/DL/">DL</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Tensorflow-的介绍"><a href="#Tensorflow-的介绍" class="headerlink" title="Tensorflow 的介绍"></a>Tensorflow 的介绍</h2><p>Tensorflow是一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现，其前身是谷歌的神经网络算法库DistBelief [1]  。</p>
+<p>Tensorflow是目前最火的深度学习框架，广泛应用于自然语言处理、语音识别、图像处理等多个领域。不仅深受全球深度学习爱好者的广泛欢迎，Google、eBay、Uber、OPenAI等众多科技公司的研发团队也都在使用它。</p>
+<p>Tensorflow是由谷歌大脑团队于2015年11月开发的第二代开源的机器学习系统。Tensorflow支持python、C++、java、GO等多种编程语言，以及CNN、RNN和GAN等深度学习算法。Tensorflow除可以在Windows、Linux、MacOS等操作系统运行外，还支持Android和iOS移动平台的运行、树莓派等开发板中、以及适用于多个CPU/GPU组成的分布式系统中。</p>
+<p>相较于其它的深度学习框架，如：Caffe、Torch、Keras、MXnet、Theano等，Tensorflow的主要优势有以下几点：高度的灵活性、支持python语言开发、可视化效果好、功能更加强大、运行效率高、强大的社区。</p>
+<h2 id="Tensorflow安装与配置"><a href="#Tensorflow安装与配置" class="headerlink" title="Tensorflow安装与配置"></a>Tensorflow安装与配置</h2><p>目前，Windows、Linux和MacOS均已支持Tensorflow。文章将以Windows系统的安装为例。</p>
+<p>在安装Tensorflow前，我们要先安装Anaconda，因为它集成了很多Python的第三方库及其依赖项，方便我们在编程中直接调用。</p>
+<p>Anaconda下载地址为：<a href="https://www.anaconda.com/download/。" target="_blank" rel="noopener">https://www.anaconda.com/download/。</a></p>
+<p>下载好安装包后，一步步next执行安装过程。</p>
+<p>安装好Anaconda后，可以打开命令提示符，输入<code>pip install Tensorflow</code>完成Tensorflow的安装。<br>此处默认安装为cpu版，如果需要安装gpu版 需要执行<code>pip install Tensorflow-gpu</code>，<strong>注意 gpu版安装后需要安装对应gpu版本的驱动才能使用gpu进行训练</strong>。<br>之后我们进入python可执行界面，输入<code>import tensorflow as tf</code>来检验Tensorflow是否安装成功。如果没有报任何错，可以正常执行，则说明Tensorflow已经安装成功。</p>
+<h3 id="HOME"><a href="#HOME" class="headerlink" title="HOME"></a>HOME</h3><p><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/anaconda.png" alt=""><br>home中包含了一些已经默认安装好的工具和一些推荐使用的工具可以一键安装。<br><strong>Jupyter Notebook</strong>是一款非常好用的交互式开发工具，不仅支持40多种编程语言，还可以实时运行代码、共享文档、数据可视化、支持markdown等，适用于机器学习、统计建模数据处理、特征提取等多个领域。尤其在Kaggle、天池等数据科学竞赛中，快捷、实时、方便的优点深受用户欢迎。本书后边的章节中，均将以Jupyter Notebook作为开发环境，运行Tensorflow程序。</p>
+<h3 id="Environments"><a href="#Environments" class="headerlink" title="Environments"></a>Environments</h3><p><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/environments.png" alt=""><br>环境中包含了已经安装的、未安装的、需要更新的、所有的环境。例如Tensorflow。</p>
+<p>其他的就不多做介绍，都是一看就懂的东西，复杂点的可以在使用过程中慢慢摸索。到这Tensorflow就安装完成了。</p>
+<h2 id="计算图模型"><a href="#计算图模型" class="headerlink" title="计算图模型"></a>计算图模型</h2><h3 id="Tensor"><a href="#Tensor" class="headerlink" title="Tensor"></a>Tensor</h3><p><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/intro_tensorflow_01.png" alt=""><br><strong>Tensor</strong> :张量 ，在数学上，张量是N维向量，这意味着张量可以用来表示N维数据集。上面的图有点复杂，难以理解。我们看看它的简化版本：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/intro_tensorflow_02.png" alt=""><br>上图显示了一些简化的张量。随着维度的不断增加，数据表示将变得越来越复杂。例如，一个3x3的张量，我可以简单地称它为3行和3列的矩阵。如果我选择另一个形式的张量（1000x3x3），我可以称之为一个向量或一组1000个3x3的矩阵。在这里我们将（1000x3x3）称为张量的形状或尺寸。张量可以是常数也可以是变量。</p>
+<h3 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h3><p><strong>Flow</strong>:计算图，流。流是指一个计算图或简单的一个图，图不能形成环路，图中的每个节点代表一个操作，如加法、减法等。每个操作都会导致新的张量形成。<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/intro_tensorflow_03.png" alt=""></p>
+<p>上图展示了一个简单的计算图，所对应的表达式为：</p>
+<pre><code>e = (a+b)x(b+1)
+</code></pre><p>计算图具有以下属性：</p>
+<ul>
+<li>叶子顶点或起始顶点始终是张量。意即，操作永远不会发生在图的开头，由此我们可以推断图中的每个操作都应该接受一个张量并产生一个新的张量。同样，张量不能作为非叶子节点出现，这意味着它们应始终作为输入提供给操作/节点。</li>
+<li><p>计算图总是以层次顺序表达复杂的操作。通过将a + b表示为c，将b + 1表示为d，可以分层次组织上述表达式。 因此，我们可以将e写为：</p>
+<p> <code>e = c*d   ##这里 c = a+b 且 d = b+1.</code></p>
+</li>
+<li><p>以反序遍历图形而形成子表达式，这些子表达式组合起来形成最终表达式。</p>
+</li>
+<li><p>当我们正向遍历时，遇到的顶点总是成为下一个顶点的依赖关系，例如没有a和b就无法获得c，同样的，如果不解决c和d则无法获得e。</p>
+</li>
+<li><p><strong>同级节点的操作彼此独立，这是计算图的重要属性之一</strong>。当我们按照图中所示的方式构造一个图时，很自然的是，在同一级中的节点，例如c和d，彼此独立，这意味着没有必要在计算d之前计算c。<br>因此它们可以并行执行。</p>
+</li>
+</ul>
+<h3 id="计算图模型-1"><a href="#计算图模型-1" class="headerlink" title="计算图模型"></a>计算图模型</h3><p>Tensorflow是一种计算图模型，即用图的形式来表示运算过程的一种模型。Tensorflow程序一般分为图的构建和图的执行两个阶段。图的构建阶段也称为图的定义阶段，该过程会在图模型中定义所需的运算，每次运算的的结果以及原始的输入数据都可称为一个节点（operation ，缩写为op）。我们通过以下程序来说明图的构建过程：<br>程序1：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c1.png" alt=""></p>
+<p>程序1定义了图的构建过程，“import tensorflow as tf”，是在python中导入tensorflow模块,并另起名为“tf”；接着定义了两个常量op，m1和m2，均为1*2的矩阵；最后将m1和m2的值作为输入创建一个矩阵加法op，并输出最后的结果result。</p>
+<p><strong>Add_1:0</strong>:图的名字。<br><strong>shape(2,)</strong>:相当于shape(2,1),代表图的形状2列一行。<br><strong>dtype=int32</strong>:图的类型，int32。</p>
+<p>我们分析最终的输出结果可知，其并没有输出矩阵相加的结果，而是输出了一个包含三个属性的Tensor。</p>
+<p>以上过程便是图模型的<strong>构建阶段</strong>：<strong>只在图中定义所需要的运算，而没有去执行运算。</strong>我们可以用下图来表示：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c1.png" alt=""></p>
+<p>第二个阶段为图的执行阶段，也就是在会话（session）中执行图模型中定义好的运算。<br>我们通过程序2来解释图的执行阶段：</p>
+<p>程序2：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c2.png" alt=""></p>
+<p>程序2描述了图的执行过程，首先通过“tf.session()”启动默认图模型，再调用run()方法启动、运行图模型，传入上述参数result，执行矩阵的加法，并打印出相加的结果，最后在任务完成时，要记得调用close()方法，关闭会话。</p>
+<p>除了上述的session写法外，我们更建议大家，把session写成如程序3所示“with”代码块的形式，这样就无需显示的调用close释放资源，而是自动地关闭会话。</p>
+<p>程序3：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c3.png" alt=""></p>
+<p>此外，我们还可以利用CPU或GPU等计算资源分布式执行图的运算过程。一般我们无需显示的指定计算资源，Tensorflow可以自动地进行识别，如果检测到我们的GPU环境，会优先的利用GPU环境执行我们的程序。但如果我们的计算机中有多于一个可用的GPU，这就需要我们手动的指派GPU去执行特定的op。如下程序4所示，Tensorflow中使用<code>with...device</code>语句来指定GPU或CPU资源执行操作。</p>
+<p>程序4：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c4.png" alt=""></p>
+<p>上述程序中的“<code>tf.device(“/gpu:2”)</code>”是指定了第二个GPU资源来运行下面的op。依次类推，我们还可以通过“/gpu:3”、“/gpu:4”、“/gpu:5”…来指定第N个GPU执行操作。</p>
+<p>Tensorflow中还提供了默认会话的机制，如程序5所示，我们通过调用函数<code>as_default()</code>生成默认会话。</p>
+<p>程序5：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c5.png" alt=""></p>
+<p>我们可以看到程序5和程序2有相同的输出结果。我们在启动默认会话后，可以通过调用<code>eval()</code>函数，直接输出变量的内容。</p>
+<p>有时，我们需要在Jupyter或IPython等python交互式环境开发。Tensorflow为了满足用户的这一需求，提供了一种专门针对交互式环境开发的方法<code>InteractiveSession()</code>,具体用法如程序6所示：</p>
+<p>程序6：<br><img src="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/c6.png" alt=""></p>
+<p>程序6就是交互式环境中经常会使用的<code>InteractiveSession()</code>方法，其创建<code>sess</code>对象后，可以直接输出运算结果。</p>
+<p>综上所述，我们介绍了Tensorflow的核心概念——计算图模型，以及定义图模型和运行图模型的几种方式。接下来，思考一个问题，为什么Tensorflow要使用图模型？图模型有什么优势呢？</p>
+<p>首先，图模型的最大好处是节约系统开销，提高资源的利用率，可以更加高效的进行运算。因为我们在图的执行阶段，只需要运行我们需要的op,这样就大大的<strong>提高了资源的利用率</strong>；其次，这种结构有利于我们提取中间某些节点的结果，方便以后利用中间的节点去进行其它运算；还有就是这种结构对分布式运算更加友好，运算的过程可以分配给多个CPU或是GPU同时进行，提高运算效率；最后，因为图模型把运算分解成了很多个子环节，所以这种结构也让我们的求导变得更加方便。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2019-08-27, 20:11:28</p>
+        <p><span>最后更新:</span>2019-08-27, 20:11:28</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/" title="人工智能(三)：TensorFlow的介绍与安装">https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/08/28/Ai4TensorflowBaseOperation/">
+                    人工智能(四)：TensorFlow基本操作
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">
+                    人工智能(一)：深度学习发展史
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+  
+
+  
+  
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow-的介绍"><span class="toc-number">1.</span> <span class="toc-text">Tensorflow 的介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow安装与配置"><span class="toc-number">2.</span> <span class="toc-text">Tensorflow安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HOME"><span class="toc-number">2.1.</span> <span class="toc-text">HOME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Environments"><span class="toc-number">2.2.</span> <span class="toc-text">Environments</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算图模型"><span class="toc-number">3.</span> <span class="toc-text">计算图模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tensor"><span class="toc-number">3.1.</span> <span class="toc-text">Tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flow"><span class="toc-number">3.2.</span> <span class="toc-text">Flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算图模型-1"><span class="toc-number">3.3.</span> <span class="toc-text">计算图模型</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"人工智能(三)：TensorFlow的介绍与安装　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
+
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/08/28/Ai4TensorflowBaseOperation/" title="上一篇: 人工智能(四)：TensorFlow基本操作">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/08/27/Ai2DevelopmentHistoryOfDl/" title="下一篇: 人工智能(一)：深度学习发展史">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/DockerInsideInstallElk/">Docker中安装ELK</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/DeepinLinuxL2tpConfig/">DeepinLinux自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/Ai4TensorflowBaseOperation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai1DlAndMl/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/Raspberrypi1NotDisplayConfigWifiAndSsh/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/HttpSessionAndMitm/">HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/IphoneInstallThroughPlist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuangPush/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/Intranet-penetration/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SsrBuildsMyVpn/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/FileSynchronizationInClusterEnvironment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/BlockchainUseJavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/Redis3DistributedLock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/Redis2JedisAndRedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Redis1Basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/CrossDomainSessionMissing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVCResponseGetBody/">SpringMvc：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVCRequestGetBody/">SpringMvc：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVCInterceptorWorkflow/">SpringMvc：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVCDifferenceBetweenInterceptorsAndFilters/">SpringMvc：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/RemoteDebugging1JarPackageInIdea/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/GameAssist4JavaMemoryModifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/20/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/GameAssist1JavaSoftwareLevelPeripheralSimulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/Hexo7SubmitSearchEngine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Hexo4YeleeThemeDownloadAndConfig/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/Hexo3UploadingResourcesBlog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Hexo2RemoteRepositoryHostingBlog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/Hexo1BlogBuilding/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 zhou
+            </div>
+            <div class="footer-right">
+                Welcome to <a href="http://zhouhy.top/" target="_blank" title="zhou">My Blog</a><i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>
