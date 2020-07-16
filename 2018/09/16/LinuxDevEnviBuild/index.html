@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zhou">
+
+
+
+<meta name="description" content="因为最近重装系统比较频繁，经常需要搭建开发环境，虽然搭建环境很简单但是比较繁琐，一些配置的字符串还需要google一下，太耽误时间，所以记录一下基本的开发环境搭建和常用软件。">
+<meta name="keywords" content="Linux,Dev,Navicat,Mysql,Postman,Python,Pyenv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux开发环境搭建">
+<meta property="og:url" content="https://zhouhy.top/2018/09/16/LinuxDevEnviBuild/index.html">
+<meta property="og:site_name" content="ZHOU&#39;s Blog">
+<meta property="og:description" content="因为最近重装系统比较频繁，经常需要搭建开发环境，虽然搭建环境很简单但是比较繁琐，一些配置的字符串还需要google一下，太耽误时间，所以记录一下基本的开发环境搭建和常用软件。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-16T06:03:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux开发环境搭建">
+<meta name="twitter:description" content="因为最近重装系统比较频繁，经常需要搭建开发环境，虽然搭建环境很简单但是比较繁琐，一些配置的字符串还需要google一下，太耽误时间，所以记录一下基本的开发环境搭建和常用软件。">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ZHOU&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Linux开发环境搭建 | ZHOU&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zhou</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">莫问收获,但求耕耘</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI，ML，DL/">AI，ML，DL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CE/">CE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross-domain/">Cross-domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEBUG/">DEBUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DL/">DL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEAD/">IEAD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFX/">JavaFX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jedis/">Jedis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/POW/">POW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyenv/">Pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-Pi/">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedisTemplate/">RedisTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCP/">SCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SFTP/">SFTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win10/">Win10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/baidu/">baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/">coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/comment/">comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpolar/">cpolar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddxoft/">ddxoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deepin/">deepin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dll/">dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/l2tp/">l2tp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/noSql/">noSql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/seo/">seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-pages/">static pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/themes/">themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xnx3/">xnx3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yelee/">yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句柄/">句柄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拦截器/">拦截器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/推送/">推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/极光/">极光</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器/">过滤器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集群/">集群</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">life is so short, do something to make yourself happy, such as coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">莫问收获,但求耕耘</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-LinuxDevEnviBuild" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/16/LinuxDevEnviBuild/" class="article-date">
+      <time datetime="2018-09-16T06:03:04.000Z" itemprop="datePublished">2018-09-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux开发环境搭建
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">3.2k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">16m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+      <div class="article-info article-info-post" style="margin-top:-5px">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Navicat/">Navicat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Postman/">Postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pyenv/">Pyenv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为最近重装系统比较频繁，经常需要搭建开发环境，虽然搭建环境很简单但是比较繁琐，一些配置的字符串还需要google一下，太耽误时间，所以记录一下基本的开发环境搭建和常用软件。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Jdk"><a href="#Jdk" class="headerlink" title="Jdk"></a>Jdk</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>在Oracle官网<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">下载JDK</a></p>
+<p>Oracle 账号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4670049@qq.com</span><br><span class="line">1QAZ2wsx!</span><br></pre></td></tr></table></figure>
+<p>注意：这里需要下载 Linux 版本。这里以jdk-8u231-linux-x64.tar.gz为例，你下载的文件可能不是这个版本，这没关系，只要后缀(.tar.gz)一致即可。</p>
+<h4 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h4><p>在<code>/usr/</code>目录下创建<code>java</code>目录，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/java</span><br><span class="line">cd /usr/java</span><br></pre></td></tr></table></figure>
+<p>把下载的文件 jdk-8u231-linux-x64.tar.gz 放在/usr/java/目录下。</p>
+<h4 id="解压-JDK"><a href="#解压-JDK" class="headerlink" title="解压 JDK"></a>解压 JDK</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u231-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改 /etc/profile</span><br></pre></td></tr></table></figure>
+<p>在 profile 文件中添加如下内容并保存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set java environment</span><br><span class="line">JAVA_HOME=/usr/java/jdk1.8.0_151        </span><br><span class="line">JRE_HOME=/usr/java/jdk1.8.0_151/jre     </span><br><span class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br><span class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</span><br></pre></td></tr></table></figure>
+<p> 注意：其中 JAVA_HOME， JRE_HOME 请根据自己的实际安装路径及 JDK 版本配置。</p>
+<p>让修改生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>显示 java 版本信息，则说明 JDK 安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java version &quot;1.8.0_231&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_151-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><h4 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h4><p><a href="https://mirrors.cnnic.cn/apache/maven/" target="_blank" rel="noopener">下载地址</a></p>
+<p>此处使用wget下载二进制包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz --no-check-certificate</span><br></pre></td></tr></table></figure>
+<h4 id="解压安装"><a href="#解压安装" class="headerlink" title="解压安装"></a>解压安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xf apache-maven-3.6.3-bin.tar.gz </span><br><span class="line">mv apache-maven-3.6.3 /usr/local/maven 				#移动</span><br><span class="line">ln -s /usr/local/maven/bin/mvn  /usr/bin/mvn　　　　 # 与jenkins联合使用时，jenkins会到/usr/bin/下找mvn命令，如果没有回报错</span><br><span class="line">ll /usr/local/maven/</span><br><span class="line">ll /usr/bin/mvn</span><br></pre></td></tr></table></figure>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p><strong>配置全局环境变量</strong></p>
+<p><code>vi /etc/profile</code> </p>
+<p>配置内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MAVEN_HOME=/app/apache-maven-3.6.3</span><br><span class="line">export PATH=$MAVEN_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>刷新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<h4 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which mvn</span><br><span class="line">mvn -version</span><br></pre></td></tr></table></figure>
+<p>最后可以看到以下结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS75 conf]# which mvn　　　　　　# 查看mvn工具的位置/usr/local/maven/bin/mvn</span><br><span class="line">[root@CentOS75 conf]# mvn -version　　　　# 查看maven版本</span><br><span class="line">Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T02:33:14+08:00)</span><br><span class="line">Maven home: /usr/local/maven</span><br><span class="line">Java version: 1.8.0_231, vendor: Oracle Corporation, runtime: /usr/java/jdk1.8.0_181-amd64/jre</span><br><span class="line">Default locale: zh_CN, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;linux&quot;, version: &quot;3.10.0-862.11.6.el7.x86_64&quot;, arch: &quot;amd64&quot;, family: &quot;unix&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><h4 id="系统约定"><a href="#系统约定" class="headerlink" title="系统约定"></a>系统约定</h4><p>安装文件下载目录：<code>/data/software</code> </p>
+<p>Mysql目录安装位置：<code>/usr/local/mysql</code> </p>
+<p>数据库保存位置：<code>/data/mysql</code> </p>
+<p>日志保存位置：<code>/data/log/mysql</code></p>
+<p>这些配置可以在my.cnf文件中配置，my.cnf文件可以在多个位置，</p>
+<p>可以用过以下命令查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/mysql/bin/mysqld --verbose --help |grep -A 1 &apos;Default options&apos;</span><br></pre></td></tr></table></figure>
+<p>默认读取顺序依次是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Default options are read from the following files in the given order:</span><br><span class="line">/etc/my.cnf /etc/mysql/my.cnf /usr/local/mysql/etc/my.cnf ~/.my.cnf</span><br></pre></td></tr></table></figure>
+<h4 id="下载-2"><a href="#下载-2" class="headerlink" title="下载"></a>下载</h4><p>根据自己的需要下载相对应的版本<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">下载</a></p>
+<h4 id="解压移动"><a href="#解压移动" class="headerlink" title="解压移动"></a>解压移动</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvJf mysql-8.0.18-linux-glibc2.12-x86_64.tar.xz -C /usr/local</span><br></pre></td></tr></table></figure>
+<h4 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">sudo ln -s mysql-8.0.18-linux-glibc2.12-x86_64 mysql</span><br></pre></td></tr></table></figure>
+<h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R zhou:zhou mysql</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>cd /usr/local/mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/local/mysql/bin/mysqld --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --initialize</span><br></pre></td></tr></table></figure>
+<p>正常安装之后会显示如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ./bin/mysqld --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --initialize</span><br><span class="line">2018-09-19T16:31:03.993062Z 0 [System][MY-013169] [Server] /usr/local/mysql-8.0.12-linux-glibc2.12-x86_64/bin/mysqld (mysqld 8.0.12) initializing of server in progress as process 19261</span><br><span class="line">2018-09-19T16:31:19.499443Z 5 [Note][MY-010454] [Server] A temporary password is generated for root@localhost: ;f;#&lt;N6nl7pE</span><br></pre></td></tr></table></figure>
+<p>记下随机产生的密码，我的是;<strong>f;#&lt;N6nl7pE**</strong></p>
+<h4 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h4><p>在/etc/mysql/my.cnf中添加相关配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user = zhou</span><br><span class="line">basedir = /usr/local/mysql</span><br><span class="line">datadir = /usr/local/mysql/data</span><br><span class="line">log-error = /usr/local/mysql/data/error.log</span><br><span class="line">pid-file = /usr/local/mysql/mysql.pid</span><br><span class="line">tmpdir = /usr/local/mysql/tmp</span><br><span class="line">socket= /tmp/mysql.sock</span><br></pre></td></tr></table></figure>
+<h4 id="开启mysql服务"><a href="#开启mysql服务" class="headerlink" title="开启mysql服务"></a>开启mysql服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/local/mysql/support-files/mysql.server start</span><br></pre></td></tr></table></figure>
+<p>出现黄色OK字样则启动完成。</p>
+<h4 id="自启动"><a href="#自启动" class="headerlink" title="自启动"></a>自启动</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp support-files/mysql.server /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+<h4 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart #重启</span><br><span class="line">service mysqld start #启动</span><br><span class="line">service mysqld restop #停止</span><br></pre></td></tr></table></figure>
+<h4 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/mysql/bin/mysql /usr/bin #软链接</span><br><span class="line">mysql -u root -p  #登陆 输入第6步记下的密码</span><br><span class="line">alter user &apos;root&apos;@&apos;localhost&apos; identified by &apos;123456&apos;;  # 设置密码</span><br></pre></td></tr></table></figure>
+<h4 id="忘记密码"><a href="#忘记密码" class="headerlink" title="忘记密码"></a>忘记密码</h4><p>如果忘记密码可以通过以下方式解决。</p>
+<p>关闭实例，创建一个sql文件</p>
+<p>写上密码修改语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># vi init.sql </span><br><span class="line">alter user &apos;root&apos;@&apos;localhost&apos; identified by &apos;123456&apos;;</span><br></pre></td></tr></table></figure>
+<p> 最后，使用–init-file参数，启动实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># /usr/local/mysql/bin/mysqld_safe --defaults-file=my.cnf --init-file=/usr/local/mysql/init.sql &amp;</span><br></pre></td></tr></table></figure>
+<p>实例启动成功后，密码即修改完毕~</p>
+<p> 如果mysql实例是通过服务脚本来管理的，除了创建sql文件，整个操作可简化为一步。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld restart --init-file=/usr/local/mysql/init.sql</span><br></pre></td></tr></table></figure>
+<p><strong>注意：该操作只适用于/etc/init.d/mysqld这种服务管理方式，不适用于RHEL 7新推出的systemd。</strong></p>
+<h3 id="Navicat"><a href="#Navicat" class="headerlink" title="Navicat"></a>Navicat</h3><h4 id="下载-3"><a href="#下载-3" class="headerlink" title="下载"></a>下载</h4><p>直接在<a href="https://www.navicat.com.cn/" target="_blank" rel="noopener">官网</a>下载。</p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p>下载之后可以看到文件是<code>AppImage</code>格式的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navicat15-premium-cs.AppImage</span><br></pre></td></tr></table></figure>
+<p>直接赋予运行权限，即可运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x navicat15-premium-cs.AppImage</span><br><span class="line"></span><br><span class="line">./navicat15-premium-cs.AppImage</span><br></pre></td></tr></table></figure>
+<h4 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h4><p><strong>提取AppImage</strong></p>
+<p>假定这个AppImage文件在 <code>~/Desktop</code> 文件夹下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/Desktop/navicat15-premium-en</span><br><span class="line">sudo mount -o loop ~/Desktop/navicat15-premium-en.AppImage ~/Desktop/navicat15-premium-en</span><br><span class="line">cp -r ~/Desktop/navicat15-premium-en ~/Desktop/navicat15-premium-en-patched</span><br><span class="line">sudo umount ~/Desktop/navicat15-premium-en</span><br><span class="line">rm -rf ~/Desktop/navicat15-premium-en</span><br></pre></td></tr></table></figure>
+<p><strong>编译</strong></p>
+<p>编译patcher和keygen</p>
+<p><strong>前提条件</strong></p>
+<ol>
+<li><p>请确保你安装了下面几个库：</p>
+<ul>
+<li><code>capstone</code></li>
+<li><code>keystone</code></li>
+<li><code>rapidjson</code></li>
+</ul>
+<p>你可以通过下面的命令来安装它们：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># install capstone</span><br><span class="line">$ sudo apt-get install libcapstone-dev</span><br><span class="line"></span><br><span class="line"># install keystone</span><br><span class="line">$ sudo apt-get install cmake</span><br><span class="line">$ git clone https://github.com/keystone-engine/keystone.git</span><br><span class="line">$ cd keystone</span><br><span class="line">$ mkdir build</span><br><span class="line">$ cd build</span><br><span class="line">$ ../make-share.sh</span><br><span class="line">$ sudo make install</span><br><span class="line">$ sudo ldconfig</span><br><span class="line"></span><br><span class="line"># install rapidjson</span><br><span class="line">$ sudo apt-get install rapidjson-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>你的gcc支持C++17特性。（注意）</strong></p>
+</li>
+</ol>
+<p><strong>开始编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone -b linux --single-branch https://github.com/DoubleLabyrinth/navicat-keygen.git</span><br><span class="line">$ cd navicat-keygen</span><br><span class="line">$ make all</span><br></pre></td></tr></table></figure>
+<p>生成完成后，你会在 <code>bin/</code> 文件夹下看到编译后的keygen/patcher。</p>
+<p><strong>替换官方公钥</strong></p>
+<p>使用navicat-patcher替换官方公钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">    navicat-patcher [--dry-run] &lt;Navicat Installation Path&gt; [RSA-2048 Private Key File]</span><br><span class="line"></span><br><span class="line">        [--dry-run]                   Run patcher without applying any patches.</span><br><span class="line">                                      This parameter is optional.</span><br><span class="line"></span><br><span class="line">        &lt;Navicat Installation Path&gt;   Path to a directory where Navicat locates</span><br><span class="line">                                      This parameter must be specified.</span><br><span class="line"></span><br><span class="line">        [RSA-2048 Private Key File]   Path to a PEM-format RSA-2048 private key file.</span><br><span class="line">                                      This parameter is optional.</span><br></pre></td></tr></table></figure>
+<p><strong>例如：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/navicat-patcher ~/Desktop/navicat15-premium-en-patched</span><br></pre></td></tr></table></figure>
+<p><strong>Navicat Premium 15.0.3 Linux 英文版</strong> 已经通过测试。</p>
+<p>下面是一份样例输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">**********************************************************</span><br><span class="line">*       Navicat Patcher (Linux) by @DoubleLabyrinth      *</span><br><span class="line">*                  Version: 1.0                          *</span><br><span class="line">**********************************************************</span><br><span class="line"></span><br><span class="line">Press ENTER to continue or Ctrl + C to abort.</span><br><span class="line"></span><br><span class="line">[+] Try to open libcc.so ... Ok!</span><br><span class="line"></span><br><span class="line">[+] PatchSolution0 ...... Ready to apply</span><br><span class="line">   RefSegment      =  1</span><br><span class="line">   MachineCodeRva  =  0x0000000001413e10</span><br><span class="line">   PatchMarkOffset = +0x00000000029ecf40</span><br><span class="line"></span><br><span class="line">[*] Generating new RSA private key, it may take a long time...</span><br><span class="line">[*] Your RSA private key:</span><br><span class="line">   -----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">   MIIEowIBAAKCAQEArRsg1+6JZxZNMhGyuM8d+Ue/ky9LSv/XyKh+wppQMS5wx7QE</span><br><span class="line">   XFcdDgaByNZeLMenh8sgungahWbPo/5jmkDuuHHrVMU748q2JLL1E3nFraPZqoRD</span><br><span class="line">   ...</span><br><span class="line">   ...</span><br><span class="line">   B1Z5AoGBAK8cWMvNYf1pfQ9w6nD4gc3NgRVYLctxFLmkGylqrzs8faoLLBkFq3iI</span><br><span class="line">   s2vdYwF//wuN2aq8JHldGriyb6xkDjdqiEk+0c98LmyKNmEVt8XghjrZuUrn8dA0</span><br><span class="line">   0hfInLdRpaB7b+UeIQavw9yLH0ilijAcMkGzzom7vdqDPizoLpXQ</span><br><span class="line">   -----END RSA PRIVATE KEY-----</span><br><span class="line">[*] Your RSA public key:</span><br><span class="line">   -----BEGIN PUBLIC KEY-----</span><br><span class="line">   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArRsg1+6JZxZNMhGyuM8d</span><br><span class="line">   +Ue/ky9LSv/XyKh+wppQMS5wx7QEXFcdDgaByNZeLMenh8sgungahWbPo/5jmkDu</span><br><span class="line">   ...</span><br><span class="line">   ...</span><br><span class="line">   GrVJ3o8aDm35EzGymp4ON+A0fdAkweqKV6FqxEJqLWIDRYh+Z01JXUZIrKmnCkgf</span><br><span class="line">   QQIDAQAB</span><br><span class="line">   -----END PUBLIC KEY-----</span><br><span class="line"></span><br><span class="line">*******************************************************</span><br><span class="line">*                   PatchSolution0                    *</span><br><span class="line">*******************************************************</span><br><span class="line">[*] Previous:</span><br><span class="line">+0x0000000000000070                          01 00 00 00 05 00 00 00          ........</span><br><span class="line">+0x0000000000000080  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">+0x0000000000000090  00 00 00 00 00 00 00 00 40 cf 9e 02 00 00 00 00  ........@.......</span><br><span class="line">+0x00000000000000a0  40 cf 9e 02 00 00 00 00 00 10 00 00 00 00 00 00  @...............</span><br><span class="line">[*] After:</span><br><span class="line">+0x0000000000000070                          01 00 00 00 05 00 00 00          ........</span><br><span class="line">+0x0000000000000080  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">+0x0000000000000090  00 00 00 00 00 00 00 00 d0 d0 9e 02 00 00 00 00  ................</span><br><span class="line">+0x00000000000000a0  d0 d0 9e 02 00 00 00 00 00 10 00 00 00 00 00 00  ................</span><br><span class="line"></span><br><span class="line">[*] Previous:</span><br><span class="line">+0x00000000029ecf40  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">+0x00000000029ecf50  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">+0x00000000029ecf60  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">+0x00000000029ed0c0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">[*] After:</span><br><span class="line">+0x00000000029ecf40  ef be ad de 4d 49 49 42 49 6a 41 4e 42 67 6b 71  ....MIIBIjANBgkq</span><br><span class="line">+0x00000000029ecf50  68 6b 69 47 39 77 30 42 41 51 45 46 41 41 4f 43  hkiG9w0BAQEFAAOC</span><br><span class="line">+0x00000000029ecf60  41 51 38 41 4d 49 49 42 43 67 4b 43 41 51 45 41  AQ8AMIIBCgKCAQEA</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">+0x00000000029ed0c0  43 6b 67 66 51 51 49 44 41 51 41 42 ad de ef be  CkgfQQIDAQAB....</span><br><span class="line"></span><br><span class="line">[*] Previous:</span><br><span class="line">+0x0000000001413e10  44 0f b6 24 18 48 8b 44 24 28 8b 50 f8 85 d2 79  D..$.H.D$(.P...y</span><br><span class="line">+0x0000000001413e20  6f                                               o               </span><br><span class="line">[*] After:</span><br><span class="line">+0x0000000001413e10  45 31 e4 48 8d 05 2a 91 5d 01 90 90 90 90 90 90  E1.H..*.].......</span><br><span class="line">+0x0000000001413e20  90                                               .               </span><br><span class="line"></span><br><span class="line">[*] New RSA-2048 private key has been saved to</span><br><span class="line">   /home/doublesine/github.com/navicat-keygen/RegPrivateKey.pem</span><br><span class="line"></span><br><span class="line">*******************************************************</span><br><span class="line">*           PATCH HAS BEEN DONE SUCCESSFULLY!         *</span><br><span class="line">*                  HAVE FUN AND ENJOY~                *</span><br><span class="line">*******************************************************</span><br></pre></td></tr></table></figure>
+<p><strong>重新打包</strong></p>
+<p>重新打包成成AppImage文件</p>
+<p><strong>例如：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget &apos;https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage&apos;</span><br><span class="line">$ chmod +x appimagetool-x86_64.AppImage</span><br><span class="line">$ ./appimagetool-x86_64.AppImage ~/Desktop/navicat15-premium-en-patched ~/Desktop/navicat15-premium-en-patched.AppImage</span><br></pre></td></tr></table></figure>
+<p><strong>运行刚生成的AppImage</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x ~/Desktop/navicat15-premium-en-patched.AppImage</span><br><span class="line">$ ~/Desktop/navicat15-premium-en-patched.AppImage</span><br></pre></td></tr></table></figure>
+<p><strong>生成序列号和激活码</strong></p>
+<p>使用 <code>navicat-keygen</code> 来生成 <strong>序列号</strong> 和 <strong>激活码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">    navicat-keygen &lt;--bin|--text&gt; [--adv] &lt;RSA-2048 Private Key File&gt;</span><br><span class="line"></span><br><span class="line">        &lt;--bin|--text&gt;    Specify &quot;--bin&quot; to generate &quot;license_file&quot; used by Navicat 11.</span><br><span class="line">                          Specify &quot;--text&quot; to generate base64-encoded activation code.</span><br><span class="line">                          This parameter must be specified.</span><br><span class="line"></span><br><span class="line">        [--adv]                       Enable advance mode.</span><br><span class="line">                                      This parameter is optional.</span><br><span class="line"></span><br><span class="line">        &lt;RSA-2048 Private Key File&gt;   A path to an RSA-2048 private key file.</span><br><span class="line">                                      This parameter must be specified.</span><br></pre></td></tr></table></figure>
+<p><strong>例如：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/navicat-keygen --text ./RegPrivateKey.pem</span><br></pre></td></tr></table></figure>
+<p>你会被要求选择Navicat产品类别、Navicat语言版本和填写主版本号。之后一个随机生成的 <strong>序列号</strong> 将会给出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/navicat-keygen --text ./RegPrivateKey.pem</span><br><span class="line">**********************************************************</span><br><span class="line">*       Navicat Keygen (Linux) by @DoubleLabyrinth       *</span><br><span class="line">*                   Version: 1.0                         *</span><br><span class="line">**********************************************************</span><br><span class="line"></span><br><span class="line">[*] Select Navicat product:</span><br><span class="line">0. DataModeler</span><br><span class="line">1. Premium</span><br><span class="line">2. MySQL</span><br><span class="line">3. PostgreSQL</span><br><span class="line">4. Oracle</span><br><span class="line">5. SQLServer</span><br><span class="line">6. SQLite</span><br><span class="line">7. MariaDB</span><br><span class="line">8. MongoDB</span><br><span class="line">9. ReportViewer</span><br><span class="line"></span><br><span class="line">(Input index)&gt; 1</span><br><span class="line"></span><br><span class="line">[*] Select product language:</span><br><span class="line">0. English</span><br><span class="line">1. Simplified Chinese</span><br><span class="line">2. Traditional Chinese</span><br><span class="line">3. Japanese</span><br><span class="line">4. Polish</span><br><span class="line">5. Spanish</span><br><span class="line">6. French</span><br><span class="line">7. German</span><br><span class="line">8. Korean</span><br><span class="line">9. Russian</span><br><span class="line">10. Portuguese</span><br><span class="line"></span><br><span class="line">(Input index)&gt; 0</span><br><span class="line"></span><br><span class="line">[*] Input major version number:</span><br><span class="line">(range: 0 ~ 15, default: 12)&gt; 15</span><br><span class="line"></span><br><span class="line">[*] Serial number:</span><br><span class="line">NAVM-RTVJ-EO42-IODD</span><br><span class="line"></span><br><span class="line">[*] Your name:</span><br></pre></td></tr></table></figure>
+<p>你可以使用这个 <strong>序列号</strong> 来暂时激活Navicat。</p>
+<p>之后你会被要求填写 <strong>用户名</strong> 和 <strong>组织名</strong>。你可以随意填写，但别太长。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[*] Your name: DoubleLabyrinth</span><br><span class="line">[*] Your organization: DoubleLabyrinth</span><br><span class="line"></span><br><span class="line">[*] Input request code in Base64: (Double press ENTER to end)</span><br></pre></td></tr></table></figure>
+<p>之后你会被要求填写请求码。<strong>注意不要关闭keygen。</strong></p>
+<p><strong>激活</strong></p>
+<p><strong>断开网络</strong>. 找到注册窗口，填写keygen给你的 <strong>序列号</strong>，然后点击 <code>激活</code></p>
+<p>通常在线激活会失败，所以在弹出的提示中选择 <code>手动激活</code>。</p>
+<p>复制 <strong>请求码</strong> 到keygen，连按两次回车结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[*] Input request code in Base64: (Double press ENTER to end)</span><br><span class="line">OaGPC3MNjJ/pINbajFzLRkrV2OaSXYLr2tNLDW0fIthPOJQFXr84OOroCY1XN8R2xl2j7epZ182PL6q+BRaSC6hnHev/cZwhq/4LFNcLu0T0D/QUhEEBJl4QzFr8TlFSYI1qhWGLIxkGZggA8vMLMb/sLHYn9QebBigvleP9dNCS4sO82bilFrKFUtq3ch8r7V3mbcbXJCfLhXgrHRvT2FV/s1BFuZzuWZUujxlp37U6Y2PFD8fQgsgBUwrxYbF0XxnXKbCmvtgh2yaB3w9YnQLoDiipKp7io1IxEFMYHCpjmfTGk4WU01mSbdi2OS/wm9pq2Y62xvwawsq1WQJoMg==</span><br><span class="line"></span><br><span class="line">[*] Request Info:</span><br><span class="line">&#123;&quot;K&quot;:&quot;NAVMRTVJEO42IODD&quot;, &quot;DI&quot;:&quot;4A12F84C6A088104D23E&quot;, &quot;P&quot;:&quot;linux&quot;&#125;</span><br><span class="line"></span><br><span class="line">[*] Response Info:</span><br><span class="line">&#123;&quot;K&quot;:&quot;NAVMRTVJEO42IODD&quot;,&quot;DI&quot;:&quot;4A12F84C6A088104D23E&quot;,&quot;N&quot;:&quot;DoubleLabyrinth&quot;,&quot;O&quot;:&quot;DoubleLabyrinth&quot;,&quot;T&quot;:1575543648&#125;</span><br><span class="line"></span><br><span class="line">[*] Activation Code:</span><br><span class="line">i45HIr7T1g69Cm9g3bN1DBpM/Zio8idBw3LOFGXFQjXj0nPfy9yRGuxaUBQkWXSOWa5EAv7S9Z1sljlkZP6cKdfDGYsBb/4N1W5Oj1qogzNtRo5LGwKe9Re3zPY3SO8RXACfpNaKjdjpoOQa9GjQ/igDVH8r1k+Oc7nEnRPZBm0w9aJIM9kS42lbjynVuOJMZIotZbk1NloCodNyRQw3vEEP7kq6bRZsQFp2qF/mr+hIPH8lo/WF3hh+2NivdrzmrKKhPnoqSgSsEttL9a6ueGOP7Io3j2lAFqb9hEj1uC3tPRpYcBpTZX7GAloAENSasFwMdBIdszifDrRW42wzXw==</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>最终你会得到一个base64编码的 <strong>激活码</strong>。</p>
+<p>将之复制到 <code>手动激活</code> 的窗口，然后点击 <code>激活</code>。</p>
+<p>如果没有什么意外，应该可以成功激活。</p>
+</li>
+<li><p>最后的清理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rm ~/Desktop/navicat15-premium-en.AppImage</span><br><span class="line">$ rm -rf ~/Desktop/navicat15-premium-en-patched</span><br><span class="line">$ mv ~/Desktop/navicat15-premium-en-patched.AppImage ~/Desktop/navicat15-premium-en.AppImage</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Pyenv"><a href="#Pyenv" class="headerlink" title="Pyenv"></a>Pyenv</h3><p><strong>默认路径</strong></p>
+<p>pyenv默认安装路径为当前用户下的.pyenv文件夹下l,</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/home/zhou/.pyenv # pyenv 安装路径</span><br><span class="line"></span><br><span class="line">/home/zhou/.pyenv/versions/ #python安装路径</span><br></pre></td></tr></table></figure>
+<h4 id="安装pyenv"><a href="#安装pyenv" class="headerlink" title="安装pyenv"></a>安装pyenv</h4><p>方法一：</p>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash</span><br></pre></td></tr></table></figure>
+<p>安装完成后，将输出的最后的三行追加到/etc/profile,做环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Load pyenv automatically by adding</span><br><span class="line"># the following to ~/.bash_profile:</span><br><span class="line"></span><br><span class="line">export PATH=&quot;/home/zhou/.pyenv/bin:$PATH&quot;</span><br><span class="line">eval &quot;$(pyenv init -)&quot;</span><br><span class="line">eval &quot;$(pyenv virtualenv-init -)&quot;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yyuu/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
+<p>环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&apos; &gt;&gt; /etc/profile  </span><br><span class="line">echo &apos;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; /etc/profile</span><br><span class="line">echo &apos;eval &quot;$(pyenv init -)&quot;&apos; &gt;&gt; /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="Pyenv相关命令"><a href="#Pyenv相关命令" class="headerlink" title="Pyenv相关命令"></a>Pyenv相关命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">查看可安装的版本</span><br><span class="line">pyenv install –list</span><br><span class="line"></span><br><span class="line">安装Python</span><br><span class="line">pyenv install -v 3.7.5</span><br><span class="line"></span><br><span class="line">卸载Python</span><br><span class="line">pyenv uninstall 2.7.13</span><br><span class="line"></span><br><span class="line">查看pyenv版本</span><br><span class="line">pyenv version</span><br><span class="line"></span><br><span class="line">查看已经安装的python版本</span><br><span class="line">pyenv versions</span><br><span class="line"></span><br><span class="line">切换Python版本</span><br><span class="line">pyenv global 3.6.4</span><br></pre></td></tr></table></figure>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><h4 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h4><p>查看可安装的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install –list</span><br></pre></td></tr></table></figure>
+<p>如果可以访问外网并且list中有自己需要的版本直接执行<strong>安装命令</strong>。</p>
+<p>国内加速方法1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v=3.7.5;wget http://npm.taobao.org/mirrors/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/;pyenv install $v</span><br></pre></td></tr></table></figure>
+<p>国内加速方法2：</p>
+<p>如果没有想要安装的版本或者下载Python版本超时，可以手动下载后放置在~/.pyenv/cache/直接执行以下命令。</p>
+<p>安装</p>
+<p>`pyenv install -v 3.7.5</p>
+<p>如果出现</p>
+<blockquote>
+<p>You must get working getaddrinfo() function. or you can specify “–disable-ipv6”.</p>
+</blockquote>
+<p>使用一下命令安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYTHON_CONFIGURE_OPTS=&quot;--disable-ipv6&quot; proxychains  pyenv install 3.7.5</span><br></pre></td></tr></table></figure>
+<h3 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h3><h4 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h4><p><a href="https://learning.getpostman.com/docs/postman/launching_postman/installation_and_updates/#postman-native-apps" target="_blank" rel="noopener">官网下载地址</a></p>
+<h4 id="创建启动方式"><a href="#创建启动方式" class="headerlink" title="创建启动方式"></a>创建启动方式</h4><p>创建一个桌面文件命名为：Postman.desktop。内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">Name=Postman</span><br><span class="line">Exec=/app/Postman/app/Postman %U</span><br><span class="line">Icon=/app/Postman/app/resources/app/assets/icon.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Development;</span><br></pre></td></tr></table></figure>
+<p>一旦创建Postman.desktop文件，就可以用应用程序启动器来打开，可以双击Postman图标打开。</p>
+<h3 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h3><h4 id="下载-4"><a href="#下载-4" class="headerlink" title="下载"></a>下载</h4><p>VMware不要从应用商店下载，直接去官网的<a href="https://my.vmware.com/zh/group/vmware/details?productId=362&amp;downloadGroup=WKST-1006-LX" target="_blank" rel="noopener">下载地址</a></p>
+<p>VMware官网账号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4670049@qq.com</span><br><span class="line"></span><br><span class="line">1QAZ2wsx&lt;&gt;?</span><br></pre></td></tr></table></figure>
+<h4 id="授权安装"><a href="#授权安装" class="headerlink" title="授权安装"></a>授权安装</h4><p>授权</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x VMware-Workstation-Full-10.0.6-2700073.x86_64.bundle</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su sh VMware-Workstation-Full-10.0.6-2700073.x86_64.bundle</span><br></pre></td></tr></table></figure>
+<h4 id="激活码"><a href="#激活码" class="headerlink" title="激活码"></a>激活码</h4><p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6</p>
+<p>ZC3WK-AFXEK-488JP-A7MQX-XL8YF</p>
+<p>AC5XK-0ZD4H-088HP-9NQZV-ZG2R4</p>
+<p>ZC5XK-A6E0M-080XQ-04ZZG-YF08D</p>
+<p>ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8</p>
+<p>MA491-6NL5Q-AZAM0-ZH0N2-AAJ5A</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2018-09-16, 14:03:04</p>
+        <p><span>最后更新:</span>2018-09-16, 14:03:04</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/16/LinuxDevEnviBuild/" title="Linux开发环境搭建">https://zhouhy.top/2018/09/16/LinuxDevEnviBuild/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2018/09/16/LinuxDevEnviBuild/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/15/JiGuang-Push/">
+                    极光推送功能集成
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/08/02/Intranet-penetration/">
+                    内网穿透简单介绍与工具推荐
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+  
+
+  
+  
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Jdk"><span class="toc-number">2.1.</span> <span class="toc-text">Jdk</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载"><span class="toc-number">2.1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建目录"><span class="toc-number">2.1.2.</span> <span class="toc-text">创建目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解压-JDK"><span class="toc-number">2.1.3.</span> <span class="toc-text">解压 JDK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置环境变量"><span class="toc-number">2.1.4.</span> <span class="toc-text">设置环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-number">2.1.5.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven"><span class="toc-number">2.2.</span> <span class="toc-text">Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解压安装"><span class="toc-number">2.2.2.</span> <span class="toc-text">解压安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置环境变量"><span class="toc-number">2.2.3.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看版本"><span class="toc-number">2.2.4.</span> <span class="toc-text">查看版本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mysql"><span class="toc-number">2.3.</span> <span class="toc-text">Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统约定"><span class="toc-number">2.3.1.</span> <span class="toc-text">系统约定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解压移动"><span class="toc-number">2.3.3.</span> <span class="toc-text">解压移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建软链接"><span class="toc-number">2.3.4.</span> <span class="toc-text">创建软链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#授权"><span class="toc-number">2.3.5.</span> <span class="toc-text">授权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.3.6.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加配置"><span class="toc-number">2.3.7.</span> <span class="toc-text">添加配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开启mysql服务"><span class="toc-number">2.3.8.</span> <span class="toc-text">开启mysql服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自启动"><span class="toc-number">2.3.9.</span> <span class="toc-text">自启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#相关命令"><span class="toc-number">2.3.10.</span> <span class="toc-text">相关命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#软链接"><span class="toc-number">2.3.11.</span> <span class="toc-text">软链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#忘记密码"><span class="toc-number">2.3.12.</span> <span class="toc-text">忘记密码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Navicat"><span class="toc-number">2.4.</span> <span class="toc-text">Navicat</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-1"><span class="toc-number">2.4.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#破解"><span class="toc-number">2.4.3.</span> <span class="toc-text">破解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pyenv"><span class="toc-number">2.5.</span> <span class="toc-text">Pyenv</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装pyenv"><span class="toc-number">2.5.1.</span> <span class="toc-text">安装pyenv</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用变量"><span class="toc-number">2.5.2.</span> <span class="toc-text">使用变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pyenv相关命令"><span class="toc-number">2.5.3.</span> <span class="toc-text">Pyenv相关命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-number">2.6.</span> <span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-2"><span class="toc-number">2.6.1.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Postman"><span class="toc-number">2.7.</span> <span class="toc-text">Postman</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载解压"><span class="toc-number">2.7.1.</span> <span class="toc-text">下载解压</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建启动方式"><span class="toc-number">2.7.2.</span> <span class="toc-text">创建启动方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VMware"><span class="toc-number">2.8.</span> <span class="toc-text">VMware</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-4"><span class="toc-number">2.8.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#授权安装"><span class="toc-number">2.8.2.</span> <span class="toc-text">授权安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#激活码"><span class="toc-number">2.8.3.</span> <span class="toc-text">激活码</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Linux开发环境搭建　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
+
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/15/JiGuang-Push/" title="上一篇: 极光推送功能集成">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/08/02/Intranet-penetration/" title="下一篇: 内网穿透简单介绍与工具推荐">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/linux-deepin-l2tp-config/">linux-deepin自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/AI4-for-Tensorflow-base-operation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/AI3-for-Tensorflow-of-introduce-and-install/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/AI2-for-Development-History-of-DL/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/AI1-for-AI-and-ML-and-DL/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/raspberry-pi1-for-No-Display-Config-WIFI-And-SSH/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/deepen-understanding-HTTP-session-and-MITM/">深入了解HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/iphone-install-through-plist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuang-Push/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/Intranet-penetration/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SSR-builds-its-own-ladder/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/File-Synchronization-in-Cluster-Environment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/write-a-blockchain-in-JavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/about-redis-three-Distributed-lock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/about-redis-two-Jedis-and-RedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/about-redis-one-redis-basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/linux-mysql-dump-script-cron-backup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/win10-use-ca-L2TP-OR-IPSEC-vpn-config/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/about-cross-domain-session-missing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVC-Response-get-Body/">SpringMVC：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVC-Request-get-Body/">SpringMVC：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVC-Interceptor-workflow/">SpringMVC：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVC-The-difference-between-interceptors-and-filters/">SpringMVC：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/remote-debugging-one-remotely-debugging-the-Jar-package-in-IDEA/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/game-assist-four-Java-based-memory-modifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/20/game-assist-Based-on-C-binding-handle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/game-assist-C-based-driver-level-peripheral-simulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/game-assist-one-Java-based-software-level-peripheral-simulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/hexo-seven-submit-search-engine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/hexo-six-add-comment-function/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/hexo-five-site-search-and-article-statistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/hexo-four-yelee-theme-download-and-config/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/hexo-three-uploading-resources-to-blog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/hexo-two-remote-repository-hosting-blog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/hexo-one-blog-building/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 zhou
+            </div>
+            <div class="footer-right">
+                Welcome to <a href="http://zhouhy.top/" target="_blank" title="zhou">My Blog</a><i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>

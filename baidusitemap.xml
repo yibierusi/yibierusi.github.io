@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zhouhy.top/2020/07/16/LinuxCommonSoft/</loc>
+    <lastmod>2020-07-16</lastmod>
+  </url>  <url>
     <loc>https://zhouhy.top/2019/11/22/linux-deepin-l2tp-config/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
@@ -27,6 +30,9 @@
   </url>  <url>
     <loc>https://zhouhy.top/2018/12/15/JiGuang-Push/</loc>
     <lastmod>2018-12-15</lastmod>
+  </url>  <url>
+    <loc>https://zhouhy.top/2018/09/16/LinuxDevEnviBuild/</loc>
+    <lastmod>2018-09-16</lastmod>
   </url>  <url>
     <loc>https://zhouhy.top/2018/08/02/Intranet-penetration/</loc>
     <lastmod>2018-08-02</lastmod>
@@ -105,5 +111,8 @@
   </url>  <url>
     <loc>https://zhouhy.top/2017/03/08/hexo-one-blog-building/</loc>
     <lastmod>2017-03-08</lastmod>
+  </url>  <url>
+    <loc>https://zhouhy.top/2017/06/04/WindowsDevEnviBuild/</loc>
+    <lastmod>2006-06-14</lastmod>
   </url>
 </urlset>
