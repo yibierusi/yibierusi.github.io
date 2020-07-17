@@ -74,7 +74,7 @@
       
         <tags>
             
-            <tag> soft </tag>
+            <tag> App </tag>
             
         </tags>
       
@@ -257,9 +257,9 @@
       
         <tags>
             
-            <tag> MITM </tag>
+            <tag> Session </tag>
             
-            <tag> session </tag>
+            <tag> MITM </tag>
             
         </tags>
       
@@ -338,11 +338,11 @@
       
         <tags>
             
+            <tag> MySQL </tag>
+            
             <tag> Dev </tag>
             
             <tag> Navicat </tag>
-            
-            <tag> Mysql </tag>
             
             <tag> Postman </tag>
             
@@ -358,8 +358,8 @@
     
     <entry>
       <title>内网穿透简单介绍与工具推荐</title>
-      <link href="/2018/08/02/Intranet-penetration/"/>
-      <url>/2018/08/02/Intranet-penetration/</url>
+      <link href="/2018/08/02/IP/"/>
+      <url>/2018/08/02/IP/</url>
       
         <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么需要内网穿透</p><p>当内网中的主机没有静态IP地址要被外网稳定访问时可以使用内网穿透</p><p>在互联网中唯一定位一台主机的方法是通过公网的IP地址，但固定IP是一种非常稀缺的资源，不可能给每个公司都分配一个，且许多中小公司不愿意为高昂的费用买单，多数公司直接或间接的拨号上网，电信部门会给接入网络的用户分配IP地址，以前上网用户少的时候基本分配的都是临时的静态IP地址，租约过了之后可能会更换成另一个IP地址，这样外网访问就不稳定，因为内网的静态IP地址一直变化，为了解决这个问题可以使用动态域名解析的办法变换域名指向的静态IP地址。但是现在越来越多的上网用户使得临时分配的静态IP地址也不够用了，电信部门开始分配一些虚拟的静态IP地址，这些IP是公网不能直接访问的，如以125开头的一些IP地址，以前单纯的动态域名解析就不好用了。</p><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>NAT（Network Address Translation）即网络地址转换，NAT能将其本地地址转换成全球IP地址。</p><p>内网的一些主机本来已经分配到了本地IP地址（如局域网DHCP分配的IP），但现在又想和因特网上的主机通信（并不需要加密）时，可使用NAT方法。</p><p>通过使用少量的公有IP 地址代表较多的私有IP 地址的方式，将有助于减缓可用的IP地址空间的枯竭。</p><p>NAT不仅能解决了lP地址不足与共享上网的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</p><p>多路由器可完成NAT功能。</p><h2 id="NAT实现方式"><a href="#NAT实现方式" class="headerlink" title="NAT实现方式"></a>NAT实现方式</h2><p><strong>静态转换</strong>是指将内部网络的私有IP地址转换为公有IP地址，IP地址对是一对一。</p><p><strong>动态转换</strong>是指将内部网络的私有IP地址转换为公用IP地址时，IP地址是不确定的，是随机的。</p><p><strong>端口多路复用（Port address Translation,PAT)</strong>，内部网络的所有主机均可共享一个合法外部IP地址实现对Internet的访问，从而可以最大限度地节约IP地址资源。同时又可隐藏网络内部的所有主机，有效避免来自internet的攻击。因此，目前网络中应用最多的就是端口多路复用方式。</p><p><strong>应用程序级网关技术（Application Level Gateway）ALG</strong>：传统的NAT技术只对IP层和传输层头部进行转换处理，ALG它能对这些应用程序在通信时所包含的地址信息也进行相应的NAT转换。</p><h2 id="内网穿透的定义与障碍"><a href="#内网穿透的定义与障碍" class="headerlink" title="内网穿透的定义与障碍"></a>内网穿透的定义与障碍</h2><p>简单来说实现不同局域网内的主机之间通过互联网进行通信的技术叫内网穿透。</p><p><strong>障碍一</strong>：位于局域网内的主机有两套 IP 地址，一套是局域网内的 IP 地址，通常是动态分配的，仅供局域网内的主机间通信使用；一套是经过网关转换后的外网 IP 地址，用于与外网程序进行通信。</p><p><strong>障碍二</strong>：位于不同局域网内的两台主机，即使是知道了对方的 IP 地址和端口号，“一厢情愿”地将数据包发送过去，对方也是接收不到的。<br>因为出于安全起见，除非是主机主动向对方发出了连接请求（这时会在该主机的数据结构中留下一条记录），否则，当主机接收到数据包时，如果在其数据结构中查询不到对应的记录，那些不请自来的数据包将会被丢弃。</p><p><strong>解决办法</strong>：要想解决以上两大障碍，我们需要借助一台具有公网 IP 的服务器进行桥接。</p><h2 id="热门工具分析"><a href="#热门工具分析" class="headerlink" title="热门工具分析"></a>热门工具分析</h2><p>虽然贫穷应该是使用者本人的缺点，而不是产品的缺点，但是本章还是将付费归于缺点当中。</p><h3 id="花生壳"><a href="#花生壳" class="headerlink" title="花生壳"></a>花生壳</h3><p>花生壳既是内网穿透软件、内网映射软件,也是端口映射软件。</p><p><strong>优点</strong>：规模最大，较正规，完善。</p><p><strong>缺点</strong>：付费，限制端口，限制流量。</p><h3 id="nat123"><a href="#nat123" class="headerlink" title="nat123"></a>nat123</h3><p>nat123是内网端口映射与动态域名解析软件，在内网启动映射后，可在外网访问连接内网网站等应用。</p><p><strong>缺点</strong>：免费的泛域问题严重，付费的没有短期的。</p><h3 id="NATAPP"><a href="#NATAPP" class="headerlink" title="NATAPP"></a>NATAPP</h3><p>NATAPP基于ngrok的国内内网穿透服务，<strong>免费版会强制更换域名</strong>，临时用一下可以</p><p><strong>优点</strong>：使用简单，有免费隧道，一级vip9元一个月</p><p><strong>缺点</strong>：收费</p><h3 id="Ngrok"><a href="#Ngrok" class="headerlink" title="Ngrok"></a>Ngrok</h3><p>ngrok 是一个反向代理，通过在公共端点和本地运行的 Web 服务器之间建立一个安全的通道，实现内网主机的服务可以暴露给外网。</p><p><strong>优点</strong>：开源，使用简单，有免费隧道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放。</p><p><strong>缺点</strong>：免费服务不定时强制更换域名/端口。</p><h3 id="Cpolar"><a href="#Cpolar" class="headerlink" title="Cpolar"></a>Cpolar</h3><p>Cpolar是一个反向代理，通过在公共端点和本地运行的 Web 服务器之间建立一个安全的通道。</p><p><strong>优点</strong>：有免费的隧道，使用简单，并且免费版不会定时强制更换域名或者端口。</p><p>官网：<a href="https://www.cpolar.com" target="_blank" rel="noopener">https://www.cpolar.com</a></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>免费的比较推荐Cpolar 。</li><li>有公网IP的服务器可以自己搭建。</li><li>如果应用于微信平台开发，花生壳用不了；nat123泛域严重，vip比较贵 ；NatApp域名会强制变更，不稳定；Ngrok 有泛域问题，隧道不稳定。</li><li>内网穿透工具不局限文中几种，只是其中几种恰好本人用过，其余还有Spike、Lanproxy、Frp、Natapp、Ssh、3322动态域名、dnspod。</li><li>需要深入了解原理可以参考，<a href="https://zhuanlan.zhihu.com/p/30351943" target="_blank" rel="noopener">内网穿透的工具原理与开发实战</a>。</li></ul>]]></content>
       
@@ -373,9 +373,9 @@
       
         <tags>
             
-            <tag> cpolar </tag>
+            <tag> Cpolar </tag>
             
-            <tag> ngrok </tag>
+            <tag> Ngrok </tag>
             
         </tags>
       
@@ -400,9 +400,9 @@
       
         <tags>
             
-            <tag> ssr </tag>
+            <tag> Ssr </tag>
             
-            <tag> vps </tag>
+            <tag> Vps </tag>
             
         </tags>
       
@@ -797,7 +797,7 @@
       
         <tags>
             
-            <tag> xnx3 </tag>
+            <tag> Xnx3 </tag>
             
             <tag> Handle </tag>
             
@@ -824,11 +824,11 @@
       
         <tags>
             
-            <tag> ddxoft </tag>
+            <tag> Script </tag>
             
-            <tag> dll </tag>
+            <tag> DdXoft </tag>
             
-            <tag> script </tag>
+            <tag> Dll </tag>
             
         </tags>
       
