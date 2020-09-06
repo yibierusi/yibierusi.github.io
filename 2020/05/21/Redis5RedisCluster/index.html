@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zhou">
+
+
+
+<meta name="description" content="Redis集群讲了主从模式和哨兵模式，就差一个Redis Cluster了,Redis Cluster模式综合了主从和哨兵的优点，也是互联网公司用的比较多的模式，搭建也相对比较简单。">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Redis(五)：Cluster模式">
+<meta property="og:url" content="https://zhouhy.top/2020/05/21/Redis5RedisCluster/index.html">
+<meta property="og:site_name" content="ZHOU&#39;s Blog">
+<meta property="og:description" content="Redis集群讲了主从模式和哨兵模式，就差一个Redis Cluster了,Redis Cluster模式综合了主从和哨兵的优点，也是互联网公司用的比较多的模式，搭建也相对比较简单。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zhouhy.top/2020/05/21/Redis5RedisCluster/cluster.png">
+<meta property="og:updated_time" content="2020-05-21T08:03:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Redis(五)：Cluster模式">
+<meta name="twitter:description" content="Redis集群讲了主从模式和哨兵模式，就差一个Redis Cluster了,Redis Cluster模式综合了主从和哨兵的优点，也是互联网公司用的比较多的模式，搭建也相对比较简单。">
+<meta name="twitter:image" content="https://zhouhy.top/2020/05/21/Redis5RedisCluster/cluster.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="ZHOU&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>关于Redis(五)：Cluster模式 | ZHOU&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zhou</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">莫问收获,但求耕耘</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/App/">App</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Baidu/">Baidu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blockchain/">Blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ce/">Ce</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cluster/">Cluster</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comment/">Comment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cpolar/">Cpolar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crontab/">Crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DdXoft/">DdXoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dll/">Dll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Filter/">Filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handle/">Handle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerInterceptor/">HandlerInterceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletRequestWrapper/">HttpServletRequestWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HttpServletResponseWrapper/">HttpServletResponseWrapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Idea/">Idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interceptor/">Interceptor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jar/">Jar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaFx/">JavaFx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jedis/">Jedis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JiGuang/">JiGuang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp/">L2tp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L2tp-IpSec/">L2tp/IpSec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logstash/">Logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ngrok/">Ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Push/">Push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyenv/">Pyenv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RedisTemplate/">RedisTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Remote/">Remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Resources/">Resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robot/">Robot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scp/">Scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Script/">Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/">Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Seo/">Seo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sftp/">Sftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Soft/">Soft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ssh/">Ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ssr/">Ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensorflow/">Tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Themes/">Themes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Upload/">Upload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vpn/">Vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vps/">Vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xnx3/">Xnx3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/">Yelee</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/yibierusi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zhouhy.top">zhou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">life is so short, do something to make yourself happy, such as coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">莫问收获,但求耕耘</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/yibierusi" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/big_dreamers" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=110939435" title="网易云音乐"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhouhy1205@aliyun.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-Redis5RedisCluster" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/21/Redis5RedisCluster/" class="article-date">
+      <time datetime="2020-05-21T08:03:21.000Z" itemprop="datePublished">2020-05-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于Redis(五)：Cluster模式
+    </h1>
+  
+
+		
+			<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
+        <span class="post-count">2.7k&#23383;</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
+        <span class="post-count">11m</span>
+      </span>
+    </span>
+</div>
+		
+      </header>
+      
+      <div class="article-info article-info-post" style="margin-top:-5px">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/NoSql/">NoSql</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Redis集群的三种模式主从模式、Sentinel模式、Cluster模式，就差一个Cluster了,Cluster模式综合了主从和哨兵的优点，也是互联网公司用的比较多的模式，搭建也相对比较简单。</p>
+<p>Cluster模式的高可靠性是三种模式中最高的，达到了99.99%，也就是4个9。</p>
+<blockquote>
+<p>在软件系统的高可靠性(也称为可用性，英文描述为HA，High Available)里有个衡量其可靠性的标准——X个9，这个X是代表数字3~5。X个9表示在软件系统1年时间的使用过程中，系统可以正常使用时间与总时间(1年)之比，我们通过下面的计算来感受下X个9在不同级别的可靠性差异。</p>
+<ul>
+<li>3个9：(1-99.9%)36524=8.76小时，表示该软件系统在连续运行1年时间里最多可能的业务中断时间是8.76小时。</li>
+<li>4个9：(1-99.99%)36524=0.876小时=52.6分钟，表示该软件系统在连续运行1年时间里最多可能的业务中断时间是52.6分钟。</li>
+<li>5个9：(1-99.999%)3652460=5.26分钟，表示该软件系统在连续运行1年时间里最多可能的业务中断时间是5.26分钟。</li>
+<li>1个9：(1-90%)365=36.5天</li>
+<li>2个9：(1-99%)365=3.65天</li>
+<li>6个9：(1-99.9999%)3652460*60=31秒</li>
+</ul>
+</blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="模式介绍"><a href="#模式介绍" class="headerlink" title="模式介绍"></a><strong>模式介绍</strong></h3><p>sentinel模式基本可以满足一般生产的需求，具备高可用性。但是当数据量过大到一台服务器存放不下的情况时，主从模式或sentinel模式就不能满足需求了，这个时候需要对存储的数据进行分片，将数据存储到多个Redis实例中。cluster模式的出现就是为了解决单机Redis容量有限的问题，将Redis的数据根据一定的规则分配到多台机器。</p>
+<p>cluster可以说是sentinel和主从模式的结合体，通过cluster可以实现主从和master重选功能，所以如果配置两个副本三个分片的话，就需要六个Redis实例。因为Redis的数据是根据一定规则分配到cluster的不同机器的，当数据量过大时，可以新增机器进行扩容。</p>
+<p>使用集群，只需要将redis配置文件中的<code>cluster-enable</code>配置打开即可。每个集群中至少需要三个主数据库才能正常运行，新增节点非常方便。</p>
+<p><img src="/2020/05/21/Redis5RedisCluster/cluster.png" alt="集群模式"></p>
+<p>Cluster整个集群有16384个槽位，16384个槽位分发整个集群的所有主节点（分配可自定义），从节点仅同步主节点数据。当set键值的时候对key进行哈希计算得出hash value,hash value对16384取余，得出的值为多少，就分配到哪个槽位存储。</p>
+<h3 id="扩展内容"><a href="#扩展内容" class="headerlink" title="扩展内容"></a>扩展内容</h3><p>为什么是16384？</p>
+<blockquote>
+<p><strong>1、</strong>正常的心跳包携带节点的完整配置，可以用幂等方式替换旧节点以更新旧配置。 这意味着它们包含原始形式的节点的插槽配置，它使用带有16k插槽的2k空间，但使用65k插槽时将使用高达8k的空间。<br><strong>2、</strong>同时，由于其他设计权衡，Redis Cluster不太可能扩展到超过1000个主节点。<br>因此，16k处于正确的范围内，以确保每个主站有足够的插槽，最多1000个主站，但足够小的数字可以轻松地将插槽配置传播为原始位图。 请注意，在小型集群中，位图难以压缩，因为当N很小时，位图将设置插槽/ N位，这是设置的大部分位。</p>
+<p><strong>其它：</strong>在redis节点发送心跳包时需要把所有的槽放到这个心跳包里，以便让节点知道当前集群信息，16384=16k，在发送心跳包时使用char进行bitmap压缩后是2k（2 <em> 8 (8 bit) </em> 1024(1k) = 2K），也就是说使用2k的空间创建了16k的槽数。虽然使用CRC16算法最多可以分配65535（2^16-1）个槽位，65535=65k，压缩后就是8k（8 <em> 8 (8 bit) </em> 1024(1k) = 8K），也就是说需要需要8k的心跳包，作者认为这样做不太值得；并且一般情况下一个redis集群不会有超过1000个master节点，所以16k的槽位是个比较合适的选择.</p>
+<p><strong>(1)如果槽位为65536，发送心跳信息的消息头达8k，发送的心跳包过于庞大。</strong><br>如上所述，在消息头中，最占空间的是<code>myslots[CLUSTER_SLOTS/8]</code>。<br>当槽位为65536时，这块的大小是:<code>65536÷8÷1024=8kb</code><br>因为每秒钟，redis节点需要发送一定数量的ping消息作为心跳包，如果槽位为65536，这个ping消息的消息头太大了，浪费带宽。<br><strong>(2)redis的集群主节点数量基本不可能超过1000个。</strong><br>如上所述，集群节点越多，心跳包的消息体内携带的数据越多。如果节点过1000个，也会导致网络拥堵。因此redis作者，不建议redis cluster节点数量超过1000个。<br>那么，对于节点数在1000以内的redis cluster集群，16384个槽位够用了。没有必要拓展到65536个。<br><strong>(3)槽位越小，节点少的情况下，压缩率高</strong><br>Redis主节点的配置信息中，它所负责的哈希槽是通过一张bitmap的形式来保存的，在传输过程中，会对bitmap进行压缩，但是如果bitmap的填充率slots / N很高的话(N表示节点数)，bitmap的压缩率就很低。<br>如果节点数很少，而哈希槽数量很多的话，bitmap的压缩率就很低。</p>
+</blockquote>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a><strong>特点</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>多个redis节点网络互联，数据共享</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>所有的节点都是一主一从（也可以是一主多从），其中从不提供服务，仅作为备用 </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>客户端可以连接任何一个主节点进行读写</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>不支持同时处理多个key（如MSET/MGET），因为redis需要把key均匀分布在各个节点上，并发量很高的情况下同时创建key-value会降低性能并导致不可预测的行为   * 支持在线增加、删除节点。</span><br></pre></td></tr></table></figure>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a><strong>部署</strong></h3><h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a><strong>环境准备</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>没有那么多机器所以在一个机器上部署的。</span><br><span class="line"><span class="meta">#</span>填写内网ip，如果在不同的内网可以使用公网ip</span><br><span class="line"><span class="meta">#</span>192.168.1.101 端口7001,7002,7003,7004,7005,7006</span><br></pre></td></tr></table></figure>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a><strong>配置文件</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/redis/cluster</span><br><span class="line">cp /usr/local/redis/redis.conf /usr/local/redis/cluster/redis_7001.conf</span><br><span class="line">chown -R redis:redis /usr/local/redis*</span><br></pre></td></tr></table></figure>
+<p>redis_7001.conf 配置修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/redis/cluster/redis_7001.conf</span><br><span class="line">bind 192.168.1.101 </span><br><span class="line">port 7001 </span><br><span class="line"><span class="meta">#</span>启用守护线程，即后台运行</span><br><span class="line">daemonize yes </span><br><span class="line">pidfile "/var/run/redis_7001.pid" </span><br><span class="line">logfile "/usr/local/redis/cluster/redis_7001.log" </span><br><span class="line">dir "/data/redis/cluster/redis_7001"</span><br><span class="line"><span class="meta">#</span>replicaof 192.168.1.101 6379</span><br><span class="line"><span class="meta">#</span>主节点密码</span><br><span class="line">masterauth 123456</span><br><span class="line"><span class="meta">#</span>当前节点密码</span><br><span class="line">requirepass 123456 </span><br><span class="line">appendonly yes </span><br><span class="line">cluster-enabled yes </span><br><span class="line">cluster-config-file nodes_7001.conf </span><br><span class="line">cluster-node-timeout 15000</span><br></pre></td></tr></table></figure>
+<p>将redis_7001.conf的配置中7001替换为7002,7003,7004,7005,7006并放在相应的目录下，我这里是6个redis密码都是123456,如果不相同也需要修改。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sed '/s/7001/7002/g' /usr/local/redis/cluster/redis_7001.conf &gt; /usr/local/redis/cluster/redis_7002.conf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>启动6个服务</span><br><span class="line">redis-server /usr/local/redis/cluster/redis_7001.conf</span><br><span class="line">tail -f /usr/local/redis/cluster/redis_7001.log</span><br></pre></td></tr></table></figure>
+<h4 id="关联节点、分配槽位"><a href="#关联节点、分配槽位" class="headerlink" title="关联节点、分配槽位"></a>关联节点、分配槽位</h4><p>Redis5.x以前需要安装ruby，使用<strong>redis-trib</strong>进行操作，过于繁琐且不常用这里不讲了。此处使用<strong>redis-cli</strong> 命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看redis-cli下有哪些命令</span><br><span class="line"><span class="meta">#</span>redis-cli --cluster help</span><br><span class="line">root@caaee4f5f282:/# redis-cli --cluster help</span><br><span class="line">Cluster Manager Commands:</span><br><span class="line"><span class="meta">#</span>关联节点、分配槽位</span><br><span class="line">  create         host1:port1 ... hostN:portN</span><br><span class="line">                 --cluster-replicas &lt;arg&gt;</span><br><span class="line">  check          host:port</span><br><span class="line">                 --cluster-search-multiple-owners</span><br><span class="line">  info           host:port</span><br><span class="line">  fix            host:port</span><br><span class="line">                 --cluster-search-multiple-owners</span><br><span class="line">                 --cluster-fix-with-unreachable-masters</span><br><span class="line"><span class="meta">#</span>从新分片</span><br><span class="line">  reshard        host:port</span><br><span class="line">                 --cluster-from &lt;arg&gt;</span><br><span class="line">                 --cluster-to &lt;arg&gt;</span><br><span class="line">                 --cluster-slots &lt;arg&gt;</span><br><span class="line">                 --cluster-yes</span><br><span class="line">                 --cluster-timeout &lt;arg&gt;</span><br><span class="line">                 --cluster-pipeline &lt;arg&gt;</span><br><span class="line">                 --cluster-replace</span><br><span class="line">  rebalance      host:port</span><br><span class="line">                 --cluster-weight &lt;node1=w1...nodeN=wN&gt;</span><br><span class="line">                 --cluster-use-empty-masters</span><br><span class="line">                 --cluster-timeout &lt;arg&gt;</span><br><span class="line">                 --cluster-simulate</span><br><span class="line">                 --cluster-pipeline &lt;arg&gt;</span><br><span class="line">                 --cluster-threshold &lt;arg&gt;</span><br><span class="line">                 --cluster-replace</span><br><span class="line"><span class="meta">#</span>添加节点</span><br><span class="line">  add-node       new_host:new_port existing_host:existing_port</span><br><span class="line">                 --cluster-slave</span><br><span class="line">                 --cluster-master-id &lt;arg&gt;</span><br><span class="line"><span class="meta">#</span>删除节点</span><br><span class="line">  del-node       host:port node_id</span><br><span class="line">  call           host:port command arg arg .. arg</span><br><span class="line">  set-timeout    host:port milliseconds</span><br><span class="line">  import         host:port</span><br><span class="line">                 --cluster-from &lt;arg&gt;</span><br><span class="line">                 --cluster-copy</span><br><span class="line">                 --cluster-replace</span><br><span class="line">  backup         host:port backup_directory</span><br><span class="line">  help</span><br><span class="line"></span><br><span class="line">For check, fix, reshard, del-node, set-timeout you can specify the host and port of any working node in the cluster.</span><br></pre></td></tr></table></figure>
+<p><strong>关联节点、分配槽位</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>这里我们要使用的命令是create，关联和分配槽位一条命令搞定</span><br><span class="line">redis-cli --cluster create 192.168.1.101:7001 192.168.1.101:7002 192.168.1.101:7003 192.168.1.101:7004 192.168.1.101:7005 192.168.1.101:7006 --cluster-replicas 1</span><br><span class="line"><span class="meta">#</span>此处的--cluster-replicas 1 中的是从：主为1：1,前三台为主，后三台为从，主节点至少为3个。</span><br></pre></td></tr></table></figure>
+<p>进入任意节点查看节点信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.101:7001&gt; cluster nodes</span><br><span class="line"><span class="meta">#</span>c29f322cf58a7ff10a1357995e5ce0792da5b2c2 节点id</span><br><span class="line"><span class="meta">#</span>10923-16383 槽位</span><br><span class="line">c29f322cf58a7ff10a1357995e5ce0792da5b2c2 192.168.1.101:7003@17003 master - 0 1599318471486 3 connected 10923-16383</span><br><span class="line">8bb12c309b58fc15bd524f349c5fe5a50ed6faf2 192.168.1.101:7002@17002 master - 0 1599318470483 2 connected 5461-10922</span><br><span class="line"><span class="meta">#</span>d93f423156f246ff12ecf02e1b7d2de16b840b6b 主节点id d93f423156f246ff12ecf02e1b7d2de16b840b6b</span><br><span class="line">05698adaeffff10d6dfeb6e7a871a4dc33c41de6 192.168.1.101:7005@17005 slave d93f423156f246ff12ecf02e1b7d2de16b840b6b 0 1599318470000 1 connected</span><br><span class="line">1fefe4e0cdbbab9450584e7572af7b7d17b7be3b 192.168.1.101:7006@17006 slave 8bb12c309b58fc15bd524f349c5fe5a50ed6faf2 0 1599318469000 2 connected</span><br><span class="line">e3ff11658e1e2189504458f7be5464bf32fa113b 192.168.1.101:7004@17004 slave c29f322cf58a7ff10a1357995e5ce0792da5b2c2 0 1599318469000 3 connected</span><br><span class="line">d93f423156f246ff12ecf02e1b7d2de16b840b6b 192.168.1.101:7001@17001 myself,master - 0 1599318467000 1 connected 0-5460</span><br><span class="line">192.168.1.101:7001&gt;</span><br><span class="line"><span class="meta">#</span>可查看集群信息，太长了，不贴了。</span><br><span class="line">192.168.1.101:7001&gt; CLUSTER INFO</span><br><span class="line"><span class="meta">#</span>更改对应节点身份,将某个节点设置为master节点</span><br><span class="line">192.168.1.101:7008&gt; CLUSTER REPLICATE &lt;节点id&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="集群扩容"><a href="#集群扩容" class="headerlink" title="集群扩容"></a>集群扩容</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>新增redis服务并启动，配置同上。</span><br><span class="line">192.168.1.101 端口7007,7008</span><br></pre></td></tr></table></figure>
+<h4 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a><strong>添加节点</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>添加为主节点</span><br><span class="line">redis-cli --cluster add-node 192.168.1.101:7007 &lt;redis集群中任意IP&gt;:&lt;IP对应的端口号&gt;</span><br><span class="line"><span class="meta">#</span>添加为刚才新建主节点(192.168.1.101:7007)的从节点</span><br><span class="line">redis-cli --cluster add-node 192.168.1.101:7008 &lt;redis集群中任意IP&gt;:&lt;IP对应的端口号&gt; --cluster-master-id &lt;192.168.1.101:7007的节点id&gt;</span><br><span class="line"><span class="meta">#</span>此时新增的节点并没有分配槽位需要使用reshard命令</span><br><span class="line">redis-cli --cluster reshard &lt;集群中任意ip&gt;:&lt;IP对应的端口号&gt;</span><br><span class="line"><span class="meta">#</span>此处会提示需要分配多少个槽位，此处分配1000</span><br><span class="line">How many slots do you want to move(form 1 to 16384)? 1000</span><br><span class="line"><span class="meta">#</span>此处会提示分配给哪个节点</span><br><span class="line">What is the receiving node ID? &lt;192.168.1.101:7007的节点ID&gt;</span><br><span class="line"><span class="meta">#</span>此处提示从从那个主节点挤出槽位给新增主节点。如果是从所有主节点平均分配输入all并回车，即7001,7002,7003节点的槽位分别减少333,333,334个。</span><br><span class="line"><span class="meta">#</span>以下命令是从7001节点,7002节点各分500个槽位给新增主节点</span><br><span class="line">Source node #1:&lt;7001节点的ID&gt;</span><br><span class="line">Source node #2:&lt;7002节点的ID&gt;</span><br><span class="line">Source node #3:done</span><br></pre></td></tr></table></figure>
+<p>删除节点同理。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>Redis相关的东西再来一篇集群在SpinngBoot下的应用以及关键知识点的总结就差不多了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/05/21/Redis5RedisCluster/">关于Redis(五)：Cluster模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
+        <p><span>发布时间:</span>2020-05-21, 16:03:21</p>
+        <p><span>最后更新:</span>2020-05-21, 16:03:21</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/21/Redis5RedisCluster/" title="关于Redis(五)：Cluster模式">https://zhouhy.top/2020/05/21/Redis5RedisCluster/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2020/05/21/Redis5RedisCluster/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/05/21/Redis6SpringBootConnectRedisCluster/">
+                    关于Redis(六)：SpringBoot连接集群的简单应用
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+  
+
+  
+  
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模式介绍"><span class="toc-number">2.1.</span> <span class="toc-text">模式介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展内容"><span class="toc-number">2.2.</span> <span class="toc-text">扩展内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">2.3.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署"><span class="toc-number">2.4.</span> <span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#环境准备"><span class="toc-number">2.4.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件"><span class="toc-number">2.4.2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关联节点、分配槽位"><span class="toc-number">2.4.3.</span> <span class="toc-text">关联节点、分配槽位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集群扩容"><span class="toc-number">2.4.4.</span> <span class="toc-text">集群扩容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加节点"><span class="toc-number">2.4.5.</span> <span class="toc-text">添加节点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"关于Redis(五)：Cluster模式　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+		<section class="livere" id="comments">
+<!-- 来必力City版安装代码 -->
+	<div id="lv-container" data-id="city" data-uid="MTAyMC80MjA0MC8xODU4Nw==">
+		<script type="text/javascript">
+	   (function(d, s) {
+		   var j, e = d.getElementsByTagName(s)[0];
+
+		   if (typeof LivereTower === 'function') { return; }
+
+		   j = d.createElement(s);
+		   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		   j.async = true;
+
+		   e.parentNode.insertBefore(j, e);
+	   })(document, 'script');
+		</script>
+	<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+	</div>
+<!-- City版安装代码已完成 -->
+</section>
+
+	
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/05/21/Redis6SpringBootConnectRedisCluster/" title="下一篇: 关于Redis(六)：SpringBoot连接集群的简单应用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/Redis5RedisCluster/">关于Redis(五)：Cluster模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/Redis6SpringBootConnectRedisCluster/">关于Redis(六)：SpringBoot连接集群的简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/Redis4MasterSlaveAndSentinelMode/">关于Redis(四)：主从模式与哨兵模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/DockerInsideInstallElk/">Docker中安装ELK</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/DeepinLinuxL2tpConfig/">DeepinLinux自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/Ai4TensorflowBaseOperation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai1DlAndMl/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/Raspberrypi1NotDisplayConfigWifiAndSsh/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/HttpSessionAndMitm/">HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/IphoneInstallThroughPlist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuangPush/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/IP/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SsrBuildsMyVpn/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/FileSynchronizationInClusterEnvironment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/BlockchainUseJavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/Redis3DistributedLock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/Redis2JedisAndRedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Redis1Basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/CrossDomainSessionMissing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVCResponseGetBody/">SpringMvc：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVCRequestGetBody/">SpringMvc：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVCInterceptorWorkflow/">SpringMvc：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVCDifferenceBetweenInterceptorsAndFilters/">SpringMvc：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/RemoteDebugging1JarPackageInIdea/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/11/GameAssist4JavaMemoryModifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/GameAssist1JavaSoftwareLevelPeripheralSimulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/Hexo7SubmitSearchEngine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/12/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Hexo4YeleeThemeDownloadAndConfig/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/Hexo3UploadingResourcesBlog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Hexo2RemoteRepositoryHostingBlog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/Hexo1BlogBuilding/">Hexo系列（一）：个人博客搭建</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 zhou
+            </div>
+            <div class="footer-right">
+                Welcome to <a href="http://zhouhy.top/" target="_blank" title="zhou">My Blog</a><i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>

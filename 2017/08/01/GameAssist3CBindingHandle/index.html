@@ -15,24 +15,18 @@
 
 
 
-<meta name="description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
-<meta name="keywords" content="Comment">
+<meta name="description" content="主要记录一下通过Java去操作窗口句柄（实际上还是通过C）的效果验证，Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。">
+<meta name="keywords" content="Xnx3,Handle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo系列（六）：添加评论功能">
-<meta property="og:url" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/index.html">
+<meta property="og:title" content="游戏辅助（三）：基于C绑定句柄">
+<meta property="og:url" content="https://zhouhy.top/2017/08/01/GameAssist3CBindingHandle/index.html">
 <meta property="og:site_name" content="ZHOU&#39;s Blog">
-<meta property="og:description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
+<meta property="og:description" content="主要记录一下通过Java去操作窗口句柄（实际上还是通过C）的效果验证，Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/来必力官网首页.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/数据分析.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/代码.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/插入位置.jpg">
-<meta property="og:image" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/评论.jpg">
-<meta property="og:updated_time" content="2017-04-22T04:44:27.000Z">
+<meta property="og:updated_time" content="2017-08-01T08:33:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo系列（六）：添加评论功能">
-<meta name="twitter:description" content="博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。">
-<meta name="twitter:image" content="https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/来必力官网首页.jpg">
+<meta name="twitter:title" content="游戏辅助（三）：基于C绑定句柄">
+<meta name="twitter:description" content="主要记录一下通过Java去操作窗口句柄（实际上还是通过C）的效果验证，Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -64,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo系列（六）：添加评论功能 | ZHOU&#39;s Blog</title>
+<title>游戏辅助（三）：基于C绑定句柄 | ZHOU&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -279,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Hexo6AddCommentFunction" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-GameAssist3CBindingHandle" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/22/Hexo6AddCommentFunction/" class="article-date">
-      <time datetime="2017-04-22T04:44:27.000Z" itemprop="datePublished">2017-04-22</time>
+      <a href="/2017/08/01/GameAssist3CBindingHandle/" class="article-date">
+      <time datetime="2017-08-01T08:33:08.000Z" itemprop="datePublished">2017-08-01</time>
 </a>
 
 
@@ -298,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo系列（六）：添加评论功能
+      游戏辅助（三）：基于C绑定句柄
     </h1>
   
 
@@ -308,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> &#25991;&#31456;&#23383;&#25968;: </span>
-        <span class="post-count">450&#23383;</span>
+        <span class="post-count">656&#23383;</span>
       </span>
     </span>
 
@@ -317,7 +311,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  &#38405;&#35835;&#26102;&#38271;: </span>
-        <span class="post-count">1m</span>
+        <span class="post-count">2m</span>
       </span>
     </span>
 </div>
@@ -327,13 +321,13 @@
       <div class="article-info article-info-post" style="margin-top:-5px">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    <a class="article-category-link" href="/categories/GameAssist/">GameAssist</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Comment/">Comment</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Handle/">Handle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xnx3/">Xnx3</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -343,44 +337,73 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>博客评论功能的重要性不言而喻，拥有了评论功能就相当于拥有了一批志同道合的良师益友，可以指出文章中的错误得到提高，可以讨论加深理解与认同。</p>
-</blockquote>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>yelee</code>主题目前支持 Disqus，多说 及 友言评论，把 <code>#on: true</code> 改为 <code>on: true</code> 即启用对应评论系统<br>但是多说已经关闭，友言是基于Web的，Disqus在手机上展示不出来，发现还需要翻墙，那实在对用户太不友好了，于是我选择使用<a href="https://www.livere.com/" target="_blank" rel="noopener">来必力</a>评论系统。<br><img src="/2017/04/22/Hexo6AddCommentFunction/来必力官网首页.jpg" alt="来必力官网首页"></p>
-<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册后可以查看详细的评论数据分析。<br><img src="/2017/04/22/Hexo6AddCommentFunction/数据分析.jpg" alt="数据分析"></p>
-<h3 id="获取data-uid"><a href="#获取data-uid" class="headerlink" title="获取data-uid"></a>获取data-uid</h3><p>代码管理，我们需要用到这个<code>data-uid</code><br><img src="/2017/04/22/Hexo6AddCommentFunction/代码.jpg" alt="代码"></p>
-<h3 id="添加data-uid"><a href="#添加data-uid" class="headerlink" title="添加data-uid"></a>添加data-uid</h3><p>打开<code>theme/yelee/_config.yml</code>，添加配置信息</p>
-<pre><code>livere:
-    on: true
-    livere_uid: Your uid
-</code></pre><h3 id="创建ejs文件"><a href="#创建ejs文件" class="headerlink" title="创建ejs文件"></a>创建ejs文件</h3><p>在<code>themes/yelee/layout/_partial/comments</code>文件夹创建<code>livere.ejs</code>文件，将代码拷贝进去，将你注册后的代码拷贝到<code>&lt;section&gt;&lt;/section</code>&gt;里面。</p>
-<pre><code>&lt;section class=&quot;livere&quot; id=&quot;comments&quot;&gt;
-    &lt;!-- 来必力City版安装代码 --&gt;
-    &lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;Your uid&quot;&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面几篇介绍了用Java调用第三方插件去进行驱动级别的外设模拟，至于基于Java的以图找图，以色定位就不多说了，Robot就可以满足，本文讲的是通过Java操作句柄（实际上还是通过C），Java本身的定位并不适合写辅助，这篇博客只是娱乐一下，研究为主。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>首先导入xnx3.jar</strong>,以寻仙窗口句柄为例。</p>
+<pre><code>import com.xnx3.microsoft.Com;
+import com.xnx3.microsoft.Mouse;
+import com.xnx3.microsoft.Press;
+import com.xnx3.microsoft.Sleep;
+import com.xnx3.microsoft.Window;
 
-       if (typeof LivereTower === &apos;function&apos;) { return; }
+    /**
+     * 寻仙游戏模拟操作
+     */
+    public class XunXianTest {
+        public static void main(String[] args) {
 
-       j = d.createElement(s);
-       j.src = &apos;https://cdn-city.livere.com/js/embed.dist.js&apos;;
-       j.async = true;
+            //所有辅助的，模拟进行某种操作(键盘、鼠标、..)要先创建此类,在new Com()时，会自动检测运行环境是否符合、部署、注册Dll
+            Com com=new Com();
 
-       e.parentNode.insertBefore(j, e);
-       })(document, &apos;script&apos;);
-    &lt;/script&gt;
-    &lt;noscript&gt; 为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;
-    &lt;/div&gt;
-    &lt;!-- City版安装代码已完成 --&gt;
-&lt;/section&gt;
-</code></pre><h3 id="追加逻辑判断"><a href="#追加逻辑判断" class="headerlink" title="追加逻辑判断"></a>追加逻辑判断</h3><p>打开<code>themes/yelee/layout/_partial/article.ejs</code>，在下图位置插入下面的逻辑判断代码</p>
-<pre><code>else if (theme.livere.on) { %&gt;
-    &lt;%- partial(&apos;comments/livere&apos;) %&gt;
-&lt;% } 
-</code></pre><p><img src="/2017/04/22/Hexo6AddCommentFunction/插入位置.jpg" alt="插入位置"></p>
-<p>到这一步就完成了，集成评论。<br><img src="/2017/04/22/Hexo6AddCommentFunction/评论.jpg" alt="评论"></p>
+            //返回创建Com()的结果，如果自检过程中发现异常，创建Com失败，则调用此会返回false
+            if(!com.isCreateSuccess()){
+                return;
+            }
 
+            //创建window窗口操作对象
+            Window window=new Window(com.getActiveXComponent());
+
+            //查找当前运行的程序中标题包含“寻仙 -”三个字的窗口句柄，
+            int hwnd=window.findWindow(0, null, &quot;寻仙 -&quot;);
+            //如果找到了寻仙这个游戏窗口了，确定是有这个程序存在，那么可以继续以下操作
+            if(hwnd&gt;0){
+
+                        /*
+                         * 对找到的寻仙这个窗口进行绑定，绑定完毕后，那么所有的鼠标、键盘、图色等操作就是都是对这个窗口（寻仙游戏）操作的，完全后台的~~，窗口可以被遮挡、点击葫芦隐藏，但是不可以最小化
+                         * 寻仙的就是这种模式绑定，只需要传入窗口句柄就可
+                         * 其他游戏的请自行组合测试绑定模式,使用： com.bind(hwnd, display, mouse, key, mode) 自行测试
+                         */
+                if(com.bind(hwnd)){
+
+                    /**
+                     * 绑定完毕，对游戏的操作全在这里
+                     */
+                    Press press=new Press(com.getActiveXComponent());        //创建模拟按键对象
+                    Mouse mouse=new Mouse(com.getActiveXComponent());        //创建模拟鼠标对象
+                    Sleep sleep=new Sleep();                                                        //创建延迟等待对象
+
+                    /***************以下来模拟按wasd四个方向键转三圈，然后结束软件退出运行***************/
+                    int i=0;
+                    while(i++&lt;3){
+                        press.keyPressTime(Press.W, 300);        //模拟按下W键0.3秒钟
+                        press.keyPressTime(Press.A, 300);
+                        press.keyPressTime(Press.S, 300);
+                        press.keyPressTime(Press.D, 300);
+                    }
+
+                    System.out.println(&quot;执行完毕&quot;);
+
+                }else{
+                    System.out.println(&quot;窗口绑定失败&quot;);
+                }
+            }else{
+                System.out.println(&quot;没有发现寻仙窗口&quot;);
+            }
+
+            //用完后一定要记得释放，释放内存，无论是否绑定了窗口、绑定是否成功，都可以直接调用此函数释放
+            com.unbind();
+        }
+    }
+</code></pre>
       
     </div>
     
@@ -388,13 +411,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/22/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/01/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zhou</a></p>
-        <p><span>发布时间:</span>2017-04-22, 12:44:27</p>
-        <p><span>最后更新:</span>2017-04-22, 12:44:27</p>
+        <p><span>发布时间:</span>2017-08-01, 16:33:08</p>
+        <p><span>最后更新:</span>2017-08-01, 16:33:08</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/22/Hexo6AddCommentFunction/" title="Hexo系列（六）：添加评论功能">https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/04/22/Hexo6AddCommentFunction/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/01/GameAssist3CBindingHandle/" title="游戏辅助（三）：基于C绑定句柄">https://zhouhy.top/2017/08/01/GameAssist3CBindingHandle/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhouhy.top/2017/08/01/GameAssist3CBindingHandle/　　作者: zhou" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -407,15 +430,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/05/28/Hexo7SubmitSearchEngine/">
-                    Hexo系列（七）：提交搜索引擎
+                <a href="/2017/08/11/GameAssist4JavaMemoryModifier/">
+                    游戏辅助（四）：基于Java的内存修改器（CE）
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">
-                    Hexo系列（五）：站内搜索与文章统计
+                <a href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">
+                    游戏辅助（二）：基于C的驱动级外设模拟
                 </a>
             </div>
         
@@ -433,7 +456,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册"><span class="toc-number">2.1.</span> <span class="toc-text">注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取data-uid"><span class="toc-number">2.2.</span> <span class="toc-text">获取data-uid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加data-uid"><span class="toc-number">2.3.</span> <span class="toc-text">添加data-uid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建ejs文件"><span class="toc-number">2.4.</span> <span class="toc-text">创建ejs文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#追加逻辑判断"><span class="toc-number">2.5.</span> <span class="toc-text">追加逻辑判断</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
         
     </div>
     <style>
@@ -469,7 +492,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo系列（六）：添加评论功能　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"游戏辅助（三）：基于C绑定句柄　| ZHOU's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -511,7 +534,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/28/Hexo7SubmitSearchEngine/" title="上一篇: Hexo系列（七）：提交搜索引擎">
+            <a href="/2017/08/11/GameAssist4JavaMemoryModifier/" title="上一篇: 游戏辅助（四）：基于Java的内存修改器（CE）">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -519,13 +542,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/" title="下一篇: Hexo系列（五）：站内搜索与文章统计">
+            <a href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/" title="下一篇: 游戏辅助（二）：基于C的驱动级外设模拟">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/DockerInsideInstallElk/">Docker中安装ELK</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/DeepinLinuxL2tpConfig/">DeepinLinux自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/Ai4TensorflowBaseOperation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai1DlAndMl/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/Raspberrypi1NotDisplayConfigWifiAndSsh/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/HttpSessionAndMitm/">HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/IphoneInstallThroughPlist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuangPush/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/IP/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SsrBuildsMyVpn/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/FileSynchronizationInClusterEnvironment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/BlockchainUseJavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/Redis3DistributedLock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/Redis2JedisAndRedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Redis1Basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/CrossDomainSessionMissing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVCResponseGetBody/">SpringMvc：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVCRequestGetBody/">SpringMvc：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVCInterceptorWorkflow/">SpringMvc：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVCDifferenceBetweenInterceptorsAndFilters/">SpringMvc：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/RemoteDebugging1JarPackageInIdea/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/GameAssist4JavaMemoryModifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/20/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/GameAssist1JavaSoftwareLevelPeripheralSimulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/Hexo7SubmitSearchEngine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Hexo4YeleeThemeDownloadAndConfig/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/Hexo3UploadingResourcesBlog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Hexo2RemoteRepositoryHostingBlog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/Hexo1BlogBuilding/">Hexo系列（一）：个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/Redis5RedisCluster/">关于Redis(五)：Cluster模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/Redis6SpringBootConnectRedisCluster/">关于Redis(六)：SpringBoot连接集群的简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/Redis4MasterSlaveAndSentinelMode/">关于Redis(四)：主从模式与哨兵模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/DockerInsideInstallElk/">Docker中安装ELK</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/DockerIntroduceAndInstall/">Docker的介绍以及安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/LinuxCommonSoft/">Linux常用软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/22/DeepinLinuxL2tpConfig/">DeepinLinux自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/Ai4TensorflowBaseOperation/">人工智能(四)：TensorFlow基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai3ForTensorflowOfIntroduceAndInstall/">人工智能(三)：TensorFlow的介绍与安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai2DevelopmentHistoryOfDl/">人工智能(一)：深度学习发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Ai1DlAndMl/">人工智能(一)：人工智能、机器学习、深度学习的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/28/Raspberrypi1NotDisplayConfigWifiAndSsh/">树莓派(一)：无外设情况下配置WIFI和SSH</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/HttpSessionAndMitm/">HTTP Session与中间人攻击</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/14/IphoneInstallThroughPlist/">IOS 系统通过plist方式安装App</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/15/JiGuangPush/">极光推送功能集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/16/LinuxDevEnviBuild/">Linux开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/IP/">内网穿透简单介绍与工具推荐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/SsrBuildsMyVpn/">SSR搭建属于自己的梯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/FileSynchronizationInClusterEnvironment/">集群环境下的文件同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/BlockchainUseJavaScript/">用JavaScript写一个区块链</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/15/Redis3DistributedLock/">关于Redis(三)：分布式锁的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/Redis2JedisAndRedisTemplate/">关于Redis(二)：Jedis与RedisTemplate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/15/Redis1Basics/">关于Redis(一)：基本概念与常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/LinuxMmysqlDumpScriptCronBackup/">Linux环境MySQL数据库定时备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/Win10ConfigL2tpORIpecVpn/">Win10自带VPN配置(L2TP/IpSec)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/CrossDomainSessionMissing/">关于跨域问题中Session会话丢失问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/03/SpringMVCResponseGetBody/">SpringMvc：Response获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/22/SpringMVCRequestGetBody/">SpringMvc：Request获取Body问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/SpringMVCInterceptorWorkflow/">SpringMvc：拦截器的工作流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/28/SpringMVCDifferenceBetweenInterceptorsAndFilters/">SpringMvc：拦截器和过滤器的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/RemoteDebugging1JarPackageInIdea/">远程调试(一)：在IDEA中远程调试Jar包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/11/GameAssist4JavaMemoryModifier/">游戏辅助（四）：基于Java的内存修改器（CE）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/GameAssist3CBindingHandle/">游戏辅助（三）：基于C绑定句柄</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/GameAssist2CDriverLevelPeripheralSimulation/">游戏辅助（二）：基于C的驱动级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/GameAssist1JavaSoftwareLevelPeripheralSimulation/">游戏辅助（一）：基于Java的软件级外设模拟</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/WindowsDevEnviBuild/">Windows开发环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/Hexo7SubmitSearchEngine/">Hexo系列（七）：提交搜索引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/12/Hexo6AddCommentFunction/">Hexo系列（六）：添加评论功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/16/Hexo5SiteSearchAndArticleStatistics/">Hexo系列（五）：站内搜索与文章统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Hexo4YeleeThemeDownloadAndConfig/">Hexo系列（四）：主题下载以及配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/Hexo3UploadingResourcesBlog/">Hexo系列（三）：上传资源到博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/Hexo2RemoteRepositoryHostingBlog/">Hexo系列（二）：远程仓库托管博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/Hexo1BlogBuilding/">Hexo系列（一）：个人博客搭建</a></li></ul>
 
 
 
